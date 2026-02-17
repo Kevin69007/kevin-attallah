@@ -96,7 +96,7 @@ const BannerOne = () => {
                 <h2 className="text-center">
                   Crée la vie qui te <span>ressemble</span>
                 </h2>
-                <p>De la connaissance de soi à la maîtrise de l'IA, je t'accompagne à chaque étape pour bâtir un projet qui a du sens.</p>
+                <p>Trouve ton idée, crée ton entreprise et propulse-la avec l'IA. Un accompagnement complet pour entrepreneurs.</p>
                 <div className="grid grid-cols-1 gap-10 justify-content-between">
                    <div className="">
                       <Link
@@ -104,21 +104,21 @@ const BannerOne = () => {
                         className="btn-one mb-10"
                         onClick={handleBusinessClick}
                       >
-                        Me découvrir
+                        Trouver mon idée
                       </Link>
                       <Link
                         href="/se-lancer"
                         className="btn-two ml-10 mb-10"
                         onClick={handleBusinessClick}
                       >
-                        Me lancer
+                        Lancer mon business
                       </Link>
                       <Link
                         href="/se-developper"
                         className="btn-one ml-10 mb-10"
                         onClick={handleFormationClick}
                       >
-                        Me développer avec l'IA
+                        Décoller avec l'IA
                       </Link>
                    </div>
                 </div>

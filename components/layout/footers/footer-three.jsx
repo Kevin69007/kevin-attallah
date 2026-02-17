@@ -64,7 +64,7 @@ const FooterThree = () => {
                         <div className="footer__three-widget">
                             <div className="footer__three-widget-about">
                                 <Link href="/"><img src={logo.src} alt="image" /></Link>
-                                <p>Crée la vie qui te ressemble — De la connaissance de soi à la maîtrise de l'IA, je t'accompagne à bâtir un projet qui a du sens.</p>
+                                <p>Crée la vie qui te ressemble — Trouve ton idée, crée ton entreprise et propulse-la avec l'IA.</p>
                                 <h6>Inscrivez-vous à notre Newsletter</h6>
                                 <form onSubmit={handleSubmit}>
                                     <input
@@ -92,9 +92,9 @@ const FooterThree = () => {
                             <h4 className="ml-60">Mes Accompagnements</h4>
                             <div className="footer__three-widget-solution">
                                 <ul>
-                                    <li><Link href="/se-connaitre"><i className="far fa-chevron-double-right"></i>Se Connaître</Link></li>
+                                    <li><Link href="/se-connaitre"><i className="far fa-chevron-double-right"></i>Trouver ton idée</Link></li>
                                     <li><Link href="/se-lancer"><i className="far fa-chevron-double-right"></i>Se Lancer</Link></li>
-                                    <li><Link href="/se-developper"><i className="far fa-chevron-double-right"></i>Se Développer</Link></li>
+                                    <li><Link href="/se-developper"><i className="far fa-chevron-double-right"></i>Décoller avec l'IA</Link></li>
                                 </ul>
                             </div>
                         </div>

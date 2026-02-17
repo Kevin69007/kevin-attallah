@@ -8,8 +8,8 @@ const Pillars = () => {
                 <div className="row justify-content-center text-center">
                     <div className="col-xl-8 col-lg-8 col-md-10 services__one-title">
                         <span className="subtitle-one">Mon accompagnement</span>
-                        <h2>3 piliers pour construire ta réussite</h2>
-                        <p>Un parcours complet : de la découverte de soi à la maîtrise de l'IA, en passant par la création d'entreprise.</p>
+                        <h2 style={{color: '#1a1a2e'}}>3 piliers pour construire ta <span className="highlighted">réussite</span></h2>
+                        <p style={{color: '#555', fontSize: '17px'}}>De l'idée au lancement, jusqu'à la maîtrise de l'IA — un accompagnement complet pour créer ton entreprise.</p>
                     </div>
                 </div>
                 <div className="row align-items-center justify-content-center">
@@ -22,9 +22,9 @@ const Pillars = () => {
                                     </div>
                                     <div className="services__one-single-service-content">
                                         <span style={{fontSize: '48px', fontWeight: '700', color: 'var(--primary-color-1)', opacity: 0.15, lineHeight: 1}}>01</span>
-                                        <h4>Se Connaître</h4>
+                                        <h4>Trouver ton idée</h4>
                                         <p>Trouve ta voie grâce à l'Ikigai et au bilan de compétences. Avant de créer, il faut savoir pourquoi.</p>
-                                        <Link href="/se-connaitre" className="btn-one mt-20">Trouver ma voie<i className="fas fa-arrow-right"></i></Link>
+                                        <Link href="/se-connaitre" className="btn-one mt-20">Trouver mon idée<i className="fas fa-arrow-right"></i></Link>
                                     </div>
                                 </div>
                             </div>
@@ -57,9 +57,9 @@ const Pillars = () => {
                                     </div>
                                     <div className="services__one-single-service-content">
                                         <span style={{fontSize: '48px', fontWeight: '700', color: 'var(--primary-color-1)', opacity: 0.15, lineHeight: 1}}>03</span>
-                                        <h4>Se Développer</h4>
+                                        <h4>Décoller avec l'IA</h4>
                                         <p>Booste ton business avec l'IA. Formations, audits et outils pour passer au niveau supérieur.</p>
-                                        <Link href="/se-developper" className="btn-one mt-20">Découvrir l'IA<i className="fas fa-arrow-right"></i></Link>
+                                        <Link href="/se-developper" className="btn-one mt-20">Décoller avec l'IA<i className="fas fa-arrow-right"></i></Link>
                                     </div>
                                 </div>
                             </div>

@@ -31,8 +31,10 @@ const Tab = () => {
                             <p className="p1"><span className="fw-bold fs-4">Ensemble, on analyse ce qui compte vraiment :</span><br />
                                 👉 Quelles sont tes forces et comment les exploiter ?<br />
                                 👉 Ton idée est-elle viable et alignée avec qui tu es ? <br />
-                                👉 Comment structurer ton projet pour qu'il prenne vie ?<br/>
-                                Pas de phrases toutes faites, pas d’artifice :<br /> juste toi, ton projet et des solutions qui te correspondent. Prêt·e à passer à l’action ?
+                                👉 Comment structurer ton projet pour qu'il prenne vie ?
+                            </p>
+                            <p className="p1" style={{marginTop: '12px'}}>
+                                Pas de phrases toutes faites, pas d'artifice :<br /> juste toi, ton projet et des solutions qui te correspondent. Prêt·e à passer à l'action ?
                             </p>
                         </div>
                     </div>

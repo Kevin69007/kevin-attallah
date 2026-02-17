@@ -13,9 +13,9 @@ import aboutImg2 from "../../../public/assets/img/about/about-21.png";
 const SeConnaitre = () => {
     return (
         <>
-            <SEO pageTitle="Se Connaître - Trouve ta voie" />
+            <SEO pageTitle="Trouver ton idée - Trouve ta voie" />
             <HeaderOne />
-            <BreadCrumb title="Se Connaître" innerTitle="Se Connaître" />
+            <BreadCrumb title="Trouver ton idée" innerTitle="Trouver ton idée" />
 
             {/* Hero section avec image Ikigai */}
             <div className="about__two section-padding">
@@ -67,7 +67,7 @@ const SeConnaitre = () => {
                     <div className="row justify-content-center text-center mb-50">
                         <div className="col-xl-8">
                             <span className="subtitle-one">Mes offres</span>
-                            <h2>Comment je t'accompagne</h2>
+                            <h2 style={{color: '#1a1a2e'}}>Comment je t'<span className="highlighted">accompagne</span></h2>
                         </div>
                     </div>
                     <div className="row align-items-center justify-content-center">

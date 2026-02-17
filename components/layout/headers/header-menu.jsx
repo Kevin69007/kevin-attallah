@@ -19,13 +19,13 @@ const MainMenu = () => {
                     <Link href="/" onClick={() => handleMenuClick('Accueil')}>Accueil</Link>
                 </li>
                 <li className="menu-item-has-children">
-                    <Link href="/se-connaitre" onClick={() => handleMenuClick('Se Connaître')}>Se Connaître</Link>
+                    <Link href="/se-connaitre" onClick={() => handleMenuClick('Trouver ton idée')}>Trouver ton idée</Link>
                 </li>
                 <li className="menu-item-has-children">
                     <Link href="/se-lancer" onClick={() => handleMenuClick('Se Lancer')}>Se Lancer</Link>
                 </li>
                 <li className="menu-item-has-children">
-                    <Link href="/se-developper" onClick={() => handleMenuClick('Se Développer')}>Se Développer</Link>
+                    <Link href="/se-developper" onClick={() => handleMenuClick('Décoller avec l\'IA')}>Décoller avec l'IA</Link>
                 </li>
                 <li className="menu-item-has-children">
                     <Link href="/blog" onClick={() => handleMenuClick('Blog')}>Blog</Link>

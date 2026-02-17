@@ -88,7 +88,7 @@ const SeLancer = () => {
                                     </p>
                                 </div>
                                 <Link href="/se-developper" className="btn-two mt-20">
-                                    Découvrir le pilier IA<i className="fas fa-arrow-right"></i>
+                                    Décoller avec l'IA<i className="fas fa-arrow-right"></i>
                                 </Link>
                             </div>
                         </div>

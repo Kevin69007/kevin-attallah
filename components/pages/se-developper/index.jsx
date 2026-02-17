@@ -14,9 +14,9 @@ import servicesImg from "../../../public/assets/img/service/services.png";
 const SeDevelopper = () => {
     return (
         <>
-            <SEO pageTitle="Se Développer - Booste ton business avec l'IA" />
+            <SEO pageTitle="Décoller avec l'IA - Booste ton business" />
             <HeaderOne />
-            <BreadCrumb title="Se Développer" innerTitle="Se Développer" />
+            <BreadCrumb title="Décoller avec l'IA" innerTitle="Décoller avec l'IA" />
 
             {/* Hero section avec images (pattern formation-creation.jsx) */}
             <div className="about__two section-padding">
@@ -44,7 +44,7 @@ const SeDevelopper = () => {
                         <div className="col-xl-6 col-lg-6">
                             <div className="about__two-content">
                                 <span className="subtitle-one">Pilier 3</span>
-                                <h2>Développe ton business avec l'IA</h2>
+                                <h2>Décolle avec l'IA</h2>
                                 <p className="text-start">
                                     Que tu lances ton activité ou que tu sois déjà entrepreneur, l'IA est ton meilleur allié
                                     pour gagner du temps, automatiser et te démarquer. Je t'accompagne pour intégrer l'IA
@@ -76,7 +76,7 @@ const SeDevelopper = () => {
                     <div className="row justify-content-center text-center mb-50">
                         <div className="col-xl-8">
                             <span className="subtitle-one">Pour qui ?</span>
-                            <h2>L'IA, c'est pour toi</h2>
+                            <h2 style={{color: '#1a1a2e'}}>L'IA, c'est pour <span className="highlighted">toi</span></h2>
                         </div>
                     </div>
                     <div className="row justify-content-center">
