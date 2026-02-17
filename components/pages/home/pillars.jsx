@@ -1,0 +1,57 @@
+import Link from "next/link";
+
+const Pillars = () => {
+    return (
+        <div className="services__one section-padding">
+            <div className="container">
+                <div className="row justify-content-center text-center">
+                    <div className="col-xl-8 col-lg-8 col-md-10 services__one-title">
+                        <span className="subtitle-one">Mon accompagnement</span>
+                        <h2>3 piliers pour construire ta réussite</h2>
+                        <p>Un parcours complet : de la découverte de soi à la maîtrise de l'IA, en passant par la création d'entreprise.</p>
+                    </div>
+                </div>
+                <div className="row justify-content-center">
+                    <div className="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div className="single-service text-center">
+                            <div className="services__one-single-service-icon">
+                                <i className="flaticon-idea"></i>
+                            </div>
+                            <div className="services__one-single-service-content">
+                                <h4>Se Connaître</h4>
+                                <p>Trouve ta voie grâce à l'Ikigai et au bilan de compétences. Avant de créer, il faut savoir pourquoi.</p>
+                                <Link href="/se-connaitre" className="btn-one mt-20">Trouver ma voie<i className="fas fa-arrow-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div className="single-service text-center">
+                            <div className="services__one-single-service-icon">
+                                <i className="flaticon-global-network"></i>
+                            </div>
+                            <div className="services__one-single-service-content">
+                                <h4>Se Lancer</h4>
+                                <p>Crée ton entreprise avec un accompagnement personnalisé. +2100 entrepreneurs déjà accompagnés.</p>
+                                <Link href="/se-lancer" className="btn-two mt-20">Lancer mon business<i className="fas fa-arrow-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div className="single-service text-center">
+                            <div className="services__one-single-service-icon">
+                                <i className="flaticon-it"></i>
+                            </div>
+                            <div className="services__one-single-service-content">
+                                <h4>Se Développer</h4>
+                                <p>Booste ton business avec l'IA. Formations, audits et outils pour passer au niveau supérieur.</p>
+                                <Link href="/se-developper" className="btn-one mt-20">Découvrir l'IA<i className="fas fa-arrow-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Pillars;

@@ -19,13 +19,19 @@ const MainMenu = () => {
                     <Link href="/" onClick={() => handleMenuClick('Accueil')}>Accueil</Link>
                 </li>
                 <li className="menu-item-has-children">
-                    <Link href="/about" onClick={() => handleMenuClick('À propos')}>À propos</Link>
+                    <Link href="/se-connaitre" onClick={() => handleMenuClick('Se Connaître')}>Se Connaître</Link>
                 </li>
                 <li className="menu-item-has-children">
-                    <Link href="/categories" onClick={() => handleMenuClick('Formations')}>Formations</Link>
+                    <Link href="/se-lancer" onClick={() => handleMenuClick('Se Lancer')}>Se Lancer</Link>
+                </li>
+                <li className="menu-item-has-children">
+                    <Link href="/se-developper" onClick={() => handleMenuClick('Se Développer')}>Se Développer</Link>
                 </li>
                 <li className="menu-item-has-children">
                     <Link href="/blog" onClick={() => handleMenuClick('Blog')}>Blog</Link>
+                </li>
+                <li className="menu-item-has-children">
+                    <Link href="/about" onClick={() => handleMenuClick('À propos')}>À propos</Link>
                 </li>
             </ul>
         </>

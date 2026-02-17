@@ -92,42 +92,33 @@ const BannerOne = () => {
           <div className="row align-items-center gy-4 justify-content-center">
             <div className="col-xl-6 col-lg-6">
               <div className="banner__one-content">
-                <span className="subtitle-one">Boostez votre succès</span>
+                <span className="subtitle-one">Kevin Attallah</span>
                 <h2 className="text-center">
-                  Donne du sens à ta <span>vie!</span>
+                  Crée la vie qui te <span>ressemble</span>
                 </h2>
-                <p>Tu veux monter ton business ou développer de nouvelles compétences ? ✨</p>
-                <p>
-                  👉 On t’aide à trouver ce qui a du sens pour toi, sans blabla ni perte de temps.
-                  <br />
-                  👉 Coaching, formations et conseils pour aligner vos ambitions, vos talents et vos valeurs.
-                  <br />🔥 Prêt à transformer vos idées en succès ? 🔥
-                </p>
+                <p>De la connaissance de soi à la maîtrise de l'IA, je t'accompagne à chaque étape pour bâtir un projet qui a du sens.</p>
                 <div className="grid grid-cols-1 gap-10 justify-content-between">
                    <div className="">
                       <Link
-                        href="/business"
-                        className="btn-two mb-10 teste"
+                        href="/se-connaitre"
+                        className="btn-one mb-10"
                         onClick={handleBusinessClick}
                       >
-                        👉 Je veux lancer mon business
+                        Me découvrir
                       </Link>
                       <Link
-                        href="/categories"
-                        className="btn-one ml-10"
-                        onClick={handleFormationClick}
+                        href="/se-lancer"
+                        className="btn-two ml-10 mb-10"
+                        onClick={handleBusinessClick}
                       >
-                        👉 Je veux me former
+                        Me lancer
                       </Link>
-                   </div>
-                   <div className="d-flex justify-content-center align-items-center h-100 mt-2">
                       <Link
-                        href="https://meet.brevo.com/kevin-a2ta2l/faites-le-point-sur-votre-avenir-professionnel-avec-un-bilan-de-competences-"
-                        target="_blank"
-                        className="btn-one ml-10 text-center "
+                        href="/se-developper"
+                        className="btn-one ml-10 mb-10"
                         onClick={handleFormationClick}
                       >
-                        👉 Faire mon Bilan de Compétences
+                        Me développer avec l'IA
                       </Link>
                    </div>
                 </div>

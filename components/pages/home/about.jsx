@@ -21,31 +21,27 @@ const About = () => {
                 <div className="row align-items-center flex-wrap-reverse gy-4">
                     <div className="col-xl-6 col-lg-7 col-md-9">
                         <div className="about__one-content">
-                            <span className="subtitle-one">Qui sommes-nous</span>
-                            <h2>Faites passer vos ambitions au niveau supérieur 🚀
-                            </h2>
-                            <p>Avec notre méthode qui a fait ses preuves, on transforme vos idées en succès concrets ! Que ce soit
-                                pour donner vie à un projet ou aligner votre carrière avec vos valeurs, on vous accompagne à
-                                chaque étape. Ensemble, créons des réussites qui ont du sens et un vrai impact.</p>
+                            <span className="subtitle-one">Mon parcours</span>
+                            <h2>Kevin Attallah</h2>
+                            <p>Avec plus de 2 100 entrepreneurs accompagnés et 15 000 heures de formation dispensées, j'aide ceux qui veulent donner du sens à leur vie professionnelle. Mon parcours — de la France à l'Égypte, en passant par des réussites et des échecs entrepreneuriaux — m'a appris une chose : le succès commence par la connaissance de soi.</p>
                             <div className="about__one-content-service">
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>
-                                    <span>Des objectifs clairs et alignés 😎</span>
+                                    <span>+2 100 entrepreneurs accompagnés</span>
                                 </div>
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>
-                                    <span>Des projets qui marquent 💡</span>
+                                    <span>Méthode basée sur l'Ikigai</span>
                                 </div>
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>
-                                    <span>Une transformation durable 🌱</span>
+                                    <span>Expérience entrepreneuriale réelle</span>
                                 </div>
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>
-                                    <span>Un développement personnel boosté ✨</span>
+                                    <span>Expert IA pour entrepreneurs</span>
                                 </div>
                             </div>
-                            {/* <Link href="/contact" className="btn-one">En savoir plus<i className="fas fa-arrow-right"></i></Link> */}
                         </div>
                     </div>
                     <div className="col-xl-6 col-lg-5">
