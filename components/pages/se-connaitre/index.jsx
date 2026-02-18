@@ -66,7 +66,7 @@ const SeConnaitre = () => {
                 <div className="container">
                     <div className="row justify-content-center text-center mb-50">
                         <div className="col-xl-8">
-                            <span className="subtitle-one">Mes offres</span>
+                            <span className="subtitle-one" style={{color: 'var(--primary-color-1)'}}>Mes offres</span>
                             <h2 style={{color: '#1a1a2e'}}>Comment je t'<span className="highlighted">accompagne</span></h2>
                         </div>
                     </div>

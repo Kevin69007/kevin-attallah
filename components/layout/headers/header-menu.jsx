@@ -16,9 +16,6 @@ const MainMenu = () => {
         <>
             <ul>
                 <li className="menu-item-has-children">
-                    <Link href="/" onClick={() => handleMenuClick('Accueil')}>Accueil</Link>
-                </li>
-                <li className="menu-item-has-children">
                     <Link href="/se-connaitre" onClick={() => handleMenuClick('Trouver ton idée')}>Trouver ton idée</Link>
                 </li>
                 <li className="menu-item-has-children">
@@ -28,10 +25,12 @@ const MainMenu = () => {
                     <Link href="/se-developper" onClick={() => handleMenuClick('Décoller avec l\'IA')}>Décoller avec l'IA</Link>
                 </li>
                 <li className="menu-item-has-children">
-                    <Link href="/blog" onClick={() => handleMenuClick('Blog')}>Blog</Link>
-                </li>
-                <li className="menu-item-has-children">
-                    <Link href="/about" onClick={() => handleMenuClick('À propos')}>À propos</Link>
+                    <Link href="#">Plus<i className="fas fa-chevron-down" style={{marginLeft: '7px', fontSize: '14px'}}></i></Link>
+                    <ul className="sub-menu">
+                        <li><Link href="/" onClick={() => handleMenuClick('Accueil')}>Accueil</Link></li>
+                        <li><Link href="/blog" onClick={() => handleMenuClick('Blog')}>Blog</Link></li>
+                        <li><Link href="/about" onClick={() => handleMenuClick('À propos')}>À propos</Link></li>
+                    </ul>
                 </li>
             </ul>
         </>

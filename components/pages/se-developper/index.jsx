@@ -75,7 +75,7 @@ const SeDevelopper = () => {
                 <div className="container">
                     <div className="row justify-content-center text-center mb-50">
                         <div className="col-xl-8">
-                            <span className="subtitle-one">Pour qui ?</span>
+                            <span className="subtitle-one" style={{color: 'var(--primary-color-1)'}}>Pour qui ?</span>
                             <h2 style={{color: '#1a1a2e'}}>L'IA, c'est pour <span className="highlighted">toi</span></h2>
                         </div>
                     </div>
@@ -111,8 +111,8 @@ const SeDevelopper = () => {
                 <div className="container">
                     <div className="row justify-content-center text-center mb-50">
                         <div className="col-xl-8">
-                            <span className="subtitle-one">Nos solutions</span>
-                            <h2>Comment je t'accompagne</h2>
+                            <span className="subtitle-one" style={{color: 'var(--primary-color-1)'}}>Nos solutions</span>
+                            <h2 style={{color: '#1a1a2e'}}>Comment je t'accompagne</h2>
                         </div>
                     </div>
                     <div className="row align-items-center justify-content-center">

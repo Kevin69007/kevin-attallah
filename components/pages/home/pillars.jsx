@@ -7,7 +7,7 @@ const Pillars = () => {
             <div className="container">
                 <div className="row justify-content-center text-center">
                     <div className="col-xl-8 col-lg-8 col-md-10 services__one-title">
-                        <span className="subtitle-one">Mon accompagnement</span>
+                        <span className="subtitle-one" style={{color: 'var(--primary-color-1)'}}>Mon accompagnement</span>
                         <h2 style={{color: '#1a1a2e'}}>3 piliers pour construire ta <span className="highlighted">réussite</span></h2>
                         <p style={{color: '#555', fontSize: '17px'}}>De l'idée au lancement, jusqu'à la maîtrise de l'IA — un accompagnement complet pour créer ton entreprise.</p>
                     </div>

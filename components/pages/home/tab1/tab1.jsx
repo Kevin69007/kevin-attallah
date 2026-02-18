@@ -28,7 +28,8 @@ const Tab = () => {
                             <h2>Je veux lancer mon business🧑‍💼</h2>
                         </div>
                         <div className="mb-5 ">
-                            <p className="p1"><span className="fw-bold fs-4">Ensemble, on analyse ce qui compte vraiment :</span><br />
+                            <p className="p1"><span className="fw-bold fs-4">Ensemble, on analyse ce qui compte vraiment :</span></p>
+                            <p className="p1" style={{marginTop: '12px'}}>
                                 👉 Quelles sont tes forces et comment les exploiter ?<br />
                                 👉 Ton idée est-elle viable et alignée avec qui tu es ? <br />
                                 👉 Comment structurer ton projet pour qu'il prenne vie ?
