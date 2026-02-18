@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 @import "../public/assets/css/fontawesome.css";
 @import "../public/assets/flaticon/flaticon_bantec.css";
 @import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,7 +16,7 @@
 @keyframes pillarSlideUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -26,7 +27,7 @@
 .pillar-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 48px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -43,80 +44,54 @@
 }
 
 .pillar-nav__link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: 50px;
-  font-family: var(--heading-font);
-  font-size: 16px;
-  font-weight: 600;
+  display: inline-block;
+  padding: 32px 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
   color: var(--black);
   text-decoration: none;
   position: relative;
-  overflow: hidden;
-  transition: color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
-  background: rgba(114, 34, 219, 0.06);
-  border: 1px solid rgba(114, 34, 219, 0.12);
+  transition: color 0.3s ease;
 }
 
 .pillar-nav__link::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  bottom: 24px;
+  left: 0;
   width: 0;
   height: 2px;
   background: var(--primary-color-1);
   border-radius: 2px;
-  transition: width 0.35s cubic-bezier(0.23, 1, 0.32, 1), left 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.pillar-nav__link:hover::after {
-  width: 60%;
-  left: 20%;
+  transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .pillar-nav__link:hover {
   color: var(--primary-color-1);
-  background: rgba(114, 34, 219, 0.10);
-  border-color: rgba(114, 34, 219, 0.25);
-  box-shadow: 0 4px 20px rgba(114, 34, 219, 0.12);
-  transform: translateY(-2px);
+}
+
+.pillar-nav__link:hover::after {
+  width: 100%;
 }
 
 .pillar-nav__text {
-  position: relative;
-  z-index: 1;
   white-space: nowrap;
-}
-
-/* Séparateur entre les piliers */
-.pillar-nav__item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: -7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(114, 34, 219, 0.3);
 }
 
 /* Override les anciens styles du menu center */
 .header__area-menubar-center-menu .pillar-nav li a {
-  padding: 0;
+  padding: 32px 0;
   font-size: inherit;
 }
 
 /* Responsive */
 @media (max-width: 1200px) {
   .pillar-nav {
-    gap: 8px;
+    gap: 28px;
   }
   .pillar-nav__link {
-    padding: 8px 16px;
-    font-size: 14px;
+    font-size: 15px;
   }
 }
