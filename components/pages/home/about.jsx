@@ -23,7 +23,7 @@ const About = () => {
                         <div className="about__one-content">
                             <span className="subtitle-one">Mon parcours</span>
                             <h2>Kevin Attallah</h2>
-                            <p>Avec plus de 2 100 entrepreneurs accompagnés et 15 000 heures de formation dispensées, j'aide ceux qui veulent donner du sens à leur vie professionnelle. Mon parcours — de la France à l'Égypte, en passant par des réussites et des échecs entrepreneuriaux — m'a appris une chose : le succès commence par la connaissance de soi.</p>
+                            <p>Avec plus de 2 100 entrepreneurs accompagnés et 15 000 heures de formation dispensées, j'aide ceux qui veulent donner du sens à leur vie professionnelle. Mon parcours d'expatrié, en passant par des réussites et des échecs entrepreneuriaux, m'a appris une chose : le succès commence par la connaissance de soi.</p>
                             <div className="about__one-content-service">
                                 <div className="service">
                                     <i className="far fa-check-circle"></i>

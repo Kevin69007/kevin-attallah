@@ -100,7 +100,7 @@ const SeConnaitre = () => {
                                 </div>
                                 <div className="services__one-single-service-content">
                                     <h4>Cadre de vie</h4>
-                                    <p>Questionne ton environnement idéal. J'ai moi-même vécu cette réflexion en m'expatriant en Égypte — je t'aide à te poser les bonnes questions.</p>
+                                    <p>Questionne ton environnement idéal. J'ai moi-même vécu cette réflexion en m'expatriant — je t'aide à te poser les bonnes questions.</p>
                                 </div>
                             </div>
                         </div>

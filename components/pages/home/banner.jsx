@@ -102,7 +102,7 @@ const BannerOne = () => {
                       <Link
                         href="https://meet.brevo.com/kevin-a2ta2l/presentation"
                         target="_blank"
-                        className="btn-one mb-10"
+                        className="btn-two mb-10"
                         onClick={handleBusinessClick}
                       >
                         Vérifier mon éligibilité CPF
