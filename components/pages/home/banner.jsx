@@ -94,31 +94,18 @@ const BannerOne = () => {
               <div className="banner__one-content">
                 <span className="subtitle-one">Kevin Attallah</span>
                 <h2 className="text-center">
-                  Crée la vie qui te <span>ressemble</span>
+                  Lance-toi avant que l'IA ne remplace ton <span>job</span>
                 </h2>
-                <p>Trouve ton idée, crée ton entreprise et propulse-la avec l'IA. Un accompagnement complet pour entrepreneurs.</p>
+                <p>Tu as une idée qui te trotte ? Forme-toi avec ton CPF et transforme-la</p>
                 <div className="grid grid-cols-1 gap-10 justify-content-between">
                    <div className="">
                       <Link
-                        href="/se-connaitre"
+                        href="https://meet.brevo.com/kevin-a2ta2l/presentation"
+                        target="_blank"
                         className="btn-one mb-10"
                         onClick={handleBusinessClick}
                       >
-                        Trouver mon idée
-                      </Link>
-                      <Link
-                        href="/se-lancer"
-                        className="btn-two ml-10 mb-10"
-                        onClick={handleBusinessClick}
-                      >
-                        Lancer mon business
-                      </Link>
-                      <Link
-                        href="/se-developper"
-                        className="btn-one ml-10 mb-10"
-                        onClick={handleFormationClick}
-                      >
-                        Décoller avec l'IA
+                        Vérifier mon éligibilité CPF
                       </Link>
                    </div>
                 </div>

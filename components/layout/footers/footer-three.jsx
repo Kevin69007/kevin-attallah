@@ -64,7 +64,7 @@ const FooterThree = () => {
                         <div className="footer__three-widget">
                             <div className="footer__three-widget-about">
                                 <Link href="/"><img src={logo.src} alt="image" /></Link>
-                                <p>Crée la vie qui te ressemble — Trouve ton idée, crée ton entreprise et propulse-la avec l'IA.</p>
+                                <p>Lance-toi avant que l'IA ne remplace ton job — Forme-toi avec ton CPF et transforme ton idée en business.</p>
                                 <h6>Inscrivez-vous à notre Newsletter</h6>
                                 <form onSubmit={handleSubmit}>
                                     <input

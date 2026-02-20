@@ -44,7 +44,7 @@ const SeLancer = () => {
                         <div className="col-xl-6 col-lg-6">
                             <div className="about__two-content">
                                 <span className="subtitle-one">Bonus inclus</span>
-                                <h2>Une formation offerte avec ton accompagnement</h2>
+                                <h2>CADEAU : Une formation à 200€ offerte avec ton accompagnement</h2>
                                 <p className="text-start">
                                     Pour te donner le maximum de chances de réussir, chaque accompagnement inclut une formation offerte
                                     de notre catalogue. Langues, bureautique, marketing digital, soft skills... à toi de choisir

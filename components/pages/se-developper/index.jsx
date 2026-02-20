@@ -44,11 +44,9 @@ const SeDevelopper = () => {
                         <div className="col-xl-6 col-lg-6">
                             <div className="about__two-content">
                                 <span className="subtitle-one">Pilier 3</span>
-                                <h2>Décolle avec l'IA</h2>
+                                <h2>L'IA remplace pas les entrepreneurs. Elle remplace ceux qui refusent</h2>
                                 <p className="text-start">
-                                    Que tu lances ton activité ou que tu sois déjà entrepreneur, l'IA est ton meilleur allié
-                                    pour gagner du temps, automatiser et te démarquer. Je t'accompagne pour intégrer l'IA
-                                    concrètement dans ton quotidien d'entrepreneur.
+                                    Tes concurrents automatisent déjà. Toi tu écris encore tes emails un par un
                                 </p>
                                 <div className="about__two-content-service">
                                     <div className="service">
@@ -87,7 +85,7 @@ const SeDevelopper = () => {
                                 </div>
                                 <div className="services__one-single-service-content">
                                     <h4>Tu lances ton business</h4>
-                                    <p>Intègre l'IA dès le départ pour un projet moderne et compétitif. Automatise, optimise et gagne un temps précieux dès le lancement.</p>
+                                    <p>Démarre avec 10 ans d'avance sur tes futurs concurrents</p>
                                 </div>
                             </div>
                         </div>

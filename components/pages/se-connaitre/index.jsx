@@ -35,7 +35,7 @@ const SeConnaitre = () => {
                         <div className="col-xl-6 col-lg-6">
                             <div className="about__two-content">
                                 <span className="subtitle-one">Pilier 1</span>
-                                <h2>Trouve ta voie</h2>
+                                <h2>Stop aux fausses bonnes idées. Trouve celle qui va VRAIMENT marcher</h2>
                                 <p className="text-start">
                                     Avant de créer un business ou de changer de vie, il faut savoir pourquoi tu le fais.
                                     Je t'aide à trouver ce qui a du sens pour toi, sans blabla ni perte de temps.
@@ -78,7 +78,7 @@ const SeConnaitre = () => {
                                 </div>
                                 <div className="services__one-single-service-content">
                                     <h4>Coaching Ikigai</h4>
-                                    <p>Découvre ce qui te fait vibrer, ce en quoi tu es doué, ce dont le monde a besoin et ce pour quoi on peut te payer.</p>
+                                    <p>Ton billet pour ne pas te planter dans 6 mois</p>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@ const SeConnaitre = () => {
                                 </div>
                                 <div className="services__one-single-service-content">
                                     <h4>Bilan de compétences</h4>
-                                    <p>Fais le point sur tes talents et tes aspirations. Un accompagnement structuré pour te repositionner. Éligible au financement CPF.</p>
+                                    <p>Tes vrais super-pouvoirs sont cachés. On va les déterrer. Éligible au financement CPF.</p>
                                 </div>
                             </div>
                         </div>

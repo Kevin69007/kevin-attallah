@@ -8,7 +8,7 @@ const Pillars = () => {
                 <div className="row justify-content-center text-center">
                     <div className="col-xl-8 col-lg-8 col-md-10 services__one-title">
                         <span className="subtitle-one" style={{color: 'var(--primary-color-1)'}}>Mon accompagnement</span>
-                        <h2 style={{color: '#1a1a2e'}}>3 piliers pour construire ta <span className="highlighted">réussite</span></h2>
+                        <h2 style={{color: '#1a1a2e'}}>Le plan en 3 étapes pour quitter ton <span className="highlighted">job</span></h2>
                         <p style={{color: '#555', fontSize: '17px'}}>De l'idée au lancement, jusqu'à la maîtrise de l'IA — un accompagnement complet pour créer ton entreprise.</p>
                     </div>
                 </div>
@@ -23,7 +23,7 @@ const Pillars = () => {
                                     <div className="services__one-single-service-content">
                                         <span style={{fontSize: '48px', fontWeight: '700', color: 'var(--primary-color-1)', opacity: 0.15, lineHeight: 1}}>01</span>
                                         <h4>Trouver ton idée</h4>
-                                        <p>Trouve ta voie grâce à l'Ikigai et au bilan de compétences. Avant de créer, il faut savoir pourquoi.</p>
+                                        <p>Ton Ikigai, ton billet pour ne pas te planter dans 6 mois</p>
                                         <Link href="/se-connaitre" className="btn-one mt-20">Trouver mon idée<i className="fas fa-arrow-right"></i></Link>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@ const Pillars = () => {
                                     <div className="services__one-single-service-content">
                                         <span style={{fontSize: '48px', fontWeight: '700', color: 'var(--primary-color-1)', opacity: 0.15, lineHeight: 1}}>02</span>
                                         <h4>Se Lancer</h4>
-                                        <p>Crée ton entreprise avec un accompagnement personnalisé. +2100 entrepreneurs déjà accompagnés.</p>
+                                        <p>De 'je voudrais' à 'c'est en ligne' en 8 semaines. +2100 entrepreneurs sont déjà passés par là. Pas des surhommes.</p>
                                         <Link href="/se-lancer" className="btn-two mt-20">Lancer mon business<i className="fas fa-arrow-right"></i></Link>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@ const Pillars = () => {
                                     <div className="services__one-single-service-content">
                                         <span style={{fontSize: '48px', fontWeight: '700', color: 'var(--primary-color-1)', opacity: 0.15, lineHeight: 1}}>03</span>
                                         <h4>Décoller avec l'IA</h4>
-                                        <p>Booste ton business avec l'IA. Formations, audits et outils pour passer au niveau supérieur.</p>
+                                        <p>L'IA comme cofondrice : travaille moins, gagne plus</p>
                                         <Link href="/se-developper" className="btn-one mt-20">Décoller avec l'IA<i className="fas fa-arrow-right"></i></Link>
                                     </div>
                                 </div>
