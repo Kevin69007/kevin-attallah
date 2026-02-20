@@ -18,7 +18,7 @@ const MainMenu = () => {
     };
 
     const pillars = [
-        { href: '/se-connaitre', label: 'Trouver ton idée' },
+        { href: '/se-connaitre', label: 'Trouver l'idée' },
         { href: '/se-lancer', label: 'Se Lancer' },
         { href: '/se-developper', label: "Décoller avec l'IA" },
     ];

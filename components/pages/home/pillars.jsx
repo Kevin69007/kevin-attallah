@@ -22,9 +22,9 @@ const Pillars = () => {
                                     </div>
                                     <div className="services__one-single-service-content">
                                         <span style={{fontSize: '48px', fontWeight: '700', color: 'var(--primary-color-1)', opacity: 0.15, lineHeight: 1}}>01</span>
-                                        <h4>Trouver ton idée</h4>
+                                        <h4>Trouver l'idée</h4>
                                         <p>Ton Ikigai, ton billet pour ne pas te planter dans 6 mois</p>
-                                        <Link href="/se-connaitre" className="btn-one mt-20">Trouver mon idée<i className="fas fa-arrow-right"></i></Link>
+                                        <Link href="/se-connaitre" className="btn-one mt-20">Trouver l'idée<i className="fas fa-arrow-right"></i></Link>
                                     </div>
                                 </div>
                             </div>

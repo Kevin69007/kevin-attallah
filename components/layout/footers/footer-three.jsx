@@ -92,7 +92,7 @@ const FooterThree = () => {
                             <h4 className="ml-60">Mes Accompagnements</h4>
                             <div className="footer__three-widget-solution">
                                 <ul>
-                                    <li><Link href="/se-connaitre"><i className="far fa-chevron-double-right"></i>Trouver ton idée</Link></li>
+                                    <li><Link href="/se-connaitre"><i className="far fa-chevron-double-right"></i>Trouver l'idée</Link></li>
                                     <li><Link href="/se-lancer"><i className="far fa-chevron-double-right"></i>Se Lancer</Link></li>
                                     <li><Link href="/se-developper"><i className="far fa-chevron-double-right"></i>Décoller avec l'IA</Link></li>
                                 </ul>

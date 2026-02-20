@@ -13,9 +13,9 @@ import aboutImg2 from "../../../public/assets/img/about/about-21.png";
 const SeConnaitre = () => {
     return (
         <>
-            <SEO pageTitle="Trouver ton idée - Trouve ta voie" />
+            <SEO pageTitle="Trouver l'idée - Trouve ta voie" />
             <HeaderOne />
-            <BreadCrumb title="Trouver ton idée" innerTitle="Trouver ton idée" />
+            <BreadCrumb title="Trouver l'idée" innerTitle="Trouver l'idée" />
 
             {/* Hero section avec image Ikigai */}
             <div className="about__two section-padding">
