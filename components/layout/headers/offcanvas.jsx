@@ -91,18 +91,19 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                         <Link href='/'>
                             <img className='logo_one' src={logo2.src} alt="logo" />
                         </Link>
-                    </div>    
+                    </div>
                 <div className="header__area-menubar-right-sidebar-popup-contact">
-                    <h4 className="text-center mb-5">Lancez votre projet pro avec style ! 🚀 </h4>
+                    <h4 className="text-center mb-5">Lancez votre projet pro avec style ! </h4>
                     <h5 className="text-start mb-4 pl-15">Nos Liens utiles</h5>
                     <div className="mb-5">
                         <div className="col-xl-12 col-md-6 col-sm-5 sm-mb-30">
                             <div className="footer__three-widget border-one">
                                 <div className="footer__three-widget-solution ">
                                     <ul>
-                                        <li><Link href={`/business`} ><i className="far fa-chevron-double-right"></i>Création d’Entreprise</Link></li>
-                                        <li><Link href={`/services`} ><i className="far fa-chevron-double-right"></i>Voir le catalogue complet</Link></li>
-                                        <li><Link href={`/blog`} ><i className="far fa-chevron-double-right"></i>Blog</Link></li>
+                                        <li><Link href="/"><i className="far fa-chevron-double-right"></i>Accueil</Link></li>
+                                        <li><Link href="/blog"><i className="far fa-chevron-double-right"></i>Blog</Link></li>
+                                        <li><Link href="/about"><i className="far fa-chevron-double-right"></i>A propos</Link></li>
+                                        <li><Link href="/formations"><i className="far fa-chevron-double-right"></i>Catalogue de formations</Link></li>
                                     </ul>
                                 </div>
                             </div>

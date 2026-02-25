@@ -25,14 +25,17 @@ const Tab = () => {
                     <div className="row justify-content-center text-center">
                         <div className="col-xl-9 col-lg-9 col-md-12 services__one-title">
                             <span className="subtitle-one">Je veux lancer mon business</span>
-                            <h2>Je veux lancer mon business🧑‍💼</h2>
+                            <h2>De l'idée au premier client payant : 8 semaines, pas 8 mois</h2>
                         </div>
                         <div className="mb-5 ">
-                            <p className="p1"><span className="fw-bold fs-4">Ensemble, on analyse ce qui compte vraiment :</span><br />
+                            <p className="p1"><span className="fw-bold fs-4">Ensemble, on analyse ce qui compte vraiment :</span></p>
+                            <p className="p1" style={{marginTop: '12px'}}>
                                 👉 Quelles sont tes forces et comment les exploiter ?<br />
                                 👉 Ton idée est-elle viable et alignée avec qui tu es ? <br />
-                                👉 Comment structurer ton projet pour qu'il prenne vie ?<br/>
-                                Pas de phrases toutes faites, pas d’artifice :<br /> juste toi, ton projet et des solutions qui te correspondent. Prêt·e à passer à l’action ?
+                                👉 Comment structurer ton projet pour qu'il prenne vie ?
+                            </p>
+                            <p className="p1" style={{marginTop: '12px'}}>
+                                Pas de phrases toutes faites, pas d'artifice :<br /> juste toi, ton projet et des solutions qui te correspondent. Prêt·e à passer à l'action ?
                             </p>
                         </div>
                     </div>
@@ -47,7 +50,7 @@ const Tab = () => {
                                     </Link>
                                     <div className="formation_rigth">
                                         <TabContent 
-                                            title={`Construisez votre entreprise avec un expert à vos côtés ! 💼`}
+                                            title={`Fini de procrastiner. On lance ensemble, main dans la main`}
                                             description="Profitez d’un accompagnement personnalisé pour chaque étape : de l’idée au lancement. Bénéficiez du soutien dont vous avez besoin pour transformer vos ambitions en succès durable 🚀."
                                             description2="Et cerise sur le gâteau, votre formation est peut-être éligible au CPF 💰."
                                             servicesLeft={[
@@ -77,7 +80,7 @@ const Tab = () => {
                                     </Link> 
                                     <div className="formation_left">
                                         <TabContent 
-                                            title="Vous êtes prêt(e) à passer à l’action, à votre rythme et sans contraintes ! 💼"
+                                            title="Mode warrior solo : Tu veux tout faire toi-même ? Voici le blueprint"
                                             description="Profitez de notre formation complète pour construire votre projet d’entreprise en totale liberté."
                                             description2="Vous avancez comme vous voulez, où vous voulez, avec des outils clairs et pratiques pour transformer vos idées en réalité 🚀."
                                             servicesLeft={[

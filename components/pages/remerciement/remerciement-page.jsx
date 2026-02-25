@@ -4,7 +4,7 @@ import React from "react";
 const RemerciementPage = ({ orderId }) => {
   return (
     <div className="thank-you-page section-padding">
-      <h1>Merci pour votre achat !</h1>
+      <h1>Félicitations ! Ton aventure entrepreneuriale commence MAINTENANT</h1>
       <p>Votre paiement a été traité avec succès.</p>
       {orderId && (
         <p>

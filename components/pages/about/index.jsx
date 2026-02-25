@@ -18,16 +18,15 @@ const AboutUs = () => {
         {/* <div>
               <ScrollAnimationBackground />
           </div> */}
-        <SEO pageTitle="À propos de nous" />
+        <SEO pageTitle="À propos - Kevin Attallah" />
         <HeaderOne />
-        <BreadCrumb title="À propos de nous" innerTitle="À propos dde nous" />
+        <BreadCrumb title="À propos" innerTitle="À propos" />
         <LienReseau />
         <About />
-        <Features />
         <Testimonial />
         <ChooseFour />
         <WorkArea/>
-        <FooterThree />        
+        <FooterThree />
         <ScrollToTop />
       </>
     );

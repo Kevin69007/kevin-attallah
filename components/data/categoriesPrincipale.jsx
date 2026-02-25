@@ -5,17 +5,14 @@ import developpementWebImage from "../../public/assets/img/categories/DÉVELOPPE
 import entrepreneurImage from "../../public/assets/img/categories/ENTREPRENEUR.png";
 import gestionDePaieImage from "../../public/assets/img/categories/GESTION DE PAIE.png";
 import infographieImage from "../../public/assets/img/categories/INFOGRAPHIE.png";
-import kinesitherapieImage from "../../public/assets/img/categories/KINÉSITHÉRAPIE.png";
 import languesImage from "../../public/assets/img/categories/LANGUES.png";
 import managementRhImage from "../../public/assets/img/categories/MANAGEMENT RH.png";
-import pharmacieImage from "../../public/assets/img/categories/PHARMACIE.png";
 import productiviteImage from "../../public/assets/img/categories/PRODUCTIVITÉ.png";
 import reconversionProfessionnelleImage from "../../public/assets/img/categories/RECONVERSION PROFESSIONNELLE.png";
 import secretaireBureautiqueImage from "../../public/assets/img/categories/SECRÉTARIAT BUREAUTIQUE.png";
 import secretaireMedicalImage from "../../public/assets/img/categories/SECRÉTARIAT MÉDICAL.png";
 import securiteImage from "../../public/assets/img/categories/SÉCURITÉ.png";
 import softSkillsImage from "../../public/assets/img/categories/SOFT SKILLS.png";
-import soinsInfirmiersImage from "../../public/assets/img/categories/SOINS INFIRMIERS.png";
 import venteMarketingDigitalImage from "../../public/assets/img/categories/VENTE & MARKETING DIGITAL.png";
 import videoImage from "../../public/assets/img/categories/VIDEO.png";
 
@@ -92,42 +89,20 @@ const categoriesData = [
     "categorie": "CAO-DAO",
     "image": caoDaoImage
   },
-  
   {
     "id": "haccp-methode",
     "categorie": "SECURITE",
     "image": securiteImage
   },
-  
   {
     "id": "html-css-debutant-expert",
     "categorie": "DEVELOPPEMENT_WEB",
     "image": developpementWebImage
   },
-  
   {
     "id": "storytelling-marketing",
     "categorie": "VENTE_MARKETING_DIGITAL",
     "image": venteMarketingDigitalImage
-  },
-
-  {
-    "id": "risque-suicidaire-01",
-    "categorie": "SOINS_INFIRMIERS",
-    "image": soinsInfirmiersImage
-  },
-   
-  {
-    "id": "kine-rehab-respiratoire-01",
-    "categorie": "KINESITHERAPIE",
-    "image": kinesitherapieImage
-  },
- 
-  {
-    "id": "gestion-urgence-officine-01",
-    "categorie": "PHARMACIE",
-    
-    "image": pharmacieImage
   }
 ]
 

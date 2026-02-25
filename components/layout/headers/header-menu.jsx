@@ -1,32 +1,46 @@
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 const MainMenu = () => {
+    const [visible, setVisible] = useState(false);
 
-    // Fonction pour envoyer un événement Pixel lors d'un clic
+    useEffect(() => {
+        const timer = setTimeout(() => setVisible(true), 200);
+        return () => clearTimeout(timer);
+    }, []);
+
     const handleMenuClick = (pageName) => {
         if (typeof window !== "undefined" && window.fbq) {
-            // On envoie un événement 'PageView' pour chaque lien cliqué
             window.fbq('track', 'PageView', {
-                page_name: pageName,  // Le nom de la page visitée
+                page_name: pageName,
             });
         }
     };
 
+    const pillars = [
+        { href: '/se-connaitre', label: "Trouver l'idée" },
+        { href: '/se-lancer', label: 'Se Lancer' },
+        { href: '/se-developper', label: "Décoller avec l'IA" },
+    ];
+
     return (
         <>
-            <ul>
-                <li className="menu-item-has-children">
-                    <Link href="/" onClick={() => handleMenuClick('Accueil')}>Accueil</Link>
-                </li>
-                <li className="menu-item-has-children">
-                    <Link href="/about" onClick={() => handleMenuClick('À propos')}>À propos</Link>
-                </li>
-                <li className="menu-item-has-children">
-                    <Link href="/categories" onClick={() => handleMenuClick('Formations')}>Formations</Link>
-                </li>
-                <li className="menu-item-has-children">
-                    <Link href="/blog" onClick={() => handleMenuClick('Blog')}>Blog</Link>
-                </li>
+            <ul className="pillar-nav">
+                {pillars.map((pillar, index) => (
+                    <li
+                        key={pillar.href}
+                        className={`pillar-nav__item ${visible ? 'pillar-nav__item--visible' : ''}`}
+                        style={{ animationDelay: `${index * 180}ms` }}
+                    >
+                        <Link
+                            href={pillar.href}
+                            className="pillar-nav__link"
+                            onClick={() => handleMenuClick(pillar.label)}
+                        >
+                            <span className="pillar-nav__text">{pillar.label}</span>
+                        </Link>
+                    </li>
+                ))}
             </ul>
         </>
     );

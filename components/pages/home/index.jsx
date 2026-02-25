@@ -3,19 +3,16 @@ import SEO from "@/components/data/seo";
 import ScrollToTop from "../common/scroll/scroll-to-top";
 import HeaderOne from "@/components/layout/headers/header/header-one";
 import BannerOne from "./banner";
-import About from "./about";
 import ChooseUs from "./choose-us";
-import Features from "./features";
 import Portfolio from "./portfolio";
 import Blog from "./blog";
 import Testimonial from "./testimonial";
 import Video from "./video";
-import Tab from "./tab/tab";
 import FooterThree from "@/components/layout/footers/footer-three";
 
 import ScrollAnimationBackground from "@/components/ScrollAnimationBackground";
-import FormationCreation from "./formation-creation";
 import LienReseau from "./liens-reseaux";
+import Pillars from "./pillars";
 
 const HomeOne = () => {
     return (
@@ -24,11 +21,11 @@ const HomeOne = () => {
                 <ScrollAnimationBackground />
             </div>
             <div id="contentAccueil">
-            <SEO pageTitle='Formations' />
+            <SEO pageTitle='Kevin Attallah - Crée la vie qui te ressemble' />
             <HeaderOne />
             <BannerOne />
             <LienReseau />
-            <FormationCreation />
+            <Pillars />
             <ChooseUs />
             <Portfolio />
             <Testimonial />

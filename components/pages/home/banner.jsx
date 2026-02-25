@@ -92,42 +92,20 @@ const BannerOne = () => {
           <div className="row align-items-center gy-4 justify-content-center">
             <div className="col-xl-6 col-lg-6">
               <div className="banner__one-content">
-                <span className="subtitle-one">Boostez votre succès</span>
+                <span className="subtitle-one">Kevin Attallah</span>
                 <h2 className="text-center">
-                  Donne du sens à ta <span>vie!</span>
+                  Lance-toi avant que l'IA ne remplace ton <span>job</span>
                 </h2>
-                <p>Tu veux monter ton business ou développer de nouvelles compétences ? ✨</p>
-                <p>
-                  👉 On t’aide à trouver ce qui a du sens pour toi, sans blabla ni perte de temps.
-                  <br />
-                  👉 Coaching, formations et conseils pour aligner vos ambitions, vos talents et vos valeurs.
-                  <br />🔥 Prêt à transformer vos idées en succès ? 🔥
-                </p>
+                <p>Tu as une idée qui te trotte ? Forme-toi avec ton CPF et transforme-la</p>
                 <div className="grid grid-cols-1 gap-10 justify-content-between">
                    <div className="">
                       <Link
-                        href="/business"
-                        className="btn-two mb-10 teste"
+                        href="https://meet.brevo.com/kevin-a2ta2l/presentation"
+                        target="_blank"
+                        className="btn-two mb-10"
                         onClick={handleBusinessClick}
                       >
-                        👉 Je veux lancer mon business
-                      </Link>
-                      <Link
-                        href="/categories"
-                        className="btn-one ml-10"
-                        onClick={handleFormationClick}
-                      >
-                        👉 Je veux me former
-                      </Link>
-                   </div>
-                   <div className="d-flex justify-content-center align-items-center h-100 mt-2">
-                      <Link
-                        href="https://meet.brevo.com/kevin-a2ta2l/faites-le-point-sur-votre-avenir-professionnel-avec-un-bilan-de-competences-"
-                        target="_blank"
-                        className="btn-one ml-10 text-center "
-                        onClick={handleFormationClick}
-                      >
-                        👉 Faire mon Bilan de Compétences
+                        Vérifier mon éligibilité CPF
                       </Link>
                    </div>
                 </div>

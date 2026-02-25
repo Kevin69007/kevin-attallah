@@ -140,7 +140,7 @@ const FormArea = () => {
           <div className="col-md-12 mb-4">
             <div className="contact__two-right-form-item">
               <button type="submit" className="btn-one" disabled={isSubmitting}>
-                {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
+                {isSubmitting ? 'Envoi en cours...' : 'Envoyer (réponse rapide garantie)'}
               </button>
             </div>
           </div>
