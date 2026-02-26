@@ -1,0 +1,162 @@
+// ============================================
+// BASE — Reset & Global Styles
+// ============================================
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; // Lenis handles smooth scroll
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $bg-dark-1;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $body;
+  line-height: 1.6;
+  color: $text-primary;
+  background: $bg-dark-1;
+  overflow-x: hidden;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 800;
+  line-height: 1.15;
+  color: $text-primary;
+}
+
+h1 { font-size: $h1; }
+h2 { font-size: $h2; }
+h3 { font-size: $h3; }
+h4 { font-size: $h4; }
+
+p {
+  color: $text-body;
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: $font-body;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: $font-body;
+  border: none;
+  outline: none;
+}
+
+// Selection
+::selection {
+  background: rgba($purple, 0.2);
+  color: $purple-dark;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: $bg-dark-1;
+}
+::-webkit-scrollbar-thumb {
+  background: $purple;
+  border-radius: 3px;
+}
+
+// Section base
+.section {
+  padding: $section-pad 0;
+  position: relative;
+}
+
+.section--dark {
+  padding: $section-pad 0;
+  background: $bg-dark-1;
+  color: $text-on-dark;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $text-white;
+  }
+
+  p {
+    color: $text-on-dark-muted;
+  }
+}
+
+// Text utilities
+.gradient-text {
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-center { text-align: center; }
+.text-white { color: $text-white; }
+.text-muted { color: $text-muted; }
+
+// Section label / eyebrow
+.section-label {
+  font-size: $xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: $orange;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: $body-lg;
+  max-width: 600px;
+  color: $text-muted;
+  line-height: 1.7;
+}
+
+// Visually hidden
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

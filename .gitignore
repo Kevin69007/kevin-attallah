@@ -1,3 +1,6 @@
 node_modules
-.next/
-.env.local
+.next
+.nuxt
+.output
+.env
+.DS_Store

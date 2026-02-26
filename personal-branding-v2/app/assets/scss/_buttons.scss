@@ -1,0 +1,149 @@
+// ============================================
+// BUTTON SYSTEM
+// ============================================
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: $radius-full;
+  font-weight: 700;
+  font-family: $font-heading;
+  font-size: $body;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s $ease-smooth;
+  white-space: nowrap;
+  text-decoration: none;
+
+  // Shine effect
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s;
+  }
+
+  &:hover::after {
+    left: 100%;
+  }
+
+  // Icon inside button
+  svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+// Primary — Orange with glow
+.btn--primary {
+  background: $orange;
+  color: $text-white;
+  box-shadow: $shadow-glow-orange;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 60px $orange-glow;
+    background: $orange-dark;
+  }
+}
+
+// Secondary — Purple with glow
+.btn--secondary {
+  background: $purple;
+  color: $text-white;
+  box-shadow: $shadow-glow-purple;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 60px $purple-glow;
+    background: $purple-dark;
+  }
+}
+
+// Ghost — Glass style
+.btn--ghost {
+  background: $glass-bg;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid $glass-border;
+  color: $text-white;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+// Outline
+.btn--outline {
+  background: transparent;
+  border: 2px solid $purple;
+  color: $purple;
+
+  &:hover {
+    background: $purple;
+    color: $text-white;
+    transform: translateY(-2px);
+  }
+}
+
+// Outline light (for dark backgrounds)
+.btn--outline-light {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: $text-white;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+// Small variant
+.btn--sm {
+  padding: 10px 24px;
+  font-size: $small;
+}
+
+// Large variant
+.btn--lg {
+  padding: 20px 48px;
+  font-size: $body-lg;
+}
+
+// Full width
+.btn--block {
+  width: 100%;
+}
+
+// Button group
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    width: 100%;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
