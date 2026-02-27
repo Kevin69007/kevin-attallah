@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group">
+  <div :class="['form-group', { 'form-group--dark': dark }]">
     <label v-if="label" :for="id" class="form-label">{{ label }}</label>
     <input
       :id="id"
