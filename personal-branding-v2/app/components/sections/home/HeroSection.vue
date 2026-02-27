@@ -73,26 +73,42 @@
       <!-- Right: Photo with orbital particles -->
       <ScrollReveal direction="right" :delay="0.5" class="hero__photo-wrap">
         <div class="hero__photo">
-          <!-- Pulsing gradient halo -->
           <div class="hero__photo-halo"></div>
-
-          <!-- Spinning gradient border ring -->
           <div class="hero__photo-ring"></div>
-
-          <!-- Photo -->
           <NuxtImg src="/img/banner-right-img.jpg" alt="Kevin Attallah" class="hero__photo-img" format="webp" quality="80" />
 
-          <!-- Inner orbit ring — 3 particles -->
           <div class="hero__orbit hero__orbit--inner">
             <span class="hero__particle hero__particle--1"></span>
             <span class="hero__particle hero__particle--2"></span>
             <span class="hero__particle hero__particle--3"></span>
           </div>
 
-          <!-- Outer orbit ring — 2 particles (reverse) -->
           <div class="hero__orbit hero__orbit--outer">
             <span class="hero__particle hero__particle--4"></span>
             <span class="hero__particle hero__particle--5"></span>
+          </div>
+
+          <!-- WhatsApp chat bubbles — anchored to photo -->
+          <div
+            v-for="(bubble, i) in chatBubbles"
+            :key="i"
+            ref="bubbleRefs"
+            class="hero__bubble"
+            :class="`hero__bubble--${i + 1}`"
+          >
+            <div class="hero__bubble-wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div class="hero__bubble-body">
+              <div class="hero__bubble-header">
+                <span class="hero__bubble-name">{{ bubble.name }}</span>
+                <span v-if="bubble.company" class="hero__bubble-company">· {{ bubble.company }}</span>
+                <span class="hero__bubble-time">now</span>
+              </div>
+              <p class="hero__bubble-msg">{{ bubble.message }}</p>
+            </div>
           </div>
         </div>
       </ScrollReveal>
@@ -102,6 +118,61 @@
 
 <script setup lang="ts">
 import { ArrowRight, Award, Users, Clock, Star } from 'lucide-vue-next'
+
+const chatBubbles = [
+  {
+    name: 'David B.',
+    company: 'DB Prestige',
+    message: "J'hésitais à me lancer, du coup c'est décidé grâce aux conseils de Kevin !",
+  },
+  {
+    name: 'Anthony J.',
+    company: '',
+    message: 'Accompagnement pro et sérieux, je recommande !',
+  },
+  {
+    name: 'Frederic M.',
+    company: 'FM Services',
+    message: 'Super formation, Kevin est au top.',
+  },
+  {
+    name: 'Sarah L.',
+    company: 'SL Consulting',
+    message: "Grâce à Kevin j'ai pu créer ma boîte en toute confiance !",
+  },
+  {
+    name: 'Marc D.',
+    company: '',
+    message: "Formation au top, j'ai tout compris du premier coup.",
+  },
+]
+
+const bubbleRefs = ref<HTMLElement[]>([])
+
+const { $gsap } = useNuxtApp()
+
+onMounted(() => {
+  if (!$gsap) return
+  const gsap = $gsap as any
+
+  nextTick(() => {
+    if (bubbleRefs.value.length) {
+      gsap.fromTo(
+        bubbleRefs.value,
+        { opacity: 0, y: 24, scale: 0.8 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.25,
+          delay: 1.6,
+          ease: 'back.out(1.3)',
+        },
+      )
+    }
+  })
+})
 </script>
 
 <style lang="scss" scoped>
@@ -203,7 +274,6 @@ import { ArrowRight, Award, Users, Clock, Star } from 'lucide-vue-next'
     margin: 0 auto;
   }
 
-  // Pulsing gradient halo behind photo
   &__photo-halo {
     position: absolute;
     inset: -40px;
@@ -250,13 +320,8 @@ import { ArrowRight, Award, Users, Clock, Star } from 'lucide-vue-next'
     border-radius: 50%;
     pointer-events: none;
 
-    &--inner {
-      inset: -20px;
-    }
-
-    &--outer {
-      inset: -50px;
-    }
+    &--inner { inset: -20px; }
+    &--outer { inset: -50px; }
   }
 
   // Orbital particles
@@ -267,75 +332,175 @@ import { ArrowRight, Award, Users, Clock, Star } from 'lucide-vue-next'
     border-radius: 50%;
     z-index: 3;
 
-    // Inner orbit particles
     &--1 {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       background: $purple;
       box-shadow: 0 0 16px $purple-glow, 0 0 32px rgba($purple, 0.2);
-      --orbit-radius: 230px;
-      animation: orbit 8s linear infinite;
-      margin: -4px 0 0 -4px;
-
+      --orbit-radius: 230px; animation: orbit 8s linear infinite; margin: -4px 0 0 -4px;
       @media (max-width: 1024px) { --orbit-radius: 180px; }
       @media (max-width: 640px) { --orbit-radius: 140px; }
     }
 
     &--2 {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       background: $orange;
       box-shadow: 0 0 12px $orange-glow, 0 0 24px rgba($orange, 0.2);
-      --orbit-radius: 235px;
-      animation: orbit 12s linear infinite;
-      animation-delay: -4s;
-      margin: -3px 0 0 -3px;
-
+      --orbit-radius: 235px; animation: orbit 12s linear infinite; animation-delay: -4s; margin: -3px 0 0 -3px;
       @media (max-width: 1024px) { --orbit-radius: 185px; }
       @media (max-width: 640px) { --orbit-radius: 145px; }
     }
 
     &--3 {
-      width: 5px;
-      height: 5px;
+      width: 5px; height: 5px;
       background: rgba(255, 255, 255, 0.8);
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      --orbit-radius: 225px;
-      animation: orbit 10s linear infinite;
-      animation-delay: -7s;
-      margin: -2.5px 0 0 -2.5px;
-
+      --orbit-radius: 225px; animation: orbit 10s linear infinite; animation-delay: -7s; margin: -2.5px 0 0 -2.5px;
       @media (max-width: 1024px) { --orbit-radius: 175px; }
       @media (max-width: 640px) { --orbit-radius: 135px; }
     }
 
-    // Outer orbit particles (reverse direction)
     &--4 {
-      width: 12px;
-      height: 12px;
+      width: 12px; height: 12px;
       background: $orange;
       box-shadow: 0 0 20px $orange-glow, 0 0 40px rgba($orange, 0.3);
-      --orbit-radius: 260px;
-      animation: orbit-reverse 15s linear infinite;
-      margin: -6px 0 0 -6px;
-
+      --orbit-radius: 260px; animation: orbit-reverse 15s linear infinite; margin: -6px 0 0 -6px;
       @media (max-width: 1024px) { --orbit-radius: 210px; }
       @media (max-width: 640px) { --orbit-radius: 165px; }
     }
 
     &--5 {
-      width: 10px;
-      height: 10px;
+      width: 10px; height: 10px;
       background: $purple-light;
       box-shadow: 0 0 18px $purple-glow, 0 0 36px rgba($purple, 0.2);
-      --orbit-radius: 265px;
-      animation: orbit-reverse 18s linear infinite;
-      animation-delay: -8s;
-      margin: -5px 0 0 -5px;
-
+      --orbit-radius: 265px; animation: orbit-reverse 18s linear infinite; animation-delay: -8s; margin: -5px 0 0 -5px;
       @media (max-width: 1024px) { --orbit-radius: 215px; }
       @media (max-width: 640px) { --orbit-radius: 170px; }
     }
+  }
+
+  // =====================
+  // WhatsApp Chat Bubbles
+  // =====================
+  &__bubble {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    width: 220px;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+
+    // Positions relative to hero__photo (≈440×440 container)
+    // Clustered tightly around the circular photo
+
+    // Top-right — "1 o'clock"
+    &--1 {
+      top: -20px;
+      right: -60px;
+      animation: bubble-float 6s ease-in-out infinite;
+    }
+
+    // Right — "3 o'clock"
+    &--2 {
+      top: 40%;
+      right: -80px;
+      animation: bubble-float 7s ease-in-out 0.8s infinite;
+    }
+
+    // Bottom-right — "5 o'clock"
+    &--3 {
+      bottom: -15px;
+      right: -50px;
+      animation: bubble-float 5.5s ease-in-out 0.3s infinite;
+    }
+
+    // Top-left — "10 o'clock"
+    &--4 {
+      top: -35px;
+      left: 40px;
+      animation: bubble-float 6.5s ease-in-out 1.2s infinite;
+    }
+
+    // Bottom-left — "8 o'clock"
+    &--5 {
+      bottom: -10px;
+      left: -30px;
+      animation: bubble-float 7.5s ease-in-out 0.5s infinite;
+    }
+  }
+
+  @keyframes bubble-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  &__bubble-wa {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 1px;
+  }
+
+  &__bubble-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__bubble-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 3px;
+  }
+
+  &__bubble-name {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: $text-white;
+    white-space: nowrap;
+  }
+
+  &__bubble-company {
+    font-size: 10px;
+    color: $text-on-dark-muted;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__bubble-time {
+    font-size: 9.5px;
+    color: #25D366;
+    margin-left: auto;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  &__bubble-msg {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 </style>
