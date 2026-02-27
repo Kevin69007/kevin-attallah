@@ -34,6 +34,7 @@
             <li><NuxtLink to="/formations?cat=LANGUES">Langues</NuxtLink></li>
             <li><NuxtLink to="/formations?cat=BUREAUTIQUE">Bureautique</NuxtLink></li>
             <li><NuxtLink to="/formations?cat=Entrepreneur">Entrepreneuriat</NuxtLink></li>
+            <li><NuxtLink to="/formation-gratuite" class="footer__free-link">Formation Gratuite</NuxtLink></li>
           </ul>
         </div>
 
@@ -171,6 +172,11 @@ const socialIcons: Record<string, any> = {
         color: $orange;
       }
     }
+  }
+
+  &__free-link {
+    color: $orange-light !important;
+    font-weight: 600;
   }
 
   &__bottom {

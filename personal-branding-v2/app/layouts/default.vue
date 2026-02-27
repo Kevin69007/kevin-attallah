@@ -1,5 +1,6 @@
 <template>
   <div class="app-layout">
+    <AnnouncementBar />
     <AppHeader />
     <main class="main-content">
       <slot />

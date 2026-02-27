@@ -1,5 +1,5 @@
 <template>
-  <header :class="['header', { 'header--scrolled': isScrolled, 'header--hidden': isHidden }]">
+  <header :class="['header', { 'header--scrolled': isScrolled, 'header--hidden': isHidden }]" :style="{ top: barHeight + 'px' }">
     <div class="container flex-between">
       <!-- Logo -->
       <NuxtLink to="/" class="header__logo">
@@ -18,8 +18,9 @@
 
       <!-- CTA -->
       <div class="header__actions">
-        <NuxtLink to="/formations" class="btn btn--primary btn--sm">
-          Voir les formations
+        <NuxtLink to="/formation-gratuite" class="btn btn--primary btn--sm header__cta-free">
+          <Gift :size="16" />
+          Formation Offerte
         </NuxtLink>
       </div>
 
@@ -46,8 +47,8 @@
           <NuxtLink to="/ia" @click="mobileOpen = false">Booster par l'IA</NuxtLink>
           <NuxtLink to="/about" @click="mobileOpen = false">À propos</NuxtLink>
           <NuxtLink to="/blog" @click="mobileOpen = false">Blog</NuxtLink>
-          <NuxtLink to="/formations" class="btn btn--primary btn--block" @click="mobileOpen = false">
-            Voir les formations
+          <NuxtLink to="/formation-gratuite" class="btn btn--primary btn--block" @click="mobileOpen = false">
+            Formation Offerte
           </NuxtLink>
         </nav>
       </div>
@@ -56,6 +57,9 @@
 </template>
 
 <script setup lang="ts">
+import { Gift } from 'lucide-vue-next'
+
+const barHeight = useState('announceBarHeight', () => 0)
 const mobileOpen = ref(false)
 const isScrolled = ref(false)
 const isHidden = ref(false)
@@ -82,7 +86,6 @@ watch(mobileOpen, (open) => {
 <style lang="scss" scoped>
 .header {
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -154,6 +157,12 @@ watch(mobileOpen, (open) => {
     @media (max-width: 1024px) {
       display: none;
     }
+  }
+
+  &__cta-free {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
   &__burger {
