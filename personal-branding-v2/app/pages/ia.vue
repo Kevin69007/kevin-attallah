@@ -294,16 +294,39 @@ const stats = [
     list-style: none;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
 
     li {
-      font-size: $xs;
-      color: $text-on-dark-muted;
-      padding: 6px 12px;
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      background: linear-gradient(135deg, rgba($purple, 0.15), rgba($orange, 0.1));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: all 0.3s $ease-smooth;
+
+      &::before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: $orange;
+        margin-right: 8px;
+        box-shadow: 0 0 6px rgba($orange, 0.5);
+        flex-shrink: 0;
+      }
     }
+  }
+
+  &:hover .ia-sol__features li {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, rgba($purple, 0.22), rgba($orange, 0.15));
   }
 }
 

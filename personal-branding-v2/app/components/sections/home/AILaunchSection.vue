@@ -40,6 +40,11 @@
             </div>
             <h3 class="ai-card__title">{{ card.title }}</h3>
             <p class="ai-card__desc">{{ card.description }}</p>
+            <div class="ai-card__features">
+              <span v-for="feature in card.features" :key="feature" class="ai-card__tag">
+                {{ feature }}
+              </span>
+            </div>
           </div>
         </GlassCard>
       </StaggerGrid>
@@ -54,17 +59,20 @@ const cards = [
   {
     icon: Bot,
     title: 'Formations IA',
-    description: 'Maîtrise ChatGPT, l\'automatisation, le marketing IA et la productivité boostée par l\'intelligence artificielle.',
+    description: 'Maîtrise les outils IA qui transforment ton business.',
+    features: ['ChatGPT avancé', 'Automatisation marketing', 'IA pour la vente', 'Productivité boostée'],
   },
   {
     icon: Search,
-    title: 'Audit IA',
-    description: 'Identifie les leviers IA qui te font gagner du temps et de l\'argent dans ton business au quotidien.',
+    title: 'Audit IA personnalisé',
+    description: 'Identifie les leviers IA adaptés à ton activité.',
+    features: ['Analyse de tes process', 'Détection des leviers IA', 'Recommandations sur mesure', 'Plan d\'action concret'],
   },
   {
     icon: Zap,
-    title: 'Outils & Accompagnement',
-    description: 'Intègre l\'IA concrètement dans ton quotidien d\'entrepreneur avec des outils prêts à l\'emploi.',
+    title: 'Accompagnement IA',
+    description: 'Intègre l\'IA concrètement dans ton quotidien.',
+    features: ['Templates prêts à l\'emploi', 'Coaching individuel', 'Suivi personnalisé', 'Communauté entrepreneurs'],
   },
 ]
 </script>
@@ -133,15 +141,18 @@ const cards = [
     position: relative;
     max-width: 460px;
     margin: 0 auto;
+    padding: 2px;
+    border-radius: calc(#{$radius-lg} + 2px);
+    background: linear-gradient(135deg, rgba($purple, 0.5), rgba($orange, 0.4));
   }
 
   &__photo-img {
     width: 100%;
     border-radius: $radius-lg;
-    border: 1px solid $glass-border;
+    display: block;
     box-shadow:
-      0 0 60px rgba($purple, 0.15),
-      0 20px 60px rgba(0, 0, 0, 0.3);
+      0 0 40px rgba($purple, 0.12),
+      0 16px 48px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -172,6 +183,45 @@ const cards = [
     font-size: $small;
     color: $text-on-dark-muted;
     line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  &__features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    background: linear-gradient(135deg, rgba($purple, 0.15), rgba($orange, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: all 0.3s $ease-smooth;
+
+    &::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: $orange;
+      margin-right: 8px;
+      box-shadow: 0 0 6px rgba($orange, 0.5);
+      flex-shrink: 0;
+    }
+  }
+
+  // Hover on parent card lifts tags
+  &:hover .ai-card__tag {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, rgba($purple, 0.22), rgba($orange, 0.15));
   }
 }
 </style>
