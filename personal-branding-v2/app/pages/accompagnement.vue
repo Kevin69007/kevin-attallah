@@ -58,7 +58,7 @@
               <li><CheckCircle :size="16" /> Outils pratiques et performants</li>
               <li><CheckCircle :size="16" /> IA intégrée à chaque étape</li>
             </ul>
-            <AppButton variant="primary" block href="https://meet.brevo.com/kevin-a2ta2l/presentation">
+            <AppButton variant="primary" block :href="externalLinks.booking.brevoMeeting">
               Prendre rendez-vous
               <ArrowRight :size="18" />
             </AppButton>
@@ -83,7 +83,7 @@
               <li><CheckCircle :size="16" /> Outils concrets et prêts à l'emploi</li>
               <li><CheckCircle :size="16" /> Formation éligible CPF</li>
             </ul>
-            <AppButton variant="outline-light" block to="/formations">
+            <AppButton variant="outline-light" block :href="externalLinks.training.formationSubdomain">
               Voir les formations
               <ArrowRight :size="18" />
             </AppButton>
@@ -158,15 +158,16 @@
       title="Prêt à passer à l'action ?"
       subtitle="Réserve un appel gratuit avec Kevin pour définir ton plan d'action."
       primaryText="Prendre rendez-vous"
-      primaryLink="https://calendar.app.google/nssA5fmGCx92BebE6"
+      :primaryLink="externalLinks.booking.brevoBilan"
       secondaryText="Voir les formations"
-      secondaryLink="/formations"
+      :secondaryLink="externalLinks.training.formationSubdomain"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import { Lightbulb, Rocket, TrendingUp, CheckCircle, Users, ArrowRight, Bot } from 'lucide-vue-next'
+import { externalLinks } from '~/data/external-links'
 
 useHead({ title: 'Accompagnement' })
 

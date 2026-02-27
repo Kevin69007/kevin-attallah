@@ -52,10 +52,10 @@
           <h4 class="footer__heading">Contact</h4>
           <ul class="footer__links">
             <li>
-              <a href="mailto:contact@kevin-attallah.com">contact@kevin-attallah.com</a>
+              <a :href="'mailto:' + externalLinks.contact.email">{{ externalLinks.contact.email }}</a>
             </li>
             <li>
-              <a href="https://calendar.app.google/nssA5fmGCx92BebE6" target="_blank" rel="noopener">
+              <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener">
                 Prendre rendez-vous
               </a>
             </li>
@@ -81,6 +81,7 @@
 <script setup lang="ts">
 import { Facebook, Twitter, Linkedin, Youtube, Instagram, Music2 } from 'lucide-vue-next'
 import { socialLinks } from '~/data/social'
+import { externalLinks } from '~/data/external-links'
 
 const currentYear = new Date().getFullYear()
 

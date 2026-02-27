@@ -27,7 +27,7 @@
         </ScrollReveal>
         <ScrollReveal :delay="0.8">
           <div class="ia-hero__ctas">
-            <AppButton variant="primary" size="lg" href="https://meet.brevo.com/kevin-a2ta2l/presentation">
+            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
               Réserver mon audit IA
               <ArrowRight :size="20" />
             </AppButton>
@@ -140,7 +140,7 @@
       title="Prêt à intégrer l'IA dans ton business ?"
       subtitle="Réserve un audit gratuit avec Kevin pour identifier tes leviers IA."
       primaryText="Réserver mon audit IA"
-      primaryLink="https://meet.brevo.com/kevin-a2ta2l/presentation"
+      :primaryLink="externalLinks.booking.brevoMeeting"
       secondaryText="Voir les formations"
       secondaryLink="/formations"
     />
@@ -149,6 +149,7 @@
 
 <script setup lang="ts">
 import { Bot, Rocket, TrendingUp, CheckCircle, ArrowRight, GraduationCap, Search, Wrench } from 'lucide-vue-next'
+import { externalLinks } from '~/data/external-links'
 
 useHead({
   title: 'Décoller avec l\'IA',

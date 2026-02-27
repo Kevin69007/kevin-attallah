@@ -45,7 +45,7 @@
               </AppButton>
             </MagneticButton>
             <MagneticButton>
-              <AppButton variant="ghost" size="lg" href="https://calendar.app.google/nssA5fmGCx92BebE6">
+              <AppButton variant="ghost" size="lg" :href="externalLinks.booking.brevoMeeting">
                 Parler à Kevin
               </AppButton>
             </MagneticButton>
@@ -118,6 +118,7 @@
 
 <script setup lang="ts">
 import { ArrowRight, Award, Users, Clock, Star } from 'lucide-vue-next'
+import { externalLinks } from '~/data/external-links'
 
 const chatBubbles = [
   {
