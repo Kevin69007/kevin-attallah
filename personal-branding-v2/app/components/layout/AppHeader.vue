@@ -18,10 +18,10 @@
 
       <!-- CTA -->
       <div class="header__actions">
-        <NuxtLink to="/formation-gratuite" class="btn btn--primary btn--sm header__cta-free">
-          <Gift :size="16" />
-          Formation Offerte
-        </NuxtLink>
+        <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm header__cta-free">
+          <Calendar :size="16" />
+          Prendre rendez-vous
+        </a>
       </div>
 
       <!-- Mobile toggle -->
@@ -47,9 +47,10 @@
           <NuxtLink to="/ia" @click="mobileOpen = false">Booster par l'IA</NuxtLink>
           <NuxtLink to="/about" @click="mobileOpen = false">À propos</NuxtLink>
           <NuxtLink to="/blog" @click="mobileOpen = false">Blog</NuxtLink>
-          <NuxtLink to="/formation-gratuite" class="btn btn--primary btn--block" @click="mobileOpen = false">
-            Formation Offerte
-          </NuxtLink>
+          <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block" @click="mobileOpen = false">
+            <Calendar :size="16" />
+            Prendre rendez-vous
+          </a>
         </nav>
       </div>
     </Transition>
@@ -57,7 +58,8 @@
 </template>
 
 <script setup lang="ts">
-import { Gift } from 'lucide-vue-next'
+import { Calendar } from 'lucide-vue-next'
+import { externalLinks } from '~/data/external-links'
 
 const barHeight = useState('announceBarHeight', () => 0)
 const mobileOpen = ref(false)
