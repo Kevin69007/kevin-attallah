@@ -51,23 +51,6 @@
                       dark
                     />
                     <FormInput
-                      id="region"
-                      v-model="form.region"
-                      label="Région"
-                      placeholder="Île-de-France"
-                      dark
-                    />
-                  </div>
-                  <div class="checkout__row">
-                    <FormInput
-                      id="streetLine1"
-                      v-model="form.streetLine1"
-                      label="Adresse"
-                      placeholder="1 Rue de la Paix"
-                      required
-                      dark
-                    />
-                    <FormInput
                       id="postcode"
                       v-model="form.postcode"
                       label="Code postal"
@@ -149,19 +132,16 @@ useHead({ title: 'Paiement' })
 const router = useRouter()
 const { trackInitiateCheckout, trackAddPaymentInfo, trackPurchase } = useFBPixel()
 
-// Order data from localStorage
 const orderToken = ref('')
 const orderAmount = ref(0)
 const orderDescription = ref('')
+const buyerCountryCode = ref('FR')
 
-// Form
 const form = reactive({
   name: '',
   email: '',
   phone: '',
   city: '',
-  region: '',
-  streetLine1: '',
   postcode: '',
 })
 
@@ -189,6 +169,18 @@ onMounted(() => {
   })
 
   initRevolutCard(parsed?.token)
+
+  // Pre-fill form from hero form data
+  const buyerInfo = localStorage.getItem('buyerInfo')
+  if (buyerInfo) {
+    const buyer = JSON.parse(buyerInfo)
+    form.name = buyer.name || ''
+    form.email = buyer.email || ''
+    form.phone = buyer.phone || ''
+    form.city = buyer.city || ''
+    form.postcode = buyer.postcode || ''
+    buyerCountryCode.value = buyer.countryCode || 'FR'
+  }
 })
 
 let revolutInstance: any = null
@@ -238,12 +230,9 @@ function getFormData() {
     mount: orderAmount.value * 100,
     formation: orderDescription.value,
     billingAddress: {
-      countryCode: 'FR',
-      region: form.region,
+      countryCode: buyerCountryCode.value,
       city: form.city,
       postcode: form.postcode,
-      streetLine1: form.streetLine1,
-      streetLine2: form.streetLine1,
     },
   }
 }
@@ -270,7 +259,6 @@ async function onPaymentSuccess() {
   })
 
   try {
-    // Send email + Brevo in parallel
     await Promise.all([
       $fetch('/api/payment-received', { method: 'POST', body: data }),
       $fetch('/api/send-data-to-brevo', { method: 'POST', body: data }),
@@ -280,6 +268,7 @@ async function onPaymentSuccess() {
   }
 
   localStorage.removeItem('orderResponse')
+  localStorage.removeItem('buyerInfo')
   router.push('/remerciement')
 }
 

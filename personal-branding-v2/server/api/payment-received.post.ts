@@ -6,39 +6,46 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
 
   const body = await readBody(event);
-  const { first_name, last_name, company, subject, message, email } = body;
+  const { name, email, phone, formation, mount, billingAddress } = body;
 
-  // Vérifie que toutes les informations nécessaires sont présentes
-  if (!first_name || !last_name || !email || !message) {
+  if (!name || !email) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Tous les champs requis doivent être remplis.',
+      statusMessage: 'Nom et email sont requis.',
     });
   }
+
+  const city = billingAddress?.city || '';
+  const postcode = billingAddress?.postcode || '';
+  const amount = mount ? (mount / 100).toFixed(2) : '0';
 
   try {
     const response = await axios.post(
       'https://api.brevo.com/v3/smtp/email',
       {
         sender: {
-          name: `${first_name} ${last_name}`,
-          email: 'kevin@cuspide.fr', // L'email de l'expéditeur (remplacer avec le vôtre)
+          name: 'Kevin Attallah',
+          email: 'kevin@cuspide.fr',
         },
         to: [
           {
-            email: 'asathoud16@gmail.com', // L'email du destinataire
-            name: 'Recipient Name',
+            email: 'asathoud16@gmail.com',
+            name: 'Kevin Attallah',
           },
         ],
-        subject: subject || 'Message depuis le formulaire de contact',
+        subject: `Nouveau paiement : ${formation || 'Formation'}`,
         htmlContent: `
           <html>
             <body>
-              <p><strong>Nom :</strong> ${first_name} ${last_name}</p>
-              <p><strong>Société :</strong> ${company || 'N/A'}</p>
+              <h2>Nouveau paiement reçu</h2>
+              <p><strong>Formation :</strong> ${formation || 'N/A'}</p>
+              <p><strong>Montant :</strong> ${amount}€</p>
+              <hr/>
+              <p><strong>Nom :</strong> ${name}</p>
               <p><strong>Email :</strong> ${email}</p>
-              <p><strong>Message :</strong></p>
-              <p>${message}</p>
+              <p><strong>Téléphone :</strong> ${phone || 'N/A'}</p>
+              <p><strong>Ville :</strong> ${city || 'N/A'}</p>
+              <p><strong>Code postal :</strong> ${postcode || 'N/A'}</p>
             </body>
           </html>
         `,
@@ -46,19 +53,19 @@ export default defineEventHandler(async (event) => {
       {
         headers: {
           accept: 'application/json',
-          'api-key': config.sendinblueApiKey, // Clé API Brevo depuis runtimeConfig
+          'api-key': config.sendinblueApiKey,
           'content-type': 'application/json',
         },
       }
     );
 
-    return { message: 'Message envoyé avec succès !', data: response.data };
+    return { message: 'Notification de paiement envoyée.', data: response.data };
   } catch (error: any) {
-    console.error(error);
+    console.error('Payment notification error:', error);
     throw createError({
       statusCode: 500,
-      statusMessage: "Erreur lors de l'envoi du message.",
-      data: { message: "Erreur lors de l'envoi du message.", error: error.message },
+      statusMessage: "Erreur lors de l'envoi de la notification.",
+      data: { error: error.message },
     });
   }
 });

@@ -13,10 +13,10 @@ export default defineEventHandler(async (event) => {
 
   // Extraire les données envoyées par la requête
   const { name, email, mount, formation, phone, cardholderName, billingAddress } = body;
-  const { countryCode, region, city, postcode, streetLine1, streetLine2 } = billingAddress;
+  const { countryCode, city, postcode } = billingAddress || {};
 
   // Vérification des données nécessaires
-  if (!name || !email || !phone || !city || !postcode || !streetLine1) {
+  if (!name || !email || !phone) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Données manquantes, veuillez fournir toutes les informations nécessaires.',
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
         NOMBRE_DE_CAS_TOTAL: mount,
         VILLE: city,
         CODE_POSTALE: postcode,
-        ADRESS: streetLine1,
+        ADRESS: city || '',
       },
       listIds: [53], // Remplacer par l'ID de votre liste dans Brevo
       updateEnabled: true, // Permet la mise à jour des contacts existants
