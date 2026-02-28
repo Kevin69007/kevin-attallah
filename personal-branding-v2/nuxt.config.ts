@@ -58,9 +58,6 @@ export default defineNuxtConfig({
     smtpPort: process.env.SMTP_PORT || '',
     smtpUser: process.env.SMTP_USER || '',
     smtpPass: process.env.SMTP_PASS || '',
-    supabaseUrl: process.env.SUPABASE_URL || '',
-    supabaseAnonKey: process.env.SUPABASE_KEY || '',
-
     // Public (exposed to client)
     public: {
       fbPixelId: process.env.NUXT_PUBLIC_FACEBOOK_PIXEL_ID || '',
