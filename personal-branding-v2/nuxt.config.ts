@@ -54,10 +54,6 @@ export default defineNuxtConfig({
     revolutApiKey: process.env.REVOLUT_API_KEY || '',
     revolutWebhookSecret: process.env.REVOLUT_WEBHOOK_SECRET || '',
     sendinblueApiKey: process.env.BREVO_API_KEY || '',
-    smtpHost: process.env.SMTP_HOST || '',
-    smtpPort: process.env.SMTP_PORT || '',
-    smtpUser: process.env.SMTP_USER || '',
-    smtpPass: process.env.SMTP_PASS || '',
     // Public (exposed to client)
     public: {
       fbPixelId: process.env.NUXT_PUBLIC_FACEBOOK_PIXEL_ID || '',
