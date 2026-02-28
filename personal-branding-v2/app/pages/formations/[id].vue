@@ -187,6 +187,7 @@ const route = useRoute()
 const router = useRouter()
 const { getFormationById } = useFormations()
 const { trackViewContent, trackAddToCart } = useFBPixel()
+const { trackViewItem, trackAddToCart: gTrackAddToCart } = useGoogleAds()
 
 const formation = computed(() => getFormationById(route.params.id as string))
 
@@ -302,6 +303,11 @@ async function createOrder() {
     value: finalAmount,
     currency: 'EUR',
   })
+  gTrackAddToCart({
+    items: [{ item_name: formation.value.titre, item_id: formation.value.id, price: finalAmount }],
+    value: finalAmount,
+    currency: 'EUR',
+  })
 
   isLoading.value = true
 
@@ -338,6 +344,11 @@ onMounted(() => {
       content_name: formation.value.titre,
       content_ids: [formation.value.id],
       content_type: 'product',
+      value: promoAmount.value,
+      currency: 'EUR',
+    })
+    trackViewItem({
+      items: [{ item_name: formation.value.titre, item_id: formation.value.id, price: promoAmount.value }],
       value: promoAmount.value,
       currency: 'EUR',
     })

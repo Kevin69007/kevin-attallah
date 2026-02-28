@@ -74,6 +74,8 @@ const form = reactive({
 })
 
 const { trackLead } = useFBPixel()
+const { trackGenerateLead } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 
 async function handleSubmit() {
   if (!form.firstName || !form.lastName || !form.email || !form.phone) {
@@ -95,6 +97,8 @@ async function handleSubmit() {
     })
 
     trackLead()
+    trackGenerateLead()
+    trackConversion()
     localStorage.setItem('ffm_submitted', 'true')
     submitted.value = true
   } catch {

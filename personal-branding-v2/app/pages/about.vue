@@ -97,6 +97,13 @@ import { socialLinks } from '~/data/social'
 
 useHead({ title: 'À propos' })
 
+const { trackViewContent } = useFBPixel()
+const { trackViewItem } = useGoogleAds()
+onMounted(() => {
+  trackViewContent({ content_name: 'À propos' })
+  trackViewItem({ content_name: 'À propos' })
+})
+
 const stats = [
   { value: 2100, suffix: '+', label: 'Entrepreneurs formés' },
   { value: 60, suffix: '+', label: 'Formations' },

@@ -65,6 +65,7 @@ export default defineNuxtConfig({
     public: {
       fbPixelId: process.env.NUXT_PUBLIC_FACEBOOK_PIXEL_ID || '',
       gaId: process.env.NUXT_PUBLIC_GOOGLE_PIXEL_ID || '',
+      linkedinPartnerId: process.env.NUXT_PUBLIC_LINKEDIN_PARTNER_ID || '',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://kevin-attallah.com',
     },
   },

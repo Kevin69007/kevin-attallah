@@ -156,6 +156,13 @@ useHead({
   meta: [{ name: 'description', content: 'Intègre l\'intelligence artificielle dans ton business. Formations IA, audit personnalisé et accompagnement par Kevin Attallah.' }],
 })
 
+const { trackViewContent } = useFBPixel()
+const { trackViewItem } = useGoogleAds()
+onMounted(() => {
+  trackViewContent({ content_name: 'Intelligence Artificielle' })
+  trackViewItem({ content_name: 'Intelligence Artificielle' })
+})
+
 const solutions = [
   {
     icon: GraduationCap,

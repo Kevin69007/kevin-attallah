@@ -171,6 +171,13 @@ import { externalLinks } from '~/data/external-links'
 
 useHead({ title: 'Accompagnement' })
 
+const { trackViewContent } = useFBPixel()
+const { trackViewItem } = useGoogleAds()
+onMounted(() => {
+  trackViewContent({ content_name: 'Accompagnement IA' })
+  trackViewItem({ content_name: 'Accompagnement IA' })
+})
+
 const pillars = [
   {
     icon: Lightbulb,

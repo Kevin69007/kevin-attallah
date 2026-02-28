@@ -56,6 +56,13 @@ import { CheckCircle, Mail, BookOpen, Headphones } from 'lucide-vue-next'
 
 useHead({ title: 'Merci !' })
 
+const { trackViewContent } = useFBPixel()
+const { trackViewItem } = useGoogleAds()
+onMounted(() => {
+  trackViewContent({ content_name: 'Merci - Confirmation' })
+  trackViewItem({ content_name: 'Merci - Confirmation' })
+})
+
 const nextSteps = [
   {
     icon: Mail,

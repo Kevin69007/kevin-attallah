@@ -131,6 +131,8 @@ useHead({ title: 'Paiement' })
 
 const router = useRouter()
 const { trackInitiateCheckout, trackAddPaymentInfo, trackPurchase } = useFBPixel()
+const { trackBeginCheckout, trackAddPaymentInfo: gTrackAddPaymentInfo, trackPurchase: gTrackPurchase } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 
 const orderToken = ref('')
 const orderAmount = ref(0)
@@ -164,6 +166,11 @@ onMounted(() => {
 
   trackInitiateCheckout({
     content_name: parsed?.description,
+    value: orderAmount.value,
+    currency: 'EUR',
+  })
+  trackBeginCheckout({
+    items: [{ item_name: parsed?.description }],
     value: orderAmount.value,
     currency: 'EUR',
   })
@@ -220,8 +227,6 @@ function getFormData() {
     return null
   }
 
-  trackAddPaymentInfo()
-
   return {
     name: form.name,
     email: form.email,
@@ -241,6 +246,9 @@ function handlePayment() {
   const data = getFormData()
   if (!data || !revolutInstance) return
 
+  trackAddPaymentInfo()
+  gTrackAddPaymentInfo()
+
   revolutInstance.submit({
     name: data.cardholderName,
     email: data.email,
@@ -257,6 +265,13 @@ async function onPaymentSuccess() {
     value: orderAmount.value,
     currency: 'EUR',
   })
+  gTrackPurchase({
+    transaction_id: orderToken.value,
+    items: [{ item_name: orderDescription.value }],
+    value: orderAmount.value,
+    currency: 'EUR',
+  })
+  trackConversion()
 
   try {
     await Promise.all([

@@ -26,7 +26,11 @@
 useHead({ title: 'Accueil' })
 
 const { trackViewContent } = useFBPixel()
-onMounted(() => trackViewContent({ content_name: 'Homepage' }))
+const { trackViewItem } = useGoogleAds()
+onMounted(() => {
+  trackViewContent({ content_name: 'Homepage' })
+  trackViewItem({ content_name: 'Homepage' })
+})
 
 const exitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6 })
 </script>

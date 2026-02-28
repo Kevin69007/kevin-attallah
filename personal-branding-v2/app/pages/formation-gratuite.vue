@@ -81,7 +81,11 @@ useHead({
 })
 
 const { trackViewContent } = useFBPixel()
-onMounted(() => trackViewContent({ content_name: 'Formation Gratuite Landing Page' }))
+const { trackViewItem } = useGoogleAds()
+onMounted(() => {
+  trackViewContent({ content_name: 'Formation Gratuite Landing Page' })
+  trackViewItem({ content_name: 'Formation Gratuite Landing Page' })
+})
 </script>
 
 <style lang="scss" scoped>
