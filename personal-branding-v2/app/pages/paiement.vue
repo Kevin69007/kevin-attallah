@@ -79,8 +79,8 @@
                 </form>
 
                 <!-- Revolut Card Field -->
-                <div class="mt-24">
-                  <label class="form-label text-white">Carte bancaire</label>
+                <div class="form-group form-group--dark mt-24">
+                  <label class="form-label">Carte bancaire</label>
                   <div id="card-field" class="checkout__card-field"></div>
                 </div>
 
@@ -167,21 +167,28 @@ const form = reactive({
 
 onMounted(() => {
   const stored = localStorage.getItem('orderResponse')
-  if (stored) {
-    const parsed = JSON.parse(stored)
-    orderToken.value = parsed?.token || ''
-    orderAmount.value = (parsed?.amount || 0) / 100
-    orderDescription.value = parsed?.description || ''
-
-    trackInitiateCheckout({
-      content_name: parsed?.description,
-      value: orderAmount.value,
-      currency: 'EUR',
-    })
-
-    // Initialize Revolut Card Field
-    initRevolutCard(parsed?.token)
+  if (!stored) {
+    router.replace('/')
+    return
   }
+
+  const parsed = JSON.parse(stored)
+  orderToken.value = parsed?.token || ''
+  orderAmount.value = (parsed?.amount || 0) / 100
+  orderDescription.value = parsed?.description || ''
+
+  if (!orderToken.value || !orderAmount.value) {
+    router.replace('/')
+    return
+  }
+
+  trackInitiateCheckout({
+    content_name: parsed?.description,
+    value: orderAmount.value,
+    currency: 'EUR',
+  })
+
+  initRevolutCard(parsed?.token)
 })
 
 let revolutInstance: any = null
