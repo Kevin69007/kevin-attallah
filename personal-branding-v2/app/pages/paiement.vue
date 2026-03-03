@@ -156,7 +156,8 @@ onMounted(() => {
 
   const parsed = JSON.parse(stored)
   orderToken.value = parsed?.token || ''
-  orderAmount.value = (parsed?.amount || 0) / 100
+  // Revolut API returns amount in order_amount.value (cents)
+  orderAmount.value = (parsed?.order_amount?.value ?? parsed?.amount ?? 0) / 100
   orderDescription.value = parsed?.description || ''
 
   if (!orderToken.value || !orderAmount.value) {
@@ -198,21 +199,26 @@ function initRevolutCard(token: string) {
   const checkRevolutReady = setInterval(() => {
     if ((window as any).RevolutCheckout) {
       clearInterval(checkRevolutReady)
-      ;(window as any).RevolutCheckout(token).then((instance: any) => {
-        revolutInstance = instance
-        instance.createCardField({
-          target: document.getElementById('card-field'),
-          onSuccess: onPaymentSuccess,
-          onError: onPaymentError,
-          styles: {
-            default: {
-              color: 'white',
-              fontSize: '16px',
-              '::placeholder': { color: 'rgba(255,255,255,0.4)' },
+      ;(window as any).RevolutCheckout(token)
+        .then((instance: any) => {
+          revolutInstance = instance
+          instance.createCardField({
+            target: document.getElementById('card-field'),
+            onSuccess: onPaymentSuccess,
+            onError: onPaymentError,
+            styles: {
+              default: {
+                color: 'white',
+                fontSize: '16px',
+                '::placeholder': { color: 'rgba(255,255,255,0.4)' },
+              },
             },
-          },
+          })
         })
-      })
+        .catch((err: any) => {
+          console.error('RevolutCheckout init error:', err)
+          showToast('Impossible de charger le formulaire de paiement.', 'error')
+        })
     }
   }, 200)
 }

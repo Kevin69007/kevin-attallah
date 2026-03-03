@@ -26,8 +26,12 @@ export default defineEventHandler(async (event) => {
   });
 
   try {
-    // Envoyer la requête à l'API Revolut https://sandbox-merchant.revolut.com/api/orders https://merchant.revolut.com/api/orders
-    const response = await fetch('https://merchant.revolut.com/api/orders', {
+    const isSandbox = process.env.REVOLUT_SANDBOX === 'true'
+    const apiUrl = isSandbox
+      ? 'https://sandbox-merchant.revolut.com/api/orders'
+      : 'https://merchant.revolut.com/api/orders'
+
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
