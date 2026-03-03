@@ -18,10 +18,10 @@ export const externalLinks = {
   social: {
     facebook: 'https://web.facebook.com/profile.php?id=61563587830934',
     twitter: 'https://x.com/Kevin_A2ta2l',
-    linkedin: 'https://www.linkedin.com/in/kevin-jean',
+    linkedin: 'https://www.linkedin.com/in/kevin-a2ta2l',
     tiktok: 'https://www.tiktok.com/@kevin_attallah',
     youtube: 'https://www.youtube.com/@kevin-A2ta2l',
-    instagram: 'https://www.instagram.com/kevin_a2ta2l',
+    instagram: 'https://www.instagram.com/kevin_attallah_',
   },
 
   // Training platform

@@ -52,7 +52,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Server-only
     revolutApiKey: process.env.REVOLUT_API_KEY || '',
-    revolutWebhookSecret: process.env.REVOLUT_WEBHOOK_SECRET || '',
     sendinblueApiKey: process.env.BREVO_API_KEY || '',
     // Public (exposed to client)
     public: {
