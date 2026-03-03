@@ -126,6 +126,7 @@
 
 <script setup lang="ts">
 import { Shield, Lock, CreditCard } from 'lucide-vue-next'
+import RevolutCheckout from '@revolut/checkout'
 
 useHead({ title: 'Paiement' })
 
@@ -133,6 +134,7 @@ const router = useRouter()
 const { trackInitiateCheckout, trackAddPaymentInfo, trackPurchase } = useFBPixel()
 const { trackBeginCheckout, trackAddPaymentInfo: gTrackAddPaymentInfo, trackPurchase: gTrackPurchase } = useGoogleAds()
 const { trackConversion } = useLinkedIn()
+const { revolutSandbox } = useRuntimeConfig().public
 
 const orderToken = ref('')
 const orderAmount = ref(0)
@@ -196,31 +198,26 @@ let revolutInstance: any = null
 function initRevolutCard(token: string) {
   if (!token || typeof window === 'undefined') return
 
-  const checkRevolutReady = setInterval(() => {
-    if ((window as any).RevolutCheckout) {
-      clearInterval(checkRevolutReady)
-      ;(window as any).RevolutCheckout(token)
-        .then((instance: any) => {
-          revolutInstance = instance
-          instance.createCardField({
-            target: document.getElementById('card-field'),
-            onSuccess: onPaymentSuccess,
-            onError: onPaymentError,
-            styles: {
-              default: {
-                color: 'white',
-                fontSize: '16px',
-                '::placeholder': { color: 'rgba(255,255,255,0.4)' },
-              },
-            },
-          })
-        })
-        .catch((err: any) => {
-          console.error('RevolutCheckout init error:', err)
-          showToast('Impossible de charger le formulaire de paiement.', 'error')
-        })
-    }
-  }, 200)
+  RevolutCheckout(token, revolutSandbox ? 'sandbox' : 'prod')
+    .then((instance: any) => {
+      revolutInstance = instance
+      instance.createCardField({
+        target: document.getElementById('card-field'),
+        onSuccess: onPaymentSuccess,
+        onError: onPaymentError,
+        styles: {
+          default: {
+            color: 'white',
+            fontSize: '16px',
+            '::placeholder': { color: 'rgba(255,255,255,0.4)' },
+          },
+        },
+      })
+    })
+    .catch((err: any) => {
+      console.error('RevolutCheckout init error:', err)
+      showToast('Impossible de charger le formulaire de paiement.', 'error')
+    })
 }
 
 function getFormData() {

@@ -22,14 +22,6 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
       ],
-      script: [
-        {
-          src: process.env.REVOLUT_SANDBOX === 'true'
-            ? 'https://sandbox-checkout.revolut.com/checkout.js'
-            : 'https://checkout.revolut.com/checkout.js',
-          async: true,
-        },
-      ],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
@@ -64,6 +56,7 @@ export default defineNuxtConfig({
       gaId: process.env.NUXT_PUBLIC_GOOGLE_PIXEL_ID || '',
       linkedinPartnerId: process.env.NUXT_PUBLIC_LINKEDIN_PARTNER_ID || '',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://kevin-attallah.com',
+      revolutSandbox: process.env.REVOLUT_SANDBOX === 'true',
     },
   },
 
