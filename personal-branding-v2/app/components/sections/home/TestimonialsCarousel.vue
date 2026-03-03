@@ -101,10 +101,14 @@ const sectionRef = ref<HTMLElement | null>(null)
 const row1Ref = ref<HTMLElement | null>(null)
 const row2Ref = ref<HTMLElement | null>(null)
 
-// Split testimonials into 2 rows
+// Split testimonials into 2 rows, duplicated to fill large screens.
+// At 350px + 20px gap per card, 5 cards ≈ 1830px — not enough for 2560px+ monitors.
+// Doubling gives ~3660px per row, covering most wide viewports.
 const mid = Math.ceil(testimonials.length / 2)
-const row1 = testimonials.slice(0, mid)
-const row2 = testimonials.slice(mid)
+const baseRow1 = testimonials.slice(0, mid)
+const baseRow2 = testimonials.slice(mid)
+const row1 = [...baseRow1, ...baseRow1.map(t => ({ ...t, id: `${t.id}-dup` }))]
+const row2 = [...baseRow2, ...baseRow2.map(t => ({ ...t, id: `${t.id}-dup` }))]
 
 onMounted(() => {
   if (!$gsap || !sectionRef.value) return

@@ -24,6 +24,32 @@ const props = withDefaults(defineProps<Props>(), {
 
 const isPaused = ref(false)
 const track = ref<HTMLElement | null>(null)
+
+// On large monitors, 2 copies may not fill the viewport.
+// Clone extra copies so the -50% translateX loop remains seamless.
+onMounted(() => {
+  nextTick(() => {
+    if (!track.value) return
+    const firstContent = track.value.querySelector('.marquee__content') as HTMLElement
+    if (!firstContent) return
+
+    const contentWidth = firstContent.offsetWidth
+    const viewportWidth = window.innerWidth
+
+    if (contentWidth < viewportWidth) {
+      // With translateX(-50%), half the total copies must cover the viewport
+      const halfNeeded = Math.ceil(viewportWidth / contentWidth)
+      const totalNeeded = halfNeeded * 2
+      const currentCopies = track.value.children.length
+
+      for (let i = currentCopies; i < totalNeeded; i++) {
+        const clone = firstContent.cloneNode(true) as HTMLElement
+        clone.setAttribute('aria-hidden', 'true')
+        track.value.appendChild(clone)
+      }
+    }
+  })
+})
 </script>
 
 <style lang="scss" scoped>
