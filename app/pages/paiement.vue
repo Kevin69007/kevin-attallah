@@ -1,5 +1,21 @@
 <template>
   <div>
+    <!-- Processing overlay -->
+    <Teleport to="body">
+      <Transition name="overlay-fade">
+        <div v-if="isProcessing" class="processing-overlay">
+          <div class="processing-overlay__card">
+            <Loader2 :size="40" class="processing-overlay__spinner" />
+            <h3 class="processing-overlay__title">Paiement en cours</h3>
+            <p class="processing-overlay__text">Veuillez patienter pendant le traitement de votre paiement...</p>
+            <div class="processing-overlay__dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
     <section class="checkout section--dark">
       <div class="container">
         <ScrollReveal>
@@ -72,9 +88,11 @@
                   variant="primary"
                   block
                   class="mt-24"
+                  :disabled="isProcessing"
                   @click="handlePayment"
                 >
-                  Payer {{ orderAmount }}€
+                  <Loader2 v-if="isProcessing" :size="18" class="btn-spinner" />
+                  {{ isProcessing ? 'Traitement...' : `Payer ${orderAmount}€` }}
                 </AppButton>
               </GlassCard>
             </ScrollReveal>
@@ -125,7 +143,7 @@
 </template>
 
 <script setup lang="ts">
-import { Shield, Lock, CreditCard } from 'lucide-vue-next'
+import { Shield, Lock, CreditCard, Loader2 } from 'lucide-vue-next'
 import RevolutCheckout from '@revolut/checkout'
 
 useHead({ title: 'Paiement' })
@@ -140,6 +158,7 @@ const orderToken = ref('')
 const orderAmount = ref(0)
 const orderDescription = ref('')
 const buyerCountryCode = ref('FR')
+const isProcessing = ref(false)
 
 const form = reactive({
   name: '',
@@ -205,7 +224,7 @@ function initRevolutCard(token: string) {
         onSuccess: onPaymentSuccess,
         onError: onPaymentError,
         onCancel: () => {
-          console.log('Payment cancelled by user or SDK')
+          isProcessing.value = false
         },
         styles: {
           default: {
@@ -254,6 +273,8 @@ function handlePayment() {
     showToast('Le formulaire de paiement n\'est pas prêt.', 'error')
     return
   }
+
+  isProcessing.value = true
 
   trackAddPaymentInfo()
   gTrackAddPaymentInfo()
@@ -304,6 +325,7 @@ async function onPaymentSuccess() {
 }
 
 function onPaymentError(error: any) {
+  isProcessing.value = false
   console.error('Payment error:', error)
   showToast('Erreur de paiement. Veuillez réessayer.', 'error')
 }
@@ -407,5 +429,86 @@ const trustSignals = [
     color: $purple-light;
     flex-shrink: 0;
   }
+}
+
+.btn-spinner {
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+.processing-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 5, 20, 0.85);
+  backdrop-filter: blur(8px);
+
+  &__card {
+    text-align: center;
+    padding: 48px 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 380px;
+    width: 90%;
+  }
+
+  &__spinner {
+    color: $orange;
+    animation: spin 1s linear infinite;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: $text-white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    color: $text-on-dark-muted;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+
+    span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $orange;
+      animation: dot-pulse 1.4s ease-in-out infinite;
+
+      &:nth-child(2) { animation-delay: 0.2s; }
+      &:nth-child(3) { animation-delay: 0.4s; }
+    }
+  }
+}
+
+.overlay-fade-enter-active,
+.overlay-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.overlay-fade-enter-from,
+.overlay-fade-leave-to {
+  opacity: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dot-pulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1); }
 }
 </style>
