@@ -56,9 +56,17 @@ import { CheckCircle, Mail, BookOpen, Headphones } from 'lucide-vue-next'
 
 useHead({ title: 'Merci !' })
 
+const router = useRouter()
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
 onMounted(() => {
+  const paid = localStorage.getItem('paymentSuccess')
+  if (!paid) {
+    router.replace('/')
+    return
+  }
+  localStorage.removeItem('paymentSuccess')
+
   trackViewContent({ content_name: 'Merci - Confirmation' })
   trackViewItem({ content_name: 'Merci - Confirmation' })
 })

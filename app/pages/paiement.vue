@@ -270,6 +270,7 @@ async function onPaymentSuccess() {
   const data = getFormData()
   if (!data) {
     console.error('getFormData returned null in onPaymentSuccess')
+    localStorage.setItem('paymentSuccess', 'true')
     router.push('/remerciement')
     return
   }
@@ -298,6 +299,7 @@ async function onPaymentSuccess() {
 
   localStorage.removeItem('orderResponse')
   localStorage.removeItem('buyerInfo')
+  localStorage.setItem('paymentSuccess', 'true')
   router.push('/remerciement')
 }
 
