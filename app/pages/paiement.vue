@@ -193,18 +193,20 @@ onMounted(() => {
   }
 })
 
-let revolutInstance: any = null
+let cardField: any = null
 
 function initRevolutCard(token: string) {
   if (!token || typeof window === 'undefined') return
 
   RevolutCheckout(token, revolutSandbox ? 'sandbox' : 'prod')
     .then((instance: any) => {
-      revolutInstance = instance
-      instance.createCardField({
+      cardField = instance.createCardField({
         target: document.getElementById('card-field'),
         onSuccess: onPaymentSuccess,
         onError: onPaymentError,
+        onCancel: () => {
+          console.log('Payment cancelled by user or SDK')
+        },
         styles: {
           default: {
             color: 'white',
@@ -247,12 +249,16 @@ function getFormData() {
 
 function handlePayment() {
   const data = getFormData()
-  if (!data || !revolutInstance) return
+  if (!data) return
+  if (!cardField) {
+    showToast('Le formulaire de paiement n\'est pas prêt.', 'error')
+    return
+  }
 
   trackAddPaymentInfo()
   gTrackAddPaymentInfo()
 
-  revolutInstance.submit({
+  cardField.submit({
     name: data.cardholderName,
     email: data.email,
     billingAddress: data.billingAddress,
@@ -260,8 +266,13 @@ function handlePayment() {
 }
 
 async function onPaymentSuccess() {
+  console.log('onPaymentSuccess triggered')
   const data = getFormData()
-  if (!data) return
+  if (!data) {
+    console.error('getFormData returned null in onPaymentSuccess')
+    router.push('/remerciement')
+    return
+  }
 
   trackPurchase({
     content_name: orderDescription.value,
