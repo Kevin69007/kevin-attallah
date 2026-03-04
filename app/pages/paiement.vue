@@ -266,7 +266,7 @@ function getFormData() {
   }
 }
 
-function handlePayment() {
+async function handlePayment() {
   const data = getFormData()
   if (!data) return
   if (!cardField) {
@@ -276,19 +276,19 @@ function handlePayment() {
 
   isProcessing.value = true
 
-  // Safety timeout: reset overlay if no callback fires within 30s
+  // Safety timeout: reset overlay if no callback fires within 60s
   setTimeout(() => {
     if (isProcessing.value) {
       isProcessing.value = false
       showToast('Le paiement n\'a pas pu être traité. Veuillez réessayer.', 'error')
     }
-  }, 30000)
+  }, 60000)
 
   trackAddPaymentInfo()
   gTrackAddPaymentInfo()
 
   try {
-    cardField.submit({
+    await cardField.submit({
       name: data.cardholderName,
       email: data.email,
       billingAddress: data.billingAddress,
@@ -296,7 +296,7 @@ function handlePayment() {
   } catch (err: any) {
     isProcessing.value = false
     console.error('Card submit error:', err)
-    showToast('Erreur lors du paiement. Veuillez réessayer.', 'error')
+    showToast(err?.message || 'Erreur lors du paiement. Veuillez réessayer.', 'error')
   }
 }
 
