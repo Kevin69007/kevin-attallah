@@ -24,10 +24,6 @@ export const externalLinks = {
     instagram: 'https://www.instagram.com/kevin_attallah_',
   },
 
-  // Training platform
-  training: {
-    formationSubdomain: 'https://formation.kevin-attallah.com',
-  },
 }
 
 export default externalLinks

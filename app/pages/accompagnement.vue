@@ -83,7 +83,7 @@
               <li><CheckCircle :size="16" /> Outils concrets et prêts à l'emploi</li>
               <li><CheckCircle :size="16" /> Formation éligible CPF</li>
             </ul>
-            <AppButton variant="outline-light" block :href="externalLinks.training.formationSubdomain">
+            <AppButton variant="outline-light" block :href="siteUrl">
               Voir les formations
               <ArrowRight :size="18" />
             </AppButton>
@@ -160,7 +160,7 @@
       primaryText="Prendre rendez-vous"
       :primaryLink="externalLinks.booking.brevoBilan"
       secondaryText="Voir les formations"
-      :secondaryLink="externalLinks.training.formationSubdomain"
+      :secondaryLink="siteUrl"
     />
   </div>
 </template>
@@ -168,6 +168,8 @@
 <script setup lang="ts">
 import { Lightbulb, Rocket, TrendingUp, CheckCircle, Users, ArrowRight, Bot } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
+
+const { public: { siteUrl } } = useRuntimeConfig()
 
 useHead({ title: 'Accompagnement' })
 
