@@ -286,6 +286,23 @@ function calculateAmounts() {
   duree.value = d
 }
 
+// Resolve product ID for server-side price lookup
+function getSelectedProductId(): string {
+  if (selectedPacks.value['anglais-debutant + intermediaire']) {
+    return 'pack-anglais-debutant-intermediaire'
+  }
+  if (selectedPacks.value['anglais-intermediaire + Avancé']) {
+    return 'pack-anglais-intermediaire-avance'
+  }
+  if (selectedPacks.value['anglais-debutant, intermediaire + Avancé']) {
+    return 'pack-anglais-complet'
+  }
+  if (selectedPacks.value['compta-initiation + Les Fondamentaux']) {
+    return 'pack-compta-initiation-fondamentaux'
+  }
+  return formation.value!.id
+}
+
 // Create order
 async function createOrder() {
   if (isLoading.value || !formation.value) return
@@ -315,7 +332,7 @@ async function createOrder() {
     const data = await $fetch('/api/create-order', {
       method: 'POST',
       body: {
-        amount: finalAmount,
+        productId: getSelectedProductId(),
         currency: 'EUR',
         description: selectedPackTitle.value || formation.value.titre,
       },
