@@ -47,16 +47,16 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    // Server-only
-    revolutApiKey: process.env.REVOLUT_API_KEY || '',
-    sendinblueApiKey: process.env.BREVO_API_KEY || '',
-    // Public (exposed to client)
+    // Server-only (override via NUXT_REVOLUT_API_KEY / NUXT_SENDINBLUE_API_KEY)
+    revolutApiKey: '',
+    sendinblueApiKey: '',
+    // Public (override via NUXT_PUBLIC_* env vars at runtime)
     public: {
-      fbPixelId: process.env.NUXT_PUBLIC_FACEBOOK_PIXEL_ID || '',
-      gaId: process.env.NUXT_PUBLIC_GOOGLE_PIXEL_ID || '',
-      linkedinPartnerId: process.env.NUXT_PUBLIC_LINKEDIN_PARTNER_ID || '',
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://kevin-attallah.com',
-      revolutSandbox: process.env.REVOLUT_SANDBOX === 'true',
+      facebookPixelId: '',
+      googlePixelId: '',
+      linkedinPartnerId: '',
+      siteUrl: 'https://kevin-attallah.com',
+      revolutSandbox: false,
     },
   },
 

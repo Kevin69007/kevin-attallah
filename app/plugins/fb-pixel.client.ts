@@ -1,6 +1,6 @@
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
-  const pixelId = config.public.fbPixelId
+  const pixelId = config.public.facebookPixelId
 
   if (!pixelId) {
     console.warn('Facebook Pixel ID manquant')

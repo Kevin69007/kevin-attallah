@@ -1,6 +1,6 @@
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
-  const gaId = config.public.gaId
+  const gaId = config.public.googlePixelId
 
   if (!gaId) {
     console.warn('Google Ads / Analytics ID manquant')
