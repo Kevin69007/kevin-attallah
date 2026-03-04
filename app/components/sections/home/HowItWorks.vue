@@ -72,7 +72,7 @@ const steps = [
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    opacity: 0.3;
+    opacity: 0.5;
     line-height: 1;
     margin-bottom: 8px;
   }

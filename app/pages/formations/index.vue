@@ -88,7 +88,7 @@
             class="formation-card glass-card"
           >
             <div class="formation-card__img">
-              <img :src="formation.image" :alt="formation.titre" loading="lazy" />
+              <NuxtImg :src="formation.image" :alt="formation.titre" loading="lazy" format="webp" quality="80" />
               <GlassBadge variant="orange" class="formation-card__badge">CPF</GlassBadge>
             </div>
             <div class="formation-card__body">
@@ -306,6 +306,9 @@ onMounted(() => {
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.04) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
 
     img {
       width: 100%;

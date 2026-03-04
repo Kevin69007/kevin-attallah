@@ -279,7 +279,7 @@ const stats = [
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    opacity: 0.25;
+    opacity: 0.5;
     line-height: 1;
   }
 

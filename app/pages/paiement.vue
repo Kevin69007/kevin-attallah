@@ -276,14 +276,28 @@ function handlePayment() {
 
   isProcessing.value = true
 
+  // Safety timeout: reset overlay if no callback fires within 30s
+  setTimeout(() => {
+    if (isProcessing.value) {
+      isProcessing.value = false
+      showToast('Le paiement n\'a pas pu être traité. Veuillez réessayer.', 'error')
+    }
+  }, 30000)
+
   trackAddPaymentInfo()
   gTrackAddPaymentInfo()
 
-  cardField.submit({
-    name: data.cardholderName,
-    email: data.email,
-    billingAddress: data.billingAddress,
-  })
+  try {
+    cardField.submit({
+      name: data.cardholderName,
+      email: data.email,
+      billingAddress: data.billingAddress,
+    })
+  } catch (err: any) {
+    isProcessing.value = false
+    console.error('Card submit error:', err)
+    showToast('Erreur lors du paiement. Veuillez réessayer.', 'error')
+  }
 }
 
 async function onPaymentSuccess() {
@@ -291,6 +305,7 @@ async function onPaymentSuccess() {
   const data = getFormData()
   if (!data) {
     console.error('getFormData returned null in onPaymentSuccess')
+    isProcessing.value = false
     localStorage.setItem('paymentSuccess', 'true')
     router.push('/remerciement')
     return
@@ -320,6 +335,7 @@ async function onPaymentSuccess() {
 
   localStorage.removeItem('orderResponse')
   localStorage.removeItem('buyerInfo')
+  isProcessing.value = false
   localStorage.setItem('paymentSuccess', 'true')
   router.push('/remerciement')
 }
