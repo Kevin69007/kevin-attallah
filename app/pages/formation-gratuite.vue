@@ -10,8 +10,8 @@
               {{ config.badgeText }}
             </GlassBadge>
             <h1 class="lp__title mt-24">
-              Recevez une formation professionnelle
-              <span class="gradient-text">100% gratuite</span>
+              Ta formation gratuite de la semaine
+              <span class="gradient-text">t'attend.</span>
             </h1>
             <p class="lp__subtitle">{{ config.subtitle }}</p>
           </div>
@@ -20,14 +20,8 @@
         <div class="split mt-48">
           <!-- Left: Offer details -->
           <ScrollReveal direction="left">
-            <!-- Price -->
-            <div class="lp__price">
-              <span class="lp__price-original">{{ config.originalPrice }}€</span>
-              <span class="lp__price-free gradient-text">GRATUIT</span>
-            </div>
-
             <!-- Features -->
-            <div class="lp__features mt-32">
+            <div class="lp__features">
               <div v-for="feature in config.features" :key="feature" class="lp__feature glass-card-light">
                 <CheckCircle :size="18" class="lp__check" />
                 <span>{{ feature }}</span>
@@ -38,20 +32,23 @@
             <div class="lp__trust mt-32">
               <GlassBadge variant="light">
                 <Users :size="14" />
-                2100+ formés
+                2100+ entrepreneurs lancés
               </GlassBadge>
               <GlassBadge variant="light">
                 <Star :size="14" />
                 4.8/5 satisfaction
               </GlassBadge>
             </div>
+
+            <!-- Reassurance -->
+            <p class="lp__reassurance mt-24">{{ config.reassurance }}</p>
           </ScrollReveal>
 
           <!-- Right: Form -->
           <ScrollReveal direction="right" :delay="0.3">
             <GlassCard variant="light" :hoverable="false">
-              <h3 class="mb-8">Accès immédiat</h3>
-              <p class="lp__form-subtitle">Remplissez le formulaire pour recevoir votre formation</p>
+              <h3 class="mb-8">Accès personnel</h3>
+              <p class="lp__form-subtitle">Remplis le formulaire et reçois tes identifiants</p>
               <FreeFormationForm class="mt-24" />
             </GlassCard>
           </ScrollReveal>
@@ -71,7 +68,7 @@ useHead({
     {
       name: 'description',
       content:
-        'Recevez une formation professionnelle gratuite. Accédez à du contenu de qualité pour booster votre carrière.',
+        'Recevez une formation professionnelle gratuite chaque semaine. Accédez à du contenu de qualité pour lancer ou booster votre activité.',
     },
   ],
 })
@@ -102,30 +99,6 @@ onMounted(() => {
     line-height: 1.7;
     max-width: 600px;
     margin: 16px auto 0;
-  }
-
-  &__price {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  &__price-original {
-    font-family: $font-heading;
-    font-size: 2rem;
-    font-weight: 700;
-    color: $text-muted;
-    text-decoration: line-through;
-  }
-
-  &__price-free {
-    font-family: $font-heading;
-    font-size: 3rem;
-    font-weight: 900;
-
-    @media (max-width: 640px) {
-      font-size: 2.25rem;
-    }
   }
 
   &__features {
@@ -162,6 +135,13 @@ onMounted(() => {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+  }
+
+  &__reassurance {
+    color: $text-muted;
+    font-size: $xs;
+    line-height: 1.6;
+    font-style: italic;
   }
 
   &__form-subtitle {

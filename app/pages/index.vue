@@ -2,17 +2,17 @@
   <div>
     <HeroSection />
     <SocialProofMarquee />
-    <WhyKevin />
-    <FeaturedFormations />
+    <TwoPathsSection />
     <TestimonialsCarousel />
-    <FreeFormationSection />
-    <AILaunchSection />
+    <WhyKevin />
     <HowItWorks />
     <BlogPreview />
     <CTASection
-      title="Prêt à transformer ta vie ?"
-      subtitle="Rejoins les 2100+ entrepreneurs qui ont déjà fait le premier pas."
-      diagonal
+      title="T'es encore là ? C'est le moment de passer à l'action."
+      subtitle="Un appel de 30 minutes, gratuit, sans engagement. On regarde ensemble ce qui est fait pour toi."
+      primaryText="Je réserve mon appel gratuit"
+      :primaryHref="externalLinks.booking.brevoMeeting"
+      secondaryText=""
     />
 
     <!-- Exit-intent modal -->
@@ -24,6 +24,8 @@
 </template>
 
 <script setup lang="ts">
+import { externalLinks } from '~/data/external-links'
+
 useHead({ title: 'Accueil' })
 
 const { trackViewContent } = useFBPixel()

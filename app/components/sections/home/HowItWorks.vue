@@ -2,9 +2,9 @@
   <section class="how-it-works section--white">
     <div class="container">
       <ScrollReveal>
-        <span class="section-label text-center">Comment ça marche</span>
+        <span class="section-label text-center">Comment ça se passe</span>
         <h2 class="section-title text-center">
-          3 étapes vers ta <span class="gradient-text">réussite</span>
+          Comment ça se <span class="gradient-text">passe</span> ?
         </h2>
       </ScrollReveal>
 
@@ -24,28 +24,40 @@
           <p class="step__desc">{{ step.description }}</p>
         </div>
       </StaggerGrid>
+
+      <ScrollReveal :delay="0.6">
+        <div class="how-it-works__cta text-center mt-48">
+          <MagneticButton>
+            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+              Je prends mon appel gratuit
+              <ArrowRight :size="20" />
+            </AppButton>
+          </MagneticButton>
+        </div>
+      </ScrollReveal>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { Search, CreditCard, Rocket } from 'lucide-vue-next'
+import { Phone, Route, Rocket, ArrowRight } from 'lucide-vue-next'
+import { externalLinks } from '~/data/external-links'
 
 const steps = [
   {
-    icon: Search,
-    title: 'Choisis ta formation',
-    description: 'Parcours notre catalogue de +60 formations certifiantes et trouve celle qui correspond à ton projet.',
+    icon: Phone,
+    title: 'On définit ton projet ensemble',
+    description: 'Un appel gratuit de 30 minutes pour comprendre où tu en es et t\'orienter vers la bonne formule — création ou évolution, autonomie ou accompagnement.',
   },
   {
-    icon: CreditCard,
-    title: 'Inscris-toi en ligne',
-    description: 'Inscription simple et rapide, éligible CPF. Paiement sécurisé et accompagnement personnalisé.',
+    icon: Route,
+    title: 'On te construit le chemin',
+    description: 'Formation, accompagnement, audit IA — tout est personnalisé selon ton profil, ton budget et tes objectifs. Et c\'est finançable.',
   },
   {
     icon: Rocket,
-    title: 'Lance-toi !',
-    description: 'Accède à ta formation immédiatement et commence à construire ton avenir dès aujourd\'hui.',
+    title: 'Tu passes à l\'action, on est là',
+    description: 'Tu avances avec les bons outils, les bonnes méthodes et quelqu\'un derrière toi si tu bloques.',
   },
 ]
 </script>

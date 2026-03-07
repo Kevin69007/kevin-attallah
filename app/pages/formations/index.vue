@@ -89,7 +89,7 @@
           >
             <div class="formation-card__img">
               <NuxtImg :src="formation.image" :alt="formation.titre" loading="lazy" format="webp" quality="80" />
-              <GlassBadge variant="orange" class="formation-card__badge">CPF</GlassBadge>
+              <GlassBadge variant="orange" class="formation-card__badge">Finançable</GlassBadge>
             </div>
             <div class="formation-card__body">
               <span class="formation-card__cat">{{ formation.categorie }}</span>

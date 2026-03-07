@@ -11,7 +11,7 @@
           <div class="sale-hero__content">
             <ScrollReveal>
               <GlassBadge variant="orange-light">
-                <Award :size="14" /> Éligible CPF
+                <Award :size="14" /> 100% finançable
               </GlassBadge>
             </ScrollReveal>
             <ScrollReveal :delay="0.2">
@@ -93,7 +93,7 @@
                 Investis dans <span class="gradient-text">ton avenir</span>
               </h2>
               <p class="pricing__text">
-                Formation certifiante éligible au CPF. Paiement sécurisé par carte bancaire.
+                Formation certifiante 100% finançable. Paiement sécurisé par carte bancaire.
                 Accès immédiat dès l'inscription.
               </p>
             </ScrollReveal>

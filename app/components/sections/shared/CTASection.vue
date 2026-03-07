@@ -8,7 +8,7 @@
         <p class="cta-section__text">{{ subtitle }}</p>
         <div class="btn-group" style="justify-content: center">
           <MagneticButton>
-            <AppButton variant="primary" size="lg" :to="primaryLink">
+            <AppButton variant="primary" size="lg" :to="!primaryHref ? primaryLink : undefined" :href="primaryHref || undefined">
               {{ primaryText }}
               <ArrowRight :size="20" />
             </AppButton>
@@ -32,6 +32,7 @@ interface Props {
   subtitle?: string
   primaryText?: string
   primaryLink?: string
+  primaryHref?: string
   secondaryText?: string
   secondaryLink?: string
 }

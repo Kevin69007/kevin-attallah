@@ -7,10 +7,9 @@
           <NuxtImg src="/img/logo-1.png" alt="Kevin Attallah" class="header__logo-img" />
         </NuxtLink>
         <nav class="header__nav">
-          <NuxtLink to="/" class="header__link" active-class="header__link--active">Accueil</NuxtLink>
-          <NuxtLink to="/formations" class="header__link" active-class="header__link--active">Formations</NuxtLink>
-          <NuxtLink to="/accompagnement" class="header__link" active-class="header__link--active">Accompagnement</NuxtLink>
-          <NuxtLink to="/ia" class="header__link" active-class="header__link--active">Booster par l'IA</NuxtLink>
+          <NuxtLink to="/" class="header__link" active-class="header__link--active">Kevin Attallah</NuxtLink>
+          <NuxtLink to="/creer-entreprise" class="header__link" active-class="header__link--active">Créer mon entreprise</NuxtLink>
+          <NuxtLink to="/evoluer-ia" class="header__link" active-class="header__link--active">Faire évoluer mon entreprise</NuxtLink>
           <NuxtLink to="/about" class="header__link" active-class="header__link--active">À propos</NuxtLink>
           <NuxtLink to="/blog" class="header__link" active-class="header__link--active">Blog</NuxtLink>
         </nav>
@@ -43,10 +42,9 @@
     <Transition name="mobile-menu">
       <div v-if="mobileOpen" class="header__mobile">
         <nav class="header__mobile-nav">
-          <NuxtLink to="/" @click="mobileOpen = false">Accueil</NuxtLink>
-          <NuxtLink to="/formations" @click="mobileOpen = false">Formations</NuxtLink>
-          <NuxtLink to="/accompagnement" @click="mobileOpen = false">Accompagnement</NuxtLink>
-          <NuxtLink to="/ia" @click="mobileOpen = false">Booster par l'IA</NuxtLink>
+          <NuxtLink to="/" @click="mobileOpen = false">Kevin Attallah</NuxtLink>
+          <NuxtLink to="/creer-entreprise" @click="mobileOpen = false">Créer mon entreprise</NuxtLink>
+          <NuxtLink to="/evoluer-ia" @click="mobileOpen = false">Faire évoluer mon entreprise</NuxtLink>
           <NuxtLink to="/about" @click="mobileOpen = false">À propos</NuxtLink>
           <NuxtLink to="/blog" @click="mobileOpen = false">Blog</NuxtLink>
           <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener noreferrer" class="header__mobile-cta" @click="mobileOpen = false">

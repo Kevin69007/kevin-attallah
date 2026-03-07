@@ -34,7 +34,7 @@
       </div>
       <div class="price-card__trust-item">
         <CreditCard :size="14" />
-        <span>CPF éligible</span>
+        <span>100% finançable</span>
       </div>
     </div>
   </div>

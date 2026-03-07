@@ -105,15 +105,15 @@ onMounted(() => {
 })
 
 const stats = [
-  { value: 2100, suffix: '+', label: 'Entrepreneurs formés' },
-  { value: 60, suffix: '+', label: 'Formations' },
+  { value: 2100, suffix: '+', label: 'Entrepreneurs lancés' },
+  { value: 11, suffix: ' ans', label: "D'expérience" },
   { value: 98, suffix: '%', label: 'Satisfaction' },
 ]
 
 const values = [
   { icon: Heart, title: 'Authenticité', description: 'Des formations créées par un entrepreneur, pour des entrepreneurs.' },
   { icon: Zap, title: 'Innovation IA', description: "L'IA intégrée à chaque formation pour des résultats concrets et modernes." },
-  { icon: Users, title: 'Accessibilité', description: 'Formations éligibles CPF, accessibles à tous les budgets et niveaux.' },
+  { icon: Users, title: 'Accessibilité', description: 'Formations 100% finançables, accessibles à tous les budgets et niveaux.' },
   { icon: Target, title: 'Résultats', description: '+2100 entrepreneurs formés avec un taux de satisfaction de 98%.' },
 ]
 

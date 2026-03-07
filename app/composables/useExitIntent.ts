@@ -1,13 +1,13 @@
-export function useExitIntent(options: { delay?: number; scrollThreshold?: number } = {}) {
-  const { delay = 8000, scrollThreshold = 0.6 } = options
+export function useExitIntent(options: { delay?: number; scrollThreshold?: number; storagePrefix?: string } = {}) {
+  const { delay = 8000, scrollThreshold = 0.6, storagePrefix = 'ffm' } = options
   const triggered = ref(false)
   const dismissed = ref(false)
 
   function shouldShow(): boolean {
     if (typeof window === 'undefined') return false
-    const stored = localStorage.getItem('ffm_dismissed')
+    const stored = localStorage.getItem(`${storagePrefix}_dismissed`)
     if (stored && Date.now() - parseInt(stored) < 24 * 60 * 60 * 1000) return false
-    if (localStorage.getItem('ffm_submitted')) return false
+    if (localStorage.getItem(`${storagePrefix}_submitted`)) return false
     return true
   }
 
@@ -48,7 +48,7 @@ export function useExitIntent(options: { delay?: number; scrollThreshold?: numbe
   function dismiss() {
     triggered.value = false
     dismissed.value = true
-    localStorage.setItem('ffm_dismissed', Date.now().toString())
+    localStorage.setItem(`${storagePrefix}_dismissed`, Date.now().toString())
   }
 
   return { triggered, dismissed, dismiss }

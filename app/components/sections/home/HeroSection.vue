@@ -14,15 +14,8 @@
     <div class="container hero__grid">
       <!-- Left: Text content -->
       <div class="hero__content">
-        <ScrollReveal :delay="0.1">
-          <GlassBadge variant="orange-light">
-            <Award :size="14" />
-            Formations éligibles CPF
-          </GlassBadge>
-        </ScrollReveal>
-
         <TextSplit
-          text="Lance-toi avant que l'IA ne fasse ton business à ta place"
+          text="L'IA ne remplace pas les entrepreneurs. Elle remplace ceux qui attendent."
           tag="h1"
           :delay="0.3"
           :stagger="0.02"
@@ -31,22 +24,23 @@
 
         <ScrollReveal :delay="0.6">
           <p class="hero__subtitle">
-            +60 formations certifiantes éligibles CPF. De l'idée au décollage,
-            on t'accompagne avec l'IA comme copilote.
+            Accompagnement personnalisé + formations finançables. C'est le tournant
+            du siècle. Tu montes dans le train ou tu regardes partir les autres ?
           </p>
         </ScrollReveal>
 
         <ScrollReveal :delay="0.8">
           <div class="hero__ctas">
             <MagneticButton>
-              <AppButton variant="primary" size="lg" to="/formations">
-                Voir les formations
+              <AppButton variant="primary" size="lg" to="/creer-entreprise">
+                Je veux créer mon entreprise
                 <ArrowRight :size="20" />
               </AppButton>
             </MagneticButton>
             <MagneticButton>
-              <AppButton variant="ghost-light" size="lg" :href="externalLinks.booking.brevoMeeting">
-                Parler à Kevin
+              <AppButton variant="primary" size="lg" to="/evoluer-ia">
+                Je veux faire évoluer mon entreprise avec l'IA
+                <ArrowRight :size="20" />
               </AppButton>
             </MagneticButton>
           </div>
@@ -56,15 +50,15 @@
           <div class="hero__trust">
             <div class="hero__trust-item glass-badge-light">
               <Users :size="16" />
-              <span><strong>2100+</strong> entrepreneurs formés</span>
-            </div>
-            <div class="hero__trust-item glass-badge-light">
-              <Clock :size="16" />
-              <span><strong>15000+</strong> heures de formation</span>
+              <span><strong>2 100+</strong> entrepreneurs lancés</span>
             </div>
             <div class="hero__trust-item glass-badge-light">
               <Star :size="16" />
-              <span><strong>4.8/5</strong> de satisfaction</span>
+              <span><strong>4.8/5</strong> de satisfaction client</span>
+            </div>
+            <div class="hero__trust-item glass-badge-light">
+              <Award :size="16" />
+              <span><strong>100%</strong> finançable</span>
             </div>
           </div>
         </ScrollReveal>
@@ -117,8 +111,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowRight, Award, Users, Clock, Star } from 'lucide-vue-next'
-import { externalLinks } from '~/data/external-links'
+import { ArrowRight, Award, Users, Star } from 'lucide-vue-next'
 
 const chatBubbles = [
   {
@@ -221,7 +214,6 @@ onMounted(() => {
   &__title {
     font-size: $h1;
     color: $text-heading;
-    margin-top: 24px;
     margin-bottom: 24px;
     line-height: 1.1;
   }

@@ -155,6 +155,15 @@ const FORMATION_IDS = [
   'bilan-medicament-01',
 ] as const
 
+// Standalone products (landing page offers)
+const STANDALONE_PRODUCTS: Product[] = [
+  {
+    id: 'creation-entreprise-autonomie',
+    description: 'Créer mon entreprise — Formation en autonomie',
+    price: 299,
+  },
+]
+
 // Pack products with their fixed prices
 const PACK_PRODUCTS: Product[] = [
   {
@@ -184,6 +193,10 @@ const catalog = new Map<string, Product>()
 
 for (const id of FORMATION_IDS) {
   catalog.set(id, { id, description: id, price: SINGLE_FORMATION_PRICE })
+}
+
+for (const product of STANDALONE_PRODUCTS) {
+  catalog.set(product.id, product)
 }
 
 for (const pack of PACK_PRODUCTS) {

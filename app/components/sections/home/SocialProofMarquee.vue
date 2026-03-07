@@ -14,14 +14,13 @@
 </template>
 
 <script setup lang="ts">
-import { Users, Clock, Star, BookOpen, Award } from 'lucide-vue-next'
+import { Users, Star, Award, Target } from 'lucide-vue-next'
 
 const proofItems = [
-  { value: '2100+', label: 'entrepreneurs formés', icon: Users },
-  { value: '15000+', label: 'heures de formation', icon: Clock },
+  { value: '2 100+', label: 'entrepreneurs lancés', icon: Users },
   { value: '4.8/5', label: 'satisfaction client', icon: Star },
-  { value: '60+', label: 'formations disponibles', icon: BookOpen },
-  { value: 'CPF', label: 'éligible', icon: Award },
+  { value: '100%', label: 'finançable', icon: Award },
+  { value: '1 seul', label: 'objectif : que tu passes à l\'action', icon: Target },
 ]
 </script>
 

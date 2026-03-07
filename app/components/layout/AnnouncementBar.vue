@@ -4,11 +4,10 @@
       <NuxtLink to="/formation-gratuite" class="announce__content">
         <Gift :size="14" class="announce__icon" />
         <span class="announce__text">
-          <strong>Formation Offerte</strong> — Recevez une formation professionnelle gratuite
-          <span class="announce__value">(valeur 99€)</span>
+          Chaque semaine, j'offre une <strong>formation gratuite</strong> à mon réseau — pour vous lancer ou booster vos équipes.
         </span>
         <span class="announce__cta">
-          J'en profite
+          Je la veux
           <ArrowRight :size="14" />
         </span>
       </NuxtLink>
@@ -100,12 +99,6 @@ function dismiss() {
   &__text {
     strong {
       font-weight: 700;
-    }
-
-    @media (max-width: 768px) {
-      .announce__value {
-        display: none;
-      }
     }
   }
 
