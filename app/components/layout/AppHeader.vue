@@ -1,28 +1,30 @@
 <template>
-  <header :class="['header', { 'header--scrolled': isScrolled, 'header--hidden': isHidden }]" :style="{ top: barHeight + 'px' }">
-    <div class="container flex-between">
-      <!-- Logo -->
-      <NuxtLink to="/" class="header__logo">
-        <NuxtImg src="/img/logo-1.png" alt="Kevin Attallah" class="header__logo-img" />
-      </NuxtLink>
-
-      <!-- Desktop Nav -->
-      <nav class="header__nav">
-        <NuxtLink to="/" class="header__link" active-class="header__link--active">Accueil</NuxtLink>
-        <NuxtLink to="/formations" class="header__link" active-class="header__link--active">Formations</NuxtLink>
-        <NuxtLink to="/accompagnement" class="header__link" active-class="header__link--active">Accompagnement</NuxtLink>
-        <NuxtLink to="/ia" class="header__link" active-class="header__link--active">Booster par l'IA</NuxtLink>
-        <NuxtLink to="/about" class="header__link" active-class="header__link--active">À propos</NuxtLink>
-        <NuxtLink to="/blog" class="header__link" active-class="header__link--active">Blog</NuxtLink>
-      </nav>
-
-      <!-- CTA -->
-      <div class="header__actions">
-        <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm header__cta-free">
-          <Calendar :size="16" />
-          Prendre rendez-vous
-        </a>
+  <header :class="['header', { 'header--scrolled': isScrolled }]" :style="{ top: barHeight + 'px' }">
+    <div class="container header__container">
+      <!-- Dark glass pill with logo + nav -->
+      <div class="header__pill">
+        <NuxtLink to="/" class="header__logo">
+          <NuxtImg src="/img/logo-1.png" alt="Kevin Attallah" class="header__logo-img" />
+        </NuxtLink>
+        <nav class="header__nav">
+          <NuxtLink to="/" class="header__link" active-class="header__link--active">Accueil</NuxtLink>
+          <NuxtLink to="/formations" class="header__link" active-class="header__link--active">Formations</NuxtLink>
+          <NuxtLink to="/accompagnement" class="header__link" active-class="header__link--active">Accompagnement</NuxtLink>
+          <NuxtLink to="/ia" class="header__link" active-class="header__link--active">Booster par l'IA</NuxtLink>
+          <NuxtLink to="/about" class="header__link" active-class="header__link--active">À propos</NuxtLink>
+          <NuxtLink to="/blog" class="header__link" active-class="header__link--active">Blog</NuxtLink>
+        </nav>
       </div>
+
+      <!-- CTA button — gold gradient, outside pill -->
+      <a
+        :href="externalLinks.booking.brevoMeeting"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="header__cta"
+      >
+        Prendre rendez-vous
+      </a>
 
       <!-- Mobile toggle -->
       <button
@@ -47,8 +49,7 @@
           <NuxtLink to="/ia" @click="mobileOpen = false">Booster par l'IA</NuxtLink>
           <NuxtLink to="/about" @click="mobileOpen = false">À propos</NuxtLink>
           <NuxtLink to="/blog" @click="mobileOpen = false">Blog</NuxtLink>
-          <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block" @click="mobileOpen = false">
-            <Calendar :size="16" />
+          <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener noreferrer" class="header__mobile-cta" @click="mobileOpen = false">
             Prendre rendez-vous
           </a>
         </nav>
@@ -58,21 +59,15 @@
 </template>
 
 <script setup lang="ts">
-import { Calendar } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
 
 const barHeight = useState('announceBarHeight', () => 0)
 const mobileOpen = ref(false)
 const isScrolled = ref(false)
-const isHidden = ref(false)
-let lastScrollY = 0
 
 onMounted(() => {
   const onScroll = () => {
-    const currentY = window.scrollY
-    isScrolled.value = currentY > 50
-    isHidden.value = currentY > 300 && currentY > lastScrollY
-    lastScrollY = currentY
+    isScrolled.value = window.scrollY > 50
   }
   window.addEventListener('scroll', onScroll, { passive: true })
   onUnmounted(() => window.removeEventListener('scroll', onScroll))
@@ -94,47 +89,61 @@ watch(mobileOpen, (open) => {
   padding: 16px 0;
   transition: all 0.4s $ease-smooth;
 
-  // Scrolled: light glass background
   &--scrolled {
-    background: $nav-bg-scrolled;
-    backdrop-filter: blur($glass-blur-heavy);
-    -webkit-backdrop-filter: blur($glass-blur-heavy);
-    border-bottom: 1px solid $nav-border;
-    box-shadow: $shadow-sm;
     padding: 10px 0;
-
-    .header__link {
-      color: $text-muted;
-
-      &:hover,
-      &--active {
-        color: $text-heading;
-      }
-    }
-
-    .header__burger span {
-      background: $text-heading;
-    }
   }
 
-  &--hidden {
-    transform: translateY(-100%);
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // Liquid glass pill — always visible, strong depth
+  &__pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(32px) saturate(1.4);
+    -webkit-backdrop-filter: blur(32px) saturate(1.4);
+    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    padding: 10px 20px 10px 16px;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+    transition: all 0.4s $ease-smooth;
+
+    .header--scrolled & {
+      background: rgba(255, 255, 255, 0.5);
+      border-color: rgba(0, 0, 0, 0.1);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 2px 6px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+    }
   }
 
   &__logo {
     display: flex;
     align-items: center;
     z-index: 10;
+    flex-shrink: 0;
   }
 
   &__logo-img {
-    height: 38px;
+    height: 34px;
     width: auto;
   }
 
   &__nav {
     display: flex;
-    gap: 32px;
+    gap: 28px;
+    margin-left: 16px;
 
     @media (max-width: 1024px) {
       display: none;
@@ -142,12 +151,13 @@ watch(mobileOpen, (open) => {
   }
 
   &__link {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     transition: color 0.3s ease;
     position: relative;
+    white-space: nowrap;
 
     &::after {
       content: '';
@@ -156,13 +166,13 @@ watch(mobileOpen, (open) => {
       left: 0;
       width: 0;
       height: 2px;
-      background: $gradient-primary;
+      background: linear-gradient(135deg, $orange, $orange-light);
       transition: width 0.3s ease;
     }
 
     &:hover,
     &--active {
-      color: $text-white;
+      color: $text-heading;
 
       &::after {
         width: 100%;
@@ -170,18 +180,46 @@ watch(mobileOpen, (open) => {
     }
   }
 
-  &__actions {
+  // 3D Gold/copper CTA button with glow
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(180deg, $orange-light 0%, $orange 35%, $orange-dark 100%);
+    color: #fff;
+    border-radius: 100px;
+    padding: 12px 28px;
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: $small;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba($orange-light, 0.4);
+    box-shadow:
+      0 0 20px rgba($orange, 0.35),
+      0 0 40px rgba($orange-dark, 0.2),
+      0 4px 16px rgba($orange-dark, 0.35),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s $ease-smooth;
+    white-space: nowrap;
+
+    &:hover {
+      background: linear-gradient(180deg, $orange-light 0%, $orange-dark 45%, darken($orange-dark, 5%) 100%);
+      box-shadow:
+        0 0 28px rgba($orange, 0.45),
+        0 0 56px rgba($orange-dark, 0.25),
+        0 6px 24px rgba($orange-dark, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+      transform: translateY(-1px);
+    }
+
     @media (max-width: 1024px) {
       display: none;
     }
   }
 
-  &__cta-free {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
+  // Burger menu
   &__burger {
     display: none;
     flex-direction: column;
@@ -197,15 +235,11 @@ watch(mobileOpen, (open) => {
       display: block;
       width: 24px;
       height: 2px;
-      background: $text-white;
+      background: $text-heading;
       transition: all 0.3s ease;
     }
 
     &--open {
-      span {
-        background: $text-heading;
-      }
-
       span:nth-child(1) {
         transform: translateY(7px) rotate(45deg);
       }
@@ -218,6 +252,7 @@ watch(mobileOpen, (open) => {
     }
   }
 
+  // Mobile overlay
   &__mobile {
     position: fixed;
     inset: 0;
@@ -247,6 +282,22 @@ watch(mobileOpen, (open) => {
         color: $purple;
       }
     }
+  }
+
+  &__mobile-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(180deg, $orange-light 0%, $orange 40%, $orange-dark 100%) !important;
+    color: #fff !important;
+    border-radius: 100px;
+    padding: 16px 36px;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    border: 1px solid rgba($orange, 0.3);
+    box-shadow:
+      0 4px 20px rgba($orange-dark, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 }
 

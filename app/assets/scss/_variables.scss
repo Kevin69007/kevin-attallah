@@ -9,12 +9,12 @@ $purple-dark: #5521B5;
 $purple-glow: rgba(108, 43, 217, 0.4);
 $purple-bg: rgba(108, 43, 217, 0.06);
 
-// === ACCENT: Orange ===
-$orange: #E8601A;
-$orange-light: #FF8F5C;
-$orange-dark: #D4520F;
-$orange-glow: rgba(232, 96, 26, 0.25);
-$orange-bg: rgba(232, 96, 26, 0.06);
+// === ACCENT: Gold/Copper (replaces Orange) ===
+$orange: #C67651;
+$orange-light: #D4956F;
+$orange-dark: #B05E41;
+$orange-glow: rgba(198, 118, 81, 0.25);
+$orange-bg: rgba(198, 118, 81, 0.06);
 
 // === DARK BACKGROUNDS (hero, footer, CTA, overlays) ===
 $bg-dark-1: #0A0514;
@@ -73,7 +73,7 @@ $shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
 $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
 $shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
 $shadow-glow-purple: 0 0 40px rgba(108, 43, 217, 0.15);
-$shadow-glow-orange: 0 0 40px rgba(232, 96, 26, 0.15);
+$shadow-glow-orange: 0 0 40px rgba(198, 118, 81, 0.15);
 $shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 0 0 1px $glass-border;
 
 // === RADIUS ===

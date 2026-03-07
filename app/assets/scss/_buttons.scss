@@ -48,16 +48,27 @@
   }
 }
 
-// Primary — Orange with glow
+// Primary — 3D Gold/Copper gradient with glow
 .btn--primary {
-  background: $orange;
+  background: linear-gradient(180deg, $orange-light 0%, $orange 35%, $orange-dark 100%);
   color: $text-white;
-  box-shadow: $shadow-glow-orange;
+  border: 1px solid rgba($orange-light, 0.4);
+  box-shadow:
+    0 0 20px rgba($orange, 0.35),
+    0 0 40px rgba($orange-dark, 0.2),
+    0 4px 16px rgba($orange-dark, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15);
 
   &:hover {
+    background: linear-gradient(180deg, $orange-light 0%, $orange-dark 45%, darken($orange-dark, 5%) 100%);
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 0 60px $orange-glow;
-    background: $orange-dark;
+    box-shadow:
+      0 0 28px rgba($orange, 0.45),
+      0 0 56px rgba($orange-dark, 0.25),
+      0 6px 24px rgba($orange-dark, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.3),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.15);
   }
 }
 

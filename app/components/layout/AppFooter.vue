@@ -1,76 +1,51 @@
 <template>
-  <footer class="footer section--light">
+  <footer class="footer">
     <div class="container">
-      <div class="footer__top grid grid-4">
-        <!-- Brand -->
-        <div class="footer__brand">
-          <NuxtLink to="/" class="footer__logo">
-            <span class="gradient-text">Kevin</span> Attallah
-          </NuxtLink>
-          <p class="footer__desc">
-            Formations professionnelles certifiantes éligibles CPF.
-            Entrepreneuriat, langues, bureautique et bien plus.
-          </p>
-          <div class="footer__social">
-            <a
-              v-for="link in socialLinks"
-              :key="link.name"
-              :href="link.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer__social-link"
-              :aria-label="link.name"
-            >
-              <component :is="socialIcons[link.icon]" :size="18" />
-            </a>
-          </div>
+      <!-- Large decorative K behind -->
+      <span class="footer__letter" aria-hidden="true">K</span>
+      <!-- Large decorative watermark -->
+      <h2 class="footer__watermark" aria-hidden="true">KATTALLAH</h2>
+
+      <!-- Link columns -->
+      <div class="footer__grid">
+        <!-- Site links -->
+        <div class="footer__col">
+          <h4 class="footer__heading">Site</h4>
+          <NuxtLink to="/">Accueil</NuxtLink>
+          <NuxtLink to="/formations">Formations</NuxtLink>
+          <NuxtLink to="/accompagnement">Accompagnement</NuxtLink>
+          <NuxtLink to="/about">À propos</NuxtLink>
+          <NuxtLink to="/blog">Blog</NuxtLink>
+          <NuxtLink to="/formation-gratuite" class="footer__free-link">Formation Gratuite</NuxtLink>
         </div>
 
-        <!-- Formations -->
-        <div class="footer__col">
-          <h4 class="footer__heading">Formations</h4>
-          <ul class="footer__links">
-            <li><NuxtLink to="/formations">Catalogue</NuxtLink></li>
-            <li><NuxtLink to="/formations?cat=LANGUES">Langues</NuxtLink></li>
-            <li><NuxtLink to="/formations?cat=BUREAUTIQUE">Bureautique</NuxtLink></li>
-            <li><NuxtLink to="/formations?cat=Entrepreneur">Entrepreneuriat</NuxtLink></li>
-            <li><NuxtLink to="/formation-gratuite" class="footer__free-link">Formation Gratuite</NuxtLink></li>
-          </ul>
-        </div>
-
-        <!-- Company -->
-        <div class="footer__col">
-          <h4 class="footer__heading">Entreprise</h4>
-          <ul class="footer__links">
-            <li><NuxtLink to="/about">À propos</NuxtLink></li>
-            <li><NuxtLink to="/accompagnement">Accompagnement</NuxtLink></li>
-            <li><NuxtLink to="/blog">Blog</NuxtLink></li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div class="footer__col">
-          <h4 class="footer__heading">Contact</h4>
-          <ul class="footer__links">
-            <li>
-              <a :href="'mailto:' + externalLinks.contact.email">{{ externalLinks.contact.email }}</a>
-            </li>
-            <li>
-              <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener">
-                Prendre rendez-vous
-              </a>
-            </li>
-          </ul>
+        <!-- Legal + Contact -->
+        <div class="footer__col footer__col--right">
+          <h4 class="footer__heading">Légal</h4>
+          <NuxtLink to="/mentions-legales">Mentions légales</NuxtLink>
+          <NuxtLink to="/cgv">CGV</NuxtLink>
+          <a :href="'mailto:' + externalLinks.contact.email">{{ externalLinks.contact.email }}</a>
+          <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener">Prendre rendez-vous</a>
         </div>
       </div>
 
-      <div class="footer__bottom flex-between">
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
         <p class="footer__copy">
           &copy; {{ currentYear }} Kevin Attallah. Tous droits réservés.
         </p>
-        <div class="footer__legal">
-          <NuxtLink to="/mentions-legales">Mentions légales</NuxtLink>
-          <NuxtLink to="/cgv">CGV</NuxtLink>
+        <div class="footer__social">
+          <a
+            v-for="link in socialLinks"
+            :key="link.name"
+            :href="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__social-link"
+            :aria-label="link.name"
+          >
+            <component :is="socialIcons[link.icon]" :size="18" />
+          </a>
         </div>
       </div>
     </div>
@@ -96,79 +71,104 @@ const socialIcons: Record<string, any> = {
 
 <style lang="scss" scoped>
 .footer {
-  padding-top: $section-pad-sm;
-  padding-bottom: 32px;
+  background: transparent;
+  color: $text-body;
+  padding: 80px 0 32px;
+  position: relative;
+  overflow: hidden;
 
-  &__logo {
+  // Large background "K" — stretches full height of footer
+  &__letter {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
     font-family: $font-heading;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: $text-heading;
-    display: inline-block;
-    margin-bottom: 16px;
+    font-size: clamp(28rem, 60vw, 55rem);
+    font-weight: 900;
+    line-height: 0.75;
+    color: rgba(0, 0, 0, 0.04);
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
   }
 
-  &__desc {
-    color: $text-body;
-    font-size: $small;
-    line-height: 1.7;
-    margin-bottom: 24px;
-    max-width: 280px;
+  // Large decorative text — 3D gradient copper fill + white border
+  &__watermark {
+    position: relative;
+    z-index: 1;
+    font-family: $font-heading;
+    font-size: clamp(5rem, 14vw, 12rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -4px;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 48px;
+    user-select: none;
+    // 3D metallic gradient — lighter top, darker bottom
+    background: linear-gradient(
+      180deg,
+      $orange-light 0%,
+      $orange 40%,
+      $orange-dark 70%,
+      darken($orange-dark, 8%) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    // White border around letters
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.6);
+    paint-order: stroke fill;
+    // Warm glow behind text
+    filter: drop-shadow(0 0 40px rgba($orange, 0.2)) drop-shadow(0 0 80px rgba($orange-dark, 0.15));
   }
 
-  &__social {
+  // 2-column layout
+  &__grid {
     display: flex;
-    gap: 12px;
-  }
+    justify-content: space-between;
+    gap: 40px;
 
-  &__social-link {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: $bg-subtle;
-    border: 1px solid $card-border;
-    color: $text-body;
-    transition: $transition-base;
-
-    &:hover {
-      background: $purple;
-      border-color: $purple;
-      color: $text-white;
-      transform: translateY(-3px);
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: 32px;
     }
   }
 
   &__col {
-    @media (max-width: 640px) {
-      margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &--right {
+      text-align: right;
+
+      @media (max-width: 640px) {
+        text-align: left;
+      }
+    }
+
+    a {
+      color: $text-body;
+      font-size: $small;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $text-heading;
+      }
     }
   }
 
   &__heading {
     font-family: $font-heading;
-    font-size: $body;
-    font-weight: 700;
-    color: $text-heading;
-    margin-bottom: 20px;
-  }
-
-  &__links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    a {
-      color: $text-body;
-      font-size: $small;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: $orange;
-      }
-    }
+    font-size: $xs;
+    font-weight: 600;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
   }
 
   &__free-link {
@@ -176,12 +176,18 @@ const socialIcons: Record<string, any> = {
     font-weight: 600;
   }
 
+  // Bottom bar
   &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid $card-border;
     margin-top: 48px;
+    padding-top: 24px;
 
     @media (max-width: 640px) {
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
       text-align: center;
     }
   }
@@ -191,18 +197,17 @@ const socialIcons: Record<string, any> = {
     color: $text-muted;
   }
 
-  &__legal {
+  &__social {
     display: flex;
-    gap: 24px;
+    gap: 16px;
+  }
 
-    a {
-      font-size: $xs;
-      color: $text-muted;
-      transition: color 0.3s ease;
+  &__social-link {
+    color: $text-muted;
+    transition: all 0.3s ease;
 
-      &:hover {
-        color: $text-heading;
-      }
+    &:hover {
+      color: $purple;
     }
   }
 }
