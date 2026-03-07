@@ -59,12 +59,12 @@ function toggle(index: number) {
     }
 
     &--open {
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.15);
       border-color: rgba($purple, 0.25);
       box-shadow:
         0 6px 24px rgba(0, 0, 0, 0.07),
         0 0 16px rgba($purple, 0.07),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
       animation: none;
     }
   }
@@ -96,11 +96,11 @@ function toggle(index: number) {
     height: 36px;
     min-width: 36px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: $text-muted;
     transition: all 0.3s ease;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
     .faq__item--open & {
       background: rgba($purple, 0.1);
@@ -109,7 +109,7 @@ function toggle(index: number) {
     }
 
     .faq__item:hover:not(.faq__item--open) & {
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.2);
       color: $text-heading;
     }
 

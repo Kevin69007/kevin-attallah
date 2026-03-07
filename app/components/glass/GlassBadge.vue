@@ -50,10 +50,10 @@ withDefaults(defineProps<Props>(), {
 
   // Light background variants
   &--light {
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px) saturate(1.2);
     -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: $text-body;
     animation: border-glow 6s ease-in-out infinite;
   }

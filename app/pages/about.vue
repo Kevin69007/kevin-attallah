@@ -49,7 +49,7 @@
         </ScrollReveal>
 
         <StaggerGrid class="grid grid-4 mt-48">
-          <GlassCard v-for="value in values" :key="value.title">
+          <GlassCard v-for="value in values" :key="value.title" variant="light">
             <div class="values__item text-center">
               <component :is="value.icon" :size="32" class="values__icon" />
               <h4 class="values__title">{{ value.title }}</h4>

@@ -200,12 +200,12 @@ onMounted(() => {
 
   &__search-input {
     padding-left: 48px;
-    background: rgba(255, 255, 255, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: $text-heading;
     backdrop-filter: blur(20px) saturate(1.2);
     -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
     animation: border-glow 6s ease-in-out infinite;
 
     &::placeholder {
@@ -216,7 +216,7 @@ onMounted(() => {
       border-color: rgba($purple, 0.4);
       box-shadow:
         0 0 0 3px rgba($purple, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
       animation: none;
     }
   }
@@ -257,7 +257,7 @@ onMounted(() => {
 
   &__filter-divider {
     height: 1px;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
     margin: 14px 0;
   }
 
@@ -275,15 +275,15 @@ onMounted(() => {
     font-weight: 600;
     color: $text-muted;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     white-space: nowrap;
     transition: all 0.3s ease;
     cursor: pointer;
 
     &:hover {
       color: $text-heading;
-      background: rgba(255, 255, 255, 0.3);
-      border-color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
     &--active {
