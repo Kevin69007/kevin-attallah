@@ -1,14 +1,14 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="ia-hero section--dark">
+    <section class="ia-hero section--light">
       <div class="ia-hero__bg">
         <div class="orb orb--orange ia-hero__orb ia-hero__orb--1"></div>
         <div class="orb orb--purple ia-hero__orb ia-hero__orb--2"></div>
       </div>
       <div class="container ia-hero__content text-center">
         <ScrollReveal :delay="0.1">
-          <GlassBadge variant="orange">
+          <GlassBadge variant="orange-light">
             <Bot :size="14" />
             Intelligence Artificielle
           </GlassBadge>
@@ -31,7 +31,7 @@
               Réserver mon audit IA
               <ArrowRight :size="20" />
             </AppButton>
-            <AppButton variant="ghost" size="lg" to="/formations">
+            <AppButton variant="ghost-light" size="lg" to="/formations">
               Voir les formations IA
             </AppButton>
           </div>
@@ -199,7 +199,7 @@ const stats = [
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: $gradient-hero;
+  background: transparent;
   padding-top: 120px;
   padding-bottom: 80px;
 
@@ -211,14 +211,12 @@ const stats = [
   }
 
   &__content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-  &__title { font-size: $h1; color: $text-white; margin: 24px 0; line-height: 1.1; }
-  &__subtitle { font-size: $body-lg; color: $text-on-dark-muted; line-height: 1.7; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  &__title { font-size: $h1; color: $text-heading; margin: 24px 0; line-height: 1.1; }
+  &__subtitle { font-size: $body-lg; color: $text-muted; line-height: 1.7; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
   &__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 }
 
 .ia-who {
-  background: $bg-page;
-
   &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -265,7 +263,7 @@ const stats = [
   }
 }
 
-.ia-solutions { background: $bg-section-alt; }
+.ia-solutions { }
 
 .ia-sol {
   text-align: center;
@@ -339,8 +337,6 @@ const stats = [
 }
 
 .ia-stats {
-  background: $bg-page;
-
   &__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

@@ -128,7 +128,6 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .blog-preview {
-  background: $bg-page;
 }
 
 .blog-card {

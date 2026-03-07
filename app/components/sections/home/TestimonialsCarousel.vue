@@ -157,7 +157,6 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .testimonials {
-  background: $bg-page;
   overflow: hidden;
 
   // Marquee container with edge fades

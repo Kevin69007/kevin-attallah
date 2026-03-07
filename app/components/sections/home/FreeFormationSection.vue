@@ -50,7 +50,6 @@ import { freeFormationConfig as config } from '~/data/free-formation'
 
 <style lang="scss" scoped>
 .free-section {
-  background: $bg-section-alt;
   position: relative;
   overflow: hidden;
 

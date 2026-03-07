@@ -1,5 +1,6 @@
 <template>
   <div class="app-layout">
+    <BackgroundCanvas />
     <AnnouncementBar />
     <AppHeader />
     <main class="main-content">
@@ -17,6 +18,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  isolation: isolate;
 }
 
 .main-content {

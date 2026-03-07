@@ -52,8 +52,6 @@ const steps = [
 
 <style lang="scss" scoped>
 .how-it-works {
-  background: $bg-section-alt;
-
   &__grid {
     margin-top: 48px;
   }

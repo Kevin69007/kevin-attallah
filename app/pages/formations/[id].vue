@@ -1,7 +1,7 @@
 <template>
   <div v-if="formation">
     <!-- Hero -->
-    <section class="sale-hero section--dark">
+    <section class="sale-hero section--light">
       <div class="sale-hero__bg">
         <div class="orb orb--purple sale-hero__orb sale-hero__orb--1"></div>
         <div class="orb orb--orange sale-hero__orb sale-hero__orb--2"></div>
@@ -10,7 +10,7 @@
         <div class="split sale-hero__split">
           <div class="sale-hero__content">
             <ScrollReveal>
-              <GlassBadge variant="orange">
+              <GlassBadge variant="orange-light">
                 <Award :size="14" /> Éligible CPF
               </GlassBadge>
             </ScrollReveal>
@@ -39,7 +39,7 @@
             </ScrollReveal>
           </div>
           <ScrollReveal direction="right" :delay="0.4">
-            <div class="sale-hero__image glass-card">
+            <div class="sale-hero__image glass-card-light">
               <img :src="formation.image" :alt="formation.titre" />
             </div>
           </ScrollReveal>
@@ -171,9 +171,9 @@
   </div>
 
   <!-- 404 -->
-  <div v-else class="section--dark" style="min-height: 100vh; display: flex; align-items: center; justify-content: center">
+  <div v-else class="section--light" style="min-height: 100vh; display: flex; align-items: center; justify-content: center">
     <div class="text-center">
-      <h1 class="text-white">Formation introuvable</h1>
+      <h1>Formation introuvable</h1>
       <p class="text-muted mt-16">Cette formation n'existe pas dans notre catalogue.</p>
       <AppButton variant="primary" to="/formations" class="mt-24">Voir le catalogue</AppButton>
     </div>
@@ -398,7 +398,7 @@ const faqItems = [
 <style lang="scss" scoped>
 .sale-hero {
   padding: 120px 0 80px;
-  background: $gradient-hero;
+  background: transparent;
   position: relative;
   overflow: hidden;
 
@@ -420,13 +420,13 @@ const faqItems = [
 
   &__title {
     font-size: $h2;
-    color: $text-white;
+    color: $text-heading;
     margin: 20px 0;
     line-height: 1.15;
   }
 
   &__desc {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     line-height: 1.8;
     margin-bottom: 24px;
   }
@@ -436,7 +436,7 @@ const faqItems = [
     flex-wrap: wrap;
     gap: 20px;
     margin-bottom: 32px;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
 
     span {
@@ -460,8 +460,6 @@ const faqItems = [
 }
 
 .learn {
-  background: $bg-page;
-
   &__item {
     display: flex;
     align-items: center;
@@ -494,7 +492,6 @@ const faqItems = [
 }
 
 .trust {
-  background: $bg-section-alt;
   padding: $section-pad-sm 0;
 
   &__signal {
@@ -520,8 +517,6 @@ const faqItems = [
 }
 
 .pricing {
-  background: $bg-page;
-
   &__text {
     color: $text-muted;
     line-height: 1.8;
@@ -569,6 +564,5 @@ const faqItems = [
 }
 
 .faq-section {
-  background: $bg-section-alt;
 }
 </style>

@@ -29,7 +29,6 @@ useHead({ title: '404 - Page introuvable' })
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: $bg-page;
   position: relative;
   overflow: hidden;
 

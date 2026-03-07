@@ -358,7 +358,6 @@ const trustSignals = [
 <style lang="scss" scoped>
 .checkout {
   padding: 120px 0 80px;
-  background: $bg-page;
   min-height: 100vh;
 
   &__title {

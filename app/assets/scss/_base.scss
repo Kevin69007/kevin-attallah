@@ -25,7 +25,7 @@ body {
   font-size: $body;
   line-height: 1.6;
   color: $text-body;
-  background: $bg-page;
+  background: transparent;
   overflow-x: hidden;
 }
 
@@ -105,10 +105,10 @@ input, textarea, select {
   position: relative;
 }
 
-// Light section (on $bg-page)
+// Light section (transparent — BackgroundCanvas shows through)
 .section--light {
   padding: $section-pad 0;
-  background: $bg-page;
+  background: transparent;
   color: $text-body;
   position: relative;
 
@@ -125,10 +125,10 @@ input, textarea, select {
   }
 }
 
-// White section (alternating with light)
+// White section (transparent — unified with light)
 .section--white {
   padding: $section-pad 0;
-  background: $bg-section-alt;
+  background: transparent;
   color: $text-body;
   position: relative;
 

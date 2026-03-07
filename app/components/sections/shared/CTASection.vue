@@ -51,17 +51,6 @@ withDefaults(defineProps<Props>(), {
   position: relative;
   overflow: hidden;
   padding: $section-pad 0;
-  background: $bg-page;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: $gradient-primary;
-  }
 
   &__content {
     position: relative;

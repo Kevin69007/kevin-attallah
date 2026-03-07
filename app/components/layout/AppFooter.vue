@@ -64,8 +64,6 @@
         </div>
       </div>
 
-      <div class="glass-divider-light mt-48 mb-24"></div>
-
       <div class="footer__bottom flex-between">
         <p class="footer__copy">
           &copy; {{ currentYear }} Kevin Attallah. Tous droits réservés.
@@ -100,7 +98,6 @@ const socialIcons: Record<string, any> = {
 .footer {
   padding-top: $section-pad-sm;
   padding-bottom: 32px;
-  background: $bg-page;
 
   &__logo {
     font-family: $font-heading;
@@ -180,6 +177,8 @@ const socialIcons: Record<string, any> = {
   }
 
   &__bottom {
+    margin-top: 48px;
+
     @media (max-width: 640px) {
       flex-direction: column;
       gap: 12px;

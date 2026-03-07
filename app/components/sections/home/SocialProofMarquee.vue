@@ -28,9 +28,6 @@ const proofItems = [
 <style lang="scss" scoped>
 .proof {
   padding: 20px 0;
-  background: $bg-section-alt;
-  border-top: 1px solid $card-border;
-  border-bottom: 1px solid $card-border;
 
   &__items {
     display: flex;

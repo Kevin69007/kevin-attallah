@@ -76,7 +76,6 @@ const cards = [
 
 <style lang="scss" scoped>
 .ai-section {
-  background: $bg-page;
   position: relative;
   overflow: hidden;
 

@@ -87,7 +87,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 .lp {
   padding: 140px 0 80px;
-  background: $bg-page;
   position: relative;
   overflow: hidden;
   min-height: 100vh;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="catalog-hero section--dark">
+    <section class="catalog-hero section--light">
       <div class="catalog-hero__bg">
         <div class="orb orb--purple catalog-hero__orb"></div>
       </div>
@@ -146,7 +146,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .catalog-hero {
   padding: 140px 0 60px;
-  background: $gradient-hero;
+  background: transparent;
   position: relative;
   overflow: hidden;
 
@@ -173,12 +173,12 @@ onMounted(() => {
 
   &__title {
     font-size: $h2;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 16px;
   }
 
   &__subtitle {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $body-lg;
     margin-bottom: 32px;
   }
@@ -194,17 +194,25 @@ onMounted(() => {
     left: 18px;
     top: 50%;
     transform: translateY(-50%);
-    color: $text-on-dark-muted;
+    color: $text-muted;
     pointer-events: none;
   }
 
   &__search-input {
     padding-left: 48px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid $card-border;
+    color: $text-heading;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    &::placeholder {
+      color: $text-muted;
+    }
   }
 }
 
 .catalog {
-  background: $bg-page;
   padding-top: 32px;
 
   // Filter panel

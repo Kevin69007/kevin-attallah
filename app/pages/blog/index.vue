@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="blog-hero section--dark">
+    <section class="blog-hero section--light">
       <div class="container text-center">
         <TextSplit text="Le Blog" tag="h1" class="blog-hero__title" />
         <p class="blog-hero__subtitle">
@@ -128,22 +128,21 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .blog-hero {
   padding: 140px 0 60px;
-  background: $gradient-hero;
+  background: transparent;
 
   &__title {
     font-size: $h1;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 16px;
   }
 
   &__subtitle {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $body-lg;
   }
 }
 
 .blog-list {
-  background: $bg-page;
 }
 
 .blog-card {

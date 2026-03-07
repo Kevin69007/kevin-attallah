@@ -91,7 +91,6 @@ const nextSteps = [
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: $bg-page;
   position: relative;
   overflow: hidden;
   padding: 120px 0;

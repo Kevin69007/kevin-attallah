@@ -1,14 +1,14 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="about-hero section--dark">
+    <section class="about-hero section--light">
       <div class="about-hero__bg">
         <div class="orb orb--purple about-hero__orb"></div>
       </div>
       <div class="container">
         <div class="split about-hero__split">
           <ScrollReveal direction="left">
-            <GlassBadge variant="orange">À propos</GlassBadge>
+            <GlassBadge variant="orange-light">À propos</GlassBadge>
             <h1 class="about-hero__title">
               Kevin <span class="gradient-text">Attallah</span>
             </h1>
@@ -30,7 +30,7 @@
           </ScrollReveal>
 
           <ScrollReveal direction="right">
-            <div class="about-hero__photo glass-card">
+            <div class="about-hero__photo glass-card-light">
               <NuxtImg src="/img/about/about-1.png" alt="Kevin Attallah" class="about-hero__photo-img" format="webp" quality="80" />
             </div>
           </ScrollReveal>
@@ -130,7 +130,7 @@ const socialIcons: Record<string, string> = {
 <style lang="scss" scoped>
 .about-hero {
   padding: 140px 0 80px;
-  background: $gradient-hero;
+  background: transparent;
   position: relative;
   overflow: hidden;
 
@@ -151,12 +151,12 @@ const socialIcons: Record<string, string> = {
 
   &__title {
     font-size: $h1;
-    color: $text-white;
+    color: $text-heading;
     margin: 16px 0 24px;
   }
 
   &__text {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     line-height: 1.8;
     margin-bottom: 32px;
   }
@@ -180,7 +180,7 @@ const socialIcons: Record<string, string> = {
 
   &__stat-label {
     font-size: $xs;
-    color: $text-on-dark-muted;
+    color: $text-muted;
   }
 
   &__photo {
@@ -199,8 +199,6 @@ const socialIcons: Record<string, string> = {
 }
 
 .values {
-  background: $bg-page;
-
   &__item {
     padding: 8px;
   }
@@ -224,8 +222,6 @@ const socialIcons: Record<string, string> = {
 }
 
 .social {
-  background: $bg-section-alt;
-
   &__links {
     display: flex;
     flex-wrap: wrap;

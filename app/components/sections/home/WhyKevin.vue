@@ -66,8 +66,6 @@ const features = [
 
 <style lang="scss" scoped>
 .why {
-  background: $bg-page;
-
   &__stats {
     display: grid;
     grid-template-columns: 1fr 1fr;

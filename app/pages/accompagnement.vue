@@ -1,14 +1,14 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="accomp-hero section--dark">
+    <section class="accomp-hero section--light">
       <div class="accomp-hero__bg">
         <div class="orb orb--purple accomp-hero__orb accomp-hero__orb--1"></div>
         <div class="orb orb--orange accomp-hero__orb accomp-hero__orb--2"></div>
       </div>
       <div class="container accomp-hero__content text-center">
         <ScrollReveal>
-          <GlassBadge variant="orange">
+          <GlassBadge variant="orange-light">
             <Bot :size="14" />
             Accompagnement IA
           </GlassBadge>
@@ -229,7 +229,7 @@ const pillars = [
 <style lang="scss" scoped>
 .accomp-hero {
   padding: 140px 0 80px;
-  background: $gradient-hero;
+  background: transparent;
   position: relative;
   overflow: hidden;
 
@@ -241,14 +241,12 @@ const pillars = [
   }
 
   &__content { position: relative; z-index: 1; max-width: 750px; margin: 0 auto; }
-  &__title { font-size: $h1; color: $text-white; margin: 24px 0; }
-  &__subtitle { color: $text-on-dark-muted; font-size: $body-lg; line-height: 1.7; }
+  &__title { font-size: $h1; color: $text-heading; margin: 24px 0; }
+  &__subtitle { color: $text-muted; font-size: $body-lg; line-height: 1.7; }
 }
 
 // Autonome vs Accompagné
 .choice {
-  background: $bg-page;
-
   &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -402,8 +400,6 @@ const pillars = [
 
 // IA Callout
 .ia-callout {
-  background: $bg-page;
-
   &__card {
     background: $bg-card;
     border: 1px solid $card-border;

@@ -52,9 +52,7 @@ const featuredFormations = computed(() => formations.slice(0, 6))
 </script>
 
 <style lang="scss" scoped>
-.featured {
-  background: $bg-section-alt;
-}
+.featured {}
 
 .formation-card {
   display: block;

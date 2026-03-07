@@ -1,5 +1,5 @@
 <template>
-  <section class="hero section--dark">
+  <section class="hero section--light">
     <!-- Background orbs -->
     <div class="hero__bg">
       <FloatingElement :amplitude="30" :duration="6">
@@ -15,7 +15,7 @@
       <!-- Left: Text content -->
       <div class="hero__content">
         <ScrollReveal :delay="0.1">
-          <GlassBadge variant="orange">
+          <GlassBadge variant="orange-light">
             <Award :size="14" />
             Formations éligibles CPF
           </GlassBadge>
@@ -45,7 +45,7 @@
               </AppButton>
             </MagneticButton>
             <MagneticButton>
-              <AppButton variant="ghost" size="lg" :href="externalLinks.booking.brevoMeeting">
+              <AppButton variant="ghost-light" size="lg" :href="externalLinks.booking.brevoMeeting">
                 Parler à Kevin
               </AppButton>
             </MagneticButton>
@@ -54,15 +54,15 @@
 
         <ScrollReveal :delay="1">
           <div class="hero__trust">
-            <div class="hero__trust-item glass-badge">
+            <div class="hero__trust-item glass-badge-light">
               <Users :size="16" />
               <span><strong>2100+</strong> entrepreneurs formés</span>
             </div>
-            <div class="hero__trust-item glass-badge">
+            <div class="hero__trust-item glass-badge-light">
               <Clock :size="16" />
               <span><strong>15000+</strong> heures de formation</span>
             </div>
-            <div class="hero__trust-item glass-badge">
+            <div class="hero__trust-item glass-badge-light">
               <Star :size="16" />
               <span><strong>4.8/5</strong> de satisfaction</span>
             </div>
@@ -183,7 +183,7 @@ onMounted(() => {
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: $gradient-hero;
+  background: transparent;
   padding-top: 100px;
   padding-bottom: 60px;
 
@@ -220,7 +220,7 @@ onMounted(() => {
 
   &__title {
     font-size: $h1;
-    color: $text-white;
+    color: $text-heading;
     margin-top: 24px;
     margin-bottom: 24px;
     line-height: 1.1;
@@ -228,7 +228,7 @@ onMounted(() => {
 
   &__subtitle {
     font-size: $body-lg;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     max-width: 550px;
     line-height: 1.7;
     margin-bottom: 40px;
@@ -258,7 +258,7 @@ onMounted(() => {
 
   &__trust-item {
     font-size: $xs;
-    strong { color: $text-white; }
+    strong { color: $text-heading; }
   }
 
   // Photo
@@ -308,8 +308,8 @@ onMounted(() => {
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 60px rgba($purple, 0.3), 0 0 120px rgba($purple, 0.1);
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 60px rgba($purple, 0.15), 0 0 120px rgba($purple, 0.06);
     position: relative;
     z-index: 2;
   }
@@ -353,8 +353,8 @@ onMounted(() => {
 
     &--3 {
       width: 5px; height: 5px;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      background: rgba($purple, 0.5);
+      box-shadow: 0 0 10px rgba($purple, 0.3);
       --orbit-radius: 225px; animation: orbit 10s linear infinite; animation-delay: -7s; margin: -2.5px 0 0 -2.5px;
       @media (max-width: 1024px) { --orbit-radius: 175px; }
       @media (max-width: 640px) { --orbit-radius: 135px; }
@@ -388,15 +388,15 @@ onMounted(() => {
     display: flex;
     gap: 10px;
     padding: 12px 14px;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid $card-border;
     border-radius: 16px;
     width: 220px;
     opacity: 0;
     pointer-events: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: $card-shadow;
 
     @media (max-width: 1024px) {
       display: none;
@@ -474,13 +474,13 @@ onMounted(() => {
   &__bubble-name {
     font-size: 11.5px;
     font-weight: 700;
-    color: $text-white;
+    color: $text-heading;
     white-space: nowrap;
   }
 
   &__bubble-company {
     font-size: 10px;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -496,7 +496,7 @@ onMounted(() => {
 
   &__bubble-msg {
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.6);
+    color: $text-body;
     line-height: 1.45;
     display: -webkit-box;
     -webkit-line-clamp: 2;
