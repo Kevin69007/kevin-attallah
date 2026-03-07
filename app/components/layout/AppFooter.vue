@@ -12,8 +12,8 @@
         <div class="footer__col">
           <h4 class="footer__heading">Site</h4>
           <NuxtLink to="/">Accueil</NuxtLink>
-          <NuxtLink to="/formations">Formations</NuxtLink>
-          <NuxtLink to="/accompagnement">Accompagnement</NuxtLink>
+          <NuxtLink to="/creer-entreprise">Créer mon entreprise</NuxtLink>
+          <NuxtLink to="/evoluer-ia">Faire évoluer avec l'IA</NuxtLink>
           <NuxtLink to="/about">À propos</NuxtLink>
           <NuxtLink to="/blog">Blog</NuxtLink>
           <NuxtLink to="/formation-gratuite" class="footer__free-link">Formation Gratuite</NuxtLink>

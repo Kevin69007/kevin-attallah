@@ -43,7 +43,7 @@ withDefaults(defineProps<Props>(), {
   primaryText: 'Voir les formations',
   primaryLink: '/formations',
   secondaryText: 'Parler à Kevin',
-  secondaryLink: '/accompagnement',
+  secondaryLink: '/creer-entreprise',
 })
 </script>
 
