@@ -465,12 +465,18 @@ const faqItems = [
     align-items: center;
     gap: 14px;
     padding: 16px 20px;
-    background: $bg-card;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 14px;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
 
     &:hover {
-      background: darken(#fff, 2%);
+      background: rgba(255, 255, 255, 0.55);
     }
   }
 

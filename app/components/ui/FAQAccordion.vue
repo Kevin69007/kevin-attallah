@@ -48,15 +48,23 @@ function toggle(index: number) {
   gap: 12px;
 
   &__item {
-    background: $bg-card;
-    border: 1px solid $card-border;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: $radius-md;
     overflow: hidden;
-    transition: border-color 0.3s ease;
-    box-shadow: $shadow-sm;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
 
     &--open {
-      border-color: rgba($purple, 0.2);
+      background: rgba(255, 255, 255, 0.55);
+      border-color: rgba($purple, 0.25);
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     }
   }
 

@@ -34,7 +34,7 @@
       </StaggerGrid>
 
       <ScrollReveal class="text-center mt-48">
-        <AppButton variant="secondary" to="/formations">
+        <AppButton variant="primary" to="/formations">
           Tout le catalogue
           <ArrowRight :size="18" />
         </AppButton>

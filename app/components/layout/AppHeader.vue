@@ -96,35 +96,36 @@ watch(mobileOpen, (open) => {
   &__container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    position: relative;
   }
 
-  // Liquid glass pill — always visible, strong depth
+  // Liquid glass pill — frosted translucent
   &__pill {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(32px) saturate(1.4);
-    -webkit-backdrop-filter: blur(32px) saturate(1.4);
-    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(24px) saturate(1.3);
+    -webkit-backdrop-filter: blur(24px) saturate(1.3);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
     border-radius: 100px;
     padding: 10px 20px 10px 16px;
     box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.08),
-      0 1px 3px rgba(0, 0, 0, 0.06),
+      0 4px 24px rgba(0, 0, 0, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.04),
       inset 0 1px 0 rgba(255, 255, 255, 0.7),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
     transition: all 0.4s $ease-smooth;
 
     .header--scrolled & {
-      background: rgba(255, 255, 255, 0.5);
-      border-color: rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.55);
+      border-color: rgba(255, 255, 255, 0.7);
       box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        0 2px 6px rgba(0, 0, 0, 0.06),
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 2px 6px rgba(0, 0, 0, 0.04),
         inset 0 1px 0 rgba(255, 255, 255, 0.8),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+        inset 0 -1px 0 rgba(0, 0, 0, 0.03);
     }
   }
 
@@ -180,12 +181,14 @@ watch(mobileOpen, (open) => {
     }
   }
 
-  // 3D Gold/copper CTA button with glow
+  // Clean solid CTA button — positioned right
   &__cta {
+    position: absolute;
+    right: 0;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(180deg, $orange-light 0%, $orange 35%, $orange-dark 100%);
+    background: $orange;
     color: #fff;
     border-radius: 100px;
     padding: 12px 28px;
@@ -193,24 +196,18 @@ watch(mobileOpen, (open) => {
     font-weight: 700;
     font-size: $small;
     letter-spacing: 0.3px;
-    border: 1px solid rgba($orange-light, 0.4);
+    border: 1px solid rgba($orange-light, 0.3);
     box-shadow:
-      0 0 20px rgba($orange, 0.35),
-      0 0 40px rgba($orange-dark, 0.2),
-      0 4px 16px rgba($orange-dark, 0.35),
-      inset 0 1px 1px rgba(255, 255, 255, 0.25),
-      inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+      0 4px 16px rgba($orange-dark, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
     transition: all 0.4s $ease-smooth;
     white-space: nowrap;
 
     &:hover {
-      background: linear-gradient(180deg, $orange-light 0%, $orange-dark 45%, darken($orange-dark, 5%) 100%);
+      background: $orange-dark;
       box-shadow:
-        0 0 28px rgba($orange, 0.45),
-        0 0 56px rgba($orange-dark, 0.25),
-        0 6px 24px rgba($orange-dark, 0.4),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+        0 6px 24px rgba($orange-dark, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transform: translateY(-1px);
     }
 
@@ -252,13 +249,13 @@ watch(mobileOpen, (open) => {
     }
   }
 
-  // Mobile overlay
+  // Mobile overlay (frosted glass)
   &__mobile {
     position: fixed;
     inset: 0;
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur($glass-blur-heavy);
-    -webkit-backdrop-filter: blur($glass-blur-heavy);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
+    -webkit-backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
     z-index: 5;
     display: flex;
     align-items: center;
@@ -288,15 +285,15 @@ watch(mobileOpen, (open) => {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(180deg, $orange-light 0%, $orange 40%, $orange-dark 100%) !important;
+    background: $orange !important;
     color: #fff !important;
     border-radius: 100px;
     padding: 16px 36px;
     font-weight: 700 !important;
     font-size: 1rem !important;
-    border: 1px solid rgba($orange, 0.3);
+    border: 1px solid rgba($orange-light, 0.3);
     box-shadow:
-      0 4px 20px rgba($orange-dark, 0.3),
+      0 4px 16px rgba($orange-dark, 0.25),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 }

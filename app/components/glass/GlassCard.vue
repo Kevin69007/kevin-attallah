@@ -31,9 +31,15 @@ withDefaults(defineProps<Props>(), {
   }
 
   &--light {
-    background: $bg-card;
-    border: 1px solid $card-border;
-    box-shadow: $card-shadow;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
   }
 
   &--hoverable:hover {
@@ -46,8 +52,12 @@ withDefaults(defineProps<Props>(), {
   }
 
   &--hoverable.glass-card-component--light:hover {
-    box-shadow: $card-shadow-hover;
-    border-color: rgba($purple, 0.15);
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba($purple, 0.25);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
   @media (max-width: 640px) {

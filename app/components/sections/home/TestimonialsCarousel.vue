@@ -218,10 +218,14 @@ onMounted(() => {
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    background: $bg-card;
-    border: 1px solid $card-border;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: $radius-full;
-    box-shadow: $shadow-sm;
+    box-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   &__trust-stars {
@@ -246,7 +250,7 @@ onMounted(() => {
   &__trust-sep {
     width: 1px;
     height: 24px;
-    background: $card-border;
+    background: rgba(255, 255, 255, 0.4);
 
     @media (max-width: 480px) {
       width: 40px;
@@ -260,9 +264,15 @@ onMounted(() => {
   width: 350px;
   flex-shrink: 0;
   border-radius: $radius-lg;
-  background: $bg-card;
-  border: 1px solid $card-border;
-  box-shadow: $card-shadow;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
   overflow: hidden;
   transition: all 0.4s $ease-smooth;
 
@@ -271,9 +281,13 @@ onMounted(() => {
   }
 
   &:hover {
-    border-color: rgba($purple, 0.2);
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba($purple, 0.25);
     transform: translateY(-3px);
-    box-shadow: $card-shadow-purple;
+    box-shadow:
+      0 8px 32px rgba(108, 43, 217, 0.1),
+      0 2px 8px rgba(108, 43, 217, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
 
   // Top gradient line
@@ -357,7 +371,7 @@ onMounted(() => {
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    border: 2px solid $bg-card;
+    border: 2px solid rgba(255, 255, 255, 0.7);
   }
 
   &__info {

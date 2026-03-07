@@ -133,17 +133,27 @@ onUnmounted(() => {
 .blog-card {
   display: flex;
   flex-direction: column;
-  background: $bg-card;
-  border: 1px solid $card-border;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $radius-lg;
-  box-shadow: $card-shadow;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
   overflow: hidden;
   position: relative;
   transition: all 0.5s $ease-smooth;
 
   &:hover {
-    border-color: rgba($purple, 0.2);
-    box-shadow: $card-shadow-purple;
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba($purple, 0.25);
+    box-shadow:
+      0 8px 32px rgba(108, 43, 217, 0.1),
+      0 2px 8px rgba(108, 43, 217, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
     transform: translateY(-4px);
   }
 

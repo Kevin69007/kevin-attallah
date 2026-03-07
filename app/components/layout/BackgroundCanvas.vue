@@ -22,16 +22,16 @@
   overflow: hidden;
   background: $bg-page;
 
-  // Grid pattern — subtle squares, masked to top-right area only
+  // Grid pattern — visible squares, masked to top-right area
   &__grid {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba($purple-light, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba($purple-light, 0.05) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at 75% 8%, rgba(0,0,0,0.45) 0%, transparent 30%);
-    -webkit-mask-image: radial-gradient(ellipse at 75% 8%, rgba(0,0,0,0.45) 0%, transparent 30%);
+      linear-gradient(rgba($purple-light, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($purple-light, 0.12) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 82% 10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 82% 10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
 
     @media (max-width: 768px) {
       display: none;

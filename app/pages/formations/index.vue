@@ -200,11 +200,12 @@ onMounted(() => {
 
   &__search-input {
     padding-left: 48px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid $card-border;
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     color: $text-heading;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
     &::placeholder {
       color: $text-muted;
@@ -217,12 +218,18 @@ onMounted(() => {
 
   // Filter panel
   &__filters {
-    background: $bg-card;
-    border: 1px solid $card-border;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: $radius-lg;
     padding: 20px 24px;
     margin-bottom: 28px;
-    box-shadow: $card-shadow;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
   }
 
   &__filter-row {
@@ -247,7 +254,7 @@ onMounted(() => {
 
   &__filter-divider {
     height: 1px;
-    background: $card-border;
+    background: rgba(255, 255, 255, 0.4);
     margin: 14px 0;
   }
 
@@ -265,14 +272,15 @@ onMounted(() => {
     font-weight: 600;
     color: $text-muted;
     background: transparent;
-    border: 1px solid $card-border;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     white-space: nowrap;
     transition: all 0.3s ease;
     cursor: pointer;
 
     &:hover {
       color: $text-heading;
-      border-color: rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.7);
     }
 
     &--active {

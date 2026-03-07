@@ -38,11 +38,11 @@ defineEmits(['click'])
   right: 0;
   z-index: 900;
   padding: 12px 0;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur($glass-blur-heavy);
-  -webkit-backdrop-filter: blur($glass-blur-heavy);
-  border-top: 1px solid $card-border;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
+  -webkit-backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
   display: none;
 
   @media (max-width: 768px) {

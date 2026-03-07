@@ -12,12 +12,18 @@
   box-shadow: $shadow-glass;
 }
 
-// Light glass (on light backgrounds)
+// Light glass (on light backgrounds — frosted translucent)
 .glass-light {
-  background: $bg-card;
-  border: 1px solid $card-border;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $radius-lg;
-  box-shadow: $card-shadow;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
 }
 
 // Navigation glass (dark — for hero overlay)
@@ -54,16 +60,27 @@
   }
 }
 
-// Card on light backgrounds (solid white + shadow)
+// Card on light backgrounds (liquid glass — frosted translucent)
 .glass-card-light {
-  background: $bg-card;
-  border: 1px solid $card-border;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $radius-lg;
-  box-shadow: $card-shadow;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
   transition: all 0.5s $ease-smooth;
 
   &:hover {
-    box-shadow: $card-shadow-hover;
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba($purple, 0.25);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
     transform: translateY(-4px);
   }
 }
@@ -96,7 +113,7 @@
   color: $purple-light;
 }
 
-// Badge variants for light backgrounds
+// Badge variants for light backgrounds (frosted glass)
 .glass-badge-light {
   display: inline-flex;
   align-items: center;
@@ -105,20 +122,22 @@
   padding: 6px 16px;
   font-size: 13px;
   font-weight: 600;
-  background: $bg-subtle;
-  border: 1px solid $card-border;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: $text-body;
 }
 
 .glass-badge-light--orange {
-  background: rgba($orange, 0.08);
-  border-color: rgba($orange, 0.15);
+  background: rgba($orange, 0.1);
+  border-color: rgba($orange, 0.2);
   color: $orange;
 }
 
 .glass-badge-light--purple {
-  background: rgba($purple, 0.08);
-  border-color: rgba($purple, 0.15);
+  background: rgba($purple, 0.1);
+  border-color: rgba($purple, 0.2);
   color: $purple;
 }
 

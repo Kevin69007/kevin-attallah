@@ -65,10 +65,16 @@ defineEmits(['close'])
   max-height: 90vh;
   overflow-y: auto;
   padding: 40px;
-  background: $bg-card;
-  border: 1px solid $card-border;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $radius-lg;
-  box-shadow: $card-shadow-hover;
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
 
   @media (max-width: 640px) {
     padding: 28px 20px;
