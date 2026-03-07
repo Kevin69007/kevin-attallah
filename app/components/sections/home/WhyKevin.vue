@@ -49,7 +49,7 @@
 
       <!-- Stats band -->
       <ScrollReveal :delay="0.3">
-        <div class="why__stats-band">
+        <div class="why__stats-band glass-card-light">
           <div v-for="stat in stats" :key="stat.label" class="why__band-item">
             <span class="why__band-value gradient-text">
               <CountUp v-if="typeof stat.value === 'number'" :end="stat.value" :duration="2" :suffix="stat.suffix" />
@@ -136,12 +136,11 @@ const stats: { value: number | string; suffix: string; label: string }[] = [
     gap: 24px;
     margin-top: 48px;
     padding: 32px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: $radius-lg;
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
     text-align: center;
+
+    &:hover {
+      transform: none;
+    }
 
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
