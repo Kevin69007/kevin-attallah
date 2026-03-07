@@ -9,7 +9,7 @@
       </div>
     </section>
 
-    <section class="blog-list section--dark">
+    <section class="blog-list section--light">
       <div class="container">
         <StaggerGrid class="grid grid-3">
           <div
@@ -143,27 +143,24 @@ onUnmounted(() => {
 }
 
 .blog-list {
-  background: $bg-dark-1;
+  background: $bg-page;
 }
 
 .blog-card {
   display: flex;
   flex-direction: column;
-  background: $glass-bg;
-  backdrop-filter: blur($glass-blur);
-  -webkit-backdrop-filter: blur($glass-blur);
-  border: 1px solid $glass-border;
+  background: $bg-card;
+  border: 1px solid $card-border;
   border-radius: $radius-lg;
-  box-shadow: $shadow-glass;
+  box-shadow: $card-shadow;
   overflow: hidden;
   position: relative;
   transition: all 0.5s $ease-smooth;
 
   &:hover {
-    border-color: rgba($orange, 0.4);
-    box-shadow: 0 0 20px rgba($orange, 0.2), 0 0 40px rgba($purple, 0.15);
+    border-color: rgba($purple, 0.3);
+    box-shadow: $card-shadow-hover;
     transform: translateY(-4px);
-    animation: stories-glow 2s ease-in-out infinite;
   }
 
   // Mini carousel
@@ -189,7 +186,7 @@ onUnmounted(() => {
     right: 0;
     height: 3px;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     opacity: 0;
     transition: opacity 0.3s ease;
 
@@ -239,7 +236,7 @@ onUnmounted(() => {
     :deep(.swiper-pagination-bullet) {
       width: 6px;
       height: 6px;
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 50%;
       opacity: 1;
       transition: all 0.3s ease;
@@ -247,7 +244,7 @@ onUnmounted(() => {
     }
 
     :deep(.swiper-pagination-bullet-active) {
-      background: $orange;
+      background: $purple;
       width: 18px;
       border-radius: 3px;
     }
@@ -265,13 +262,13 @@ onUnmounted(() => {
     align-items: center;
     gap: 6px;
     font-size: $xs;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     margin-bottom: 10px;
   }
 
   &__title {
     font-size: $h4;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 16px;
     line-height: 1.4;
     display: -webkit-box;
@@ -283,14 +280,14 @@ onUnmounted(() => {
   }
 
   &:hover &__title {
-    color: $purple-light;
+    color: $purple;
   }
 
   &__read {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: $orange;
+    color: $purple;
     font-size: $small;
     font-weight: 600;
     transition: gap 0.3s ease;
@@ -311,8 +308,4 @@ onUnmounted(() => {
   to { width: 100%; }
 }
 
-@keyframes stories-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba($orange, 0.2), 0 0 40px rgba($purple, 0.15); }
-  50% { box-shadow: 0 0 28px rgba($orange, 0.35), 0 0 56px rgba($purple, 0.25); }
-}
 </style>

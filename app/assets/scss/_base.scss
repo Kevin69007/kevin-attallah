@@ -17,15 +17,15 @@ html {
   scroll-behavior: auto; // Lenis handles smooth scroll
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $bg-dark-1;
+  background: $bg-page;
 }
 
 body {
   font-family: $font-body;
   font-size: $body;
   line-height: 1.6;
-  color: $text-primary;
-  background: $bg-dark-1;
+  color: $text-body;
+  background: $bg-page;
   overflow-x: hidden;
 }
 
@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font-heading;
   font-weight: 800;
   line-height: 1.15;
-  color: $text-primary;
+  color: $text-heading;
 }
 
 h1 { font-size: $h1; }
@@ -79,8 +79,8 @@ input, textarea, select {
 
 // Selection
 ::selection {
-  background: rgba($purple, 0.2);
-  color: $purple-dark;
+  background: rgba($purple, 0.15);
+  color: $text-heading;
 }
 
 // Custom scrollbar
@@ -88,11 +88,15 @@ input, textarea, select {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: $bg-dark-1;
+  background: $bg-page;
 }
 ::-webkit-scrollbar-thumb {
-  background: $purple;
+  background: #D1D5DB;
   border-radius: 3px;
+
+  &:hover {
+    background: $purple;
+  }
 }
 
 // Section base
@@ -101,6 +105,47 @@ input, textarea, select {
   position: relative;
 }
 
+// Light section (on $bg-page)
+.section--light {
+  padding: $section-pad 0;
+  background: $bg-page;
+  color: $text-body;
+  position: relative;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $text-heading;
+  }
+
+  p {
+    color: $text-body;
+  }
+
+  .section-label {
+    color: $purple;
+  }
+}
+
+// White section (alternating with light)
+.section--white {
+  padding: $section-pad 0;
+  background: $bg-section-alt;
+  color: $text-body;
+  position: relative;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $text-heading;
+  }
+
+  p {
+    color: $text-body;
+  }
+
+  .section-label {
+    color: $purple;
+  }
+}
+
+// Dark section (hero, footer, CTA, overlays)
 .section--dark {
   padding: $section-pad 0;
   background: $bg-dark-1;
@@ -133,7 +178,7 @@ input, textarea, select {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: $orange;
+  color: $purple;
   margin-bottom: 16px;
   display: block;
 }

@@ -94,12 +94,27 @@ watch(mobileOpen, (open) => {
   padding: 16px 0;
   transition: all 0.4s $ease-smooth;
 
+  // Scrolled: light glass background
   &--scrolled {
-    background: rgba(10, 5, 20, 0.85);
+    background: $nav-bg-scrolled;
     backdrop-filter: blur($glass-blur-heavy);
     -webkit-backdrop-filter: blur($glass-blur-heavy);
-    border-bottom: 1px solid $glass-border;
+    border-bottom: 1px solid $nav-border;
+    box-shadow: $shadow-sm;
     padding: 10px 0;
+
+    .header__link {
+      color: $text-muted;
+
+      &:hover,
+      &--active {
+        color: $text-heading;
+      }
+    }
+
+    .header__burger span {
+      background: $text-heading;
+    }
   }
 
   &--hidden {
@@ -187,6 +202,10 @@ watch(mobileOpen, (open) => {
     }
 
     &--open {
+      span {
+        background: $text-heading;
+      }
+
       span:nth-child(1) {
         transform: translateY(7px) rotate(45deg);
       }
@@ -202,7 +221,7 @@ watch(mobileOpen, (open) => {
   &__mobile {
     position: fixed;
     inset: 0;
-    background: rgba(10, 5, 20, 0.95);
+    background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur($glass-blur-heavy);
     -webkit-backdrop-filter: blur($glass-blur-heavy);
     z-index: 5;
@@ -218,14 +237,14 @@ watch(mobileOpen, (open) => {
     gap: 28px;
 
     a {
-      color: $text-white;
+      color: $text-heading;
       font-family: $font-heading;
       font-size: 1.5rem;
       font-weight: 700;
       transition: color 0.3s ease;
 
       &:hover {
-        color: $orange;
+        color: $purple;
       }
     }
   }

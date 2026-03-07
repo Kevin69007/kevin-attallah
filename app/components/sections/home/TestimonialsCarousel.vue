@@ -1,9 +1,9 @@
 <template>
-  <section ref="sectionRef" class="testimonials section--dark">
+  <section ref="sectionRef" class="testimonials section--light">
     <div class="container">
       <ScrollReveal>
         <span class="section-label text-center">Témoignages</span>
-        <h2 class="section-title text-center text-white">
+        <h2 class="section-title text-center">
           Ils ont <span class="gradient-text">transformé</span> leur vie
         </h2>
       </ScrollReveal>
@@ -157,7 +157,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .testimonials {
-  background: $bg-dark-2;
+  background: $bg-page;
   overflow: hidden;
 
   // Marquee container with edge fades
@@ -219,9 +219,10 @@ onMounted(() => {
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    background: $glass-bg;
-    border: 1px solid $glass-border;
+    background: $bg-card;
+    border: 1px solid $card-border;
     border-radius: $radius-full;
+    box-shadow: $shadow-sm;
   }
 
   &__trust-stars {
@@ -236,17 +237,17 @@ onMounted(() => {
 
   &__trust-text {
     font-size: 13px;
-    color: $text-on-dark-muted;
+    color: $text-muted;
 
     strong {
-      color: $text-on-dark;
+      color: $text-heading;
     }
   }
 
   &__trust-sep {
     width: 1px;
     height: 24px;
-    background: $glass-border;
+    background: $card-border;
 
     @media (max-width: 480px) {
       width: 40px;
@@ -260,8 +261,9 @@ onMounted(() => {
   width: 350px;
   flex-shrink: 0;
   border-radius: $radius-lg;
-  background: linear-gradient(155deg, rgba($purple, 0.12), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: $bg-card;
+  border: 1px solid $card-border;
+  box-shadow: $card-shadow;
   overflow: hidden;
   transition: all 0.4s $ease-smooth;
 
@@ -270,9 +272,9 @@ onMounted(() => {
   }
 
   &:hover {
-    border-color: rgba($purple, 0.3);
+    border-color: rgba($purple, 0.2);
     transform: translateY(-3px);
-    box-shadow: 0 20px 50px rgba($purple, 0.15), 0 0 0 1px rgba($purple, 0.1);
+    box-shadow: $card-shadow-purple;
   }
 
   // Top gradient line
@@ -298,8 +300,8 @@ onMounted(() => {
     width: 38px;
     height: 38px;
     border-radius: 10px;
-    background: linear-gradient(135deg, rgba($orange, 0.15), rgba($purple, 0.1));
-    border: 1px solid rgba($orange, 0.12);
+    background: linear-gradient(135deg, rgba($orange, 0.1), rgba($purple, 0.06));
+    border: 1px solid rgba($orange, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -318,7 +320,7 @@ onMounted(() => {
     font-family: $font-heading;
     font-size: 0.95rem;
     font-weight: 500;
-    color: $text-on-dark;
+    color: $text-body;
     line-height: 1.75;
     min-height: 76px;
 
@@ -330,7 +332,7 @@ onMounted(() => {
   // Divider
   &__divider {
     height: 1px;
-    background: linear-gradient(90deg, rgba($purple, 0.15), rgba($orange, 0.1), transparent);
+    background: linear-gradient(90deg, rgba($purple, 0.1), rgba($orange, 0.06), transparent);
     margin: 20px 0;
   }
 
@@ -356,7 +358,7 @@ onMounted(() => {
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    border: 2px solid $bg-dark-2;
+    border: 2px solid $bg-card;
   }
 
   &__info {
@@ -366,7 +368,7 @@ onMounted(() => {
   }
 
   &__name {
-    color: $text-white;
+    color: $text-heading;
     font-size: $small;
     font-weight: 600;
   }
@@ -376,13 +378,13 @@ onMounted(() => {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: $purple-light;
+    color: $purple;
 
     &--langues { color: #34d399; }
-    &--bureautique { color: $orange-light; }
+    &--bureautique { color: $orange; }
     &--infographie { color: #f472b6; }
     &--video { color: #60a5fa; }
-    &--entrepreneur { color: $purple-light; }
+    &--entrepreneur { color: $purple; }
   }
 }
 </style>

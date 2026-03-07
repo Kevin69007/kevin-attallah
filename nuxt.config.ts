@@ -11,7 +11,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Formations professionnelles certifiantes éligibles CPF. Entrepreneuriat, business, langues et plus. Accompagnement personnalisé par Kevin Attallah.' },
-        { name: 'theme-color', content: '#0A0514' },
+        { name: 'theme-color', content: '#F4F7FB' },
         { property: 'og:title', content: 'Kevin Attallah — Formations Professionnelles' },
         { property: 'og:description', content: 'Lance ton business avec nos formations certifiantes éligibles CPF.' },
         { property: 'og:type', content: 'website' },

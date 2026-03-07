@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 interface Props {
-  variant?: 'default' | 'orange' | 'purple'
+  variant?: 'default' | 'orange' | 'purple' | 'light' | 'orange-light' | 'purple-light'
 }
 
 withDefaults(defineProps<Props>(), {
@@ -19,15 +19,16 @@ withDefaults(defineProps<Props>(), {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-radius: $radius-full;
   padding: 6px 16px;
   font-size: 13px;
   font-weight: 600;
 
+  // Dark background variants
   &--default {
     background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: $text-white;
   }
@@ -42,6 +43,25 @@ withDefaults(defineProps<Props>(), {
     background: rgba($purple, 0.15);
     border: 1px solid rgba($purple, 0.3);
     color: $purple-light;
+  }
+
+  // Light background variants
+  &--light {
+    background: $bg-subtle;
+    border: 1px solid $card-border;
+    color: $text-body;
+  }
+
+  &--orange-light {
+    background: rgba($orange, 0.08);
+    border: 1px solid rgba($orange, 0.15);
+    color: $orange;
+  }
+
+  &--purple-light {
+    background: rgba($purple, 0.08);
+    border: 1px solid rgba($purple, 0.15);
+    color: $purple;
   }
 }
 </style>

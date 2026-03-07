@@ -31,11 +31,9 @@ withDefaults(defineProps<Props>(), {
   }
 
   &--light {
-    background: $glass-bg-light;
-    backdrop-filter: blur($glass-blur);
-    -webkit-backdrop-filter: blur($glass-blur);
-    border: 1px solid $glass-border-light;
-    box-shadow: $shadow-md;
+    background: $bg-card;
+    border: 1px solid $card-border;
+    box-shadow: $card-shadow;
   }
 
   &--hoverable:hover {
@@ -48,7 +46,8 @@ withDefaults(defineProps<Props>(), {
   }
 
   &--hoverable.glass-card-component--light:hover {
-    box-shadow: $shadow-lg;
+    box-shadow: $card-shadow-hover;
+    border-color: rgba($purple, 0.15);
   }
 
   @media (max-width: 640px) {

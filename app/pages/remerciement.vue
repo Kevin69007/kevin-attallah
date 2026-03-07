@@ -1,10 +1,6 @@
 <template>
   <div>
-    <section class="thanks section--dark">
-      <div class="thanks__bg">
-        <div class="orb orb--purple thanks__orb thanks__orb--1"></div>
-        <div class="orb orb--orange thanks__orb thanks__orb--2"></div>
-      </div>
+    <section class="thanks section--light">
       <div class="container thanks__content text-center">
         <ScrollReveal>
           <div class="thanks__icon">
@@ -28,7 +24,7 @@
 
         <ScrollReveal :delay="0.8">
           <div class="thanks__steps">
-            <div class="thanks__step glass-card" v-for="step in nextSteps" :key="step.title">
+            <div class="thanks__step glass-card-light" v-for="step in nextSteps" :key="step.title">
               <component :is="step.icon" :size="28" class="thanks__step-icon" />
               <h3>{{ step.title }}</h3>
               <p>{{ step.description }}</p>
@@ -41,7 +37,7 @@
             <AppButton variant="primary" to="/formations">
               Découvrir d'autres formations
             </AppButton>
-            <AppButton variant="ghost" to="/">
+            <AppButton variant="ghost-light" to="/">
               Retour à l'accueil
             </AppButton>
           </div>
@@ -95,22 +91,10 @@ const nextSteps = [
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: $gradient-hero;
+  background: $bg-page;
   position: relative;
   overflow: hidden;
   padding: 120px 0;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  &__orb {
-    position: absolute;
-    &--1 { width: 500px; height: 500px; top: -15%; left: -10%; opacity: 0.2; }
-    &--2 { width: 300px; height: 300px; bottom: -10%; right: -5%; opacity: 0.15; }
-  }
 
   &__content {
     position: relative;
@@ -131,12 +115,12 @@ const nextSteps = [
 
   &__title {
     font-size: $h2;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 24px;
   }
 
   &__text {
-    color: $text-on-dark-muted;
+    color: $text-body;
     font-size: $body-lg;
     line-height: 1.8;
     max-width: 550px;
@@ -158,20 +142,20 @@ const nextSteps = [
     padding: 32px 24px;
 
     h3 {
-      color: $text-white;
+      color: $text-heading;
       font-size: $body;
       margin: 12px 0 8px;
     }
 
     p {
-      color: $text-on-dark-muted;
+      color: $text-body;
       font-size: $small;
       line-height: 1.6;
     }
   }
 
   &__step-icon {
-    color: $purple-light;
+    color: $purple;
   }
 }
 </style>

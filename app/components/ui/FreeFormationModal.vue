@@ -8,11 +8,11 @@
           </button>
 
           <div class="ffm-modal__header">
-            <GlassBadge variant="orange">
+            <GlassBadge variant="orange-light">
               <Gift :size="14" />
               {{ config.badgeText }}
             </GlassBadge>
-            <h2 class="ffm-modal__title text-white mt-16">
+            <h2 class="ffm-modal__title mt-16">
               Attendez ! On a un <span class="gradient-text">cadeau</span> pour vous
             </h2>
           </div>
@@ -65,12 +65,10 @@ defineEmits(['close'])
   max-height: 90vh;
   overflow-y: auto;
   padding: 40px;
-  background: $glass-bg;
-  backdrop-filter: blur($glass-blur);
-  -webkit-backdrop-filter: blur($glass-blur);
-  border: 1px solid $glass-border;
+  background: $bg-card;
+  border: 1px solid $card-border;
   border-radius: $radius-lg;
-  box-shadow: $shadow-glass, 0 0 60px rgba($orange, 0.08);
+  box-shadow: $card-shadow-hover;
 
   @media (max-width: 640px) {
     padding: 28px 20px;
@@ -82,13 +80,13 @@ defineEmits(['close'])
     right: 16px;
     background: none;
     border: none;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     cursor: pointer;
     padding: 4px;
     transition: color 0.3s ease;
 
     &:hover {
-      color: $text-white;
+      color: $text-heading;
     }
   }
 
@@ -115,12 +113,12 @@ defineEmits(['close'])
     font-family: $font-heading;
     font-size: 1.5rem;
     font-weight: 700;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     text-decoration: line-through;
   }
 
   &__price-arrow {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: 1.25rem;
   }
 
@@ -131,7 +129,7 @@ defineEmits(['close'])
   }
 
   &__desc {
-    color: $text-on-dark-muted;
+    color: $text-body;
     font-size: $small;
     text-align: center;
     line-height: 1.7;

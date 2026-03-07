@@ -1,9 +1,9 @@
 <template>
-  <section class="featured section--dark">
+  <section class="featured section--white">
     <div class="container">
       <ScrollReveal>
         <span class="section-label text-center">Formations populaires</span>
-        <h2 class="section-title text-center text-white">
+        <h2 class="section-title text-center">
           Des formations qui <span class="gradient-text">transforment</span>
         </h2>
         <p class="section-subtitle text-center" style="margin: 0 auto 48px">
@@ -16,7 +16,7 @@
           v-for="formation in featuredFormations"
           :key="formation.id"
           :to="`/formations/${formation.id}`"
-          class="formation-card glass-card"
+          class="formation-card glass-card-light"
         >
           <div class="formation-card__img">
             <NuxtImg :src="formation.image" :alt="formation.titre" loading="lazy" format="webp" quality="80" />
@@ -53,7 +53,7 @@ const featuredFormations = computed(() => formations.slice(0, 6))
 
 <style lang="scss" scoped>
 .featured {
-  background: $bg-dark-2;
+  background: $bg-section-alt;
 }
 
 .formation-card {
@@ -66,7 +66,7 @@ const featuredFormations = computed(() => formations.slice(0, 6))
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.04) 75%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.04) 25%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.04) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
 
@@ -97,14 +97,14 @@ const featuredFormations = computed(() => formations.slice(0, 6))
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: $purple-light;
+    color: $purple;
     margin-bottom: 8px;
     display: block;
   }
 
   &__title {
     font-size: $h4;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 16px;
     line-height: 1.3;
     display: -webkit-box;
@@ -116,7 +116,7 @@ const featuredFormations = computed(() => formations.slice(0, 6))
   &__meta {
     display: flex;
     gap: 16px;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $xs;
 
     span {

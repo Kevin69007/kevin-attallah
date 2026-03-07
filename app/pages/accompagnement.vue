@@ -29,18 +29,18 @@
     </section>
 
     <!-- Autonome vs Accompagné -->
-    <section class="choice section--dark">
+    <section class="choice section--light">
       <div class="container">
         <ScrollReveal>
           <span class="section-label text-center">Choisis ton parcours</span>
-          <h2 class="section-title text-center text-white">
+          <h2 class="section-title text-center">
             Comment veux-tu <span class="gradient-text">avancer</span> ?
           </h2>
         </ScrollReveal>
 
         <StaggerGrid class="choice__grid">
           <!-- Accompagné -->
-          <div class="choice__card glass-card choice__card--active">
+          <div class="choice__card glass-card-light choice__card--active">
             <div class="choice__icon">
               <Users :size="32" />
             </div>
@@ -65,7 +65,7 @@
           </div>
 
           <!-- Autonome -->
-          <div class="choice__card glass-card">
+          <div class="choice__card glass-card-light">
             <div class="choice__icon choice__icon--purple">
               <Rocket :size="32" />
             </div>
@@ -93,7 +93,7 @@
     </section>
 
     <!-- 3 Pillars -->
-    <section v-for="(pillar, index) in pillars" :key="pillar.title" class="pillar section--dark" :style="{ background: index % 2 === 0 ? '#0A0514' : '#110B24' }">
+    <section v-for="(pillar, index) in pillars" :key="pillar.title" :class="['pillar', index % 2 === 0 ? 'section--white' : 'section--light']">
       <div class="container">
         <div :class="['split', { 'split--reverse': index % 2 !== 0 }]">
           <ScrollReveal :direction="index % 2 === 0 ? 'left' : 'right'">
@@ -101,7 +101,7 @@
               <component :is="pillar.icon" :size="48" class="pillar__icon" />
             </div>
             <span class="section-label">Pilier {{ index + 1 }}</span>
-            <h2 class="section-title text-white">{{ pillar.title }}</h2>
+            <h2 class="section-title">{{ pillar.title }}</h2>
             <p class="pillar__desc">{{ pillar.description }}</p>
             <div class="pillar__features">
               <div v-for="feature in pillar.features" :key="feature" class="pillar__feature">
@@ -119,7 +119,7 @@
             <GlassCard>
               <div class="pillar__card-content text-center">
                 <component :is="pillar.icon" :size="40" class="pillar__card-icon" />
-                <h3 class="text-white mt-16">{{ pillar.cardTitle }}</h3>
+                <h3 class="mt-16">{{ pillar.cardTitle }}</h3>
                 <p class="text-muted mt-8" style="font-size: 0.875rem">{{ pillar.cardDesc }}</p>
               </div>
             </GlassCard>
@@ -129,7 +129,7 @@
     </section>
 
     <!-- IA Incluse Callout -->
-    <section class="ia-callout section--dark">
+    <section class="ia-callout section--light">
       <div class="container">
         <ScrollReveal>
           <div class="ia-callout__card">
@@ -137,7 +137,7 @@
               <Bot :size="40" />
             </div>
             <span class="section-label text-center">IA Incluse</span>
-            <h2 class="section-title text-center text-white">
+            <h2 class="section-title text-center">
               Ton projet sera pensé pour le <span class="gradient-text">monde d'aujourd'hui</span>
             </h2>
             <p class="ia-callout__text">
@@ -247,7 +247,7 @@ const pillars = [
 
 // Autonome vs Accompagné
 .choice {
-  background: $bg-dark-2;
+  background: $bg-page;
 
   &__grid {
     display: grid;
@@ -267,8 +267,8 @@ const pillars = [
     transition: all 0.4s $ease-smooth;
 
     &--active {
-      border-color: rgba($orange, 0.3);
-      box-shadow: 0 0 40px rgba($orange, 0.1);
+      border-color: rgba($purple, 0.3);
+      box-shadow: $card-shadow-purple;
     }
   }
 
@@ -276,31 +276,31 @@ const pillars = [
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: rgba($orange, 0.15);
+    background: rgba($purple, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $orange;
+    color: $purple;
     margin-bottom: 16px;
 
-    &--purple { background: rgba($purple, 0.15); color: $purple-light; }
+    &--purple { background: rgba($purple, 0.1); color: $purple; }
   }
 
   &__title {
     font-size: $h3;
-    color: $text-white;
+    color: $text-heading;
     margin: 12px 0 4px;
   }
 
   &__subtitle {
     font-size: $small;
-    color: $orange;
+    color: $purple;
     font-weight: 600;
     margin-bottom: 12px;
   }
 
   &__desc {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
     line-height: 1.7;
     margin-bottom: 20px;
@@ -319,15 +319,15 @@ const pillars = [
       display: flex;
       align-items: center;
       gap: 12px;
-      color: $text-on-dark;
+      color: $text-body;
       font-size: $small;
       padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba($purple, 0.03);
       border-radius: 12px;
       transition: background 0.3s ease;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba($purple, 0.06);
       }
 
       svg {
@@ -336,8 +336,8 @@ const pillars = [
         height: 28px;
         padding: 5px;
         border-radius: 50%;
-        background: rgba($orange, 0.12);
-        color: $orange;
+        background: rgba($purple, 0.1);
+        color: $purple;
       }
     }
   }
@@ -349,17 +349,17 @@ const pillars = [
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: rgba($purple, 0.15);
+    background: rgba($purple, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 24px;
   }
 
-  &__icon { color: $purple-light; }
+  &__icon { color: $purple; }
 
   &__desc {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     line-height: 1.8;
     margin-bottom: 24px;
   }
@@ -374,15 +374,15 @@ const pillars = [
     display: flex;
     align-items: center;
     gap: 12px;
-    color: $text-on-dark;
+    color: $text-body;
     font-size: $small;
     padding: 10px 16px;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba($purple, 0.03);
     border-radius: 12px;
     transition: background 0.3s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba($purple, 0.06);
     }
   }
 
@@ -392,26 +392,27 @@ const pillars = [
     height: 28px;
     padding: 5px;
     border-radius: 50%;
-    background: rgba($orange, 0.12);
-    color: $orange;
+    background: rgba($purple, 0.1);
+    color: $purple;
   }
 
   &__card-content { padding: 20px; }
-  &__card-icon { color: $orange; }
+  &__card-icon { color: $purple; }
 }
 
 // IA Callout
 .ia-callout {
-  background: $bg-dark-2;
+  background: $bg-page;
 
   &__card {
-    background: linear-gradient(135deg, rgba($purple, 0.12), rgba($orange, 0.08));
-    border: 1px solid rgba($purple, 0.2);
+    background: $bg-card;
+    border: 1px solid $card-border;
     border-radius: $radius-lg;
     padding: 60px 40px;
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
+    box-shadow: $card-shadow;
 
     @media (max-width: 640px) { padding: 40px 24px; }
   }
@@ -420,16 +421,16 @@ const pillars = [
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    background: rgba($orange, 0.15);
+    background: rgba($purple, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $orange;
+    color: $purple;
     margin: 0 auto 24px;
   }
 
   &__text {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $body;
     line-height: 1.8;
     margin: 0 auto 32px;

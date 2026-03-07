@@ -7,30 +7,38 @@ $purple: #6C2BD9;
 $purple-light: #8B5CF6;
 $purple-dark: #5521B5;
 $purple-glow: rgba(108, 43, 217, 0.4);
-$purple-bg: rgba(108, 43, 217, 0.08);
+$purple-bg: rgba(108, 43, 217, 0.06);
 
 // === ACCENT: Orange ===
-$orange: #FF6B2C;
+$orange: #E8601A;
 $orange-light: #FF8F5C;
-$orange-dark: #E55A1B;
-$orange-glow: rgba(255, 107, 44, 0.4);
-$orange-bg: rgba(255, 107, 44, 0.08);
+$orange-dark: #D4520F;
+$orange-glow: rgba(232, 96, 26, 0.25);
+$orange-bg: rgba(232, 96, 26, 0.06);
 
-// === DARK BACKGROUNDS ===
+// === DARK BACKGROUNDS (hero, footer, CTA, overlays) ===
 $bg-dark-1: #0A0514;
 $bg-dark-2: #110B24;
 $bg-dark-3: #1A1033;
 
-// === LIGHT BACKGROUNDS ===
+// === LIGHT BACKGROUNDS (body sections) ===
+$bg-page: #F4F7FB;
+$bg-section-alt: #FFFFFF;
+$bg-card: #FFFFFF;
+$bg-card-hover: #F0F3F9;
+$bg-subtle: #EDF1F7;
 $bg-light-1: #FAF8FF;
 $bg-light-2: #F3EEFF;
 $bg-white: #FFFFFF;
 
-// === TEXT ===
+// === TEXT (light backgrounds) ===
+$text-heading: #111827;
+$text-body: #4B5563;
+$text-muted: #9CA3AF;
+
+// === TEXT (dark backgrounds) ===
 $text-white: #FFFFFF;
 $text-primary: #1A1033;
-$text-body: #4A4458;
-$text-muted: #8B839C;
 $text-on-dark: rgba(255, 255, 255, 0.85);
 $text-on-dark-muted: rgba(255, 255, 255, 0.5);
 
@@ -40,8 +48,9 @@ $gradient-primary: linear-gradient(135deg, $orange, $purple);
 $gradient-purple: linear-gradient(135deg, $purple-dark, $purple-light);
 $gradient-glow: radial-gradient(circle, $purple-glow 0%, transparent 70%);
 $gradient-orange-glow: radial-gradient(circle, $orange-glow 0%, transparent 70%);
+$gradient-subtle: linear-gradient(135deg, rgba($purple, 0.03), rgba($orange, 0.02));
 
-// === LIQUID GLASS ===
+// === LIQUID GLASS (dark sections) ===
 $glass-bg: rgba(255, 255, 255, 0.06);
 $glass-bg-light: rgba(255, 255, 255, 0.65);
 $glass-border: rgba(255, 255, 255, 0.1);
@@ -49,12 +58,22 @@ $glass-border-light: rgba(255, 255, 255, 0.3);
 $glass-blur: 20px;
 $glass-blur-heavy: 40px;
 
+// === CARDS (light sections) ===
+$card-border: rgba(0, 0, 0, 0.06);
+$card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 24px rgba(0, 0, 0, 0.06);
+$card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 40px rgba(0, 0, 0, 0.1);
+$card-shadow-purple: 0 4px 12px rgba(108, 43, 217, 0.08), 0 12px 40px rgba(108, 43, 217, 0.12);
+
+// === NAVIGATION ===
+$nav-bg-scrolled: rgba(255, 255, 255, 0.85);
+$nav-border: rgba(0, 0, 0, 0.06);
+
 // === SHADOWS ===
-$shadow-sm: 0 2px 8px rgba(10, 5, 20, 0.08);
-$shadow-md: 0 8px 30px rgba(10, 5, 20, 0.12);
-$shadow-lg: 0 20px 60px rgba(10, 5, 20, 0.2);
-$shadow-glow-purple: 0 0 40px $purple-glow;
-$shadow-glow-orange: 0 0 40px $orange-glow;
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+$shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+$shadow-glow-purple: 0 0 40px rgba(108, 43, 217, 0.15);
+$shadow-glow-orange: 0 0 40px rgba(232, 96, 26, 0.15);
 $shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 0 0 1px $glass-border;
 
 // === RADIUS ===

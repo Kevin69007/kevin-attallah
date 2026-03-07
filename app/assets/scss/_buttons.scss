@@ -114,6 +114,19 @@
   }
 }
 
+// Ghost light (for light backgrounds)
+.btn--ghost-light {
+  background: transparent;
+  border: 1px solid $card-border;
+  color: $text-heading;
+
+  &:hover {
+    background: $bg-subtle;
+    border-color: rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
 // Small variant
 .btn--sm {
   padding: 10px 24px;

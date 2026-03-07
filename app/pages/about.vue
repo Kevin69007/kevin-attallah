@@ -39,11 +39,11 @@
     </section>
 
     <!-- Values -->
-    <section class="values section--dark">
+    <section class="values section--light">
       <div class="container">
         <ScrollReveal>
           <span class="section-label text-center">Nos valeurs</span>
-          <h2 class="section-title text-center text-white">
+          <h2 class="section-title text-center">
             Ce qui nous <span class="gradient-text">guide</span>
           </h2>
         </ScrollReveal>
@@ -61,10 +61,10 @@
     </section>
 
     <!-- Social -->
-    <section class="social section--dark">
+    <section class="social section--white">
       <div class="container text-center">
         <ScrollReveal>
-          <h2 class="section-title text-white">Suivez Kevin</h2>
+          <h2 class="section-title">Suivez Kevin</h2>
           <p class="section-subtitle" style="margin: 0 auto 32px">
             Rejoignez la communauté sur les réseaux sociaux
           </p>
@@ -77,7 +77,7 @@
               :href="link.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="social__link glass-card"
+              class="social__link glass-card-light"
             >
               <span class="social__icon" v-html="socialIcons[link.icon]"></span>
               <span class="social__name">{{ link.name }}</span>
@@ -199,32 +199,32 @@ const socialIcons: Record<string, string> = {
 }
 
 .values {
-  background: $bg-dark-2;
+  background: $bg-page;
 
   &__item {
     padding: 8px;
   }
 
   &__icon {
-    color: $orange;
+    color: $purple;
     margin-bottom: 16px;
   }
 
   &__title {
-    color: $text-white;
+    color: $text-heading;
     font-size: $body;
     margin-bottom: 8px;
   }
 
   &__desc {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
     line-height: 1.6;
   }
 }
 
 .social {
-  background: $bg-dark-1;
+  background: $bg-section-alt;
 
   &__links {
     display: flex;
@@ -238,14 +238,14 @@ const socialIcons: Record<string, string> = {
     align-items: center;
     gap: 12px;
     padding: 16px 24px;
-    color: $text-on-dark;
+    color: $text-body;
     font-weight: 600;
     font-size: $small;
     transition: $transition-base;
 
     &:hover {
-      color: $orange;
-      border-color: rgba($orange, 0.3);
+      color: $purple;
+      border-color: rgba($purple, 0.3);
     }
   }
 
@@ -253,10 +253,10 @@ const socialIcons: Record<string, string> = {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $purple-light;
+    color: $purple;
 
     .social__link:hover & {
-      color: $orange;
+      color: $purple;
     }
   }
 }

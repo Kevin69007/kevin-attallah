@@ -1,6 +1,6 @@
 <template>
   <div v-if="post">
-    <section class="blog-detail section--dark">
+    <section class="blog-detail section--light">
       <div class="container container--narrow">
         <ScrollReveal>
           <NuxtLink to="/blog" class="blog-detail__back">
@@ -71,9 +71,9 @@
     <CTASection />
   </div>
 
-  <div v-else class="section--dark" style="min-height: 100vh; display: flex; align-items: center; justify-content: center">
+  <div v-else class="section--light" style="min-height: 100vh; display: flex; align-items: center; justify-content: center">
     <div class="text-center">
-      <h1 class="text-white">Article introuvable</h1>
+      <h1>Article introuvable</h1>
       <AppButton variant="primary" to="/blog" class="mt-24">Retour au blog</AppButton>
     </div>
   </div>
@@ -117,13 +117,13 @@ useHead({
 <style lang="scss" scoped>
 .blog-detail {
   padding: 120px 0 80px;
-  background: $gradient-hero;
+  background: $bg-page;
 
   &__back {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
     margin-bottom: 24px;
     transition: color 0.3s ease;
@@ -138,13 +138,13 @@ useHead({
     align-items: center;
     gap: 6px;
     font-size: $xs;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     margin-bottom: 12px;
   }
 
   &__title {
     font-size: $h2;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 32px;
     line-height: 1.2;
   }
@@ -160,9 +160,9 @@ useHead({
     position: relative;
     border-radius: $radius-lg;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid $glass-border;
-    box-shadow: $shadow-glass;
+    background: $bg-subtle;
+    border: 1px solid $card-border;
+    box-shadow: $card-shadow;
   }
 
   &__swiper {
@@ -177,11 +177,11 @@ useHead({
       width: 100%;
       height: 100%;
       object-fit: contain;
-      background: rgba(0, 0, 0, 0.3);
+      background: $bg-subtle;
     }
   }
 
-  // Navigation arrows
+  // Navigation arrows — KEEP dark (sit on images)
   &__nav {
     position: absolute;
     top: 50%;
@@ -220,7 +220,7 @@ useHead({
     right: 12px;
   }
 
-  // Counter badge
+  // Counter badge — KEEP dark (sits on images)
   &__counter {
     position: absolute;
     top: 12px;

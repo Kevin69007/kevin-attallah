@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer section--dark">
+  <footer class="footer section--light">
     <div class="container">
       <div class="footer__top grid grid-4">
         <!-- Brand -->
@@ -64,7 +64,7 @@
         </div>
       </div>
 
-      <div class="glass-divider mt-48 mb-24"></div>
+      <div class="glass-divider-light mt-48 mb-24"></div>
 
       <div class="footer__bottom flex-between">
         <p class="footer__copy">
@@ -100,19 +100,19 @@ const socialIcons: Record<string, any> = {
 .footer {
   padding-top: $section-pad-sm;
   padding-bottom: 32px;
-  background: $gradient-hero;
+  background: $bg-page;
 
   &__logo {
     font-family: $font-heading;
     font-size: 1.5rem;
     font-weight: 800;
-    color: $text-white;
+    color: $text-heading;
     display: inline-block;
     margin-bottom: 16px;
   }
 
   &__desc {
-    color: $text-on-dark-muted;
+    color: $text-body;
     font-size: $small;
     line-height: 1.7;
     margin-bottom: 24px;
@@ -131,9 +131,9 @@ const socialIcons: Record<string, any> = {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: $glass-bg;
-    border: 1px solid $glass-border;
-    color: $text-on-dark-muted;
+    background: $bg-subtle;
+    border: 1px solid $card-border;
+    color: $text-body;
     transition: $transition-base;
 
     &:hover {
@@ -154,7 +154,7 @@ const socialIcons: Record<string, any> = {
     font-family: $font-heading;
     font-size: $body;
     font-weight: 700;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 20px;
   }
 
@@ -164,7 +164,7 @@ const socialIcons: Record<string, any> = {
     gap: 12px;
 
     a {
-      color: $text-on-dark-muted;
+      color: $text-body;
       font-size: $small;
       transition: color 0.3s ease;
 
@@ -175,7 +175,7 @@ const socialIcons: Record<string, any> = {
   }
 
   &__free-link {
-    color: $orange-light !important;
+    color: $orange !important;
     font-weight: 600;
   }
 
@@ -189,7 +189,7 @@ const socialIcons: Record<string, any> = {
 
   &__copy {
     font-size: $xs;
-    color: $text-on-dark-muted;
+    color: $text-muted;
   }
 
   &__legal {
@@ -198,11 +198,11 @@ const socialIcons: Record<string, any> = {
 
     a {
       font-size: $xs;
-      color: $text-on-dark-muted;
+      color: $text-muted;
       transition: color 0.3s ease;
 
       &:hover {
-        color: $text-white;
+        color: $text-heading;
       }
     }
   }

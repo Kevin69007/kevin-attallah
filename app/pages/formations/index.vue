@@ -25,7 +25,7 @@
     </section>
 
     <!-- Filters + Grid -->
-    <section class="catalog section--dark">
+    <section class="catalog section--light">
       <div class="container">
         <!-- Filter panel -->
         <div class="catalog__filters">
@@ -85,7 +85,7 @@
             v-for="formation in filteredFormations"
             :key="formation.id"
             :to="`/formations/${formation.id}`"
-            class="formation-card glass-card"
+            class="formation-card glass-card-light"
           >
             <div class="formation-card__img">
               <NuxtImg :src="formation.image" :alt="formation.titre" loading="lazy" format="webp" quality="80" />
@@ -105,7 +105,7 @@
         <!-- Empty state -->
         <div v-if="filteredFormations.length === 0" class="catalog__empty text-center">
           <SearchX :size="48" />
-          <h3 class="text-white mt-16">Aucune formation trouvée</h3>
+          <h3 class="mt-16">Aucune formation trouvée</h3>
           <p class="text-muted mt-8">Essayez avec d'autres critères de recherche</p>
           <AppButton variant="ghost" class="mt-24" @click="searchQuery = ''; selectedCategory = ''; selectedLevel = ''">
             Réinitialiser les filtres
@@ -204,18 +204,17 @@ onMounted(() => {
 }
 
 .catalog {
-  background: $bg-dark-1;
+  background: $bg-page;
   padding-top: 32px;
 
   // Filter panel
   &__filters {
-    background: $glass-bg;
-    backdrop-filter: blur($glass-blur);
-    -webkit-backdrop-filter: blur($glass-blur);
-    border: 1px solid $glass-border;
+    background: $bg-card;
+    border: 1px solid $card-border;
     border-radius: $radius-lg;
     padding: 20px 24px;
     margin-bottom: 28px;
+    box-shadow: $card-shadow;
   }
 
   &__filter-row {
@@ -232,7 +231,7 @@ onMounted(() => {
 
   &__filter-label {
     font-size: $small;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-weight: 600;
     white-space: nowrap;
     flex-shrink: 0;
@@ -240,7 +239,7 @@ onMounted(() => {
 
   &__filter-divider {
     height: 1px;
-    background: $glass-border;
+    background: $card-border;
     margin: 14px 0;
   }
 
@@ -256,43 +255,43 @@ onMounted(() => {
     border-radius: $radius-full;
     font-size: $xs;
     font-weight: 600;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     background: transparent;
-    border: 1px solid $glass-border;
+    border: 1px solid $card-border;
     white-space: nowrap;
     transition: all 0.3s ease;
     cursor: pointer;
 
     &:hover {
-      color: $text-white;
-      border-color: rgba(255, 255, 255, 0.25);
+      color: $text-heading;
+      border-color: rgba(0, 0, 0, 0.15);
     }
 
     &--active {
-      background: $orange;
-      border-color: $orange;
-      color: $text-white;
-      box-shadow: 0 0 16px rgba($orange, 0.25);
+      background: $purple;
+      border-color: $purple;
+      color: #fff;
+      box-shadow: 0 0 16px rgba($purple, 0.25);
     }
 
     // Level variant
     &--active-level {
       background: $purple;
       border-color: $purple;
-      color: $text-white;
+      color: #fff;
       box-shadow: 0 0 16px rgba($purple, 0.25);
     }
   }
 
   &__count {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
     margin-bottom: 32px;
   }
 
   &__empty {
     padding: 80px 0;
-    color: $text-on-dark-muted;
+    color: $text-muted;
   }
 }
 
@@ -306,7 +305,7 @@ onMounted(() => {
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.04) 75%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.04) 25%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.04) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
 
@@ -337,14 +336,14 @@ onMounted(() => {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: $purple-light;
+    color: $purple;
     margin-bottom: 8px;
     display: block;
   }
 
   &__title {
     font-size: $h4;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 16px;
     line-height: 1.3;
     display: -webkit-box;
@@ -356,7 +355,7 @@ onMounted(() => {
   &__meta {
     display: flex;
     gap: 16px;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $xs;
 
     span {

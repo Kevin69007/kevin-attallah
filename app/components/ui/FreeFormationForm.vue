@@ -9,7 +9,6 @@
           label="Nom"
           placeholder="Dupont"
           required
-          dark
         />
         <FormInput
           id="ffm-firstName"
@@ -17,7 +16,6 @@
           label="Prénom"
           placeholder="Jean"
           required
-          dark
         />
       </div>
       <FormInput
@@ -27,7 +25,6 @@
         type="email"
         placeholder="jean@example.com"
         required
-        dark
       />
       <FormInput
         id="ffm-phone"
@@ -36,7 +33,6 @@
         type="tel"
         placeholder="+33 6 12 34 56 78"
         required
-        dark
       />
       <AppButton variant="primary" block type="submit" :disabled="loading" class="mt-16">
         <Loader2 v-if="loading" :size="18" class="free-form__spin" />
@@ -53,7 +49,7 @@
       <div class="free-form__success-icon">
         <CheckCircle :size="48" />
       </div>
-      <h3 class="text-white mt-16">C'est fait !</h3>
+      <h3 class="mt-16">C'est fait !</h3>
       <p class="text-muted mt-8">{{ config.successMessage }}</p>
     </div>
   </form>
@@ -130,7 +126,7 @@ async function showToast(msg: string, type: 'error' | 'success' = 'error') {
 
   &__privacy {
     font-size: $xs;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     text-align: center;
     margin-top: 12px;
     line-height: 1.5;

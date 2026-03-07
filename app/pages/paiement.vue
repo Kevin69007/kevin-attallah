@@ -16,10 +16,10 @@
       </Transition>
     </Teleport>
 
-    <section class="checkout section--dark">
+    <section class="checkout section--light">
       <div class="container">
         <ScrollReveal>
-          <h1 class="checkout__title text-center text-white">Finaliser votre inscription</h1>
+          <h1 class="checkout__title text-center">Finaliser votre inscription</h1>
           <p class="checkout__subtitle text-center">Paiement sécurisé par carte bancaire</p>
         </ScrollReveal>
 
@@ -27,8 +27,8 @@
           <!-- Left: Billing form -->
           <div>
             <ScrollReveal>
-              <GlassCard variant="dark">
-                <h3 class="text-white mb-24">Informations de facturation</h3>
+              <GlassCard variant="light">
+                <h3 class="mb-24">Informations de facturation</h3>
                 <form @submit.prevent>
                   <FormInput
                     id="name"
@@ -36,7 +36,6 @@
                     label="Nom complet"
                     placeholder="Jean Dupont"
                     required
-                    dark
                   />
                   <div class="checkout__row">
                     <FormInput
@@ -46,7 +45,6 @@
                       type="email"
                       placeholder="jean@example.com"
                       required
-                      dark
                     />
                     <FormInput
                       id="phone"
@@ -54,7 +52,6 @@
                       label="Téléphone"
                       type="tel"
                       placeholder="+33612345678"
-                      dark
                     />
                   </div>
                   <div class="checkout__row">
@@ -64,7 +61,6 @@
                       label="Ville"
                       placeholder="Paris"
                       required
-                      dark
                     />
                     <FormInput
                       id="postcode"
@@ -72,13 +68,12 @@
                       label="Code postal"
                       placeholder="75002"
                       required
-                      dark
                     />
                   </div>
                 </form>
 
                 <!-- Revolut Card Field -->
-                <div class="form-group form-group--dark mt-24">
+                <div class="form-group mt-24">
                   <label class="form-label">Carte bancaire</label>
                   <div id="card-field" class="checkout__card-field"></div>
                 </div>
@@ -101,14 +96,14 @@
           <!-- Right: Order summary -->
           <div>
             <ScrollReveal direction="right" :delay="0.2">
-              <GlassCard variant="dark" class="mb-24">
-                <h3 class="text-white mb-16">Récapitulatif</h3>
+              <GlassCard variant="light" class="mb-24">
+                <h3 class="mb-16">Récapitulatif</h3>
                 <div class="checkout__summary">
                   <div class="checkout__summary-row">
                     <span>Formation</span>
-                    <span class="text-white">{{ orderDescription }}</span>
+                    <span>{{ orderDescription }}</span>
                   </div>
-                  <div class="glass-divider" style="margin: 16px 0"></div>
+                  <div class="glass-divider-light" style="margin: 16px 0"></div>
                   <div class="checkout__summary-row checkout__summary-row--total">
                     <span>Total</span>
                     <span class="gradient-text">{{ orderAmount }}€</span>
@@ -120,7 +115,7 @@
             <!-- Trust signals -->
             <ScrollReveal direction="right" :delay="0.4">
               <div class="checkout__trust-list">
-                <div v-for="signal in trustSignals" :key="signal.title" class="checkout__trust-item glass-card">
+                <div v-for="signal in trustSignals" :key="signal.title" class="checkout__trust-item glass-card-light">
                   <component :is="signal.icon" :size="20" class="checkout__trust-icon" />
                   <div>
                     <strong>{{ signal.title }}</strong>
@@ -228,9 +223,9 @@ function initRevolutCard(token: string) {
         },
         styles: {
           default: {
-            color: 'white',
+            color: '#111827',
             fontSize: '16px',
-            '::placeholder': { color: 'rgba(255,255,255,0.4)' },
+            '::placeholder': { color: '#9CA3AF' },
           },
         },
       })
@@ -363,7 +358,7 @@ const trustSignals = [
 <style lang="scss" scoped>
 .checkout {
   padding: 120px 0 80px;
-  background: $gradient-hero;
+  background: $bg-page;
   min-height: 100vh;
 
   &__title {
@@ -371,7 +366,7 @@ const trustSignals = [
   }
 
   &__subtitle {
-    color: $text-on-dark-muted;
+    color: $text-body;
     font-size: $body-lg;
   }
 
@@ -391,8 +386,8 @@ const trustSignals = [
 
   &__card-field {
     min-height: 50px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: $bg-card;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: $radius-sm;
     padding: 14px 18px;
   }
@@ -402,7 +397,7 @@ const trustSignals = [
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: $text-on-dark-muted;
+      color: $text-body;
       font-size: $small;
 
       &--total {
@@ -428,21 +423,21 @@ const trustSignals = [
     padding: 16px 20px;
 
     strong {
-      color: $text-white;
+      color: $text-heading;
       font-size: $small;
       display: block;
       margin-bottom: 2px;
     }
 
     p {
-      color: $text-on-dark-muted;
+      color: $text-body;
       font-size: $xs;
       margin: 0;
     }
   }
 
   &__trust-icon {
-    color: $purple-light;
+    color: $purple;
     flex-shrink: 0;
   }
 }
@@ -466,8 +461,9 @@ const trustSignals = [
     text-align: center;
     padding: 48px 40px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: $bg-card;
+    border: 1px solid $card-border;
+    box-shadow: $card-shadow-hover;
     max-width: 380px;
     width: 90%;
   }
@@ -479,14 +475,14 @@ const trustSignals = [
   }
 
   &__title {
-    color: $text-white;
+    color: $text-heading;
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 8px;
   }
 
   &__text {
-    color: $text-on-dark-muted;
+    color: $text-body;
     font-size: 0.875rem;
     line-height: 1.6;
     margin-bottom: 24px;

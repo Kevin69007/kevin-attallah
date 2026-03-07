@@ -38,10 +38,11 @@ defineEmits(['click'])
   right: 0;
   z-index: 900;
   padding: 12px 0;
-  background: rgba(10, 5, 20, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur($glass-blur-heavy);
   -webkit-backdrop-filter: blur($glass-blur-heavy);
-  border-top: 1px solid $glass-border;
+  border-top: 1px solid $card-border;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
   display: none;
 
   @media (max-width: 768px) {
@@ -58,12 +59,12 @@ defineEmits(['click'])
     font-family: $font-heading;
     font-size: 1.5rem;
     font-weight: 800;
-    color: $text-white;
+    color: $text-heading;
   }
 
   &__original {
     font-size: $small;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     text-decoration: line-through;
   }
 }

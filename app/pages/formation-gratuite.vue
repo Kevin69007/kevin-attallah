@@ -1,19 +1,15 @@
 <template>
   <div>
-    <section class="lp section--dark">
-      <div class="lp__bg">
-        <div class="orb orb--orange lp__orb lp__orb--1"></div>
-        <div class="orb orb--purple lp__orb lp__orb--2"></div>
-      </div>
+    <section class="lp section--light">
       <div class="container">
         <!-- Hero -->
         <ScrollReveal>
           <div class="text-center">
-            <GlassBadge variant="orange">
+            <GlassBadge variant="orange-light">
               <Gift :size="14" />
               {{ config.badgeText }}
             </GlassBadge>
-            <h1 class="lp__title text-white mt-24">
+            <h1 class="lp__title mt-24">
               Recevez une formation professionnelle
               <span class="gradient-text">100% gratuite</span>
             </h1>
@@ -40,11 +36,11 @@
 
             <!-- Trust signals -->
             <div class="lp__trust mt-32">
-              <GlassBadge>
+              <GlassBadge variant="light">
                 <Users :size="14" />
                 2100+ formés
               </GlassBadge>
-              <GlassBadge>
+              <GlassBadge variant="light">
                 <Star :size="14" />
                 4.8/5 satisfaction
               </GlassBadge>
@@ -53,8 +49,8 @@
 
           <!-- Right: Form -->
           <ScrollReveal direction="right" :delay="0.3">
-            <GlassCard variant="dark" :hoverable="false">
-              <h3 class="text-white mb-8">Accès immédiat</h3>
+            <GlassCard variant="light" :hoverable="false">
+              <h3 class="mb-8">Accès immédiat</h3>
               <p class="lp__form-subtitle">Remplissez le formulaire pour recevoir votre formation</p>
               <FreeFormationForm class="mt-24" />
             </GlassCard>
@@ -91,36 +87,10 @@ onMounted(() => {
 <style lang="scss" scoped>
 .lp {
   padding: 140px 0 80px;
-  background: $gradient-hero;
+  background: $bg-page;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  &__orb {
-    position: absolute;
-
-    &--1 {
-      width: 400px;
-      height: 400px;
-      top: -10%;
-      right: -5%;
-      opacity: 0.15;
-    }
-
-    &--2 {
-      width: 300px;
-      height: 300px;
-      bottom: -5%;
-      left: -5%;
-      opacity: 0.1;
-    }
-  }
 
   &__title {
     font-size: $h1;
@@ -128,7 +98,7 @@ onMounted(() => {
   }
 
   &__subtitle {
-    color: $text-on-dark-muted;
+    color: $text-body;
     font-size: $body-lg;
     line-height: 1.7;
     max-width: 600px;
@@ -145,7 +115,7 @@ onMounted(() => {
     font-family: $font-heading;
     font-size: 2rem;
     font-weight: 700;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     text-decoration: line-through;
   }
 
@@ -169,15 +139,15 @@ onMounted(() => {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: $text-on-dark;
+    color: $text-body;
     font-size: $small;
     padding: 10px 16px;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba($purple, 0.03);
     border-radius: 12px;
     transition: background 0.3s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba($purple, 0.06);
     }
   }
 
@@ -198,7 +168,7 @@ onMounted(() => {
   }
 
   &__form-subtitle {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
   }
 }

@@ -48,17 +48,17 @@
     </section>
 
     <!-- What you'll learn -->
-    <section class="learn section--dark">
+    <section class="learn section--light">
       <div class="container">
         <ScrollReveal>
           <span class="section-label">Ce que tu vas apprendre</span>
-          <h2 class="section-title text-white">Objectifs pédagogiques</h2>
+          <h2 class="section-title">Objectifs pédagogiques</h2>
         </ScrollReveal>
         <StaggerGrid class="grid grid-2 mt-32">
           <div
             v-for="(obj, i) in formation.objectifs_pedagogiques"
             :key="i"
-            class="learn__item glass-card"
+            class="learn__item glass-card-light"
           >
             <CheckCircle :size="20" class="learn__check" />
             <span>{{ obj }}</span>
@@ -68,7 +68,7 @@
     </section>
 
     <!-- Trust signals -->
-    <section class="trust section--dark">
+    <section class="trust section--white">
       <div class="container">
         <StaggerGrid class="grid grid-3">
           <GlassCard v-for="signal in trustSignals" :key="signal.title">
@@ -83,13 +83,13 @@
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="pricing section--dark">
+    <section id="pricing" class="pricing section--light">
       <div class="container">
         <div class="split">
           <div>
             <ScrollReveal>
               <span class="section-label">Tarif</span>
-              <h2 class="section-title text-white">
+              <h2 class="section-title">
                 Investis dans <span class="gradient-text">ton avenir</span>
               </h2>
               <p class="pricing__text">
@@ -101,7 +101,7 @@
             <!-- Pack selector for anglais/compta -->
             <div v-if="showPacks" class="pricing__packs mt-32">
               <ScrollReveal>
-                <h3 class="text-white mb-16">Packs exclusifs</h3>
+                <h3 class="mb-16">Packs exclusifs</h3>
                 <p class="text-muted mb-24" style="font-size: 0.875rem">
                   Économisez en combinant plusieurs formations
                 </p>
@@ -110,7 +110,7 @@
                 <label
                   v-for="pack in availablePacks"
                   :key="pack.id"
-                  :class="['pricing__pack glass-card', { 'pricing__pack--selected': selectedPacks[pack.id] }]"
+                  :class="['pricing__pack glass-card-light', { 'pricing__pack--selected': selectedPacks[pack.id] }]"
                 >
                   <input
                     type="checkbox"
@@ -141,11 +141,11 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq-section section--dark">
+    <section class="faq-section section--white">
       <div class="container container--narrow">
         <ScrollReveal>
           <span class="section-label text-center">FAQ</span>
-          <h2 class="section-title text-center text-white">Questions fréquentes</h2>
+          <h2 class="section-title text-center">Questions fréquentes</h2>
         </ScrollReveal>
         <ScrollReveal class="mt-32">
           <FAQAccordion :items="faqItems" />
@@ -460,19 +460,19 @@ const faqItems = [
 }
 
 .learn {
-  background: $bg-dark-2;
+  background: $bg-page;
 
   &__item {
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.03);
+    background: $bg-card;
     border-radius: 14px;
     transition: background 0.3s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.07);
+      background: darken(#fff, 2%);
     }
   }
 
@@ -482,19 +482,19 @@ const faqItems = [
     height: 32px;
     padding: 6px;
     border-radius: 50%;
-    background: rgba($orange, 0.12);
-    color: $orange;
+    background: rgba($purple, 0.1);
+    color: $purple;
   }
 
   span {
-    color: $text-on-dark;
+    color: $text-body;
     font-size: $small;
     line-height: 1.6;
   }
 }
 
 .trust {
-  background: $bg-dark-1;
+  background: $bg-section-alt;
   padding: $section-pad-sm 0;
 
   &__signal {
@@ -502,28 +502,28 @@ const faqItems = [
   }
 
   &__icon {
-    color: $purple-light;
+    color: $purple;
     margin-bottom: 16px;
   }
 
   &__title {
-    color: $text-white;
+    color: $text-heading;
     font-size: $h4;
     margin-bottom: 8px;
   }
 
   &__desc {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
     line-height: 1.6;
   }
 }
 
 .pricing {
-  background: $bg-dark-2;
+  background: $bg-page;
 
   &__text {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     line-height: 1.8;
     margin-top: 16px;
   }
@@ -545,16 +545,16 @@ const faqItems = [
     input {
       width: 20px;
       height: 20px;
-      accent-color: $orange;
+      accent-color: $purple;
     }
 
     &--selected {
-      border-color: rgba($orange, 0.4);
-      box-shadow: $shadow-glow-orange;
+      border-color: rgba($purple, 0.4);
+      box-shadow: $card-shadow-purple;
     }
 
     strong {
-      color: $text-white;
+      color: $text-heading;
       font-size: $small;
       display: block;
       margin-bottom: 4px;
@@ -562,13 +562,13 @@ const faqItems = [
   }
 
   &__pack-save {
-    color: $orange;
+    color: $purple;
     font-size: $xs;
     font-weight: 600;
   }
 }
 
 .faq-section {
-  background: $bg-dark-1;
+  background: $bg-section-alt;
 }
 </style>

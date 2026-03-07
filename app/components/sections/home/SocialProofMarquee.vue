@@ -1,5 +1,5 @@
 <template>
-  <section class="proof section--dark">
+  <section class="proof section--white">
     <InfiniteMarquee :speed="15">
       <div class="proof__items">
         <div class="proof__item" v-for="item in proofItems" :key="item.label">
@@ -28,9 +28,9 @@ const proofItems = [
 <style lang="scss" scoped>
 .proof {
   padding: 20px 0;
-  background: $bg-dark-2;
-  border-top: 1px solid $glass-border;
-  border-bottom: 1px solid $glass-border;
+  background: $bg-section-alt;
+  border-top: 1px solid $card-border;
+  border-bottom: 1px solid $card-border;
 
   &__items {
     display: flex;
@@ -53,16 +53,16 @@ const proofItems = [
     font-family: $font-heading;
     font-weight: 800;
     font-size: 1.1rem;
-    color: $text-white;
+    color: $text-heading;
   }
 
   &__label {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
   }
 
   &__dot {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: 1.5rem;
   }
 }

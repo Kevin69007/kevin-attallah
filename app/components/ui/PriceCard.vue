@@ -1,7 +1,7 @@
 <template>
-  <div class="price-card glass-card">
+  <div class="price-card glass-card-light">
     <div v-if="badge" class="price-card__badge">
-      <GlassBadge variant="orange">{{ badge }}</GlassBadge>
+      <GlassBadge variant="orange-light">{{ badge }}</GlassBadge>
     </div>
 
     <!-- Countdown Timer -->
@@ -77,11 +77,11 @@ const { timeLeft, isExpired, formatted } = useCountdown(60)
     justify-content: center;
     gap: 8px;
     padding: 10px 20px;
-    background: rgba($orange, 0.1);
-    border: 1px solid rgba($orange, 0.2);
+    background: rgba($orange, 0.06);
+    border: 1px solid rgba($orange, 0.12);
     border-radius: $radius-full;
     margin-bottom: 24px;
-    color: $orange-light;
+    color: $orange;
     font-size: $small;
   }
 
@@ -95,7 +95,7 @@ const { timeLeft, isExpired, formatted } = useCountdown(60)
 
   &__original {
     font-size: 1.25rem;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     text-decoration: line-through;
   }
 
@@ -103,11 +103,11 @@ const { timeLeft, isExpired, formatted } = useCountdown(60)
     font-family: $font-heading;
     font-size: 3rem;
     font-weight: 800;
-    color: $text-white;
+    color: $text-heading;
   }
 
   &__subtitle {
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $small;
     margin-bottom: 16px;
   }
@@ -123,7 +123,7 @@ const { timeLeft, isExpired, formatted } = useCountdown(60)
     display: flex;
     align-items: center;
     gap: 6px;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     font-size: $xs;
   }
 }

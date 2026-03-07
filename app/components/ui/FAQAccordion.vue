@@ -48,16 +48,15 @@ function toggle(index: number) {
   gap: 12px;
 
   &__item {
-    background: $glass-bg;
-    backdrop-filter: blur($glass-blur);
-    -webkit-backdrop-filter: blur($glass-blur);
-    border: 1px solid $glass-border;
+    background: $bg-card;
+    border: 1px solid $card-border;
     border-radius: $radius-md;
     overflow: hidden;
     transition: border-color 0.3s ease;
+    box-shadow: $shadow-sm;
 
     &--open {
-      border-color: rgba($purple, 0.3);
+      border-color: rgba($purple, 0.2);
     }
   }
 
@@ -67,7 +66,7 @@ function toggle(index: number) {
     align-items: center;
     justify-content: space-between;
     padding: 20px 24px;
-    color: $text-white;
+    color: $text-heading;
     font-size: $body;
     font-weight: 600;
     text-align: left;
@@ -75,18 +74,18 @@ function toggle(index: number) {
     transition: color 0.3s ease;
 
     &:hover {
-      color: $orange;
+      color: $purple;
     }
   }
 
   &__icon {
     transition: transform 0.3s ease;
     flex-shrink: 0;
-    color: $text-on-dark-muted;
+    color: $text-muted;
 
     .faq__item--open & {
       transform: rotate(180deg);
-      color: $orange;
+      color: $purple;
     }
   }
 
@@ -98,7 +97,7 @@ function toggle(index: number) {
     padding: 0 24px 20px;
 
     p {
-      color: $text-on-dark-muted;
+      color: $text-body;
       line-height: 1.7;
       font-size: $small;
     }

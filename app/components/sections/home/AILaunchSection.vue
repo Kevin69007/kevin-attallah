@@ -1,15 +1,12 @@
 <template>
-  <section class="ai-section section--dark">
-    <div class="ai-section__bg">
-      <div class="orb orb--orange ai-section__orb"></div>
-    </div>
+  <section class="ai-section section--light">
     <div class="container">
       <!-- Hero: 2-column layout -->
       <div class="ai-section__hero">
         <div class="ai-section__content">
           <ScrollReveal>
             <span class="section-label">Intelligence Artificielle</span>
-            <h2 class="section-title text-white">
+            <h2 class="section-title">
               L'IA ne remplace pas les entrepreneurs.<br />
               Elle remplace ceux qui <span class="gradient-text">refusent</span>
             </h2>
@@ -33,7 +30,7 @@
 
       <!-- Cards grid below -->
       <StaggerGrid class="grid grid-3 mt-48">
-        <GlassCard v-for="card in cards" :key="card.title" hoverable>
+        <GlassCard v-for="card in cards" :key="card.title" variant="light" hoverable>
           <div class="ai-card">
             <div class="ai-card__icon">
               <component :is="card.icon" :size="28" />
@@ -79,24 +76,9 @@ const cards = [
 
 <style lang="scss" scoped>
 .ai-section {
-  background: $bg-dark-1;
+  background: $bg-page;
   position: relative;
   overflow: hidden;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  &__orb {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    top: -20%;
-    right: -10%;
-    opacity: 0.12;
-  }
 
   // 2-column hero layout
   &__hero {
@@ -119,7 +101,7 @@ const cards = [
 
   &__subtitle {
     font-size: $body-lg;
-    color: $text-on-dark-muted;
+    color: $text-body;
     max-width: 520px;
     line-height: 1.7;
     margin: 20px 0 32px;
@@ -151,8 +133,8 @@ const cards = [
     border-radius: $radius-lg;
     display: block;
     box-shadow:
-      0 0 40px rgba($purple, 0.12),
-      0 16px 48px rgba(0, 0, 0, 0.3);
+      0 0 40px rgba($purple, 0.08),
+      0 16px 48px rgba(0, 0, 0, 0.12);
   }
 }
 
@@ -164,7 +146,7 @@ const cards = [
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: rgba($orange, 0.15);
+    background: rgba($orange, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,14 +156,14 @@ const cards = [
 
   &__title {
     font-size: $body-lg;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 10px;
     font-weight: 700;
   }
 
   &__desc {
     font-size: $small;
-    color: $text-on-dark-muted;
+    color: $text-body;
     line-height: 1.6;
     margin-bottom: 20px;
   }
@@ -199,9 +181,9 @@ const cards = [
     padding: 6px 14px;
     font-size: 12px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
-    background: linear-gradient(135deg, rgba($purple, 0.15), rgba($orange, 0.1));
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: $text-body;
+    background: rgba($purple, 0.04);
+    border: 1px solid rgba($purple, 0.08);
     border-radius: 20px;
     white-space: nowrap;
     transition: all 0.3s $ease-smooth;
@@ -213,15 +195,15 @@ const cards = [
       border-radius: 50%;
       background: $orange;
       margin-right: 8px;
-      box-shadow: 0 0 6px rgba($orange, 0.5);
+      box-shadow: 0 0 6px rgba($orange, 0.3);
       flex-shrink: 0;
     }
   }
 
   // Hover on parent card lifts tags
   &:hover .ai-card__tag {
-    border-color: rgba(255, 255, 255, 0.15);
-    background: linear-gradient(135deg, rgba($purple, 0.22), rgba($orange, 0.15));
+    border-color: rgba($purple, 0.15);
+    background: rgba($purple, 0.06);
   }
 }
 </style>

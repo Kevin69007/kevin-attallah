@@ -1,5 +1,5 @@
 <template>
-  <section class="why section--dark">
+  <section class="why section--light">
     <div class="container split">
       <!-- Left: Stats -->
       <ScrollReveal direction="left">
@@ -7,7 +7,7 @@
           <div
             v-for="stat in stats"
             :key="stat.label"
-            class="why__stat glass-card"
+            class="why__stat glass-card-light"
           >
             <div class="why__stat-value gradient-text">
               <CountUp :end="stat.value" :duration="2" :suffix="stat.suffix" />
@@ -20,7 +20,7 @@
       <!-- Right: Content -->
       <ScrollReveal direction="right">
         <span class="section-label">Pourquoi Kevin Attallah</span>
-        <h2 class="section-title text-white">
+        <h2 class="section-title">
           Un accompagnement <span class="gradient-text">humain</span>, boosté par l'IA
         </h2>
         <p class="why__text">
@@ -66,7 +66,7 @@ const features = [
 
 <style lang="scss" scoped>
 .why {
-  background: $bg-dark-1;
+  background: $bg-page;
 
   &__stats {
     display: grid;
@@ -89,11 +89,11 @@ const features = [
 
   &__stat-label {
     font-size: $xs;
-    color: $text-on-dark-muted;
+    color: $text-muted;
   }
 
   &__text {
-    color: $text-on-dark-muted;
+    color: $text-body;
     font-size: $body;
     line-height: 1.8;
     margin-bottom: 24px;
@@ -109,7 +109,7 @@ const features = [
     display: flex;
     align-items: center;
     gap: 12px;
-    color: $text-on-dark;
+    color: $text-body;
     font-size: $small;
   }
 

@@ -1,9 +1,9 @@
 <template>
-  <section class="blog-preview section--dark">
+  <section class="blog-preview section--light">
     <div class="container">
       <ScrollReveal>
         <span class="section-label text-center">Blog</span>
-        <h2 class="section-title text-center text-white">
+        <h2 class="section-title text-center">
           Derniers <span class="gradient-text">articles</span>
         </h2>
       </ScrollReveal>
@@ -69,7 +69,7 @@
       </StaggerGrid>
 
       <ScrollReveal class="text-center mt-48">
-        <AppButton variant="ghost" to="/blog">
+        <AppButton variant="ghost-light" to="/blog">
           Tous les articles
         </AppButton>
       </ScrollReveal>
@@ -128,27 +128,24 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .blog-preview {
-  background: $bg-dark-2;
+  background: $bg-page;
 }
 
 .blog-card {
   display: flex;
   flex-direction: column;
-  background: $glass-bg;
-  backdrop-filter: blur($glass-blur);
-  -webkit-backdrop-filter: blur($glass-blur);
-  border: 1px solid $glass-border;
+  background: $bg-card;
+  border: 1px solid $card-border;
   border-radius: $radius-lg;
-  box-shadow: $shadow-glass;
+  box-shadow: $card-shadow;
   overflow: hidden;
   position: relative;
   transition: all 0.5s $ease-smooth;
 
   &:hover {
-    border-color: rgba($orange, 0.4);
-    box-shadow: 0 0 20px rgba($orange, 0.2), 0 0 40px rgba($purple, 0.15);
+    border-color: rgba($purple, 0.2);
+    box-shadow: $card-shadow-purple;
     transform: translateY(-4px);
-    animation: stories-glow 2s ease-in-out infinite;
   }
 
   // Mini carousel
@@ -174,7 +171,7 @@ onUnmounted(() => {
     right: 0;
     height: 3px;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     opacity: 0;
     transition: opacity 0.3s ease;
 
@@ -250,13 +247,13 @@ onUnmounted(() => {
     align-items: center;
     gap: 6px;
     font-size: $xs;
-    color: $text-on-dark-muted;
+    color: $text-muted;
     margin-bottom: 10px;
   }
 
   &__title {
     font-size: $h4;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 16px;
     line-height: 1.4;
     display: -webkit-box;
@@ -268,7 +265,7 @@ onUnmounted(() => {
   }
 
   &:hover &__title {
-    color: $purple-light;
+    color: $purple;
   }
 
   &__read {
@@ -295,10 +292,5 @@ onUnmounted(() => {
 @keyframes card-fill {
   from { width: 0%; }
   to { width: 100%; }
-}
-
-@keyframes stories-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba($orange, 0.2), 0 0 40px rgba($purple, 0.15); }
-  50% { box-shadow: 0 0 28px rgba($orange, 0.35), 0 0 56px rgba($purple, 0.25); }
 }
 </style>

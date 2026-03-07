@@ -1,9 +1,9 @@
 <template>
-  <section class="how-it-works section--dark">
+  <section class="how-it-works section--white">
     <div class="container">
       <ScrollReveal>
         <span class="section-label text-center">Comment ça marche</span>
-        <h2 class="section-title text-center text-white">
+        <h2 class="section-title text-center">
           3 étapes vers ta <span class="gradient-text">réussite</span>
         </h2>
       </ScrollReveal>
@@ -12,7 +12,7 @@
         <div
           v-for="(step, index) in steps"
           :key="index"
-          class="step glass-card"
+          class="step glass-card-light"
         >
           <div class="step__number">
             <CountUp :end="index + 1" :duration="1.5" prefix="0" />
@@ -52,7 +52,7 @@ const steps = [
 
 <style lang="scss" scoped>
 .how-it-works {
-  background: $bg-dark-1;
+  background: $bg-section-alt;
 
   &__grid {
     margin-top: 48px;
@@ -81,22 +81,22 @@ const steps = [
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: rgba($purple, 0.15);
+    background: rgba($purple, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
-    color: $purple-light;
+    color: $purple;
   }
 
   &__title {
     font-size: $h4;
-    color: $text-white;
+    color: $text-heading;
     margin-bottom: 12px;
   }
 
   &__desc {
-    color: $text-on-dark-muted;
+    color: $text-body;
     font-size: $small;
     line-height: 1.7;
   }

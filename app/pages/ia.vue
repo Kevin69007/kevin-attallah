@@ -40,11 +40,11 @@
     </section>
 
     <!-- Who is it for -->
-    <section class="ia-who section--dark">
+    <section class="ia-who section--light">
       <div class="container">
         <ScrollReveal>
           <span class="section-label text-center">Pour qui ?</span>
-          <h2 class="section-title text-center text-white">
+          <h2 class="section-title text-center">
             Que tu démarres ou que tu <span class="gradient-text">scales</span>
           </h2>
         </ScrollReveal>
@@ -94,11 +94,11 @@
     </section>
 
     <!-- 3 Solutions -->
-    <section class="ia-solutions section--dark">
+    <section class="ia-solutions section--white">
       <div class="container">
         <ScrollReveal>
           <span class="section-label text-center">Nos solutions</span>
-          <h2 class="section-title text-center text-white">
+          <h2 class="section-title text-center">
             3 façons de <span class="gradient-text">décoller</span> avec l'IA
           </h2>
         </ScrollReveal>
@@ -122,10 +122,10 @@
     </section>
 
     <!-- Stats -->
-    <section class="ia-stats section--dark">
+    <section class="ia-stats section--light">
       <div class="container">
         <StaggerGrid class="ia-stats__grid">
-          <div v-for="stat in stats" :key="stat.label" class="ia-stats__item glass-card">
+          <div v-for="stat in stats" :key="stat.label" class="ia-stats__item glass-card-light">
             <span class="ia-stats__value gradient-text">
               <CountUp :end="stat.value" :suffix="stat.suffix" />
             </span>
@@ -217,7 +217,7 @@ const stats = [
 }
 
 .ia-who {
-  background: $bg-dark-2;
+  background: $bg-page;
 
   &__grid {
     display: grid;
@@ -233,18 +233,18 @@ const stats = [
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: rgba($purple, 0.15);
+    background: rgba($purple, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $purple-light;
+    color: $purple;
     margin-bottom: 20px;
 
-    &--orange { background: rgba($orange, 0.15); color: $orange; }
+    &--orange { background: rgba($purple, 0.1); color: $purple; }
   }
 
-  &__title { font-size: $h4; color: $text-white; margin-bottom: 12px; }
-  &__desc { color: $text-on-dark-muted; font-size: $small; line-height: 1.7; margin-bottom: 20px; }
+  &__title { font-size: $h4; color: $text-heading; margin-bottom: 12px; }
+  &__desc { color: $text-muted; font-size: $small; line-height: 1.7; margin-bottom: 20px; }
 
   &__list {
     list-style: none;
@@ -257,15 +257,15 @@ const stats = [
       display: flex;
       align-items: center;
       gap: 10px;
-      color: $text-on-dark;
+      color: $text-body;
       font-size: $small;
 
-      svg { color: $orange; flex-shrink: 0; }
+      svg { color: $purple; flex-shrink: 0; }
     }
   }
 }
 
-.ia-solutions { background: $bg-dark-1; }
+.ia-solutions { background: $bg-section-alt; }
 
 .ia-sol {
   text-align: center;
@@ -287,16 +287,16 @@ const stats = [
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: rgba($purple, 0.15);
+    background: rgba($purple, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $purple-light;
+    color: $purple;
     margin: 12px auto 16px;
   }
 
-  &__title { font-size: $body-lg; color: $text-white; margin-bottom: 10px; font-weight: 700; }
-  &__desc { font-size: $small; color: $text-on-dark-muted; line-height: 1.6; margin-bottom: 16px; }
+  &__title { font-size: $body-lg; color: $text-heading; margin-bottom: 10px; font-weight: 700; }
+  &__desc { font-size: $small; color: $text-muted; line-height: 1.6; margin-bottom: 16px; }
 
   &__features {
     list-style: none;
@@ -312,9 +312,9 @@ const stats = [
       padding: 6px 14px;
       font-size: 12px;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.85);
-      background: linear-gradient(135deg, rgba($purple, 0.15), rgba($orange, 0.1));
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: $text-body;
+      background: rgba($purple, 0.05);
+      border: 1px solid $card-border;
       border-radius: 20px;
       white-space: nowrap;
       transition: all 0.3s $ease-smooth;
@@ -324,22 +324,22 @@ const stats = [
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background: $orange;
+        background: $purple;
         margin-right: 8px;
-        box-shadow: 0 0 6px rgba($orange, 0.5);
+        box-shadow: 0 0 6px rgba($purple, 0.3);
         flex-shrink: 0;
       }
     }
   }
 
   &:hover .ia-sol__features li {
-    border-color: rgba(255, 255, 255, 0.15);
-    background: linear-gradient(135deg, rgba($purple, 0.22), rgba($orange, 0.15));
+    border-color: rgba($purple, 0.2);
+    background: rgba($purple, 0.08);
   }
 }
 
 .ia-stats {
-  background: $bg-dark-2;
+  background: $bg-page;
 
   &__grid {
     display: grid;
@@ -361,7 +361,7 @@ const stats = [
 
   &__label {
     font-size: $xs;
-    color: $text-on-dark-muted;
+    color: $text-muted;
   }
 }
 </style>

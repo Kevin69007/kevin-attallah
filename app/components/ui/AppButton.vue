@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 interface Props {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'outline' | 'outline-light'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'ghost-light' | 'outline' | 'outline-light'
   size?: 'sm' | 'md' | 'lg'
   block?: boolean
   to?: string
