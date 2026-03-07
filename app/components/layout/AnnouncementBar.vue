@@ -48,12 +48,16 @@ function dismiss() {
 
 <style lang="scss" scoped>
 .announce {
-  background: linear-gradient(90deg, $orange-dark, $orange, $purple);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 
   .container {
     display: flex;
@@ -67,7 +71,7 @@ function dismiss() {
     align-items: center;
     gap: 8px;
     padding: 10px 0;
-    color: $text-white;
+    color: $text-heading;
     font-size: 13px;
     font-weight: 500;
     flex: 1;
@@ -81,6 +85,7 @@ function dismiss() {
 
   &__icon {
     flex-shrink: 0;
+    color: $orange;
 
     @media (max-width: 640px) {
       display: none;
@@ -104,28 +109,29 @@ function dismiss() {
     align-items: center;
     gap: 4px;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    background: $orange;
     padding: 4px 12px;
     border-radius: $radius-full;
     white-space: nowrap;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: $orange-dark;
     }
   }
 
   &__close {
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.7);
+    color: $text-muted;
     cursor: pointer;
     padding: 4px;
     flex-shrink: 0;
     transition: color 0.3s ease;
 
     &:hover {
-      color: $text-white;
+      color: $text-heading;
     }
   }
 }
