@@ -6,8 +6,11 @@
       :class="['faq__item', { 'faq__item--open': openIndex === index }]"
     >
       <button class="faq__question" @click="toggle(index)">
-        <span>{{ item.question }}</span>
-        <ChevronDown class="faq__icon" :size="20" />
+        <span class="faq__toggle">
+          <Plus v-if="openIndex !== index" :size="16" />
+          <X v-else :size="16" />
+        </span>
+        <span class="faq__label">{{ item.question }}</span>
       </button>
       <Transition name="accordion">
         <div v-show="openIndex === index" class="faq__answer">
@@ -21,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { ChevronDown } from 'lucide-vue-next'
+import { Plus, X } from 'lucide-vue-next'
 
 interface FAQItem {
   question: string
@@ -45,26 +48,31 @@ function toggle(index: number) {
 .faq {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 
   &__item {
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px) saturate(1.2);
     -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: $radius-md;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: $radius-lg;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s $ease-smooth;
     box-shadow:
       0 2px 12px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
     &--open {
       background: rgba(255, 255, 255, 0.55);
-      border-color: rgba($purple, 0.25);
+      border-color: rgba($purple, 0.2);
       box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.06),
+        0 6px 24px rgba(0, 0, 0, 0.07),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    &:hover:not(&--open) {
+      background: rgba(255, 255, 255, 0.48);
+      border-color: rgba(255, 255, 255, 0.7);
     }
   }
 
@@ -72,8 +80,8 @@ function toggle(index: number) {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 24px;
+    gap: 16px;
+    padding: 22px 24px;
     color: $text-heading;
     font-size: $body;
     font-weight: 600;
@@ -81,20 +89,46 @@ function toggle(index: number) {
     cursor: pointer;
     transition: color 0.3s ease;
 
-    &:hover {
-      color: $purple;
+    @media (max-width: 640px) {
+      padding: 18px 16px;
+      gap: 12px;
     }
   }
 
-  &__icon {
-    transition: transform 0.3s ease;
-    flex-shrink: 0;
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     color: $text-muted;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 
     .faq__item--open & {
-      transform: rotate(180deg);
+      background: rgba($purple, 0.1);
+      border-color: rgba($purple, 0.25);
       color: $purple;
     }
+
+    .faq__item:hover:not(.faq__item--open) & {
+      background: rgba(255, 255, 255, 0.7);
+      color: $text-heading;
+    }
+
+    @media (max-width: 640px) {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+    }
+  }
+
+  &__label {
+    flex: 1;
   }
 
   &__answer {
@@ -102,11 +136,15 @@ function toggle(index: number) {
   }
 
   &__answer-inner {
-    padding: 0 24px 20px;
+    padding: 0 24px 22px 76px;
+
+    @media (max-width: 640px) {
+      padding: 0 16px 18px 60px;
+    }
 
     p {
       color: $text-body;
-      line-height: 1.7;
+      line-height: 1.8;
       font-size: $small;
     }
   }
