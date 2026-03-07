@@ -7,7 +7,6 @@
           <NuxtImg src="/img/logo-1.png" alt="Kevin Attallah" class="header__logo-img" />
         </NuxtLink>
         <nav class="header__nav">
-          <NuxtLink to="/" class="header__link" active-class="header__link--active">Kevin Attallah</NuxtLink>
           <NuxtLink to="/creer-entreprise" class="header__link" active-class="header__link--active">Créer mon entreprise</NuxtLink>
           <NuxtLink to="/evoluer-ia" class="header__link" active-class="header__link--active">Faire évoluer mon entreprise</NuxtLink>
           <NuxtLink to="/about" class="header__link" active-class="header__link--active">À propos</NuxtLink>
@@ -42,7 +41,6 @@
     <Transition name="mobile-menu">
       <div v-if="mobileOpen" class="header__mobile">
         <nav class="header__mobile-nav">
-          <NuxtLink to="/" @click="mobileOpen = false">Kevin Attallah</NuxtLink>
           <NuxtLink to="/creer-entreprise" @click="mobileOpen = false">Créer mon entreprise</NuxtLink>
           <NuxtLink to="/evoluer-ia" @click="mobileOpen = false">Faire évoluer mon entreprise</NuxtLink>
           <NuxtLink to="/about" @click="mobileOpen = false">À propos</NuxtLink>
