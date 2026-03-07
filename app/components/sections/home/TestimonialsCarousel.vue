@@ -13,8 +13,7 @@
     <div class="testimonials__marquee">
       <!-- Row 1: drifts left on scroll -->
       <div ref="row1Ref" class="testimonials__row">
-        <div v-for="t in row1" :key="t.id" class="t-card">
-          <div class="t-card__accent"></div>
+        <div v-for="t in row1" :key="t.id" class="t-card glass-card-light">
           <div class="t-card__content">
             <div class="t-card__head">
               <div class="t-card__icon">
@@ -43,8 +42,7 @@
 
       <!-- Row 2: drifts right on scroll -->
       <div ref="row2Ref" class="testimonials__row testimonials__row--reverse">
-        <div v-for="t in row2" :key="t.id" class="t-card">
-          <div class="t-card__accent"></div>
+        <div v-for="t in row2" :key="t.id" class="t-card glass-card-light">
           <div class="t-card__content">
             <div class="t-card__head">
               <div class="t-card__icon">
@@ -76,12 +74,12 @@
     <div class="container">
       <ScrollReveal :delay="0.3">
         <div class="testimonials__trust-bar">
-          <div class="testimonials__trust-card">
+          <div class="testimonials__trust-card glass-card-light">
             <span class="testimonials__trust-stars">★★★★★</span>
             <span class="testimonials__trust-text">4.8/5 sur <strong>Google</strong></span>
           </div>
           <div class="testimonials__trust-sep"></div>
-          <div class="testimonials__trust-card testimonials__trust-card--tp">
+          <div class="testimonials__trust-card glass-card-light testimonials__trust-card--tp">
             <span class="testimonials__trust-stars testimonials__trust-stars--tp">★★★★★</span>
             <span class="testimonials__trust-text">"Excellent" sur <strong>Trustpilot</strong></span>
           </div>
@@ -218,14 +216,11 @@ onMounted(() => {
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(16px) saturate(1.2);
-    -webkit-backdrop-filter: blur(16px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: $radius-full;
-    box-shadow:
-      0 2px 12px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+    &:hover {
+      transform: none;
+    }
   }
 
   &__trust-stars {
@@ -263,37 +258,10 @@ onMounted(() => {
 .t-card {
   width: 350px;
   flex-shrink: 0;
-  border-radius: $radius-lg;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.06),
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
   overflow: hidden;
-  transition: all 0.4s $ease-smooth;
 
   @media (max-width: 768px) {
     width: 290px;
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.55);
-    border-color: rgba($purple, 0.25);
-    transform: translateY(-3px);
-    box-shadow:
-      0 8px 32px rgba(108, 43, 217, 0.1),
-      0 2px 8px rgba(108, 43, 217, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  }
-
-  // Top gradient line
-  &__accent {
-    height: 2px;
-    background: linear-gradient(90deg, $purple, $orange);
   }
 
   &__content {

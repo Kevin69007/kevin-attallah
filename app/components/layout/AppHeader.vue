@@ -2,7 +2,7 @@
   <header :class="['header', { 'header--scrolled': isScrolled }]" :style="{ top: barHeight + 'px' }">
     <div class="container header__container">
       <!-- Dark glass pill with logo + nav -->
-      <div class="header__pill">
+      <div class="header__pill glass-card-light">
         <NuxtLink to="/" class="header__logo">
           <NuxtImg src="/img/logo-1.png" alt="Kevin Attallah" class="header__logo-img" />
         </NuxtLink>
@@ -105,18 +105,13 @@ watch(mobileOpen, (open) => {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(24px) saturate(1.3);
-    -webkit-backdrop-filter: blur(24px) saturate(1.3);
-    border: 1.5px solid rgba(255, 255, 255, 0.6);
     border-radius: 100px;
     padding: 10px 20px 10px 16px;
-    box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.06),
-      0 1px 3px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
     transition: all 0.4s $ease-smooth;
+
+    &:hover {
+      transform: none;
+    }
 
     .header--scrolled & {
       background: rgba(255, 255, 255, 0.55);

@@ -23,7 +23,7 @@
 
           <!-- Features -->
           <div class="free-section__features mt-24">
-            <div v-for="feature in config.features" :key="feature" class="free-section__feature">
+            <div v-for="feature in config.features" :key="feature" class="free-section__feature glass-card-light">
               <CheckCircle :size="18" class="free-section__check" />
               <span>{{ feature }}</span>
             </div>
@@ -97,12 +97,10 @@ import { freeFormationConfig as config } from '~/data/free-formation'
     color: $text-body;
     font-size: $small;
     padding: 10px 16px;
-    background: rgba($purple, 0.03);
     border-radius: 12px;
-    transition: background 0.3s ease;
 
     &:hover {
-      background: rgba($purple, 0.06);
+      transform: none;
     }
   }
 

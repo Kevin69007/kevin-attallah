@@ -3,7 +3,7 @@
     <div
       v-for="(item, index) in items"
       :key="index"
-      :class="['faq__item', { 'faq__item--open': openIndex === index }]"
+      :class="['faq__item glass-card-light', { 'faq__item--open': openIndex === index }]"
     >
       <button class="faq__question" @click="toggle(index)">
         <span class="faq__toggle">
@@ -51,28 +51,21 @@ function toggle(index: number) {
   gap: 14px;
 
   &__item {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: $radius-lg;
     overflow: hidden;
     transition: all 0.4s $ease-smooth;
-    box-shadow:
-      0 2px 12px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+    &:hover {
+      transform: none;
+    }
 
     &--open {
       background: rgba(255, 255, 255, 0.55);
-      border-color: rgba($purple, 0.2);
+      border-color: rgba($purple, 0.25);
       box-shadow:
         0 6px 24px rgba(0, 0, 0, 0.07),
+        0 0 16px rgba($purple, 0.07),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    }
-
-    &:hover:not(&--open) {
-      background: rgba(255, 255, 255, 0.48);
-      border-color: rgba(255, 255, 255, 0.7);
+      animation: none;
     }
   }
 

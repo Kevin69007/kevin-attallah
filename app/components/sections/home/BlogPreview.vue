@@ -12,7 +12,7 @@
         <div
           v-for="post in latestPosts"
           :key="post.id"
-          class="blog-card"
+          class="blog-card glass-card-light"
         >
           <!-- Mini Swiper for images -->
           <div
@@ -63,8 +63,6 @@
             </span>
           </NuxtLink>
 
-          <!-- Bottom accent -->
-          <div class="blog-card__accent"></div>
         </div>
       </StaggerGrid>
 
@@ -133,29 +131,8 @@ onUnmounted(() => {
 .blog-card {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: $radius-lg;
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.06),
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
   overflow: hidden;
   position: relative;
-  transition: all 0.5s $ease-smooth;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.55);
-    border-color: rgba($purple, 0.25);
-    box-shadow:
-      0 8px 32px rgba(108, 43, 217, 0.1),
-      0 2px 8px rgba(108, 43, 217, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7);
-    transform: translateY(-4px);
-  }
 
   // Mini carousel
   &__carousel {
@@ -291,11 +268,6 @@ onUnmounted(() => {
     gap: 10px;
   }
 
-  // Bottom gradient accent
-  &__accent {
-    height: 2px;
-    background: linear-gradient(90deg, $purple, $orange);
-  }
 }
 
 @keyframes card-fill {

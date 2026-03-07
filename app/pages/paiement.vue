@@ -4,7 +4,7 @@
     <Teleport to="body">
       <Transition name="overlay-fade">
         <div v-if="isProcessing" class="processing-overlay">
-          <div class="processing-overlay__card">
+          <div class="processing-overlay__card glass-card-light">
             <Loader2 :size="40" class="processing-overlay__spinner" />
             <h3 class="processing-overlay__title">Paiement en cours</h3>
             <p class="processing-overlay__text">Veuillez patienter pendant le traitement de votre paiement...</p>
@@ -460,11 +460,12 @@ const trustSignals = [
     text-align: center;
     padding: 48px 40px;
     border-radius: 20px;
-    background: $bg-card;
-    border: 1px solid $card-border;
-    box-shadow: $card-shadow-hover;
     max-width: 380px;
     width: 90%;
+
+    &:hover {
+      transform: none;
+    }
   }
 
   &__spinner {

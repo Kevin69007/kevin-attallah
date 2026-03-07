@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!dismissed" ref="barRef" class="announce">
+  <div v-if="!dismissed" ref="barRef" class="announce glass-card-light">
     <div class="container">
       <NuxtLink to="/formation-gratuite" class="announce__content">
         <Gift :size="14" class="announce__icon" />
@@ -53,11 +53,16 @@ function dismiss() {
   left: 0;
   right: 0;
   z-index: 1001;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border-radius: 0;
+  border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
+  -webkit-backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
+
+  &:hover {
+    transform: none;
+  }
 
   .container {
     display: flex;

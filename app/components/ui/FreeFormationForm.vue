@@ -126,10 +126,11 @@ async function showToast(msg: string, type: 'error' | 'success' = 'error') {
 
   &__privacy {
     font-size: $xs;
-    color: $text-muted;
+    color: $text-body;
     text-align: center;
     margin-top: 12px;
     line-height: 1.5;
+    opacity: 0.7;
   }
 
   &__spin {

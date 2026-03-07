@@ -2,7 +2,7 @@
   <Teleport to="body">
     <Transition name="modal">
       <div v-if="visible" class="ffm-overlay" @click.self="$emit('close')">
-        <div class="ffm-modal">
+        <div class="ffm-modal glass-card-light">
           <button class="ffm-modal__close" aria-label="Fermer" @click="$emit('close')">
             <X :size="20" />
           </button>
@@ -68,13 +68,16 @@ defineEmits(['close'])
   background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(24px) saturate(1.3);
   -webkit-backdrop-filter: blur(24px) saturate(1.3);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: $radius-lg;
   box-shadow:
     0 12px 48px rgba(0, 0, 0, 0.12),
     0 4px 16px rgba(0, 0, 0, 0.06),
+    0 0 20px rgba($purple, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  &:hover {
+    transform: none;
+  }
 
   @media (max-width: 640px) {
     padding: 28px 20px;

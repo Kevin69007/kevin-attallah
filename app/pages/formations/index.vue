@@ -28,7 +28,7 @@
     <section class="catalog section--light">
       <div class="container">
         <!-- Filter panel -->
-        <div class="catalog__filters">
+        <div class="catalog__filters glass-card-light">
           <!-- Category pills -->
           <div class="catalog__filter-row">
             <span class="catalog__filter-label">Catégorie :</span>
@@ -206,9 +206,18 @@ onMounted(() => {
     backdrop-filter: blur(20px) saturate(1.2);
     -webkit-backdrop-filter: blur(20px) saturate(1.2);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    animation: border-glow 6s ease-in-out infinite;
 
     &::placeholder {
       color: $text-muted;
+    }
+
+    &:focus {
+      border-color: rgba($purple, 0.4);
+      box-shadow:
+        0 0 0 3px rgba($purple, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      animation: none;
     }
   }
 }
@@ -218,18 +227,12 @@ onMounted(() => {
 
   // Filter panel
   &__filters {
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: $radius-lg;
     padding: 20px 24px;
     margin-bottom: 28px;
-    box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.06),
-      0 1px 3px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+
+    &:hover {
+      transform: none;
+    }
   }
 
   &__filter-row {

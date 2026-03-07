@@ -1,6 +1,6 @@
 <template>
   <Transition name="slide-up">
-    <div v-if="visible" class="sticky-cta">
+    <div v-if="visible" class="sticky-cta glass-card-light">
       <div class="sticky-cta__inner container flex-between">
         <div class="sticky-cta__info">
           <span class="sticky-cta__price">{{ price }}€</span>
@@ -38,12 +38,17 @@ defineEmits(['click'])
   right: 0;
   z-index: 900;
   padding: 12px 0;
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
   background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
   -webkit-backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
   display: none;
+
+  &:hover {
+    transform: none;
+  }
 
   @media (max-width: 768px) {
     display: block;

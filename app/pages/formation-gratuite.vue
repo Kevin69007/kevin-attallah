@@ -28,7 +28,7 @@
 
             <!-- Features -->
             <div class="lp__features mt-32">
-              <div v-for="feature in config.features" :key="feature" class="lp__feature">
+              <div v-for="feature in config.features" :key="feature" class="lp__feature glass-card-light">
                 <CheckCircle :size="18" class="lp__check" />
                 <span>{{ feature }}</span>
               </div>
@@ -141,12 +141,10 @@ onMounted(() => {
     color: $text-body;
     font-size: $small;
     padding: 10px 16px;
-    background: rgba($purple, 0.03);
     border-radius: 12px;
-    transition: background 0.3s ease;
 
     &:hover {
-      background: rgba($purple, 0.06);
+      transform: none;
     }
   }
 

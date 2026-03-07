@@ -71,7 +71,7 @@
     <section class="trust section--white">
       <div class="container">
         <StaggerGrid class="grid grid-3">
-          <GlassCard v-for="signal in trustSignals" :key="signal.title">
+          <GlassCard v-for="signal in trustSignals" :key="signal.title" variant="light">
             <div class="trust__signal">
               <component :is="signal.icon" :size="32" class="trust__icon" />
               <h4 class="trust__title">{{ signal.title }}</h4>
@@ -465,18 +465,11 @@ const faqItems = [
     align-items: center;
     gap: 14px;
     padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 14px;
     transition: all 0.3s ease;
-    box-shadow:
-      0 2px 12px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7);
 
     &:hover {
-      background: rgba(255, 255, 255, 0.55);
+      transform: none;
     }
   }
 

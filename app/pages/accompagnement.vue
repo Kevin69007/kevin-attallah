@@ -52,11 +52,11 @@
               Kevin t'accompagne pour transformer tes ambitions en succès durable.
             </p>
             <ul class="choice__list">
-              <li><CheckCircle :size="16" /> Plan d'action personnalisé</li>
-              <li><CheckCircle :size="16" /> Conseils stratégiques sur mesure</li>
-              <li><CheckCircle :size="16" /> Avance à ton rythme</li>
-              <li><CheckCircle :size="16" /> Outils pratiques et performants</li>
-              <li><CheckCircle :size="16" /> IA intégrée à chaque étape</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Plan d'action personnalisé</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Conseils stratégiques sur mesure</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Avance à ton rythme</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Outils pratiques et performants</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> IA intégrée à chaque étape</li>
             </ul>
             <AppButton variant="primary" block :href="externalLinks.booking.brevoMeeting">
               Prendre rendez-vous
@@ -77,11 +77,11 @@
               avec des outils concrets et prêts à l'emploi pour avancer à ton rythme.
             </p>
             <ul class="choice__list">
-              <li><CheckCircle :size="16" /> Liberté totale</li>
-              <li><CheckCircle :size="16" /> Contenu 100% en ligne</li>
-              <li><CheckCircle :size="16" /> Accessible immédiatement</li>
-              <li><CheckCircle :size="16" /> Outils concrets et prêts à l'emploi</li>
-              <li><CheckCircle :size="16" /> Formation éligible CPF</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Liberté totale</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Contenu 100% en ligne</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Accessible immédiatement</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Outils concrets et prêts à l'emploi</li>
+              <li class="glass-card-light"><CheckCircle :size="16" /> Formation éligible CPF</li>
             </ul>
             <AppButton variant="outline-light" block :href="siteUrl">
               Voir les formations
@@ -104,7 +104,7 @@
             <h2 class="section-title">{{ pillar.title }}</h2>
             <p class="pillar__desc">{{ pillar.description }}</p>
             <div class="pillar__features">
-              <div v-for="feature in pillar.features" :key="feature" class="pillar__feature">
+              <div v-for="feature in pillar.features" :key="feature" class="pillar__feature glass-card-light">
                 <CheckCircle :size="18" class="pillar__check" />
                 <span>{{ feature }}</span>
               </div>
@@ -116,7 +116,7 @@
           </ScrollReveal>
 
           <ScrollReveal :direction="index % 2 === 0 ? 'right' : 'left'">
-            <GlassCard>
+            <GlassCard variant="light">
               <div class="pillar__card-content text-center">
                 <component :is="pillar.icon" :size="40" class="pillar__card-icon" />
                 <h3 class="mt-16">{{ pillar.cardTitle }}</h3>
@@ -132,7 +132,7 @@
     <section class="ia-callout section--light">
       <div class="container">
         <ScrollReveal>
-          <div class="ia-callout__card">
+          <div class="ia-callout__card glass-card-light">
             <div class="ia-callout__icon">
               <Bot :size="40" />
             </div>
@@ -320,12 +320,10 @@ const pillars = [
       color: $text-body;
       font-size: $small;
       padding: 10px 16px;
-      background: rgba($purple, 0.03);
       border-radius: 12px;
-      transition: background 0.3s ease;
 
       &:hover {
-        background: rgba($purple, 0.06);
+        transform: none;
       }
 
       svg {
@@ -375,12 +373,10 @@ const pillars = [
     color: $text-body;
     font-size: $small;
     padding: 10px 16px;
-    background: rgba($purple, 0.03);
     border-radius: 12px;
-    transition: background 0.3s ease;
 
     &:hover {
-      background: rgba($purple, 0.06);
+      transform: none;
     }
   }
 
@@ -401,14 +397,14 @@ const pillars = [
 // IA Callout
 .ia-callout {
   &__card {
-    background: $bg-card;
-    border: 1px solid $card-border;
-    border-radius: $radius-lg;
     padding: 60px 40px;
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
-    box-shadow: $card-shadow;
+
+    &:hover {
+      transform: none;
+    }
 
     @media (max-width: 640px) { padding: 40px 24px; }
   }
