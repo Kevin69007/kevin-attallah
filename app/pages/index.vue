@@ -12,6 +12,7 @@
     <CTASection
       title="Prêt à transformer ta vie ?"
       subtitle="Rejoins les 2100+ entrepreneurs qui ont déjà fait le premier pas."
+      diagonal
     />
 
     <!-- Exit-intent modal -->
