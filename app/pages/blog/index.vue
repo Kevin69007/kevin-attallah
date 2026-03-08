@@ -263,11 +263,6 @@ onUnmounted(() => {
     -webkit-box-orient: vertical;
     overflow: hidden;
     flex: 1;
-    transition: color 0.3s ease;
-  }
-
-  &:hover &__title {
-    color: $purple;
   }
 
   &__read {
