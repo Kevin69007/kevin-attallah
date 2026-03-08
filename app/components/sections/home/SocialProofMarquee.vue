@@ -39,6 +39,7 @@ const proofItems = [
     align-items: center;
     gap: 10px;
     white-space: nowrap;
+    padding: 10px 20px;
   }
 
   &__icon {

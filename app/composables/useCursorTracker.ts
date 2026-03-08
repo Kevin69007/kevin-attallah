@@ -1,4 +1,4 @@
-const INTERACTIVE_SELECTOR = 'a, button, [role="button"], input[type="submit"], select, label[for], [data-cursor="pointer"], .btn, .magnetic-btn, .header__link, .header__cta'
+const INTERACTIVE_SELECTOR = 'a, button, [role="button"], input[type="submit"], select, label[for], [data-cursor="pointer"], .btn, .magnetic-btn, .header__link, .header__cta, .glass-badge-light'
 const DISTORT_SELECTOR = 'h1, h2, h3, h4, p, .glass-card-light, .glass-card, img, .btn, .social__link, [class*="__stat"], .badge, .section-title, .section-subtitle, .section-label, span.gradient-text, .footer__watermark, .about-hero__text'
 
 const DISTORT_RADIUS = 100
