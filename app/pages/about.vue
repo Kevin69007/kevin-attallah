@@ -70,14 +70,15 @@
           </p>
         </ScrollReveal>
         <ScrollReveal :delay="0.3">
-          <div class="social__links">
+          <div class="social__pills">
             <a
-              v-for="link in socialLinks"
+              v-for="(link, i) in socialLinks"
               :key="link.name"
               :href="link.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="social__link glass-card-light"
+              class="social__pill"
+              :class="`social__pill--${i}`"
             >
               <span class="social__icon" v-html="socialIcons[link.icon]"></span>
               <span class="social__name">{{ link.name }}</span>
@@ -227,26 +228,59 @@ const socialIcons: Record<string, string> = {
 }
 
 .social {
-  &__links {
+  &__pills {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 14px;
   }
 
-  &__link {
+  &__pill {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 16px 24px;
+    padding: 16px 28px;
+    border-radius: $radius-full;
     color: $text-body;
-    font-weight: 600;
-    font-size: $small;
+    font-weight: 700;
+    font-size: $body;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    text-decoration: none;
     transition: $transition-base;
+
+    // Glass card light styles (inlined to avoid hover transform conflict)
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 2px 6px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+    animation: border-glow 6s ease-in-out infinite;
+
+    // Scattered rotations for each pill
+    &--0 { transform: rotate(-8deg); }
+    &--1 { transform: rotate(4deg); }
+    &--2 { transform: rotate(-3deg); }
+    &--3 { transform: rotate(6deg); }
+    &--4 { transform: rotate(-5deg); }
+    &--5 { transform: rotate(7deg); }
 
     &:hover {
       color: $purple;
-      border-color: rgba($purple, 0.3);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba($purple, 0.25);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        0 0 20px rgba($purple, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transform: rotate(0deg) scale(1.05);
+      animation: none;
     }
   }
 
@@ -255,9 +289,23 @@ const socialIcons: Record<string, string> = {
     align-items: center;
     justify-content: center;
     color: $purple;
+  }
 
-    .social__link:hover & {
-      color: $purple;
+  @media (max-width: 768px) {
+    &__pills {
+      gap: 12px;
+    }
+
+    &__pill {
+      padding: 14px 24px;
+      font-size: $small;
+
+      &--0 { transform: rotate(-5deg); }
+      &--1 { transform: rotate(3deg); }
+      &--2 { transform: rotate(-2deg); }
+      &--3 { transform: rotate(4deg); }
+      &--4 { transform: rotate(-3deg); }
+      &--5 { transform: rotate(5deg); }
     }
   }
 }
