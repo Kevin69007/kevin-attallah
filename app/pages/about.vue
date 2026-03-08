@@ -19,7 +19,7 @@
               rendre l'entrepreneuriat accessible à tous grâce à des formations concrètes,
               orientées résultats, et boostées par l'intelligence artificielle.
             </p>
-            <div class="about-hero__stats">
+            <div class="about-hero__stats glass-card-light">
               <div class="about-hero__stat" v-for="stat in stats" :key="stat.label">
                 <span class="about-hero__stat-value gradient-text">
                   <CountUp :end="stat.value" :suffix="stat.suffix" />
@@ -165,6 +165,11 @@ const socialIcons: Record<string, string> = {
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
+    padding: 24px 32px;
+
+    &:hover {
+      transform: none;
+    }
   }
 
   &__stat {
