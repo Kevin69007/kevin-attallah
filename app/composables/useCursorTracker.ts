@@ -27,8 +27,8 @@ export function useCursorTracker() {
   let currentX = 0
   let currentY = 0
 
-  const LERP = 0.15
-  const LERP_HOVER = 0.1
+  const LERP = 0.08
+  const LERP_HOVER = 0.05
 
   let gsap: any = null
   let distortTargets: DistortTarget[] = []
@@ -173,9 +173,6 @@ export function useCursorTracker() {
     const nuxtApp = useNuxtApp()
     gsap = nuxtApp.$gsap as any
 
-    // Hide native cursor
-    document.body.classList.add('has-custom-cursor')
-
     // Initialize position to center (avoid flash in corner)
     mouseX = window.innerWidth / 2
     mouseY = window.innerHeight / 2
@@ -215,7 +212,6 @@ export function useCursorTracker() {
     })
     distortTargets = []
 
-    document.body.classList.remove('has-custom-cursor')
     document.removeEventListener('mousemove', onMouseMove)
     document.documentElement.removeEventListener('mouseleave', onMouseLeave)
     document.documentElement.removeEventListener('mouseenter', onMouseEnter)

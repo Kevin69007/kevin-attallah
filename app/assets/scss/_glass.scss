@@ -245,19 +245,18 @@
     opacity: 1;
   }
 
-  // Visible glass circle
+  // Liquid glass circle — subtle refraction, content stays readable
   &__circle {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(14px) saturate(1.2);
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(3px) saturate(1.6) brightness(1.03);
+    -webkit-backdrop-filter: blur(3px) saturate(1.6) brightness(1.03);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow:
-      0 4px 16px rgba(0, 0, 0, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+      0 2px 8px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     // Purple dot at center
