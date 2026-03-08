@@ -1,5 +1,6 @@
 <template>
   <section class="cta-section">
+    <WaveLines />
     <div class="container cta-section__content text-center">
       <ScrollReveal>
         <h2 class="cta-section__title">
