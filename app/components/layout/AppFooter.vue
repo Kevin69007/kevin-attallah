@@ -4,7 +4,7 @@
       <!-- Large decorative K behind -->
       <span class="footer__letter" aria-hidden="true">K</span>
       <!-- Large decorative watermark -->
-      <h2 class="footer__watermark" aria-hidden="true">KATTALLAH</h2>
+      <h2 class="footer__watermark" aria-hidden="true">KEVINATTALLAH</h2>
 
       <!-- Link columns -->
       <div class="footer__grid">
@@ -97,7 +97,7 @@ const socialIcons: Record<string, any> = {
     position: relative;
     z-index: 1;
     font-family: $font-heading;
-    font-size: clamp(5rem, 14vw, 12rem);
+    font-size: clamp(3rem, 9.5vw, 10rem);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -4px;

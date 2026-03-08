@@ -42,6 +42,9 @@ useHead({ title: '404 - Page introuvable' })
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 60px;
   position: relative;
   overflow: hidden;
 
@@ -67,26 +70,22 @@ useHead({ title: '404 - Page introuvable' })
     font-size: clamp(10rem, 25vw, 20rem);
     font-weight: 900;
     line-height: 1;
-    background: linear-gradient(135deg, rgba($purple, 0.06), rgba($orange, 0.04));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: rgba($purple, 0.04);
     pointer-events: none;
     user-select: none;
   }
 
-  // Foreground 404 — gradient with glow
+  // Foreground 404 — gradient text
   &__code {
     position: relative;
     font-family: $font-heading;
     font-size: clamp(6rem, 15vw, 12rem);
     font-weight: 900;
     line-height: 1;
-    background: linear-gradient(135deg, $purple, $orange);
+    background: $gradient-primary;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 4px 30px rgba($purple, 0.2)) drop-shadow(0 2px 10px rgba($orange, 0.15));
   }
 
   // Icon circle
@@ -107,6 +106,7 @@ useHead({ title: '404 - Page introuvable' })
 
   &__title {
     font-size: $h3;
+    color: $text-heading;
     margin-bottom: 12px;
   }
 
