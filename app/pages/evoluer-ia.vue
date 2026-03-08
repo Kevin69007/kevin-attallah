@@ -102,14 +102,17 @@
           </p>
         </ScrollReveal>
 
-        <StaggerGrid class="grid grid-4 mt-48" :stagger="0.1">
-          <GlassCard v-for="solution in solutions" :key="solution.title" variant="light">
-            <div class="eia-solution text-center">
+        <StaggerGrid class="grid grid-bento-7 mt-48" :stagger="0.1">
+          <GlassCard v-for="(solution, i) in solutions" :key="solution.title" variant="light">
+            <div class="eia-solution" :class="i >= 5 ? 'eia-solution--compact' : 'text-center'">
+              <span class="eia-solution__step">{{ String(i + 1).padStart(2, '0') }}</span>
               <div class="eia-solution__icon">
-                <component :is="solution.icon" :size="28" />
+                <component :is="solution.icon" :size="i >= 5 ? 22 : 28" />
               </div>
-              <h4 class="eia-solution__title">{{ solution.title }}</h4>
-              <p class="eia-solution__desc">{{ solution.description }}</p>
+              <div>
+                <h4 class="eia-solution__title">{{ solution.title }}</h4>
+                <p class="eia-solution__desc">{{ solution.description }}</p>
+              </div>
             </div>
           </GlassCard>
         </StaggerGrid>
@@ -377,6 +380,20 @@ const reassurance = [
 .eia-solution {
   padding: 8px;
 
+  &__step {
+    display: block;
+    font-family: $font-heading;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.35;
+    background: linear-gradient(135deg, $purple, $orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   &__icon {
     width: 56px;
     height: 56px;
@@ -399,6 +416,37 @@ const reassurance = [
     font-size: $small;
     color: $text-muted;
     line-height: 1.6;
+  }
+
+  // Compact variant for cards 6+7 (half-height, horizontal)
+  &--compact {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    padding: 4px;
+
+    .eia-solution__step {
+      font-size: 1.8rem;
+      margin-bottom: 0;
+    }
+
+    .eia-solution__icon {
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .eia-solution__title {
+      margin-bottom: 4px;
+      font-size: $small;
+    }
+
+    .eia-solution__desc {
+      font-size: $xs;
+      line-height: 1.4;
+    }
   }
 }
 

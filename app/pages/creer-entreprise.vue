@@ -51,14 +51,17 @@
           </h2>
         </ScrollReveal>
 
-        <StaggerGrid class="grid grid-4 mt-48" :stagger="0.1">
-          <GlassCard v-for="mod in modules" :key="mod.title" variant="light">
-            <div class="ce-module text-center">
+        <StaggerGrid class="grid grid-bento-7 mt-48" :stagger="0.1">
+          <GlassCard v-for="(mod, i) in modules" :key="mod.title" variant="light">
+            <div class="ce-module" :class="i >= 5 ? 'ce-module--compact' : 'text-center'">
+              <span class="ce-module__step">{{ String(i + 1).padStart(2, '0') }}</span>
               <div class="ce-module__icon">
-                <component :is="mod.icon" :size="28" />
+                <component :is="mod.icon" :size="i >= 5 ? 22 : 28" />
               </div>
-              <h4 class="ce-module__title">{{ mod.title }}</h4>
-              <p class="ce-module__desc">{{ mod.description }}</p>
+              <div>
+                <h4 class="ce-module__title">{{ mod.title }}</h4>
+                <p class="ce-module__desc">{{ mod.description }}</p>
+              </div>
             </div>
           </GlassCard>
         </StaggerGrid>
@@ -344,6 +347,20 @@ async function handlePurchase() {
 .ce-module {
   padding: 8px;
 
+  &__step {
+    display: block;
+    font-family: $font-heading;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.35;
+    background: linear-gradient(135deg, $purple, $orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   &__icon {
     width: 56px;
     height: 56px;
@@ -366,6 +383,37 @@ async function handlePurchase() {
     font-size: $small;
     color: $text-muted;
     line-height: 1.6;
+  }
+
+  // Compact variant for cards 6+7 (half-height, horizontal)
+  &--compact {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    padding: 4px;
+
+    .ce-module__step {
+      font-size: 1.8rem;
+      margin-bottom: 0;
+    }
+
+    .ce-module__icon {
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .ce-module__title {
+      margin-bottom: 4px;
+      font-size: $small;
+    }
+
+    .ce-module__desc {
+      font-size: $xs;
+      line-height: 1.4;
+    }
   }
 }
 

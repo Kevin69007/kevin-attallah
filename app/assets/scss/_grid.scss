@@ -51,6 +51,47 @@
   }
 }
 
+// Bento grid — 7 cards, asymmetric layout
+// Row 1: card1 (2col), card2, card3
+// Row 2+3: card4 (1col, 2rows), card5 (1col, 2rows), card6+card7 (2col, half each)
+.grid-bento-7 {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    "a a b c"
+    "d e f f"
+    "d e g g";
+
+  > :nth-child(1) { grid-area: a; }
+  > :nth-child(2) { grid-area: b; }
+  > :nth-child(3) { grid-area: c; }
+  > :nth-child(4) { grid-area: d; }
+  > :nth-child(5) { grid-area: e; }
+  > :nth-child(6) { grid-area: f; }
+  > :nth-child(7) { grid-area: g; }
+}
+
+@media (max-width: 1024px) {
+  .grid-bento-7 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "a a"
+      "b c"
+      "d e"
+      "f g";
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-bento-7 {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "a" "b" "c" "d" "e" "f" "g";
+  }
+}
+
 // Flexbox utilities
 .flex {
   display: flex;
