@@ -205,3 +205,12 @@ input, textarea, select {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+// Custom cursor: hide native cursor on desktop
+body.has-custom-cursor {
+  cursor: none;
+
+  a, button, input, textarea, select, label, [role="button"] {
+    cursor: none !important;
+  }
+}

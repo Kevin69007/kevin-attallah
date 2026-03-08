@@ -212,3 +212,108 @@
     transparent
   );
 }
+
+// ============================================
+// GLASS CURSOR
+// ============================================
+
+// Small cursor dot + radial glass ripple that fades out from center
+// Like a water droplet hitting a lake — blur is strongest at center, fades to nothing
+
+// Glass cursor — liquid distortion on background content
+.glass-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+
+  // Wrapper sized for distortion area
+  width: 120px;
+  height: 120px;
+  margin-left: -60px;
+  margin-top: -60px;
+
+  // GPU compositing
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+
+  // Initially hidden
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &--visible {
+    opacity: 1;
+  }
+
+  // Liquid distortion area — invisible, warps content behind it
+  &__ripple {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    // Minimal backdrop to capture content for the SVG filter to distort
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    // SVG liquid distortion
+    filter: url(#liquid-distortion);
+    // Soft edge fade so distortion doesn't have a hard cutoff
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  }
+
+  // Visible glass circle — always visible, centered
+  &__circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    // Purple dot at center
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      margin: -4px 0 0 -4px;
+      border-radius: 50%;
+      background: rgba($purple-light, 0.5);
+      box-shadow: 0 0 10px rgba($purple, 0.2);
+      transition: transform 0.3s $ease-smooth, opacity 0.3s ease;
+    }
+  }
+
+  // Interactive hover (buttons, links) — purple glow + hide dot
+  &--hover {
+    .glass-cursor__circle {
+      border-color: rgba($purple, 0.25);
+      box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.05),
+        0 0 16px rgba($purple, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+      &::after {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+  }
+
+  // Mobile safety net
+  @media (hover: none), (pointer: coarse) {
+    display: none !important;
+  }
+}

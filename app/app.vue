@@ -1,4 +1,5 @@
 <template>
+  <GlassCursor />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
