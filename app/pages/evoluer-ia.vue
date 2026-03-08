@@ -107,7 +107,7 @@
             <div class="eia-solution" :class="i >= 5 ? 'eia-solution--compact' : 'text-center'">
               <span class="eia-solution__step">{{ String(i + 1).padStart(2, '0') }}</span>
               <div class="eia-solution__icon">
-                <component :is="solution.icon" :size="i >= 5 ? 22 : 28" />
+                <component :is="solution.icon" :size="28" />
               </div>
               <div>
                 <h4 class="eia-solution__title">{{ solution.title }}</h4>
@@ -421,31 +421,18 @@ const reassurance = [
   // Compact variant for cards 6+7 (half-height, horizontal)
   &--compact {
     display: flex;
-    align-items: center;
-    gap: 14px;
+    gap: 16px;
     text-align: left;
     padding: 4px;
+    align-items: center;
 
     .eia-solution__step {
-      font-size: 1.8rem;
-      margin-bottom: 0;
+      margin-bottom: 4px;
     }
 
     .eia-solution__icon {
-      width: 40px;
-      height: 40px;
       margin: 0;
       flex-shrink: 0;
-    }
-
-    .eia-solution__title {
-      margin-bottom: 4px;
-      font-size: $small;
-    }
-
-    .eia-solution__desc {
-      font-size: $xs;
-      line-height: 1.4;
     }
   }
 }

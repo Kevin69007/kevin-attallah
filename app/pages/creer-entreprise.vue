@@ -56,7 +56,7 @@
             <div class="ce-module" :class="i >= 5 ? 'ce-module--compact' : 'text-center'">
               <span class="ce-module__step">{{ String(i + 1).padStart(2, '0') }}</span>
               <div class="ce-module__icon">
-                <component :is="mod.icon" :size="i >= 5 ? 22 : 28" />
+                <component :is="mod.icon" :size="28" />
               </div>
               <div>
                 <h4 class="ce-module__title">{{ mod.title }}</h4>
@@ -388,31 +388,18 @@ async function handlePurchase() {
   // Compact variant for cards 6+7 (half-height, horizontal)
   &--compact {
     display: flex;
-    align-items: center;
-    gap: 14px;
+    gap: 16px;
     text-align: left;
     padding: 4px;
+    align-items: center;
 
     .ce-module__step {
-      font-size: 1.8rem;
-      margin-bottom: 0;
+      margin-bottom: 4px;
     }
 
     .ce-module__icon {
-      width: 40px;
-      height: 40px;
       margin: 0;
       flex-shrink: 0;
-    }
-
-    .ce-module__title {
-      margin-bottom: 4px;
-      font-size: $small;
-    }
-
-    .ce-module__desc {
-      font-size: $xs;
-      line-height: 1.4;
     }
   }
 }
