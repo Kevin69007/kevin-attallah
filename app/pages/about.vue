@@ -38,8 +38,8 @@
       </div>
     </section>
 
-    <!-- Values -->
-    <section class="values section--light">
+    <!-- Values — Reveal Path -->
+    <section class="section--light">
       <div class="container">
         <ScrollReveal>
           <span class="section-label text-center">Nos valeurs</span>
@@ -47,38 +47,8 @@
             Ce qui nous <span class="gradient-text">guide</span>
           </h2>
         </ScrollReveal>
-
-        <ScatteredCards :count="4" class="mt-48">
-          <template #card-0>
-            <div class="values__card">
-              <div class="values__card-icon"><Heart :size="28" /></div>
-              <h4 class="values__card-title">{{ values[0]!.title }}</h4>
-              <p class="values__card-desc">{{ values[0]!.description }}</p>
-            </div>
-          </template>
-          <template #card-1>
-            <div class="values__card">
-              <div class="values__card-icon"><Zap :size="28" /></div>
-              <h4 class="values__card-title">{{ values[1]!.title }}</h4>
-              <p class="values__card-desc">{{ values[1]!.description }}</p>
-            </div>
-          </template>
-          <template #card-2>
-            <div class="values__card">
-              <div class="values__card-icon"><Users :size="28" /></div>
-              <h4 class="values__card-title">{{ values[2]!.title }}</h4>
-              <p class="values__card-desc">{{ values[2]!.description }}</p>
-            </div>
-          </template>
-          <template #card-3>
-            <div class="values__card">
-              <div class="values__card-icon"><Target :size="28" /></div>
-              <h4 class="values__card-title">{{ values[3]!.title }}</h4>
-              <p class="values__card-desc">{{ values[3]!.description }}</p>
-            </div>
-          </template>
-        </ScatteredCards>
       </div>
+      <ValuesRevealPath :values="values" />
     </section>
 
     <!-- Social -->
@@ -226,41 +196,6 @@ const socialIcons: Record<string, string> = {
   }
 }
 
-.values {
-  &__card {
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: 100%;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  &__card-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba($purple, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $purple;
-  }
-
-  &__card-title {
-    color: $text-heading;
-    font-size: $body;
-    font-weight: 700;
-  }
-
-  &__card-desc {
-    color: $text-muted;
-    font-size: $small;
-    line-height: 1.5;
-  }
-}
 
 .social {
   &__pills {
