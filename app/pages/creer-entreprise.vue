@@ -154,29 +154,21 @@
       </div>
     </section>
 
-    <!-- Reassurance -->
-    <section class="ce-reassurance section--white">
-      <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Pourquoi c'est différent</span>
-          <h2 class="section-title text-center">
-            Ce qui nous <span class="gradient-text">distingue.</span>
-          </h2>
-        </ScrollReveal>
-
-        <StaggerGrid class="grid grid-4 mt-48" :stagger="0.15">
-          <GlassCard v-for="item in reassurance" :key="item.title" variant="light">
-            <div class="ce-reassure text-center">
-              <div class="ce-reassure__icon">
-                <component :is="item.icon" :size="28" />
-              </div>
-              <h4 class="ce-reassure__title">{{ item.title }}</h4>
-              <p class="ce-reassure__desc">{{ item.description }}</p>
-            </div>
-          </GlassCard>
-        </StaggerGrid>
-      </div>
-    </section>
+    <!-- Reassurance Mosaic -->
+    <ImageMosaic :images="mosaicImages">
+      <ScrollReveal>
+        <span class="section-label">Pourquoi c'est différent</span>
+        <h2 class="section-title">
+          Ce qui nous <span class="gradient-text">distingue.</span>
+        </h2>
+        <p class="mosaic-subtitle">
+          On commence par toi, pas par le business plan. L'IA est intégrée dès le départ, et derrière la formation, un vrai entrepreneur.
+        </p>
+        <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
+          En savoir plus <ArrowRight :size="16" />
+        </AppButton>
+      </ScrollReveal>
+    </ImageMosaic>
 
     <!-- Final CTA -->
     <CTASection
@@ -198,7 +190,7 @@
 <script setup lang="ts">
 import {
   Lightbulb, CheckCircle, Scale, BarChart3, Megaphone, Bot, Gift,
-  Brain, User, ArrowRight, Award, Users, Star, Shield, Loader2,
+  ArrowRight, Award, Users, Star, Shield, Loader2,
 } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
 
@@ -231,12 +223,7 @@ const modules = [
   { icon: Gift, title: 'Une formation offerte au choix', description: 'En bonus, choisis une formation complémentaire pour combler tes lacunes.' },
 ]
 
-const reassurance = [
-  { icon: Brain, title: 'On commence par toi, pas par le business plan', description: 'Avant de parler chiffres, on s\'assure que ton projet te correspond vraiment.' },
-  { icon: Bot, title: 'L\'IA intégrée dès le départ', description: 'Pas un module bonus — l\'IA est dans chaque étape de ton parcours.' },
-  { icon: Gift, title: 'On comble tes lacunes', description: 'Une formation offerte en complément pour renforcer ce qui te manque.' },
-  { icon: User, title: 'Derrière la formation, un vrai entrepreneur', description: 'Kevin a lancé plus d\'une dizaine d\'entreprises. C\'est du vécu, pas de la théorie.' },
-]
+const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
 
 // Payment for autonomie formula
 const router = useRouter()
@@ -477,31 +464,12 @@ async function handlePurchase() {
   to { transform: rotate(360deg); }
 }
 
-.ce-reassure {
-  padding: 8px;
-
-  &__icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: rgba($purple, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
-    color: $purple;
-  }
-
-  &__title {
-    font-size: $body;
-    color: $text-heading;
-    margin-bottom: 8px;
-  }
-
-  &__desc {
-    font-size: $small;
-    color: $text-muted;
-    line-height: 1.6;
-  }
+.mosaic-subtitle {
+  font-size: $body;
+  color: $text-muted;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 16px auto 0;
 }
+
 </style>

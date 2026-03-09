@@ -133,29 +133,21 @@
       </div>
     </section>
 
-    <!-- Reassurance -->
-    <section class="eia-reassurance section--light">
-      <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Pourquoi c'est différent</span>
-          <h2 class="section-title text-center">
-            Ce qui nous <span class="gradient-text">distingue.</span>
-          </h2>
-        </ScrollReveal>
-
-        <StaggerGrid class="grid grid-4 mt-48" :stagger="0.15">
-          <GlassCard v-for="item in reassurance" :key="item.title" variant="light">
-            <div class="eia-reassure text-center">
-              <div class="eia-reassure__icon">
-                <component :is="item.icon" :size="28" />
-              </div>
-              <h4 class="eia-reassure__title">{{ item.title }}</h4>
-              <p class="eia-reassure__desc">{{ item.description }}</p>
-            </div>
-          </GlassCard>
-        </StaggerGrid>
-      </div>
-    </section>
+    <!-- Reassurance Mosaic -->
+    <ImageMosaic :images="mosaicImages">
+      <ScrollReveal>
+        <span class="section-label">Pourquoi c'est différent</span>
+        <h2 class="section-title">
+          Ce qui nous <span class="gradient-text">distingue.</span>
+        </h2>
+        <p class="mosaic-subtitle">
+          Zéro solution générique. L'audit est gratuit et a de la valeur. Des résultats rapides et mesurables, portés par un vrai entrepreneur.
+        </p>
+        <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
+          En savoir plus <ArrowRight :size="16" />
+        </AppButton>
+      </ScrollReveal>
+    </ImageMosaic>
 
     <!-- Final CTA -->
     <CTASection
@@ -171,9 +163,9 @@
 <script setup lang="ts">
 import {
   ArrowRight, Phone, Banknote, Megaphone, UserSearch, Calculator,
-  MessageCircle, Smartphone, Target, Lightbulb, Zap, User,
+  MessageCircle, Smartphone,
   AlertCircle, PhoneOff, Repeat, FolderSearch, CheckCircle,
-  ClipboardList, Search, Rocket, Award, Users, Star,
+  Search, Rocket,
 } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
 
@@ -233,12 +225,7 @@ const solutions = [
   { icon: Smartphone, title: 'Pilotage depuis ton téléphone', description: 'Supervise tout depuis une app — KPIs, alertes, décisions rapides.' },
 ]
 
-const reassurance = [
-  { icon: Target, title: 'Zéro solution générique', description: 'Chaque recommandation est adaptée à ton activité, pas copiée d\'un template.' },
-  { icon: Lightbulb, title: 'L\'audit est gratuit — et il a de la valeur', description: 'Même si on ne travaille pas ensemble, tu repars avec des pistes concrètes.' },
-  { icon: Zap, title: 'Des résultats rapides et mesurables', description: 'On mesure l\'impact en heures gagnées, en euros économisés, en leads générés.' },
-  { icon: User, title: 'Derrière tout ça, un vrai entrepreneur', description: 'Kevin utilise ces outils dans ses propres entreprises. C\'est du concret.' },
-]
+const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
 </script>
 
 <style lang="scss" scoped>
@@ -443,31 +430,11 @@ const reassurance = [
   font-style: italic;
 }
 
-.eia-reassure {
-  padding: 8px;
-
-  &__icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: rgba($purple, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
-    color: $purple;
-  }
-
-  &__title {
-    font-size: $body;
-    color: $text-heading;
-    margin-bottom: 8px;
-  }
-
-  &__desc {
-    font-size: $small;
-    color: $text-muted;
-    line-height: 1.6;
-  }
+.mosaic-subtitle {
+  font-size: $body;
+  color: $text-muted;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 16px auto 0;
 }
 </style>
