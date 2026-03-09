@@ -1,6 +1,7 @@
 <template>
   <NuxtLink
     v-if="to"
+    v-magnetic="0.25"
     :to="to"
     :class="btnClasses"
     v-bind="$attrs"
@@ -9,6 +10,7 @@
   </NuxtLink>
   <a
     v-else-if="href"
+    v-magnetic="0.25"
     :href="href"
     target="_blank"
     rel="noopener noreferrer"
@@ -19,6 +21,7 @@
   </a>
   <button
     v-else
+    v-magnetic="0.25"
     :class="btnClasses"
     v-bind="$attrs"
   >

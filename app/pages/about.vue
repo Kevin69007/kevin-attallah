@@ -19,7 +19,7 @@
               rendre l'entrepreneuriat accessible à tous grâce à des formations concrètes,
               orientées résultats, et boostées par l'intelligence artificielle.
             </p>
-            <div class="about-hero__stats glass-card-light">
+            <div v-magnetic="0.15" class="about-hero__stats glass-card-light">
               <div class="about-hero__stat" v-for="stat in stats" :key="stat.label">
                 <span class="about-hero__stat-value gradient-text">
                   <CountUp :end="stat.value" :suffix="stat.suffix" />
@@ -30,7 +30,7 @@
           </ScrollReveal>
 
           <ScrollReveal direction="right">
-            <div class="about-hero__photo glass-card-light">
+            <div v-magnetic="0.12" class="about-hero__photo glass-card-light">
               <NuxtImg src="/img/about/about-1.png" alt="Kevin Attallah" class="about-hero__photo-img" format="webp" quality="80" />
             </div>
           </ScrollReveal>
@@ -77,6 +77,7 @@
               :href="link.url"
               target="_blank"
               rel="noopener noreferrer"
+              v-magnetic="0.2"
               class="social__pill"
               :class="`social__pill--${i}`"
             >

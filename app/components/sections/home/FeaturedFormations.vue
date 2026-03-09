@@ -16,6 +16,7 @@
           v-for="formation in featuredFormations"
           :key="formation.id"
           :to="`/formations/${formation.id}`"
+          v-magnetic="0.15"
           class="formation-card glass-card-light"
         >
           <div class="formation-card__img">

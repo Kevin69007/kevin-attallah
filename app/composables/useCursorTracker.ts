@@ -84,7 +84,7 @@ export function useCursorTracker() {
     const quickToOpts = { duration: 0.8, ease: 'power3.out' }
 
     distortTargets = Array.from(document.querySelectorAll<HTMLElement>(DISTORT_SELECTOR))
-      .filter(el => !el.closest('.glass-cursor') && !el.closest('.magnetic-btn'))
+      .filter(el => !el.closest('.glass-cursor') && !el.closest('.magnetic-btn') && !el.hasAttribute('data-magnetic'))
       .map((el) => ({
         el,
         qx: gsap.quickTo(el, 'x', quickToOpts),

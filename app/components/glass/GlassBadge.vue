@@ -1,5 +1,5 @@
 <template>
-  <span :class="['gbadge', `gbadge--${variant}`]">
+  <span v-magnetic="0.2" :class="['gbadge', `gbadge--${variant}`]">
     <slot />
   </span>
 </template>

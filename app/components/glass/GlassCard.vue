@@ -1,9 +1,12 @@
 <template>
-  <div :class="[
-    'glass-card-component',
-    variant === 'light' ? 'glass-card-light' : 'glass-card',
-    { 'glass-card-component--no-hover': !hoverable }
-  ]">
+  <div
+    v-magnetic="hoverable ? 0.15 : 0"
+    :class="[
+      'glass-card-component',
+      variant === 'light' ? 'glass-card-light' : 'glass-card',
+      { 'glass-card-component--no-hover': !hoverable }
+    ]"
+  >
     <slot />
   </div>
 </template>

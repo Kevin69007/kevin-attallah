@@ -18,16 +18,14 @@
               promesses génériques — des solutions adaptées à ta réalité.
             </p>
             <div class="btn-group mt-32">
-              <MagneticButton>
-                <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
-                  Je veux un audit gratuit
-                  <ArrowRight :size="20" />
-                </AppButton>
-              </MagneticButton>
+              <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+                Je veux un audit gratuit
+                <ArrowRight :size="20" />
+              </AppButton>
             </div>
           </ScrollReveal>
           <ScrollReveal direction="right">
-            <div class="eia-hero__image glass-card-light">
+            <div v-magnetic="0.12" class="eia-hero__image glass-card-light">
               <NuxtImg src="/img/banner-right-img.jpg" alt="Faire évoluer avec l'IA" format="webp" quality="80" />
             </div>
           </ScrollReveal>
@@ -45,7 +43,7 @@
         </ScrollReveal>
 
         <StaggerGrid class="grid grid-2 mt-48" :stagger="0.15">
-          <div v-for="pain in painPoints" :key="pain.text" class="eia-pain__item glass-card-light">
+          <div v-for="pain in painPoints" :key="pain.text" v-magnetic="0.15" class="eia-pain__item glass-card-light">
             <component :is="pain.icon" :size="22" class="eia-pain__icon" />
             <span>{{ pain.text }}</span>
           </div>
@@ -71,7 +69,7 @@
         </ScrollReveal>
 
         <StaggerGrid class="grid grid-3 mt-48" :stagger="0.2">
-          <div v-for="(step, index) in parcours" :key="index" class="eia-step glass-card-light">
+          <div v-for="(step, index) in parcours" :key="index" v-magnetic="0.15" class="eia-step glass-card-light">
             <div class="eia-step__number gradient-text">0{{ index + 1 }}</div>
             <div class="eia-step__icon">
               <component :is="step.icon" :size="28" />
@@ -122,12 +120,10 @@
             Et bien d'autres selon ton activité...
           </p>
           <div class="text-center mt-24">
-            <MagneticButton>
-              <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
-                Je veux voir ce qu'on peut faire pour mon business
-                <ArrowRight :size="20" />
-              </AppButton>
-            </MagneticButton>
+            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+              Je veux voir ce qu'on peut faire pour mon business
+              <ArrowRight :size="20" />
+            </AppButton>
           </div>
         </ScrollReveal>
       </div>

@@ -8,17 +8,13 @@
         </h2>
         <p class="cta-section__text">{{ subtitle }}</p>
         <div class="btn-group" style="justify-content: center">
-          <MagneticButton>
-            <AppButton variant="primary" size="lg" :to="!primaryHref ? primaryLink : undefined" :href="primaryHref || undefined">
-              {{ primaryText }}
-              <ArrowRight :size="20" />
-            </AppButton>
-          </MagneticButton>
-          <MagneticButton v-if="secondaryText">
-            <AppButton variant="ghost-light" size="lg" :to="secondaryLink">
-              {{ secondaryText }}
-            </AppButton>
-          </MagneticButton>
+          <AppButton variant="primary" size="lg" :to="!primaryHref ? primaryLink : undefined" :href="primaryHref || undefined">
+            {{ primaryText }}
+            <ArrowRight :size="20" />
+          </AppButton>
+          <AppButton v-if="secondaryText" variant="ghost-light" size="lg" :to="secondaryLink">
+            {{ secondaryText }}
+          </AppButton>
         </div>
       </ScrollReveal>
     </div>

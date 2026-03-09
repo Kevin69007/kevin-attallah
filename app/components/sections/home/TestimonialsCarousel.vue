@@ -13,7 +13,7 @@
     <div class="testimonials__marquee">
       <!-- Row 1: drifts left on scroll -->
       <div ref="row1Ref" class="testimonials__row">
-        <div v-for="t in row1" :key="t.id" class="t-card glass-card-light">
+        <div v-for="t in row1" :key="t.id" v-magnetic="0.15" class="t-card glass-card-light">
           <div class="t-card__content">
             <div class="t-card__head">
               <div class="t-card__icon">
@@ -42,7 +42,7 @@
 
       <!-- Row 2: drifts right on scroll -->
       <div ref="row2Ref" class="testimonials__row testimonials__row--reverse">
-        <div v-for="t in row2" :key="t.id" class="t-card glass-card-light">
+        <div v-for="t in row2" :key="t.id" v-magnetic="0.15" class="t-card glass-card-light">
           <div class="t-card__content">
             <div class="t-card__head">
               <div class="t-card__icon">
@@ -74,12 +74,12 @@
     <div class="container">
       <ScrollReveal :delay="0.3">
         <div class="testimonials__trust-bar">
-          <div class="testimonials__trust-card glass-card-light">
+          <div v-magnetic="0.2" class="testimonials__trust-card glass-card-light">
             <span class="testimonials__trust-stars">★★★★★</span>
             <span class="testimonials__trust-text">4.8/5 sur <strong>Google</strong></span>
           </div>
           <div class="testimonials__trust-sep"></div>
-          <div class="testimonials__trust-card glass-card-light testimonials__trust-card--tp">
+          <div v-magnetic="0.2" class="testimonials__trust-card glass-card-light testimonials__trust-card--tp">
             <span class="testimonials__trust-stars testimonials__trust-stars--tp">★★★★★</span>
             <span class="testimonials__trust-text">"Excellent" sur <strong>Trustpilot</strong></span>
           </div>

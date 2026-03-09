@@ -29,12 +29,10 @@
             </ScrollReveal>
             <ScrollReveal :delay="0.8">
               <div class="btn-group">
-                <MagneticButton>
-                  <AppButton variant="primary" size="lg" @click="scrollToPrice">
-                    S'inscrire maintenant
-                    <ArrowRight :size="20" />
-                  </AppButton>
-                </MagneticButton>
+                <AppButton variant="primary" size="lg" @click="scrollToPrice">
+                  S'inscrire maintenant
+                  <ArrowRight :size="20" />
+                </AppButton>
               </div>
             </ScrollReveal>
           </div>

@@ -18,22 +18,22 @@
               vraiment, puis on construit tout le reste. De A à Z.
             </p>
             <div class="hero__trust mt-32">
-              <div class="hero__trust-item glass-badge-light">
+              <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
                 <Users :size="16" />
                 <span><strong>2 100+</strong> entrepreneurs lancés</span>
               </div>
-              <div class="hero__trust-item glass-badge-light">
+              <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
                 <Star :size="16" />
                 <span><strong>4.8/5</strong> satisfaction client</span>
               </div>
-              <div class="hero__trust-item glass-badge-light">
+              <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
                 <Award :size="16" />
                 <span><strong>100%</strong> finançable</span>
               </div>
             </div>
           </ScrollReveal>
           <ScrollReveal direction="right">
-            <div class="ce-hero__image glass-card-light">
+            <div v-magnetic="0.12" class="ce-hero__image glass-card-light">
               <NuxtImg src="/img/banner-right-img.jpg" alt="Créer mon entreprise" format="webp" quality="80" />
             </div>
           </ScrollReveal>
@@ -81,7 +81,7 @@
         <div class="grid grid-2 mt-48">
           <!-- Card 1: Autonomie -->
           <ScrollReveal direction="left">
-            <div class="ce-formula glass-card-light">
+            <div v-magnetic="0.15" class="ce-formula glass-card-light">
               <GlassBadge variant="light">Formation en autonomie</GlassBadge>
               <p class="ce-formula__subtitle mt-16">Accessible 24h/24 — 7j/7</p>
               <p class="ce-formula__desc">
@@ -119,7 +119,7 @@
 
           <!-- Card 2: Accompagnement -->
           <ScrollReveal direction="right">
-            <div class="ce-formula glass-card-light ce-formula--highlight">
+            <div v-magnetic="0.15" class="ce-formula glass-card-light ce-formula--highlight">
               <GlassBadge variant="orange-light">Accompagnement personnalisé</GlassBadge>
               <p class="ce-formula__subtitle mt-16">Formation live + modules pratiques + suivi</p>
               <p class="ce-formula__desc">

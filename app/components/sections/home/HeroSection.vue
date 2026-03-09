@@ -31,32 +31,28 @@
 
         <ScrollReveal :delay="0.8">
           <div class="hero__ctas">
-            <MagneticButton>
-              <AppButton variant="primary" size="lg" to="/creer-entreprise">
-                Je veux créer mon entreprise
-                <ArrowRight :size="20" />
-              </AppButton>
-            </MagneticButton>
-            <MagneticButton>
-              <AppButton variant="primary" size="lg" to="/evoluer-ia">
-                Je veux faire évoluer mon entreprise avec l'IA
-                <ArrowRight :size="20" />
-              </AppButton>
-            </MagneticButton>
+            <AppButton variant="primary" size="lg" to="/creer-entreprise">
+              Je veux créer mon entreprise
+              <ArrowRight :size="20" />
+            </AppButton>
+            <AppButton variant="primary" size="lg" to="/evoluer-ia">
+              Je veux faire évoluer mon entreprise avec l'IA
+              <ArrowRight :size="20" />
+            </AppButton>
           </div>
         </ScrollReveal>
 
         <ScrollReveal :delay="1">
           <div class="hero__trust">
-            <div class="hero__trust-item glass-badge-light">
+            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
               <Users :size="16" />
               <span><strong>2 100+</strong> entrepreneurs lancés</span>
             </div>
-            <div class="hero__trust-item glass-badge-light">
+            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
               <Star :size="16" />
               <span><strong>4.8/5</strong> de satisfaction client</span>
             </div>
-            <div class="hero__trust-item glass-badge-light">
+            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
               <Award :size="16" />
               <span><strong>100%</strong> finançable</span>
             </div>
@@ -66,7 +62,7 @@
 
       <!-- Right: Photo with orbital particles -->
       <ScrollReveal direction="right" :delay="0.5" class="hero__photo-wrap">
-        <div class="hero__photo">
+        <div v-magnetic="0.12" class="hero__photo">
           <div class="hero__photo-halo"></div>
           <div class="hero__photo-ring"></div>
           <NuxtImg src="/img/banner-right-img.jpg" alt="Kevin Attallah" class="hero__photo-img" format="webp" quality="80" />
@@ -87,6 +83,7 @@
             v-for="(bubble, i) in chatBubbles"
             :key="i"
             ref="bubbleRefs"
+            v-magnetic="0.15"
             class="hero__bubble glass-card-light"
             :class="`hero__bubble--${i + 1}`"
           >

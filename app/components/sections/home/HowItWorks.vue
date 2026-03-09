@@ -12,6 +12,7 @@
         <div
           v-for="(step, index) in steps"
           :key="index"
+          v-magnetic="0.15"
           class="step glass-card-light"
         >
           <div class="step__number">
@@ -27,12 +28,10 @@
 
       <ScrollReveal :delay="0.6">
         <div class="how-it-works__cta text-center mt-48">
-          <MagneticButton>
-            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
-              Je prends mon appel gratuit
-              <ArrowRight :size="20" />
-            </AppButton>
-          </MagneticButton>
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+            Je prends mon appel gratuit
+            <ArrowRight :size="20" />
+          </AppButton>
         </div>
       </ScrollReveal>
     </div>

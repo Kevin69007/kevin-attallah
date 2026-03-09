@@ -14,17 +14,13 @@
           La page que vous recherchez n'existe pas ou a été déplacée.
         </p>
         <div class="btn-group" style="justify-content: center">
-          <MagneticButton>
-            <AppButton variant="primary" to="/">
-              <Home :size="18" />
-              Retour à l'accueil
-            </AppButton>
-          </MagneticButton>
-          <MagneticButton>
-            <AppButton variant="ghost-light" to="/formations">
-              Voir les formations
-            </AppButton>
-          </MagneticButton>
+          <AppButton variant="primary" to="/">
+            <Home :size="18" />
+            Retour à l'accueil
+          </AppButton>
+          <AppButton variant="ghost-light" to="/formations">
+            Voir les formations
+          </AppButton>
         </div>
       </ScrollReveal>
     </div>

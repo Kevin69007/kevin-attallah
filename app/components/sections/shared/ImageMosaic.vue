@@ -5,6 +5,7 @@
       <div
         v-for="(tile, i) in tiles"
         :key="i"
+        v-magnetic="0.1"
         class="mosaic__tile"
         :style="tileGridStyle(i)"
       >

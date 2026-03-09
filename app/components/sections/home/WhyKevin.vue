@@ -4,7 +4,7 @@
       <div class="split why__split">
         <!-- Left: Photo -->
         <ScrollReveal direction="left">
-          <div class="why__photo glass-card-light">
+          <div v-magnetic="0.12" class="why__photo glass-card-light">
             <NuxtImg src="/img/about/about-1.png" alt="Kevin Attallah" class="why__photo-img" format="webp" quality="80" />
           </div>
         </ScrollReveal>
@@ -49,7 +49,7 @@
 
       <!-- Stats band -->
       <ScrollReveal :delay="0.3">
-        <div class="why__stats-band glass-card-light">
+        <div v-magnetic="0.15" class="why__stats-band glass-card-light">
           <div v-for="stat in stats" :key="stat.label" class="why__band-item">
             <span class="why__band-value gradient-text">
               <CountUp v-if="typeof stat.value === 'number'" :end="stat.value" :duration="2" :suffix="stat.suffix" />

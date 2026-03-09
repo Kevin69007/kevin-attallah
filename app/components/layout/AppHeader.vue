@@ -2,7 +2,7 @@
   <header :class="['header', { 'header--scrolled': isScrolled }]" :style="{ top: barHeight + 'px' }">
     <div class="container header__container">
       <!-- Dark glass pill with logo + nav -->
-      <div class="header__pill glass-card-light">
+      <div v-magnetic="0.1" class="header__pill glass-card-light">
         <NuxtLink to="/" class="header__logo">
           <NuxtImg src="/img/logo-1.png" alt="Kevin Attallah" class="header__logo-img" />
         </NuxtLink>
@@ -16,6 +16,7 @@
 
       <!-- CTA button — gold gradient, outside pill -->
       <a
+        v-magnetic="0.25"
         :href="externalLinks.booking.brevoMeeting"
         target="_blank"
         rel="noopener noreferrer"

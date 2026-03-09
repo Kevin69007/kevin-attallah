@@ -11,6 +11,7 @@
       <!-- Featured post -->
       <ScrollReveal class="mt-48">
         <div
+          v-magnetic="0.15"
           class="blog-featured glass-card-light"
           @mouseenter="onCardEnter(featuredPost.id)"
           @mouseleave="onCardLeave(featuredPost.id)"
@@ -77,6 +78,7 @@
           v-for="post in remainingPosts"
           :key="post.id"
           :to="`/blog/${post.id}`"
+          v-magnetic="0.15"
           class="blog-card glass-card-light"
         >
           <div
