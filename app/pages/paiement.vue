@@ -115,7 +115,7 @@
             <!-- Trust signals -->
             <ScrollReveal direction="right" :delay="0.4">
               <div class="checkout__trust-list">
-                <div v-for="signal in trustSignals" :key="signal.title" class="checkout__trust-item glass-card-light">
+                <div v-for="signal in trustSignals" :key="signal.title" v-magnetic="0.12" class="checkout__trust-item glass-card-light">
                   <component :is="signal.icon" :size="20" class="checkout__trust-icon" />
                   <div>
                     <strong>{{ signal.title }}</strong>
@@ -357,7 +357,7 @@ const trustSignals = [
 
 <style lang="scss" scoped>
 .checkout {
-  padding: 120px 0 80px;
+  padding: 160px 0 80px;
   min-height: 100vh;
 
   &__title {

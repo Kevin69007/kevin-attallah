@@ -24,7 +24,7 @@
 
         <ScrollReveal :delay="0.8">
           <div class="thanks__steps">
-            <div class="thanks__step glass-card-light" v-for="step in nextSteps" :key="step.title">
+            <div class="thanks__step glass-card-light" v-magnetic="0.12" v-for="step in nextSteps" :key="step.title">
               <component :is="step.icon" :size="28" class="thanks__step-icon" />
               <h3>{{ step.title }}</h3>
               <p>{{ step.description }}</p>
