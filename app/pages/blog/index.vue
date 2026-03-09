@@ -11,19 +11,74 @@
 
     <section class="blog-list section--light">
       <div class="container">
-        <StaggerGrid class="grid grid-3">
+        <!-- Featured post -->
+        <ScrollReveal>
           <div
-            v-for="post in blogPosts"
+            class="blog-featured glass-card-light"
+            @mouseenter="onCardEnter(featuredPost.id)"
+            @mouseleave="onCardLeave(featuredPost.id)"
+          >
+            <div class="blog-featured__carousel">
+              <GlassBadge variant="orange-light" class="blog-featured__badge">À la une</GlassBadge>
+
+              <div class="blog-card__progress" :class="{ 'blog-card__progress--visible': hoveredCard === featuredPost.id }">
+                <div
+                  :key="`prog-feat-${cardSlideIndex[featuredPost.id] || 0}`"
+                  class="blog-card__progress-bar"
+                  :class="{ 'blog-card__progress-bar--active': hoveredCard === featuredPost.id }"
+                ></div>
+              </div>
+
+              <span class="blog-card__count">
+                {{ (cardSlideIndex[featuredPost.id] || 0) + 1 }}/{{ allImages(featuredPost).length }}
+              </span>
+
+              <Swiper
+                :modules="[SwiperPagination]"
+                :slides-per-view="1"
+                :space-between="0"
+                :pagination="{ el: `.blog-dots-feat-list`, clickable: true }"
+                :loop="allImages(featuredPost).length > 1"
+                class="blog-featured__swiper"
+                @swiper="(s) => onCardSwiper(featuredPost.id, s)"
+                @slide-change="(s) => onCardSlideChange(featuredPost.id, s)"
+              >
+                <SwiperSlide v-for="(img, i) in allImages(featuredPost)" :key="i">
+                  <NuxtImg :src="img" :alt="`${featuredPost.title} - ${i + 1}`" loading="lazy" format="webp" quality="80" class="blog-featured__img" />
+                </SwiperSlide>
+              </Swiper>
+              <div class="blog-card__dots blog-dots-feat-list"></div>
+            </div>
+
+            <NuxtLink :to="`/blog/${featuredPost.id}`" class="blog-featured__content">
+              <span class="blog-featured__date">
+                <Calendar :size="12" />
+                {{ featuredPost.date }} {{ featuredPost.month }} {{ featuredPost.year }}
+              </span>
+              <h3 class="blog-featured__title">{{ featuredPost.title }}</h3>
+              <span class="blog-featured__read">
+                Lire l'article <ArrowRight :size="14" />
+              </span>
+            </NuxtLink>
+          </div>
+        </ScrollReveal>
+
+        <!-- Divider -->
+        <div class="glass-divider-light mt-48 mb-32"></div>
+
+        <!-- Remaining posts -->
+        <StaggerGrid class="grid grid-3">
+          <NuxtLink
+            v-for="post in remainingPosts"
             :key="post.id"
+            :to="`/blog/${post.id}`"
             class="blog-card glass-card-light"
           >
-            <!-- Mini Swiper for images -->
             <div
               class="blog-card__carousel"
-              @mouseenter="onCardEnter(post.id)"
-              @mouseleave="onCardLeave(post.id)"
+              @mouseenter.stop="onCardEnter(post.id)"
+              @mouseleave.stop="onCardLeave(post.id)"
             >
-              <!-- Hover progress bar -->
               <div class="blog-card__progress" :class="{ 'blog-card__progress--visible': hoveredCard === post.id }">
                 <div
                   :key="`prog-${post.id}-${cardSlideIndex[post.id] || 0}`"
@@ -32,7 +87,6 @@
                 ></div>
               </div>
 
-              <!-- Image count badge -->
               <span class="blog-card__count">
                 {{ (cardSlideIndex[post.id] || 0) + 1 }}/{{ allImages(post).length }}
               </span>
@@ -54,19 +108,14 @@
               <div :class="`blog-card__dots blog-dots-list-${post.id}`"></div>
             </div>
 
-            <!-- Body -->
-            <NuxtLink :to="`/blog/${post.id}`" class="blog-card__body">
+            <div class="blog-card__body">
               <span class="blog-card__date">
                 <Calendar :size="12" />
                 {{ post.date }} {{ post.month }} {{ post.year }}
               </span>
               <h3 class="blog-card__title">{{ post.title }}</h3>
-              <span class="blog-card__read">
-                Lire l'article <ArrowRight :size="14" />
-              </span>
-            </NuxtLink>
-
-          </div>
+            </div>
+          </NuxtLink>
         </StaggerGrid>
       </div>
     </section>
@@ -86,6 +135,9 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 useHead({ title: 'Blog' })
+
+const featuredPost = computed(() => blogPosts[blogPosts.length - 1])
+const remainingPosts = computed(() => blogPosts.slice(0, -1).reverse())
 
 const swiperRefs: Record<string, any> = {}
 const cardSlideIndex = reactive<Record<string, number>>({})
@@ -141,16 +193,102 @@ onUnmounted(() => {
   }
 }
 
-.blog-list {
+.mb-32 {
+  margin-bottom: 32px;
 }
 
+// ========================
+// FEATURED POST
+// ========================
+.blog-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+
+  &:hover {
+    transform: none;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+  }
+
+  &__carousel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__swiper {
+    aspect-ratio: 4 / 3;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: $xs;
+    color: $text-muted;
+  }
+
+  &__title {
+    font-size: $h2;
+    color: $text-heading;
+    line-height: 1.3;
+    margin: 16px 0 24px;
+  }
+
+  &__read {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: $purple;
+    font-size: $body;
+    font-weight: 600;
+    transition: gap 0.3s ease;
+  }
+
+  &:hover &__read {
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+
+    &__content {
+      padding: 24px;
+    }
+
+    &__title {
+      font-size: $h3;
+    }
+  }
+}
+
+// ========================
+// SMALLER CARDS
+// ========================
 .blog-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
 
-  // Mini carousel
   &__carousel {
     position: relative;
   }
@@ -165,7 +303,6 @@ onUnmounted(() => {
     object-fit: cover;
   }
 
-  // Hover progress bar
   &__progress {
     position: absolute;
     top: 0;
@@ -193,7 +330,6 @@ onUnmounted(() => {
     }
   }
 
-  // Image count badge
   &__count {
     position: absolute;
     top: 10px;
@@ -210,7 +346,6 @@ onUnmounted(() => {
     color: $text-white;
   }
 
-  // Pagination dots
   &__dots {
     position: absolute;
     bottom: 10px;
@@ -256,7 +391,6 @@ onUnmounted(() => {
   &__title {
     font-size: $h4;
     color: $text-heading;
-    margin-bottom: 16px;
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -264,26 +398,10 @@ onUnmounted(() => {
     overflow: hidden;
     flex: 1;
   }
-
-  &__read {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: $purple;
-    font-size: $small;
-    font-weight: 600;
-    transition: gap 0.3s ease;
-  }
-
-  &:hover &__read {
-    gap: 10px;
-  }
-
 }
 
 @keyframes card-fill {
   from { width: 0%; }
   to { width: 100%; }
 }
-
 </style>

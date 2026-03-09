@@ -116,7 +116,7 @@ useHead({
 
 <style lang="scss" scoped>
 .blog-detail {
-  padding: 120px 0 80px;
+  padding: 160px 0 80px;
 
   &__back {
     display: inline-flex;
