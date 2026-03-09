@@ -8,23 +8,46 @@
         </h2>
       </ScrollReveal>
 
-      <StaggerGrid class="how-it-works__grid grid grid-3" :stagger="0.2">
-        <div
-          v-for="(step, index) in steps"
-          :key="index"
-          v-magnetic="0.15"
-          class="step glass-card-light"
-        >
-          <div class="step__number">
-            <CountUp :end="index + 1" :duration="1.5" prefix="0" />
+      <ScatteredCards :count="5" class="mt-48">
+        <template #card-0>
+          <div class="sc-content">
+            <div class="sc-content__number gradient-text">01</div>
+            <div class="sc-content__icon"><Phone :size="28" /></div>
+            <h3 class="sc-content__title">{{ steps[0]!.title }}</h3>
+            <p class="sc-content__desc">{{ steps[0]!.description }}</p>
           </div>
-          <div class="step__icon">
-            <component :is="step.icon" :size="32" />
+        </template>
+        <template #card-1>
+          <div class="sc-media">
+            <video autoplay loop muted playsinline>
+              <source src="/video/home-step-01.mp4" type="video/mp4" />
+            </video>
           </div>
-          <h3 class="step__title">{{ step.title }}</h3>
-          <p class="step__desc">{{ step.description }}</p>
-        </div>
-      </StaggerGrid>
+        </template>
+        <template #card-2>
+          <div class="sc-content">
+            <div class="sc-content__number gradient-text">02</div>
+            <div class="sc-content__icon"><Route :size="28" /></div>
+            <h3 class="sc-content__title">{{ steps[1]!.title }}</h3>
+            <p class="sc-content__desc">{{ steps[1]!.description }}</p>
+          </div>
+        </template>
+        <template #card-3>
+          <div class="sc-media">
+            <video autoplay loop muted playsinline>
+              <source src="/video/home-step-02.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </template>
+        <template #card-4>
+          <div class="sc-content">
+            <div class="sc-content__number gradient-text">03</div>
+            <div class="sc-content__icon"><Rocket :size="28" /></div>
+            <h3 class="sc-content__title">{{ steps[2]!.title }}</h3>
+            <p class="sc-content__desc">{{ steps[2]!.description }}</p>
+          </div>
+        </template>
+      </ScatteredCards>
 
       <ScrollReveal :delay="0.6">
         <div class="how-it-works__cta text-center mt-48">
@@ -62,52 +85,77 @@ const steps = [
 </script>
 
 <style lang="scss" scoped>
-.how-it-works {
-  &__grid {
-    margin-top: 48px;
-  }
-}
-
-.step {
+.sc-content {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 40px 32px;
-  position: relative;
+  height: 100%;
+  justify-content: center;
+  gap: 8px;
 
   &__number {
     font-family: $font-heading;
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    background: $gradient-primary;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    opacity: 0.5;
     line-height: 1;
-    margin-bottom: 8px;
+    opacity: 0.35;
   }
 
   &__icon {
-    width: 64px;
-    height: 64px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba($purple, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
     color: $purple;
   }
 
   &__title {
-    font-size: $h4;
+    font-size: $body;
+    font-weight: 700;
     color: $text-heading;
-    margin-bottom: 12px;
+    line-height: 1.3;
   }
 
   &__desc {
-    color: $text-body;
     font-size: $small;
-    line-height: 1.7;
+    color: $text-muted;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 16px;
+    gap: 6px;
+
+    &__number { font-size: 2rem; }
+    &__icon { width: 36px; height: 36px; }
+    &__title { font-size: $small; }
+    &__desc { font-size: $xs; }
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px 12px;
+    gap: 4px;
+
+    &__number { font-size: 1.5rem; }
+    &__icon { width: 32px; height: 32px; }
+    &__title { font-size: $xs; }
+    &__desc { display: none; }
+  }
+}
+
+.sc-media {
+  height: 100%;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 }
 </style>

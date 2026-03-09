@@ -48,15 +48,36 @@
           </h2>
         </ScrollReveal>
 
-        <StaggerGrid class="grid grid-4 mt-48">
-          <GlassCard v-for="value in values" :key="value.title" variant="light">
-            <div class="values__item text-center">
-              <component :is="value.icon" :size="32" class="values__icon" />
-              <h4 class="values__title">{{ value.title }}</h4>
-              <p class="values__desc">{{ value.description }}</p>
+        <ScatteredCards :count="4" class="mt-48">
+          <template #card-0>
+            <div class="values__card">
+              <div class="values__card-icon"><Heart :size="28" /></div>
+              <h4 class="values__card-title">{{ values[0]!.title }}</h4>
+              <p class="values__card-desc">{{ values[0]!.description }}</p>
             </div>
-          </GlassCard>
-        </StaggerGrid>
+          </template>
+          <template #card-1>
+            <div class="values__card">
+              <div class="values__card-icon"><Zap :size="28" /></div>
+              <h4 class="values__card-title">{{ values[1]!.title }}</h4>
+              <p class="values__card-desc">{{ values[1]!.description }}</p>
+            </div>
+          </template>
+          <template #card-2>
+            <div class="values__card">
+              <div class="values__card-icon"><Users :size="28" /></div>
+              <h4 class="values__card-title">{{ values[2]!.title }}</h4>
+              <p class="values__card-desc">{{ values[2]!.description }}</p>
+            </div>
+          </template>
+          <template #card-3>
+            <div class="values__card">
+              <div class="values__card-icon"><Target :size="28" /></div>
+              <h4 class="values__card-title">{{ values[3]!.title }}</h4>
+              <p class="values__card-desc">{{ values[3]!.description }}</p>
+            </div>
+          </template>
+        </ScatteredCards>
       </div>
     </section>
 
@@ -206,25 +227,38 @@ const socialIcons: Record<string, string> = {
 }
 
 .values {
-  &__item {
-    padding: 8px;
+  &__card {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    justify-content: center;
+    gap: 8px;
   }
 
-  &__icon {
+  &__card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba($purple, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: $purple;
-    margin-bottom: 16px;
   }
 
-  &__title {
+  &__card-title {
     color: $text-heading;
     font-size: $body;
-    margin-bottom: 8px;
+    font-weight: 700;
   }
 
-  &__desc {
+  &__card-desc {
     color: $text-muted;
     font-size: $small;
-    line-height: 1.6;
+    line-height: 1.5;
   }
 }
 

@@ -68,22 +68,52 @@
           </h2>
         </ScrollReveal>
 
-        <StaggerGrid class="grid grid-3 mt-48" :stagger="0.2">
-          <div v-for="(step, index) in parcours" :key="index" v-magnetic="0.15" class="eia-step glass-card-light">
-            <div class="eia-step__number gradient-text">0{{ index + 1 }}</div>
-            <div class="eia-step__icon">
-              <component :is="step.icon" :size="28" />
+        <ScatteredCards :count="5" class="mt-48">
+          <template #card-0>
+            <div class="sc-content">
+              <div class="sc-content__number gradient-text">01</div>
+              <div class="sc-content__icon"><Phone :size="28" /></div>
+              <h3 class="sc-content__title">{{ parcours[0]!.title }}</h3>
+              <p class="sc-content__desc">{{ parcours[0]!.description }}</p>
             </div>
-            <h3 class="eia-step__title">{{ step.title }}</h3>
-            <p class="eia-step__desc">{{ step.description }}</p>
-            <div v-if="step.subOptions" class="eia-step__sub">
-              <div v-for="sub in step.subOptions" :key="sub" class="eia-step__sub-item">
-                <CheckCircle :size="14" />
-                <span>{{ sub }}</span>
+          </template>
+          <template #card-1>
+            <div class="sc-media">
+              <video autoplay loop muted playsinline>
+                <source src="/video/parcours-01.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </template>
+          <template #card-2>
+            <div class="sc-content">
+              <div class="sc-content__number gradient-text">02</div>
+              <div class="sc-content__icon"><Search :size="28" /></div>
+              <h3 class="sc-content__title">{{ parcours[1]!.title }}</h3>
+              <p class="sc-content__desc">{{ parcours[1]!.description }}</p>
+            </div>
+          </template>
+          <template #card-3>
+            <div class="sc-media">
+              <video autoplay loop muted playsinline>
+                <source src="/video/parcours-02.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </template>
+          <template #card-4>
+            <div class="sc-content">
+              <div class="sc-content__number gradient-text">03</div>
+              <div class="sc-content__icon"><Rocket :size="28" /></div>
+              <h3 class="sc-content__title">{{ parcours[2]!.title }}</h3>
+              <p class="sc-content__desc">{{ parcours[2]!.description }}</p>
+              <div class="sc-content__sub">
+                <div v-for="sub in parcours[2]!.subOptions" :key="sub" class="sc-content__sub-item">
+                  <CheckCircle :size="14" />
+                  <span>{{ sub }}</span>
+                </div>
               </div>
             </div>
-          </div>
-        </StaggerGrid>
+          </template>
+        </ScatteredCards>
       </div>
     </section>
 
@@ -177,6 +207,7 @@ useHead({
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+
 onMounted(() => {
   trackViewContent({ content_name: 'Faire évoluer avec IA' })
   trackViewItem({ content_name: 'Faire évoluer avec IA' })
@@ -301,62 +332,99 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
   }
 }
 
-.eia-step {
-  padding: 32px 24px;
+// Scattered card content styles
+.sc-content {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  height: 100%;
+  justify-content: center;
+  gap: 8px;
 
   &__number {
     font-family: $font-heading;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    opacity: 0.5;
     line-height: 1;
-    margin-bottom: 8px;
+    opacity: 0.35;
   }
 
   &__icon {
-    width: 56px;
-    height: 56px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba($purple, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 16px;
     color: $purple;
   }
 
   &__title {
-    font-size: $h4;
+    font-size: $body;
+    font-weight: 700;
     color: $text-heading;
-    margin-bottom: 12px;
+    line-height: 1.3;
   }
 
   &__desc {
-    color: $text-body;
     font-size: $small;
-    line-height: 1.7;
+    color: $text-muted;
+    line-height: 1.5;
   }
 
   &__sub {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 12px;
+    gap: 4px;
     text-align: left;
   }
 
   &__sub-item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: $small;
+    gap: 6px;
+    font-size: $xs;
     color: $text-body;
 
     svg {
       color: $orange;
       flex-shrink: 0;
     }
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 16px;
+    gap: 6px;
+
+    &__number { font-size: 2rem; }
+    &__icon { width: 36px; height: 36px; }
+    &__title { font-size: $small; }
+    &__desc { font-size: $xs; }
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px 12px;
+    gap: 4px;
+
+    &__number { font-size: 1.5rem; }
+    &__icon { width: 32px; height: 32px; }
+    &__title { font-size: $xs; }
+    &__desc { display: none; }
+    &__sub { display: none; }
+  }
+}
+
+.sc-media {
+  height: 100%;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 }
 
