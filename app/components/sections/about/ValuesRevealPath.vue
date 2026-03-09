@@ -1,52 +1,69 @@
 <template>
   <div ref="wrapperEl" class="reveal-path">
     <div class="reveal-path__stage">
-      <!-- SVG path -->
+      <!-- Horizontal line -->
       <svg
         ref="svgEl"
-        class="reveal-path__svg"
-        viewBox="0 0 1200 400"
+        class="reveal-path__line"
+        viewBox="0 0 1000 4"
         preserveAspectRatio="none"
         fill="none"
       >
         <defs>
-          <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" :stop-color="'#6C2BD9'" />
-            <stop offset="100%" :stop-color="'#C67651'" />
+          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#6C2BD9" />
+            <stop offset="100%" stop-color="#C67651" />
           </linearGradient>
         </defs>
-        <path
-          ref="pathEl"
-          d="M 50,200 C 200,50 350,350 500,200 S 800,50 950,200 S 1100,350 1150,200"
-          stroke="url(#pathGradient)"
+        <line
+          ref="lineEl"
+          x1="0" y1="2" x2="1000" y2="2"
+          stroke="url(#lineGrad)"
           stroke-width="2"
           stroke-linecap="round"
-          fill="none"
         />
       </svg>
 
-      <!-- Node dots -->
-      <div
-        v-for="(_, i) in 4"
-        :key="`dot-${i}`"
-        :ref="(el) => setDotRef(el, i)"
-        class="reveal-path__dot"
-      ></div>
+      <!-- Nodes -->
+      <div class="reveal-path__nodes">
+        <div
+          v-for="(value, i) in values"
+          :key="value.title"
+          :ref="(el) => setNodeRef(el, i)"
+          class="reveal-path__node"
+        >
+          <!-- Background title -->
+          <span
+            :ref="(el) => setBgRef(el, i)"
+            class="reveal-path__bg-title"
+          >{{ value.title }}</span>
 
-      <!-- Cards at each node -->
-      <div
-        v-for="(value, i) in values"
-        :key="value.title"
-        :ref="(el) => setCardRef(el, i)"
-        v-magnetic="0.15"
-        class="reveal-path__card glass-card-light"
-      >
-        <div class="reveal-path__card-content">
-          <div class="reveal-path__card-icon">
-            <component :is="value.icon" :size="22" />
+          <!-- Dot -->
+          <div
+            :ref="(el) => setDotRef(el, i)"
+            class="reveal-path__dot"
+          ></div>
+
+          <!-- Connector line from dot to card -->
+          <div
+            :ref="(el) => setConnRef(el, i)"
+            class="reveal-path__connector"
+          ></div>
+
+          <!-- Card -->
+          <div
+            :ref="(el) => setCardRef(el, i)"
+            v-magnetic="0.12"
+            class="reveal-path__card glass-card-light"
+          >
+            <div class="reveal-path__card-inner">
+              <div class="reveal-path__card-icon">
+                <component :is="value.icon" :size="22" />
+              </div>
+              <h4 class="reveal-path__card-title">{{ value.title }}</h4>
+              <p class="reveal-path__card-desc">{{ value.description }}</p>
+            </div>
           </div>
-          <h4 class="reveal-path__card-title">{{ value.title }}</h4>
-          <p class="reveal-path__card-desc">{{ value.description }}</p>
         </div>
       </div>
     </div>
@@ -67,40 +84,32 @@ defineProps<{ values: Value[] }>()
 const { $gsap: gsap, $ScrollTrigger: ScrollTrigger } = useNuxtApp()
 const wrapperEl = ref<HTMLElement>()
 const svgEl = ref<SVGSVGElement>()
-const pathEl = ref<SVGPathElement>()
-const cardEls: HTMLElement[] = []
+const lineEl = ref<SVGLineElement>()
+const nodeEls: HTMLElement[] = []
 const dotEls: HTMLElement[] = []
+const connEls: HTMLElement[] = []
+const cardEls: HTMLElement[] = []
+const bgEls: HTMLElement[] = []
 
-function setCardRef(el: any, i: number) {
-  if (el) cardEls[i] = el as HTMLElement
-}
-function setDotRef(el: any, i: number) {
-  if (el) dotEls[i] = el as HTMLElement
-}
-
-// Card positions along the path (at 15%, 40%, 65%, 90%)
-const NODE_POSITIONS = [0.15, 0.40, 0.65, 0.90]
-// Alternate cards above/below path
-const CARD_OFFSETS_Y = [-170, 80, -170, 80]
+function setNodeRef(el: any, i: number) { if (el) nodeEls[i] = el as HTMLElement }
+function setDotRef(el: any, i: number) { if (el) dotEls[i] = el as HTMLElement }
+function setConnRef(el: any, i: number) { if (el) connEls[i] = el as HTMLElement }
+function setCardRef(el: any, i: number) { if (el) cardEls[i] = el as HTMLElement }
+function setBgRef(el: any, i: number) { if (el) bgEls[i] = el as HTMLElement }
 
 onMounted(() => {
-  if (!gsap || !ScrollTrigger || !wrapperEl.value || !pathEl.value || !svgEl.value) return
+  if (!gsap || !ScrollTrigger || !wrapperEl.value || !lineEl.value) return
 
   const isMobile = window.innerWidth <= 768
-  const path = pathEl.value
+  const line = lineEl.value
 
   if (isMobile) {
-    // Mobile: hide SVG, show cards in simple stagger
     if (svgEl.value) svgEl.value.style.display = 'none'
     dotEls.forEach((d) => { if (d) d.style.display = 'none' })
+    connEls.forEach((c) => { if (c) c.style.display = 'none' })
+    bgEls.forEach((b) => { if (b) b.style.display = 'none' })
     cardEls.forEach((card) => {
-      if (card) {
-        card.style.position = 'relative'
-        card.style.transform = 'none'
-        card.style.left = 'auto'
-        card.style.top = 'auto'
-        gsap.set(card, { opacity: 0, y: 30 })
-      }
+      if (card) gsap.set(card, { opacity: 0, y: 30 })
     })
     gsap.to(cardEls, {
       opacity: 1,
@@ -110,67 +119,55 @@ onMounted(() => {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: wrapperEl.value,
-        start: 'top 80%',
+        start: 'top 85%',
       },
     })
     return
   }
 
-  // Get path length for dash animation
-  const pathLength = path.getTotalLength()
-  path.style.strokeDasharray = String(pathLength)
-  path.style.strokeDashoffset = String(pathLength)
+  // Line draw setup
+  const lineLength = 1000
+  line.setAttribute('stroke-dasharray', String(lineLength))
+  line.setAttribute('stroke-dashoffset', String(lineLength))
 
-  // Position cards and dots along the path
-  const svgRect = svgEl.value.getBoundingClientRect()
-  const stageRect = wrapperEl.value.querySelector('.reveal-path__stage')!.getBoundingClientRect()
+  // Initial states
+  dotEls.forEach((dot) => { if (dot) gsap.set(dot, { scale: 0, opacity: 0 }) })
+  connEls.forEach((conn) => { if (conn) gsap.set(conn, { scaleY: 0, opacity: 0 }) })
+  cardEls.forEach((card) => { if (card) gsap.set(card, { opacity: 0, y: 24 }) })
+  bgEls.forEach((bg) => { if (bg) gsap.set(bg, { opacity: 0, scale: 0.9 }) })
 
-  NODE_POSITIONS.forEach((t, i) => {
-    const point = path.getPointAtLength(t * pathLength)
-    // Convert SVG coordinates to stage coordinates
-    const scaleX = svgRect.width / 1200
-    const scaleY = svgRect.height / 400
-    const px = point.x * scaleX + (svgRect.left - stageRect.left)
-    const py = point.y * scaleY + (svgRect.top - stageRect.top)
-
-    // Position dot
-    const dot = dotEls[i]
-    if (dot) {
-      dot.style.left = `${px}px`
-      dot.style.top = `${py}px`
-      gsap.set(dot, { scale: 0, opacity: 0 })
-    }
-
-    // Position card (offset above/below path)
-    const card = cardEls[i]
-    if (card) {
-      card.style.left = `${px - 120}px` // center card (240px wide)
-      card.style.top = `${py + CARD_OFFSETS_Y[i]!}px`
-      gsap.set(card, { scale: 0, opacity: 0 })
-    }
-  })
-
-  // Scroll-driven timeline
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: wrapperEl.value,
-      start: 'top 15%',
-      end: 'bottom 15%',
-      scrub: 1,
-      pin: true,
+      start: 'top 80%',
+      end: 'top 25%',
+      scrub: 0.6,
     },
   })
 
-  // Draw path
-  tl.to(path, {
-    strokeDashoffset: 0,
-    duration: 4,
+  // Draw the full line
+  tl.to(line, {
+    attr: { 'stroke-dashoffset': 0 },
+    duration: 1,
     ease: 'none',
   }, 0)
 
-  // Reveal dots and cards at their respective progress points
-  NODE_POSITIONS.forEach((t, i) => {
-    const timeOffset = t * 4 // align with path draw progress
+  // Reveal each node
+  const count = 4
+  for (let i = 0; i < count; i++) {
+    const offset = 0.15 + i * 0.4
+
+    // Fade out PREVIOUS bg title before this card starts
+    if (i > 0) {
+      const prevBg = bgEls[i - 1]
+      if (prevBg) {
+        tl.to(prevBg, {
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power2.in',
+        }, offset - 0.08)
+      }
+    }
 
     // Dot appears
     const dot = dotEls[i]
@@ -178,22 +175,54 @@ onMounted(() => {
       tl.to(dot, {
         scale: 1,
         opacity: 1,
-        duration: 0.3,
+        duration: 0.18,
         ease: 'back.out(2)',
-      }, timeOffset)
+      }, offset)
     }
 
-    // Card scales in
+    // Connector grows down
+    const conn = connEls[i]
+    if (conn) {
+      tl.to(conn, {
+        scaleY: 1,
+        opacity: 1,
+        duration: 0.18,
+        ease: 'power2.out',
+      }, offset + 0.05)
+    }
+
+    // Background title fades in
+    const bg = bgEls[i]
+    if (bg) {
+      tl.to(bg, {
+        opacity: 0.08,
+        scale: 1,
+        duration: 0.22,
+        ease: 'power2.out',
+      }, offset + 0.06)
+    }
+
+    // Card slides up
     const card = cardEls[i]
     if (card) {
       tl.to(card, {
-        scale: 1,
         opacity: 1,
-        duration: 0.6,
-        ease: 'elastic.out(1, 0.5)',
-      }, timeOffset)
+        y: 0,
+        duration: 0.25,
+        ease: 'power3.out',
+      }, offset + 0.08)
     }
-  })
+  }
+
+  // Fade out the last bg title at the end
+  const lastBg = bgEls[count - 1]
+  if (lastBg) {
+    tl.to(lastBg, {
+      opacity: 0,
+      duration: 0.2,
+      ease: 'power2.in',
+    }, 0.15 + (count - 1) * 0.4 + 0.35)
+  }
 })
 
 onUnmounted(() => {
@@ -207,25 +236,36 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .reveal-path {
-  padding: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 48px 0 32px;
 
   &__stage {
     position: relative;
     width: 100%;
-    max-width: 1200px;
-    height: 500px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 24px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 4px;
+    display: block;
 
     @media (max-width: 768px) {
-      height: auto;
-      display: grid;
+      display: none;
+    }
+  }
+
+  &__nodes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: -2px;
+
+    @media (max-width: 768px) {
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      padding: 0 16px;
+      margin-top: 0;
     }
 
     @media (max-width: 480px) {
@@ -233,26 +273,55 @@ onUnmounted(() => {
     }
   }
 
-  &__svg {
+  &__node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__bg-title {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: $font-heading;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 900;
+    white-space: nowrap;
+    opacity: 0;
+    color: $purple;
     pointer-events: none;
+    z-index: 0;
+    user-select: none;
+    line-height: 1;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   &__dot {
-    position: absolute;
     width: 14px;
     height: 14px;
-    margin-left: -7px;
-    margin-top: -7px;
     border-radius: 50%;
     background: $purple;
-    box-shadow: 0 0 20px rgba($purple, 0.4);
+    box-shadow: 0 0 16px rgba($purple, 0.35);
+    flex-shrink: 0;
     z-index: 5;
-    animation: dot-pulse 2s ease-in-out infinite;
+    animation: dot-pulse 2.5s ease-in-out infinite;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__connector {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, $purple, rgba($purple, 0.15));
+    transform-origin: top;
+    flex-shrink: 0;
 
     @media (max-width: 768px) {
       display: none;
@@ -260,28 +329,21 @@ onUnmounted(() => {
   }
 
   &__card {
-    position: absolute;
-    width: 240px;
+    position: relative;
+    z-index: 2;
     border-radius: $radius-lg;
     overflow: hidden;
     cursor: pointer;
     will-change: transform, opacity;
-    z-index: 10;
+    width: 100%;
 
     &:hover {
       transform: none;
     }
-
-    @media (max-width: 768px) {
-      position: relative;
-      width: 100%;
-      left: auto !important;
-      top: auto !important;
-    }
   }
 
-  &__card-content {
-    padding: 24px 20px;
+  &__card-inner {
+    padding: 28px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -307,14 +369,14 @@ onUnmounted(() => {
   }
 
   &__card-desc {
-    font-size: $xs;
+    font-size: $small;
     color: $text-muted;
     line-height: 1.5;
   }
 }
 
 @keyframes dot-pulse {
-  0%, 100% { box-shadow: 0 0 10px rgba($purple, 0.3); }
-  50% { box-shadow: 0 0 25px rgba($purple, 0.6); }
+  0%, 100% { box-shadow: 0 0 8px rgba($purple, 0.25); }
+  50% { box-shadow: 0 0 20px rgba($purple, 0.5); }
 }
 </style>
