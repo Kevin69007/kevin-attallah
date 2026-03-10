@@ -5,7 +5,7 @@
         <!-- Hero -->
         <ScrollReveal>
           <div class="text-center">
-            <GlassBadge variant="orange-light">
+            <GlassBadge v-magnetic="0.2" variant="orange-light">
               <Gift :size="14" />
               {{ config.badgeText }}
             </GlassBadge>
@@ -22,7 +22,7 @@
           <ScrollReveal direction="left">
             <!-- Features -->
             <div class="lp__features">
-              <div v-for="feature in config.features" :key="feature" class="lp__feature glass-card-light">
+              <div v-for="feature in config.features" :key="feature" v-magnetic="0.15" class="lp__feature glass-card-light">
                 <CheckCircle :size="18" class="lp__check" />
                 <span>{{ feature }}</span>
               </div>
@@ -30,11 +30,11 @@
 
             <!-- Trust signals -->
             <div class="lp__trust mt-32">
-              <GlassBadge variant="light">
+              <GlassBadge v-magnetic="0.2" variant="light">
                 <Users :size="14" />
                 2100+ entrepreneurs lancés
               </GlassBadge>
-              <GlassBadge variant="light">
+              <GlassBadge v-magnetic="0.2" variant="light">
                 <Star :size="14" />
                 4.8/5 satisfaction
               </GlassBadge>
@@ -46,7 +46,7 @@
 
           <!-- Right: Form -->
           <ScrollReveal direction="right" :delay="0.3">
-            <GlassCard variant="light" :hoverable="false">
+            <GlassCard v-magnetic="0.12" variant="light" :hoverable="false">
               <h3 class="mb-8">Accès personnel</h3>
               <p class="lp__form-subtitle">Remplis le formulaire et reçois tes identifiants</p>
               <FreeFormationForm class="mt-24" />
@@ -115,10 +115,6 @@ onMounted(() => {
     font-size: $small;
     padding: 10px 16px;
     border-radius: 12px;
-
-    &:hover {
-      transform: none;
-    }
   }
 
   &__check {

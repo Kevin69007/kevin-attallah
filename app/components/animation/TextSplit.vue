@@ -23,6 +23,7 @@ interface Props {
   delay?: number
   stagger?: number
   gradientText?: string
+  once?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -30,9 +31,11 @@ const props = withDefaults(defineProps<Props>(), {
   delay: 0,
   stagger: 0.03,
   gradientText: '',
+  once: false,
 })
 
 const el = ref<HTMLElement | null>(null)
+const tween = ref<gsap.core.Tween | null>(null)
 const words = computed(() => props.text.split(' '))
 
 const gradientWordIndices = computed(() => {
@@ -55,40 +58,54 @@ const gradientWordIndices = computed(() => {
 
 onMounted(() => {
   if (!el.value) return
-  const { $gsap } = useNuxtApp()
-  if (!$gsap) return
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const chars = el.value.querySelectorAll('.text-split__char')
+    chars.forEach((char) => {
+      ;(char as HTMLElement).style.opacity = '1'
+    })
+    return
+  }
+
+  const { $gsap, $ScrollTrigger } = useNuxtApp()
+  if (!$gsap || !$ScrollTrigger) return
 
   const chars = el.value.querySelectorAll('.text-split__char')
 
-  const rect = el.value.getBoundingClientRect()
-  const inViewport = rect.top < window.innerHeight * 0.95
-
-  const animVars: Record<string, any> = {
+  const fromVars: Record<string, any> = {
     opacity: 0,
     y: 40,
     rotateX: -90,
+    scale: 0.8,
+  }
+
+  const toVars: Record<string, any> = {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    scale: 1,
     stagger: props.stagger,
     duration: 0.8,
     delay: props.delay,
     ease: 'power3.out',
-  }
-
-  if (!inViewport) {
-    animVars.scrollTrigger = {
+    scrollTrigger: {
       trigger: el.value,
       start: 'top 85%',
-      once: true,
-    }
+      end: 'bottom top',
+      toggleActions: props.once
+        ? 'play none none none'
+        : 'play reverse play reverse',
+    },
   }
 
-  $gsap.from(chars, animVars)
+  tween.value = $gsap.fromTo(chars, fromVars, toVars)
+})
 
-  // Safety fallback: ensure text is visible after 4s
-  setTimeout(() => {
-    chars.forEach((char) => {
-      $gsap.set(char, { opacity: 1, y: 0, rotateX: 0 })
-    })
-  }, 4000)
+onBeforeUnmount(() => {
+  if (tween.value) {
+    tween.value.scrollTrigger?.kill()
+    tween.value.kill()
+  }
 })
 </script>
 
@@ -102,7 +119,6 @@ onMounted(() => {
 
   &__char {
     display: inline-block;
-    will-change: transform, opacity;
   }
 
   &__word--gradient {

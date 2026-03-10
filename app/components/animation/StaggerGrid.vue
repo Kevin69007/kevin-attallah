@@ -9,76 +9,78 @@ interface Props {
   selector?: string
   stagger?: number
   distance?: number
+  once?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   selector: ':scope > *',
   stagger: 0.12,
   distance: 50,
+  once: false,
 })
 
 const container = ref<HTMLElement | null>(null)
+const tween = ref<gsap.core.Tween | null>(null)
 
 onMounted(() => {
   if (!container.value) return
-  const { $gsap, $ScrollTrigger } = useNuxtApp()
-  if (!$gsap || !$ScrollTrigger) {
-    // Fallback: make all children visible
-    const children = container.value.querySelectorAll(props.selector)
+
+  const children = container.value.querySelectorAll(props.selector)
+  if (!children.length) return
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     children.forEach((child) => {
       ;(child as HTMLElement).style.opacity = '1'
     })
     return
   }
 
-  const children = container.value.querySelectorAll(props.selector)
-  if (!children.length) return
-
-  // Set initial state via CSS for predictable behavior
-  children.forEach((child) => {
-    ;(child as HTMLElement).style.opacity = '0'
-    ;(child as HTMLElement).style.willChange = 'transform, opacity'
-  })
-
-  const rect = container.value.getBoundingClientRect()
-  const inViewport = rect.top < window.innerHeight * 0.95
+  const { $gsap, $ScrollTrigger } = useNuxtApp()
+  if (!$gsap || !$ScrollTrigger) {
+    children.forEach((child) => {
+      ;(child as HTMLElement).style.opacity = '1'
+    })
+    return
+  }
 
   const fromVars: Record<string, any> = {
     opacity: 0,
     y: props.distance,
+    scale: 0.96,
+    rotateX: 2,
   }
 
   const toVars: Record<string, any> = {
     opacity: 1,
     y: 0,
+    scale: 1,
+    rotateX: 0,
     stagger: props.stagger,
     duration: 0.8,
     ease: 'power3.out',
-    onComplete: () => {
-      children.forEach((child) => {
-        ;(child as HTMLElement).style.willChange = 'auto'
-      })
+    scrollTrigger: {
+      trigger: container.value,
+      start: 'top 95%',
+      end: 'bottom top',
+      toggleActions: props.once
+        ? 'play none none none'
+        : 'play reverse play reverse',
     },
   }
 
-  if (inViewport) {
-    $gsap.fromTo(children, fromVars, toVars)
-  } else {
-    toVars.scrollTrigger = {
-      trigger: container.value,
-      start: 'top 95%',
-      once: true,
-    }
-    $gsap.fromTo(children, fromVars, toVars)
-  }
+  tween.value = $gsap.fromTo(children, fromVars, toVars)
+})
 
-  // Safety fallback: ensure children are visible after 2.5s
-  setTimeout(() => {
-    children.forEach((child) => {
-      const el = child as HTMLElement
-      el.style.willChange = 'auto'
-      $gsap.set(child, { opacity: 1, y: 0 })
-    })
-  }, 2500)
+onBeforeUnmount(() => {
+  if (tween.value) {
+    tween.value.scrollTrigger?.kill()
+    tween.value.kill()
+  }
 })
 </script>
+
+<style scoped>
+.stagger-grid {
+  perspective: 800px;
+}
+</style>
