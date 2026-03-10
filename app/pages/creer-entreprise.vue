@@ -455,7 +455,10 @@ async function handlePurchase() {
     font-family: $font-heading;
     font-size: 2.5rem;
     font-weight: 800;
-    color: $text-heading;
+    background: linear-gradient(135deg, $purple, $orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   &__trust {
