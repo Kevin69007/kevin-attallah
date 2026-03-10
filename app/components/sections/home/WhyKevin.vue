@@ -4,8 +4,18 @@
       <div class="split why__split">
         <!-- Left: Photo -->
         <ScrollReveal direction="left">
-          <div v-magnetic="0.12" class="why__photo glass-card-light">
-            <NuxtImg src="/img/testimonial/testimonial1.png" alt="Kevin Attallah" class="why__photo-img" format="webp" quality="80" />
+          <div class="why__photo-wrap">
+            <!-- Glass panels behind photo -->
+            <div class="why__glass-panel why__glass-panel--1"></div>
+            <div class="why__glass-panel why__glass-panel--2"></div>
+            <div class="why__glass-panel why__glass-panel--3"></div>
+            <!-- Main photo -->
+            <div v-magnetic="0.12" class="why__photo glass-card-light">
+              <NuxtImg src="/img/testimonial/testimonial1.png" alt="Kevin Attallah" class="why__photo-img" format="webp" quality="80" />
+            </div>
+            <!-- Small floating glass accents -->
+            <div class="why__glass-accent why__glass-accent--1"></div>
+            <div class="why__glass-accent why__glass-accent--2"></div>
           </div>
         </ScrollReveal>
 
@@ -88,18 +98,103 @@ const stats: { value: number | string; suffix: string; label: string }[] = [
     align-items: flex-start;
   }
 
+  &__photo-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  &__glass-panel {
+    position: absolute;
+    border-radius: $radius-lg;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 2px 6px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+    animation: border-glow 6s ease-in-out infinite;
+    pointer-events: none;
+
+    &--1 {
+      width: 75%;
+      height: 65%;
+      top: -12px;
+      right: -16px;
+      transform: rotate(3deg);
+      animation-delay: -1s;
+    }
+
+    &--2 {
+      width: 50%;
+      height: 45%;
+      bottom: -8px;
+      left: -14px;
+      transform: rotate(-2deg);
+      animation-delay: -3s;
+    }
+
+    &--3 {
+      width: 30%;
+      height: 25%;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%) rotate(5deg);
+      animation-delay: -5s;
+    }
+  }
+
   &__photo {
     padding: 0;
     overflow: hidden;
     aspect-ratio: 3 / 4;
-    max-width: 400px;
-    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
   }
 
   &__photo-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  &__glass-accent {
+    position: absolute;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    animation: border-glow 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+
+    &--1 {
+      width: 48px;
+      height: 48px;
+      top: -8px;
+      left: 8px;
+      animation-delay: -2s;
+    }
+
+    &--2 {
+      width: 32px;
+      height: 32px;
+      bottom: 4px;
+      right: -4px;
+      animation-delay: -4s;
+    }
   }
 
   &__text {

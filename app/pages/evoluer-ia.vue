@@ -25,8 +25,18 @@
             </div>
           </ScrollReveal>
           <ScrollReveal direction="right">
-            <div v-magnetic="0.12" class="eia-hero__image glass-card-light">
-              <NuxtImg src="/img/kevin-ia.png" alt="Faire évoluer avec l'IA" format="webp" quality="80" />
+            <div class="eia-hero__image-wrap">
+              <!-- Glass panels behind image -->
+              <div class="eia-hero__glass-panel eia-hero__glass-panel--1"></div>
+              <div class="eia-hero__glass-panel eia-hero__glass-panel--2"></div>
+              <div class="eia-hero__glass-panel eia-hero__glass-panel--3"></div>
+              <!-- Main image -->
+              <div v-magnetic="0.12" class="eia-hero__image glass-card-light">
+                <NuxtImg src="/img/kevin-ia.png" alt="Faire évoluer avec l'IA" format="webp" quality="80" />
+              </div>
+              <!-- Small floating glass accents -->
+              <div class="eia-hero__glass-accent eia-hero__glass-accent--1"></div>
+              <div class="eia-hero__glass-accent eia-hero__glass-accent--2"></div>
             </div>
           </ScrollReveal>
         </div>
@@ -318,14 +328,98 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
     max-width: 550px;
   }
 
+  &__image-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  &__glass-panel {
+    position: absolute;
+    border-radius: $radius-lg;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 2px 6px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+    animation: border-glow 6s ease-in-out infinite;
+    pointer-events: none;
+
+    &--1 {
+      width: 75%;
+      height: 65%;
+      top: -12px;
+      right: -16px;
+      transform: rotate(3deg);
+      animation-delay: -1s;
+    }
+
+    &--2 {
+      width: 50%;
+      height: 45%;
+      bottom: -8px;
+      left: -14px;
+      transform: rotate(-2deg);
+      animation-delay: -3s;
+    }
+
+    &--3 {
+      width: 30%;
+      height: 25%;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%) rotate(5deg);
+      animation-delay: -5s;
+    }
+  }
+
   &__image {
     padding: 0;
     overflow: hidden;
     border-radius: $radius-lg;
+    position: relative;
+    z-index: 1;
 
     img {
       width: 100%;
       display: block;
+    }
+  }
+
+  &__glass-accent {
+    position: absolute;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    animation: border-glow 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+
+    &--1 {
+      width: 48px;
+      height: 48px;
+      top: -8px;
+      left: 8px;
+      animation-delay: -2s;
+    }
+
+    &--2 {
+      width: 32px;
+      height: 32px;
+      bottom: 4px;
+      right: -4px;
+      animation-delay: -4s;
     }
   }
 }
