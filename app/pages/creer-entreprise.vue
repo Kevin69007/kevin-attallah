@@ -78,26 +78,29 @@
           </h2>
         </ScrollReveal>
 
-        <div class="grid grid-2 mt-48">
-          <!-- Card 1: Autonomie -->
+        <div class="ce-formulas__grid mt-48">
+          <!-- Card 1: Autonomie (Standard) -->
           <ScrollReveal direction="left">
-            <div v-magnetic="0.15" class="ce-formula glass-card-light">
-              <GlassBadge variant="light">Formation en autonomie</GlassBadge>
+            <div v-magnetic="0.15" class="ce-formula ce-formula--standard glass-card-light">
+              <div class="ce-formula__icon ce-formula__icon--purple">
+                <BookOpen :size="28" />
+              </div>
+              <GlassBadge variant="purple-light">Formation en autonomie</GlassBadge>
               <p class="ce-formula__subtitle mt-16">Accessible 24h/24 — 7j/7</p>
               <p class="ce-formula__desc">
                 Accède à l'intégralité du programme en ligne, avance à ton rythme, et construis
                 ton projet pas à pas avec des modules concrets et actionnables.
               </p>
               <div class="ce-formula__checks">
-                <div class="ce-formula__check">
+                <div class="ce-formula__check ce-formula__check--purple">
                   <CheckCircle :size="16" />
                   <span>Accès immédiat et à vie</span>
                 </div>
-                <div class="ce-formula__check">
+                <div class="ce-formula__check ce-formula__check--purple">
                   <CheckCircle :size="16" />
                   <span>Formation complémentaire offerte</span>
                 </div>
-                <div class="ce-formula__check">
+                <div class="ce-formula__check ce-formula__check--purple">
                   <CheckCircle :size="16" />
                   <span>Contenu mis à jour</span>
                 </div>
@@ -105,7 +108,7 @@
               <div class="ce-formula__price">
                 <span class="ce-formula__amount">299€</span>
               </div>
-              <AppButton variant="primary" block :disabled="isLoading" @click="handlePurchase">
+              <AppButton variant="ghost-light" block :disabled="isLoading" @click="handlePurchase">
                 <Loader2 v-if="isLoading" :size="18" class="ce-formula__spin" />
                 {{ isLoading ? 'Chargement...' : 'Je me lance' }}
                 <ArrowRight v-if="!isLoading" :size="18" />
@@ -117,9 +120,13 @@
             </div>
           </ScrollReveal>
 
-          <!-- Card 2: Accompagnement -->
+          <!-- Card 2: Accompagnement (Featured) -->
           <ScrollReveal direction="right">
-            <div v-magnetic="0.15" class="ce-formula glass-card-light ce-formula--highlight">
+            <div v-magnetic="0.15" class="ce-formula ce-formula--featured glass-card-light">
+              <div class="ce-formula__ribbon">Recommandé</div>
+              <div class="ce-formula__icon ce-formula__icon--orange">
+                <Handshake :size="28" />
+              </div>
               <GlassBadge variant="orange-light">Accompagnement personnalisé</GlassBadge>
               <p class="ce-formula__subtitle mt-16">Formation live + modules pratiques + suivi</p>
               <p class="ce-formula__desc">
@@ -127,19 +134,19 @@
                 et un suivi personnalisé jusqu'au lancement de ton activité.
               </p>
               <div class="ce-formula__checks">
-                <div class="ce-formula__check">
+                <div class="ce-formula__check ce-formula__check--orange">
                   <CheckCircle :size="16" />
                   <span>Sessions live avec Kevin</span>
                 </div>
-                <div class="ce-formula__check">
+                <div class="ce-formula__check ce-formula__check--orange">
                   <CheckCircle :size="16" />
                   <span>Modules pratiques complets</span>
                 </div>
-                <div class="ce-formula__check">
+                <div class="ce-formula__check ce-formula__check--orange">
                   <CheckCircle :size="16" />
                   <span>Formation complémentaire offerte</span>
                 </div>
-                <div class="ce-formula__check">
+                <div class="ce-formula__check ce-formula__check--orange">
                   <CheckCircle :size="16" />
                   <span>100% finançable</span>
                 </div>
@@ -194,7 +201,7 @@
 <script setup lang="ts">
 import {
   Lightbulb, CheckCircle, Scale, BarChart3, Megaphone, Bot, Gift,
-  ArrowRight, Award, Users, Star, Shield, Loader2,
+  ArrowRight, Award, Users, Star, Shield, Loader2, BookOpen, Handshake,
 } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
 
@@ -395,8 +402,18 @@ async function handlePurchase() {
   }
 }
 
-.ce-formulas .grid-2 > :deep(*) {
-  height: 100%;
+.ce-formulas__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  > :deep(*) {
+    height: 100%;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .ce-formula {
@@ -404,12 +421,45 @@ async function handlePurchase() {
   display: flex;
   flex-direction: column;
   height: 100%;
-  border-left: 3px solid $purple;
+  position: relative;
+  overflow: visible;
 
-  &--highlight {
-    border-color: rgba($purple, 0.3);
-    border-left: 3px solid $orange;
-    box-shadow: 0 0 32px rgba($purple, 0.08);
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    &--purple {
+      background: rgba($purple, 0.08);
+      color: $purple;
+    }
+
+    &--orange {
+      background: rgba($orange, 0.1);
+      color: $orange;
+    }
+  }
+
+  &__ribbon {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 24px;
+    border-radius: $radius-full;
+    background: $orange;
+    color: $text-white;
+    font-size: $xs;
+    font-weight: 700;
+    font-family: $font-heading;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 16px rgba($orange-dark, 0.3);
+    z-index: 2;
+    white-space: nowrap;
   }
 
   &__subtitle {
@@ -441,8 +491,15 @@ async function handlePurchase() {
     color: $text-body;
 
     svg {
-      color: $orange;
       flex-shrink: 0;
+    }
+
+    &--purple svg {
+      color: $purple;
+    }
+
+    &--orange svg {
+      color: $orange;
     }
   }
 
@@ -473,6 +530,29 @@ async function handlePurchase() {
 
   &__spin {
     animation: spin 1s linear infinite;
+  }
+
+  // Standard card (purple accent)
+  &--standard {
+    border-left: 3px solid $purple;
+  }
+
+  // Featured card (orange accent, dominant)
+  &--featured {
+    border-left: 3px solid $orange;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba($orange, 0.2);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 0 40px rgba($orange, 0.08);
+
+    &:hover {
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 0 48px rgba($orange, 0.12);
+      border-color: rgba($orange, 0.3);
+      border-left: 3px solid $orange;
+    }
   }
 }
 
