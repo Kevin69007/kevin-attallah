@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
   })
 
   try {
-    const isSandbox = process.env.REVOLUT_SANDBOX === 'true'
+    const isSandbox = config.public.revolutSandbox === true || config.public.revolutSandbox === 'true'
     const apiUrl = isSandbox
       ? 'https://sandbox-merchant.revolut.com/api/orders'
       : 'https://merchant.revolut.com/api/orders'
