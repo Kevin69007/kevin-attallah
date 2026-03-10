@@ -4,7 +4,7 @@
       <NuxtLink to="/formation-gratuite" class="announce__content">
         <Gift :size="14" class="announce__icon" />
         <span class="announce__text">
-          Chaque semaine, j'offre une <strong>formation gratuite</strong> à mon réseau — pour vous lancer ou booster vos équipes.
+          Chaque semaine, j'offre une <strong>formation gratuite</strong> à mon réseau pour vous lancer ou booster vos équipes.
         </span>
         <span class="announce__cta">
           Je la veux

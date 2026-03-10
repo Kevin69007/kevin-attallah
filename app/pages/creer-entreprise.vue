@@ -10,7 +10,7 @@
         <div class="split ce-hero__split">
           <ScrollReveal direction="left">
             <h1 class="ce-hero__title">
-              Ton entreprise, de l'idée au lancement —
+              Ton entreprise, de l'idée au lancement
               <span class="gradient-text">avec l'IA comme accélérateur.</span>
             </h1>
             <p class="ce-hero__subtitle">
@@ -86,7 +86,7 @@
                 <BookOpen :size="28" />
               </div>
               <GlassBadge variant="purple-light">Formation en autonomie</GlassBadge>
-              <p class="ce-formula__subtitle mt-16">Accessible 24h/24 — 7j/7</p>
+              <p class="ce-formula__subtitle mt-16">Accessible 24h/24, 7j/7</p>
               <p class="ce-formula__desc">
                 Accède à l'intégralité du programme en ligne, avance à ton rythme, et construis
                 ton projet pas à pas avec des modules concrets et actionnables.
@@ -183,7 +183,7 @@
 
     <!-- Final CTA -->
     <CTASection
-      title="Prêt à te lancer ?"
+      title="Prêt à te <span class='gradient-text'>lancer</span> ?"
       subtitle="Un appel gratuit de 30 minutes pour faire le point sur ton projet et trouver la formule adaptée."
       primaryText="Je réserve mon appel gratuit"
       :primaryHref="externalLinks.booking.brevoMeeting"
@@ -210,7 +210,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Créez votre entreprise de A à Z avec l\'IA comme accélérateur. Formation en autonomie ou accompagnement personnalisé — 100% finançable.',
+      content: 'Créez votre entreprise de A à Z avec l\'IA comme accélérateur. Formation en autonomie ou accompagnement personnalisé. 100% finançable.',
     },
   ],
 })
@@ -227,7 +227,7 @@ const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePref
 const modules = [
   { icon: Lightbulb, title: 'Trouver & valider ton idée', description: 'Identifie une idée qui te correspond vraiment et qui a un potentiel business réel.' },
   { icon: CheckCircle, title: 'Valider que le marché suit', description: 'Étudie ton marché, ta cible et la concurrence avant de te lancer.' },
-  { icon: Scale, title: 'Choisir la bonne structure', description: 'Micro-entreprise, SASU, SARL — on t\'aide à choisir la forme adaptée.' },
+  { icon: Scale, title: 'Choisir la bonne structure', description: 'Micro-entreprise, SASU, SARL : on t\'aide à choisir la forme adaptée.' },
   { icon: BarChart3, title: 'Business plan & financement', description: 'Construis un plan solide pour convaincre et financer ton projet.' },
   { icon: Megaphone, title: 'Marketing & développement commercial', description: 'Trouve tes premiers clients et mets en place ta stratégie de croissance.' },
   { icon: Bot, title: 'L\'IA comme copilote dès le départ', description: 'Intègre l\'IA dans tes process pour gagner du temps et de l\'efficacité.' },

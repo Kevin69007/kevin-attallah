@@ -14,7 +14,7 @@
                 Kit de lancement
               </GlassBadge>
               <h2 class="kit-modal__title mt-16">
-                Avant de partir — prends le <span class="gradient-text">kit de lancement.</span>
+                Avant de partir, prends le <span class="gradient-text">kit de lancement.</span>
               </h2>
               <p class="kit-modal__desc">
                 Le guide pratique pour démarrer ton projet d'entreprise du bon pied. Gratuit, immédiat.

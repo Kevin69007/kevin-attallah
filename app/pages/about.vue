@@ -55,7 +55,7 @@
     <section class="social section--white">
       <div class="container text-center">
         <ScrollReveal>
-          <h2 class="section-title">Suivez Kevin</h2>
+          <h2 class="section-title">Suivez <span class="gradient-text">Kevin</span></h2>
           <p class="section-subtitle" style="margin: 0 auto 32px">
             Rejoignez la communauté sur les réseaux sociaux
           </p>

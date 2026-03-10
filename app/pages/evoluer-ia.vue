@@ -11,11 +11,11 @@
           <ScrollReveal direction="left">
             <h1 class="eia-hero__title">
               Ton entreprise tourne déjà. L'IA peut la faire tourner
-              <span class="gradient-text">mieux — et plus vite.</span>
+              <span class="gradient-text">mieux, et plus vite.</span>
             </h1>
             <p class="eia-hero__subtitle">
               On identifie ensemble ce que l'IA peut faire concrètement pour ton business. Pas des
-              promesses génériques — des solutions adaptées à ta réalité.
+              promesses génériques, des solutions adaptées à ta réalité.
             </p>
             <div class="btn-group mt-32">
               <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
@@ -56,7 +56,7 @@
 
         <ScrollReveal :delay="0.4">
           <p class="eia-pain__closing text-center mt-48">
-            L'IA peut régler tout ça. La question c'est pas si tu vas t'y mettre —
+            L'IA peut régler tout ça. La question c'est pas si tu vas t'y mettre,
             <strong>c'est quand ?</strong>
           </p>
         </ScrollReveal>
@@ -194,7 +194,7 @@
 
     <!-- Final CTA -->
     <CTASection
-      title="Prêt à voir ce que l'IA peut faire pour ton business ?"
+      title="Prêt à voir ce que l'IA peut faire pour ton <span class='gradient-text'>business</span> ?"
       subtitle="Un appel gratuit de 30 minutes. On qualifie tes besoins et on te dit honnêtement ce qu'on peut faire pour toi."
       primaryText="Je réserve mon appel gratuit"
       :primaryHref="externalLinks.booking.brevoMeeting"
@@ -217,7 +217,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Faites évoluer votre entreprise avec l\'IA. Audit gratuit, solutions personnalisées, déploiement — finançable.',
+      content: 'Faites évoluer votre entreprise avec l\'IA. Audit gratuit, solutions personnalisées, déploiement. Finançable.',
     },
   ],
 })
@@ -276,7 +276,7 @@ const solutions = [
   { icon: UserSearch, title: 'Agent prospection', description: 'Identifie et contacte des prospects qualifiés pour toi.' },
   { icon: Calculator, title: 'Agent compta', description: 'Catégorise tes dépenses, prépare tes déclarations, alerte sur les anomalies.' },
   { icon: MessageCircle, title: 'Agent chat client', description: 'Répond aux questions fréquentes de tes clients instantanément.' },
-  { icon: Smartphone, title: 'Pilotage depuis ton téléphone', description: 'Supervise tout depuis une app — KPIs, alertes, décisions rapides.' },
+  { icon: Smartphone, title: 'Pilotage depuis ton téléphone', description: 'Supervise tout depuis une app : KPIs, alertes, décisions rapides.' },
 ]
 
 const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)

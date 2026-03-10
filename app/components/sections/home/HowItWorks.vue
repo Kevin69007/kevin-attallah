@@ -69,12 +69,12 @@ const steps = [
   {
     icon: Phone,
     title: 'On définit ton projet ensemble',
-    description: 'Un appel gratuit de 30 minutes pour comprendre où tu en es et t\'orienter vers la bonne formule — création ou évolution, autonomie ou accompagnement.',
+    description: 'Un appel gratuit de 30 minutes pour comprendre où tu en es et t\'orienter vers la bonne formule : création ou évolution, autonomie ou accompagnement.',
   },
   {
     icon: Route,
     title: 'On te construit le chemin',
-    description: 'Formation, accompagnement, audit IA — tout est personnalisé selon ton profil, ton budget et tes objectifs. Et c\'est finançable.',
+    description: 'Formation, accompagnement, audit IA : tout est personnalisé selon ton profil, ton budget et tes objectifs. Et c\'est finançable.',
   },
   {
     icon: Rocket,

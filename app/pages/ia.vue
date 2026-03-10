@@ -15,6 +15,7 @@
         </ScrollReveal>
         <TextSplit
           text="L'IA ne remplace pas les entrepreneurs. Elle remplace ceux qui refusent"
+          gradient-text="refusent"
           tag="h1"
           :delay="0.3"
           class="ia-hero__title"
@@ -59,7 +60,7 @@
               <p class="ia-who__desc">
                 Démarre avec 10 ans d'avance sur tes futurs concurrents.
                 L'IA t'aide à valider ton idée, créer ton contenu, automatiser ton marketing
-                et trouver tes premiers clients — le tout en une fraction du temps.
+                et trouver tes premiers clients, le tout en une fraction du temps.
               </p>
               <ul class="ia-who__list">
                 <li><CheckCircle :size="16" /> Validation d'idée accélérée par l'IA</li>
@@ -78,7 +79,7 @@
               <h3 class="ia-who__title">Tu as déjà une entreprise</h3>
               <p class="ia-who__desc">
                 Optimise tes process, automatise le répétitif, scale intelligemment.
-                L'IA transforme ton business existant en machine de guerre — plus rapide,
+                L'IA transforme ton business existant en machine de guerre : plus rapide,
                 plus efficace, plus rentable.
               </p>
               <ul class="ia-who__list">
@@ -137,7 +138,7 @@
 
     <!-- CTA -->
     <CTASection
-      title="Prêt à intégrer l'IA dans ton business ?"
+      title="Prêt à intégrer l'IA dans ton <span class='gradient-text'>business</span> ?"
       subtitle="Réserve un audit gratuit avec Kevin pour identifier tes leviers IA."
       primaryText="Réserver mon audit IA"
       :primaryLink="externalLinks.booking.brevoMeeting"

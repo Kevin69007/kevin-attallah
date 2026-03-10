@@ -4,6 +4,7 @@
       v-for="(word, wi) in words"
       :key="wi"
       class="text-split__word"
+      :class="{ 'text-split__word--gradient': gradientWordIndices.has(wi) }"
     >
       <span
         v-for="(char, ci) in word.split('')"
@@ -21,16 +22,36 @@ interface Props {
   tag?: string
   delay?: number
   stagger?: number
+  gradientText?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   tag: 'h2',
   delay: 0,
   stagger: 0.03,
+  gradientText: '',
 })
 
 const el = ref<HTMLElement | null>(null)
 const words = computed(() => props.text.split(' '))
+
+const gradientWordIndices = computed(() => {
+  if (!props.gradientText) return new Set<number>()
+  const startIdx = props.text.indexOf(props.gradientText)
+  if (startIdx === -1) return new Set<number>()
+  const endIdx = startIdx + props.gradientText.length
+
+  const indices = new Set<number>()
+  let charPos = 0
+  for (let i = 0; i < words.value.length; i++) {
+    const wordEnd = charPos + words.value[i].length
+    if (wordEnd > startIdx && charPos < endIdx) {
+      indices.add(i)
+    }
+    charPos = wordEnd + 1
+  }
+  return indices
+})
 
 onMounted(() => {
   if (!el.value) return
@@ -82,6 +103,13 @@ onMounted(() => {
   &__char {
     display: inline-block;
     will-change: transform, opacity;
+  }
+
+  &__word--gradient {
+    background: linear-gradient(135deg, $purple, $orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 </style>

@@ -8,7 +8,7 @@
     <HowItWorks />
     <BlogPreview />
     <CTASection
-      title="T'es encore là ? C'est le moment de passer à l'action."
+      title="T'es encore là ? C'est le moment de <span class='gradient-text'>passer à l'action.</span>"
       subtitle="Un appel de 30 minutes, gratuit, sans engagement. On regarde ensemble ce qui est fait pour toi."
       primaryText="Je réserve mon appel gratuit"
       :primaryHref="externalLinks.booking.brevoMeeting"

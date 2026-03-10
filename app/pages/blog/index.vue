@@ -2,7 +2,7 @@
   <div>
     <section class="blog-hero section--light">
       <div class="container text-center">
-        <TextSplit text="Le Blog" tag="h1" class="blog-hero__title" />
+        <TextSplit text="Le Blog" gradient-text="Blog" tag="h1" class="blog-hero__title" />
         <p class="blog-hero__subtitle">
           Conseils, stratégies et retours d'expérience pour entrepreneurs
         </p>

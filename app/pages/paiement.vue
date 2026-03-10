@@ -19,7 +19,7 @@
     <section class="checkout section--light">
       <div class="container">
         <ScrollReveal>
-          <h1 class="checkout__title text-center">Finaliser votre inscription</h1>
+          <h1 class="checkout__title text-center">Finaliser votre <span class="gradient-text">inscription</span></h1>
           <p class="checkout__subtitle text-center">Paiement sécurisé par carte bancaire</p>
         </ScrollReveal>
 

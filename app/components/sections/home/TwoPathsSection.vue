@@ -17,7 +17,7 @@
           <GlassBadge variant="purple-light">Création d'entreprise</GlassBadge>
           <h3 class="two-paths__title mt-16">Je veux créer mon entreprise</h3>
           <p class="two-paths__desc">
-            Formation en autonomie ou accompagnement personnalisé — finançable
+            Formation en autonomie ou accompagnement personnalisé, finançable
           </p>
           <div class="two-paths__checks">
             <div class="two-paths__check two-paths__check--purple">
@@ -52,7 +52,7 @@
           <GlassBadge variant="orange-light">Évolution avec l'IA</GlassBadge>
           <h3 class="two-paths__title mt-16">Je veux faire évoluer mon entreprise avec l'IA</h3>
           <p class="two-paths__desc">
-            Formations équipes, audit IA, déploiement — finançable
+            Formations équipes, audit IA, déploiement. Finançable
           </p>
           <div class="two-paths__checks">
             <div class="two-paths__check two-paths__check--orange">

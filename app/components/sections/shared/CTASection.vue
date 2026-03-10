@@ -3,9 +3,7 @@
     <WaveLines />
     <div class="container cta-section__content text-center">
       <ScrollReveal>
-        <h2 class="cta-section__title">
-          {{ title }}
-        </h2>
+        <h2 class="cta-section__title" v-html="title"></h2>
         <p class="cta-section__text">{{ subtitle }}</p>
         <div class="btn-group" style="justify-content: center">
           <AppButton variant="primary" size="lg" :to="!primaryHref ? primaryLink : undefined" :href="primaryHref || undefined">
@@ -35,7 +33,7 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  title: 'Prêt à transformer ta vie ?',
+  title: 'Prêt à transformer ta <span class="gradient-text">vie</span> ?',
   subtitle: 'Rejoins les 2100+ entrepreneurs qui ont déjà fait le premier pas.',
   primaryText: 'Voir les formations',
   primaryLink: '/formations',

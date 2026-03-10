@@ -16,6 +16,7 @@
       <div class="hero__content">
         <TextSplit
           text="L'IA ne remplace pas les entrepreneurs. Elle remplace ceux qui attendent."
+          gradient-text="attendent."
           tag="h1"
           :delay="0.3"
           :stagger="0.02"

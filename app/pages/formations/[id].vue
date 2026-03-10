@@ -50,7 +50,7 @@
       <div class="container">
         <ScrollReveal>
           <span class="section-label">Ce que tu vas apprendre</span>
-          <h2 class="section-title">Objectifs pédagogiques</h2>
+          <h2 class="section-title">Objectifs <span class="gradient-text">pédagogiques</span></h2>
         </ScrollReveal>
         <StaggerGrid class="grid grid-2 mt-32">
           <div
@@ -143,7 +143,7 @@
       <div class="container container--narrow">
         <ScrollReveal>
           <span class="section-label text-center">FAQ</span>
-          <h2 class="section-title text-center">Questions fréquentes</h2>
+          <h2 class="section-title text-center">Questions <span class="gradient-text">fréquentes</span></h2>
         </ScrollReveal>
         <ScrollReveal class="mt-32">
           <FAQAccordion :items="faqItems" />
@@ -153,7 +153,7 @@
 
     <!-- Bottom CTA -->
     <CTASection
-      title="Prêt à te lancer ?"
+      title="Prêt à te <span class='gradient-text'>lancer</span> ?"
       subtitle="Rejoins les 2100+ entrepreneurs qui ont transformé leur carrière."
       primaryText="S'inscrire maintenant"
       primaryLink="#pricing"

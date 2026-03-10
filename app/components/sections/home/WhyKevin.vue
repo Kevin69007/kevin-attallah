@@ -27,7 +27,7 @@
             ce que je fais pour mes clients.
           </p>
           <p class="why__text">
-            Mon objectif est simple : t'aider à créer ou faire grandir ton business — avec les
+            Mon objectif est simple : t'aider à créer ou faire grandir ton business avec les
             bons outils, les bonnes méthodes, et quelqu'un qui est passé par là avant toi.
           </p>
 
