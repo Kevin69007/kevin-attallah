@@ -10,7 +10,7 @@
 
       <StaggerGrid class="grid grid-2 mt-48" :stagger="0.2">
         <!-- Card 1: Créer -->
-        <GlassCard variant="light">
+        <GlassCard variant="light" class="two-paths__glass two-paths__glass--purple">
           <div class="two-paths__card">
             <div class="two-paths__icon">
               <Building2 :size="32" />
@@ -41,7 +41,7 @@
         </GlassCard>
 
         <!-- Card 2: Évoluer -->
-        <GlassCard variant="light">
+        <GlassCard variant="light" class="two-paths__glass two-paths__glass--orange">
           <div class="two-paths__card">
             <div class="two-paths__icon">
               <Rocket :size="32" />
@@ -141,6 +141,16 @@ import { Building2, Rocket, ArrowRight, CheckCircle } from 'lucide-vue-next'
 
   &__button {
     margin-top: auto;
+  }
+
+  &__glass {
+    &--purple {
+      border-left: 3px solid $purple;
+    }
+
+    &--orange {
+      border-left: 3px solid $orange;
+    }
   }
 }
 </style>

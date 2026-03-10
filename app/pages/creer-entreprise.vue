@@ -404,9 +404,11 @@ async function handlePurchase() {
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-left: 3px solid $purple;
 
   &--highlight {
     border-color: rgba($purple, 0.3);
+    border-left: 3px solid $orange;
     box-shadow: 0 0 32px rgba($purple, 0.08);
   }
 
