@@ -5,7 +5,7 @@
         <!-- Left: Photo -->
         <ScrollReveal direction="left">
           <div v-magnetic="0.12" class="why__photo glass-card-light">
-            <NuxtImg src="/img/about/about-1.png" alt="Kevin Attallah" class="why__photo-img" format="webp" quality="80" />
+            <NuxtImg src="/img/testimonial/testimonial1.png" alt="Kevin Attallah" class="why__photo-img" format="webp" quality="80" />
           </div>
         </ScrollReveal>
 

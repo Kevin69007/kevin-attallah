@@ -26,7 +26,7 @@
           </ScrollReveal>
           <ScrollReveal direction="right">
             <div v-magnetic="0.12" class="eia-hero__image glass-card-light">
-              <NuxtImg src="/img/banner-right-img.jpg" alt="Faire évoluer avec l'IA" format="webp" quality="80" />
+              <NuxtImg src="/img/kevin-ia.png" alt="Faire évoluer avec l'IA" format="webp" quality="80" />
             </div>
           </ScrollReveal>
         </div>

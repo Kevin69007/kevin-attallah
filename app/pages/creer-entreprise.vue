@@ -34,7 +34,7 @@
           </ScrollReveal>
           <ScrollReveal direction="right">
             <div v-magnetic="0.12" class="ce-hero__image glass-card-light">
-              <NuxtImg src="/img/banner-right-img.jpg" alt="Créer mon entreprise" format="webp" quality="80" />
+              <NuxtImg src="/img/about/about-2.png" alt="Créer mon entreprise" format="webp" quality="80" />
             </div>
           </ScrollReveal>
         </div>
