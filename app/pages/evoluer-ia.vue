@@ -35,6 +35,11 @@
 
     <!-- Pain Point -->
     <section class="eia-pain section--white">
+      <!-- WebGL glass "?" floating behind entire section -->
+      <ClientOnly>
+        <Glass3DQuestion />
+      </ClientOnly>
+
       <div class="container">
         <ScrollReveal>
           <h2 class="section-title text-center">
@@ -52,7 +57,7 @@
         <ScrollReveal :delay="0.4">
           <p class="eia-pain__closing text-center mt-48">
             L'IA peut régler tout ça. La question c'est pas si tu vas t'y mettre —
-            <strong>c'est quand.</strong>
+            <strong>c'est quand ?</strong>
           </p>
         </ScrollReveal>
       </div>
@@ -75,6 +80,12 @@
               <div class="sc-content__icon"><Phone :size="28" /></div>
               <h3 class="sc-content__title">{{ parcours[0]!.title }}</h3>
               <p class="sc-content__desc">{{ parcours[0]!.description }}</p>
+              <div class="sc-content__sub">
+                <div v-for="sub in parcours[0]!.subOptions" :key="sub" class="sc-content__sub-item">
+                  <CheckCircle :size="14" />
+                  <span>{{ sub }}</span>
+                </div>
+              </div>
             </div>
           </template>
           <template #card-1>
@@ -90,6 +101,12 @@
               <div class="sc-content__icon"><Search :size="28" /></div>
               <h3 class="sc-content__title">{{ parcours[1]!.title }}</h3>
               <p class="sc-content__desc">{{ parcours[1]!.description }}</p>
+              <div class="sc-content__sub">
+                <div v-for="sub in parcours[1]!.subOptions" :key="sub" class="sc-content__sub-item">
+                  <CheckCircle :size="14" />
+                  <span>{{ sub }}</span>
+                </div>
+              </div>
             </div>
           </template>
           <template #card-3>
@@ -224,12 +241,22 @@ const parcours = [
   {
     icon: Phone,
     title: 'Un appel pour qualifier tes besoins',
-    description: '30 minutes pour comprendre ton business, tes blocages et tes objectifs. Gratuit, sans engagement.',
+    description: '30 minutes, gratuit et sans engagement.',
+    subOptions: [
+      'Comprendre ton business et tes blocages',
+      'Identifier tes objectifs concrets',
+      'Détecter tes premières opportunités IA',
+    ],
   },
   {
     icon: Search,
     title: 'Un audit IA gratuit et personnalisé',
-    description: 'On identifie les tâches automatisables, les gains potentiels et les solutions adaptées à ton activité.',
+    description: 'Un diagnostic complet de ton activité.',
+    subOptions: [
+      'Identifier les tâches automatisables',
+      'Évaluer les gains potentiels',
+      'Solutions adaptées à ton activité',
+    ],
   },
   {
     icon: Rocket,
@@ -304,6 +331,8 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
 }
 
 .eia-pain {
+  position: relative;
+
   &__item {
     display: flex;
     align-items: center;
@@ -319,15 +348,21 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
   }
 
   &__closing {
-    font-size: $body-lg;
+    font-size: $h4;
     color: $text-body;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.7;
+    position: relative;
+    z-index: 1;
 
     strong {
-      color: $text-heading;
+      background: linear-gradient(135deg, $purple, $orange);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
     }
   }
 }

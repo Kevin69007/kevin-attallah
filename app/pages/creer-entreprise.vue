@@ -148,6 +148,10 @@
                 Je veux être accompagné
                 <ArrowRight :size="18" />
               </AppButton>
+              <div class="ce-formula__trust">
+                <Shield :size="14" />
+                <span>Appel gratuit, sans engagement</span>
+              </div>
             </div>
           </ScrollReveal>
         </div>
@@ -391,8 +395,15 @@ async function handlePurchase() {
   }
 }
 
+.ce-formulas .grid-2 > :deep(*) {
+  height: 100%;
+}
+
 .ce-formula {
   padding: 32px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   &--highlight {
     border-color: rgba($purple, 0.3);
@@ -417,6 +428,7 @@ async function handlePurchase() {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 24px;
+    flex-grow: 1;
   }
 
   &__check {

@@ -19,7 +19,21 @@
             <p class="two-paths__desc">
               Formation en autonomie ou accompagnement personnalisé — finançable
             </p>
-            <AppButton variant="ghost-light" to="/creer-entreprise" class="mt-24">
+            <div class="two-paths__checks">
+              <div class="two-paths__check">
+                <CheckCircle :size="16" />
+                <span>De l'idée à la structure juridique</span>
+              </div>
+              <div class="two-paths__check">
+                <CheckCircle :size="16" />
+                <span>Business plan et financement</span>
+              </div>
+              <div class="two-paths__check">
+                <CheckCircle :size="16" />
+                <span>Marketing et premiers clients</span>
+              </div>
+            </div>
+            <AppButton variant="ghost-light" to="/creer-entreprise" class="two-paths__button">
               Je découvre
               <ArrowRight :size="18" />
             </AppButton>
@@ -36,7 +50,21 @@
             <p class="two-paths__desc">
               Formations équipes, audit IA, déploiement — finançable
             </p>
-            <AppButton variant="ghost-light" to="/evoluer-ia" class="mt-24">
+            <div class="two-paths__checks">
+              <div class="two-paths__check">
+                <CheckCircle :size="16" />
+                <span>Audit IA gratuit et personnalisé</span>
+              </div>
+              <div class="two-paths__check">
+                <CheckCircle :size="16" />
+                <span>Formation ou déploiement</span>
+              </div>
+              <div class="two-paths__check">
+                <CheckCircle :size="16" />
+                <span>Solutions automatisées sur mesure</span>
+              </div>
+            </div>
+            <AppButton variant="ghost-light" to="/evoluer-ia" class="two-paths__button">
               Je découvre
               <ArrowRight :size="18" />
             </AppButton>
@@ -48,7 +76,7 @@
 </template>
 
 <script setup lang="ts">
-import { Building2, Rocket, ArrowRight } from 'lucide-vue-next'
+import { Building2, Rocket, ArrowRight, CheckCircle } from 'lucide-vue-next'
 </script>
 
 <style lang="scss" scoped>
@@ -56,6 +84,10 @@ import { Building2, Rocket, ArrowRight } from 'lucide-vue-next'
   &__card {
     padding: 16px 8px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
   }
 
   &__icon {
@@ -82,6 +114,33 @@ import { Building2, Rocket, ArrowRight } from 'lucide-vue-next'
     line-height: 1.7;
     max-width: 360px;
     margin: 0 auto;
+  }
+
+  &__checks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0 24px;
+    text-align: left;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  &__check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: $small;
+    color: $text-body;
+
+    svg {
+      color: $orange;
+      flex-shrink: 0;
+    }
+  }
+
+  &__button {
+    margin-top: auto;
   }
 }
 </style>
