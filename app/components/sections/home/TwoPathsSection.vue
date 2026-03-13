@@ -1,12 +1,12 @@
 <template>
   <section class="two-paths section--light">
     <div class="container">
-      <ScrollReveal>
-        <span class="section-label text-center">Ton parcours</span>
-        <h2 class="section-title text-center">
-          Par où tu <span class="gradient-text">commences</span> ?
-        </h2>
-      </ScrollReveal>
+      <SectionHeading
+        label="Ton parcours"
+        title="Par où tu commences ?"
+        gradient-text="commences"
+        mode="chars"
+      />
 
       <StaggerGrid class="two-paths__grid mt-48" :stagger="0.2">
         <!-- Card 1: Créer (Standard) -->

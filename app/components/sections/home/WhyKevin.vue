@@ -21,10 +21,13 @@
 
         <!-- Right: Content -->
         <ScrollReveal direction="right">
-          <span class="section-label">Qui est Kevin</span>
-          <h2 class="section-title">
-            Pas un théoricien. <span class="gradient-text">Un entrepreneur.</span>
-          </h2>
+          <SectionHeading
+            label="Qui est Kevin"
+            title="Pas un théoricien. Un entrepreneur."
+            gradient-text="Un entrepreneur."
+            mode="blur-in"
+            :center="false"
+          />
           <p class="why__text">
             Depuis 11 ans, je crée des entreprises, je les développe, et j'aide les autres à faire
             la même chose. J'ai lancé plus d'une dizaine de projets, dans des secteurs différents,

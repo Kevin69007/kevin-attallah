@@ -1,12 +1,12 @@
 <template>
   <section class="how-it-works section--white">
     <div class="container">
-      <ScrollReveal>
-        <span class="section-label text-center">Comment ça se passe</span>
-        <h2 class="section-title text-center">
-          Comment ça se <span class="gradient-text">passe</span> ?
-        </h2>
-      </ScrollReveal>
+      <SectionHeading
+        label="Comment ça se passe"
+        title="Comment ça se passe ?"
+        gradient-text="passe"
+        mode="blur-in"
+      />
 
       <ScatteredCards :count="5" class="mt-48">
         <template #card-0>

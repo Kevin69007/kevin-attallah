@@ -1,12 +1,12 @@
 <template>
   <section ref="sectionRef" class="testimonials section--light">
     <div class="container">
-      <ScrollReveal>
-        <span class="section-label text-center">Témoignages</span>
-        <h2 class="section-title text-center">
-          Ils ont <span class="gradient-text">transformé</span> leur vie
-        </h2>
-      </ScrollReveal>
+      <SectionHeading
+        label="Témoignages"
+        title="Ils ont transformé leur vie"
+        gradient-text="transformé"
+        mode="words"
+      />
     </div>
 
     <!-- Dual-row marquee -->
