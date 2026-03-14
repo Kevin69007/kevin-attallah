@@ -30,6 +30,12 @@
         </div>
       </div>
 
+      <!-- TEMP: Preview buttons (remove later) -->
+      <div style="display: flex; gap: 16px; margin: 24px 0;">
+        <AppButton variant="primary" @click="previewPaiement">PREVIEW PAIEMENT</AppButton>
+        <AppButton variant="ghost-light" to="/remerciement" @click="setPaymentSuccess">PREVIEW REMERCIEMENT</AppButton>
+      </div>
+
       <!-- Bottom bar -->
       <div class="footer-brutal__bottom">
         <p class="footer-brutal__copy">
@@ -59,6 +65,20 @@ import { socialLinks } from '~/data/social'
 import { externalLinks } from '~/data/external-links'
 
 const currentYear = new Date().getFullYear()
+const router = useRouter()
+
+function previewPaiement() {
+  localStorage.setItem('orderResponse', JSON.stringify({
+    token: 'preview-token',
+    order_amount: { value: 29900 },
+    description: 'Créer mon entreprise — Formation en autonomie',
+  }))
+  router.push('/paiement')
+}
+
+function setPaymentSuccess() {
+  localStorage.setItem('paymentSuccess', 'true')
+}
 
 const socialIcons: Record<string, any> = {
   facebook: Facebook,

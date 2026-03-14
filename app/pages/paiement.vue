@@ -21,6 +21,90 @@
         <h1 class="checkout__title">DERNIÈRE ÉTAPE.</h1>
         <p class="checkout__subtitle">PAIEMENT SÉCURISÉ PAR CARTE BANCAIRE</p>
 
+        <!-- Full formation landing (only for creer-entreprise flow) -->
+        <template v-if="isCreationFormation">
+          <!-- Hero banner -->
+          <div class="lp-hero" ref="lpHeroRef">
+            <div class="lp-hero__grid">
+              <div class="lp-hero__content">
+                <span class="lp-label">PROGRAMME_</span>
+                <h2 class="lp-hero__title">CRÉER MON <span class="text-purple">ENTREPRISE</span></h2>
+                <p class="lp-hero__subtitle">
+                  Formation complète pour lancer ton activité de A à Z, avec l'IA comme accélérateur. De l'idée au premier client.
+                </p>
+                <div class="lp-hero__badges">
+                  <span class="lp-badge"><span class="lp-badge__icon">►</span> ACCÈS IMMÉDIAT & À VIE</span>
+                  <span class="lp-badge"><span class="lp-badge__icon">►</span> 100% FINANÇABLE</span>
+                  <span class="lp-badge"><span class="lp-badge__icon">►</span> FORMATION BONUS OFFERTE</span>
+                </div>
+              </div>
+              <div class="lp-hero__video">
+                <video autoplay muted loop playsinline>
+                  <source src="/video/home-step-01.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modules -->
+          <div class="lp-modules" ref="lpModulesRef">
+            <h3 class="lp-section-title">CE QUE TU VAS <span class="text-purple">APPRENDRE</span></h3>
+            <div class="lp-modules__grid">
+              <div
+                v-for="(mod, i) in formationModules"
+                :key="mod.title"
+                :class="['lp-mod', i % 2 === 0 ? 'lp-mod--purple' : 'lp-mod--orange']"
+              >
+                <span class="lp-mod__num">{{ String(i + 1).padStart(2, '0') }}</span>
+                <h4 class="lp-mod__title">{{ mod.title }}</h4>
+                <p class="lp-mod__desc">{{ mod.desc }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust signals -->
+          <div class="lp-trust" ref="lpTrustRef">
+            <div class="lp-trust__grid">
+              <div class="lp-trust__item lp-trust__item--purple">
+                <span class="lp-trust__value">2 100+</span>
+                <span class="lp-trust__label">ENTREPRENEURS FORMÉS</span>
+              </div>
+              <div class="lp-trust__item lp-trust__item--orange">
+                <span class="lp-trust__value">98%</span>
+                <span class="lp-trust__label">DE SATISFACTION</span>
+              </div>
+              <div class="lp-trust__item lp-trust__item--purple">
+                <span class="lp-trust__value">24/7</span>
+                <span class="lp-trust__label">ACCÈS EN LIGNE</span>
+              </div>
+              <div class="lp-trust__item lp-trust__item--orange">
+                <span class="lp-trust__value">299€</span>
+                <span class="lp-trust__label">PRIX TOUT COMPRIS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial quote -->
+          <div class="lp-quote" ref="lpQuoteRef">
+            <div class="lp-quote__grid">
+              <div class="lp-quote__left">
+                <div class="lp-quote__stars">★★★★★</div>
+                <p class="lp-quote__text">"KEVIN M'A AIDÉ À RESTRUCTURER MON AGENCE AUTOUR DE L'IA. ON A TRIPLÉ NOTRE MARGE EN UN TRIMESTRE SANS RECRUTER."</p>
+                <span class="lp-quote__author">— SARAH M., FONDATRICE NEOAGENCY</span>
+              </div>
+              <div class="lp-quote__right">
+                <NuxtImg src="/img/avatar/avatar-2.jpg" alt="Sarah M." class="lp-quote__avatar" format="webp" quality="80" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Separator before form -->
+          <div class="lp-form-header">
+            <h3 class="lp-form-header__title">PASSE À <span class="text-purple">L'ACTION</span></h3>
+            <p class="lp-form-header__sub">REMPLIS LE FORMULAIRE CI-DESSOUS POUR FINALISER TON INSCRIPTION.</p>
+          </div>
+        </template>
+
         <div class="checkout__grid">
           <!-- Left: Billing form -->
           <div>
@@ -139,9 +223,17 @@ const { trackBeginCheckout, trackAddPaymentInfo: gTrackAddPaymentInfo, trackPurc
 const { trackConversion } = useLinkedIn()
 const { revolutSandbox } = useRuntimeConfig().public
 
+const lpHeroRef = ref<HTMLElement | null>(null)
+const lpModulesRef = ref<HTMLElement | null>(null)
+const lpTrustRef = ref<HTMLElement | null>(null)
+const lpQuoteRef = ref<HTMLElement | null>(null)
+
 const orderToken = ref('')
 const orderAmount = ref(0)
 const orderDescription = ref('')
+const isCreationFormation = computed(() =>
+  orderDescription.value?.includes('Créer mon entreprise')
+)
 const buyerCountryCode = ref('FR')
 const isProcessing = ref(false)
 
@@ -194,6 +286,50 @@ onMounted(() => {
     form.city = buyer.city || ''
     form.postcode = buyer.postcode || ''
     buyerCountryCode.value = buyer.countryCode || 'FR'
+  }
+
+  // GSAP animations for landing page sections
+  if (isCreationFormation.value) {
+    const { $gsap } = useNuxtApp()
+    if ($gsap) {
+      const gsap = $gsap as any
+
+      // Hero entrance
+      if (lpHeroRef.value) {
+        gsap.from(lpHeroRef.value, {
+          y: 40, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.2
+        })
+      }
+
+      // Modules stagger
+      if (lpModulesRef.value) {
+        gsap.from(lpModulesRef.value.querySelectorAll('.lp-mod'), {
+          y: 30, opacity: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out',
+          scrollTrigger: { trigger: lpModulesRef.value, start: 'top 80%' }
+        })
+      }
+
+      // Trust counter animation
+      if (lpTrustRef.value) {
+        gsap.from(lpTrustRef.value.querySelectorAll('.lp-trust__item'), {
+          scale: 0.8, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'back.out(1.5)',
+          scrollTrigger: { trigger: lpTrustRef.value, start: 'top 80%' }
+        })
+      }
+
+      // Quote slide in from right + shadow pulse
+      if (lpQuoteRef.value) {
+        gsap.from(lpQuoteRef.value, {
+          x: 60, opacity: 0, rotationZ: 2, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: lpQuoteRef.value, start: 'top 85%' }
+        })
+        gsap.from(lpQuoteRef.value.querySelector('.lp-quote__avatar'), {
+          scale: 1.2, opacity: 0, duration: 0.6, ease: 'power2.out', delay: 0.3,
+          scrollTrigger: { trigger: lpQuoteRef.value, start: 'top 85%' }
+        })
+      }
+
+    }
   }
 })
 
@@ -337,6 +473,17 @@ async function showToast(msg: string, type: 'error' | 'success' = 'error') {
   if (type === 'error') toast.error(msg)
   else toast.success(msg)
 }
+
+const formationModules = [
+  { title: 'TROUVER & VALIDER TON IDÉE', desc: 'Une idée solide, validée par la data.' },
+  { title: 'VALIDER LE MARCHÉ', desc: 'Analyse marché, cible et concurrence.' },
+  { title: 'CHOISIR LA STRUCTURE', desc: 'Micro, SASU, SARL — on tranche vite.' },
+  { title: 'BUSINESS PLAN', desc: 'Un plan chiffré qui convainc.' },
+  { title: 'MARKETING & ACQUISITION', desc: 'Tes premiers clients rapidement.' },
+  { title: 'L\'IA COMME COPILOTE', desc: 'Automatise et gagne du temps.' },
+  { title: 'FORMATION BONUS', desc: 'Une formation offerte en plus.' },
+  { title: 'CHECKLIST LANCEMENT', desc: 'Liste complète pour ne rien oublier le jour J.' },
+]
 
 const trustSignals = [
   { icon: Shield, title: 'SÉCURISÉ SSL', description: 'Cryptage 256 bits' },
@@ -595,5 +742,422 @@ const trustSignals = [
 @keyframes dot-pulse {
   0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
   40% { opacity: 1; transform: scale(1); }
+}
+
+// ── Formation Landing Page sections ──
+.text-purple { color: $purple; }
+.text-orange { color: $orange; }
+
+.lp-label {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #FFF;
+  text-transform: uppercase;
+  background: $purple;
+  padding: 4px 10px;
+  border: 2px solid #000;
+  display: inline-block;
+}
+
+.lp-section-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.lp-hero {
+  border: 4px solid #000;
+  box-shadow: 12px 12px 0px $purple;
+  background: #FFF;
+  margin-bottom: 32px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 16px 16px 0px $purple;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 0.95;
+    margin: 10px 0 16px;
+  }
+
+  &__subtitle {
+    font-family: $font-mono;
+    font-size: 0.9rem;
+    color: #000;
+    line-height: 1.6;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  &__badges {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__video {
+    border-left: 4px solid #000;
+    min-height: 300px;
+
+    @media (max-width: 768px) {
+      border-left: none;
+      border-top: 4px solid #000;
+      min-height: 200px;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
+
+.lp-badge {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #000;
+  padding: 8px 14px;
+  background: #FAFAFA;
+  border: 2px solid #000;
+  transition: all 0.2s;
+
+  &__icon {
+    color: $purple;
+    margin-right: 4px;
+  }
+
+  &:hover {
+    background: $purple;
+    color: #FFF;
+    border-color: $purple;
+
+    .lp-badge__icon { color: #FFF; }
+  }
+}
+
+.lp-modules {
+  border: 4px solid #000;
+  background: #FAFAFA;
+  padding: 40px;
+  margin-bottom: 32px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 4px solid #000;
+    background: #000;
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.lp-mod {
+  background: #FFF;
+  padding: 24px 20px;
+  border-right: 4px solid #000;
+  transition: background 0.2s, color 0.2s;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  @media (max-width: 900px) {
+    &:nth-child(even) {
+      border-right: none;
+    }
+
+    &:nth-child(n+3) {
+      border-top: 4px solid #000;
+    }
+  }
+
+  @media (max-width: 500px) {
+    border-right: none;
+
+    & + & {
+      border-top: 4px solid #000;
+    }
+  }
+
+  &--purple {
+    border-top: 4px solid $purple;
+
+    .lp-mod__num { color: rgba($purple, 0.2); }
+
+    &:hover {
+      background: $purple;
+      .lp-mod__title { color: #FFF; }
+      .lp-mod__desc { color: rgba(255, 255, 255, 0.7); }
+      .lp-mod__num { color: rgba(255, 255, 255, 0.2); }
+    }
+  }
+
+  &--orange {
+    border-top: 4px solid $orange;
+
+    .lp-mod__num { color: rgba($orange, 0.2); }
+
+    &:hover {
+      background: $orange;
+      .lp-mod__title { color: #FFF; }
+      .lp-mod__desc { color: rgba(255, 255, 255, 0.7); }
+      .lp-mod__num { color: rgba(255, 255, 255, 0.2); }
+    }
+  }
+
+  &__num {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  &__title {
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+
+  &__desc {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+}
+
+.lp-trust {
+  margin-bottom: 32px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 4px solid #000;
+    background: #000;
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__item {
+    background: #FFF;
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 4px solid #000;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &--purple {
+      .lp-trust__value { color: $purple; }
+
+      &:hover {
+        background: $purple;
+        .lp-trust__value { color: #FFF; }
+        .lp-trust__label { color: rgba(255, 255, 255, 0.8); }
+      }
+    }
+
+    &--orange {
+      .lp-trust__value { color: $orange; }
+
+      &:hover {
+        background: $orange;
+        .lp-trust__value { color: #FFF; }
+        .lp-trust__label { color: rgba(255, 255, 255, 0.8); }
+      }
+    }
+
+    @media (max-width: 640px) {
+      &:nth-child(even) {
+        border-right: none;
+      }
+
+      &:nth-child(n+3) {
+        border-top: 4px solid #000;
+      }
+    }
+  }
+
+  &__value {
+    font-family: $font-heading;
+    font-size: 1.75rem;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 4px;
+    transition: color 0.2s;
+  }
+
+  &__label {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #000;
+    transition: color 0.2s;
+  }
+}
+
+.lp-quote {
+  border: 4px solid #000;
+  background: #FFF;
+  margin-bottom: 32px;
+  box-shadow: 8px 8px 0px $purple;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: quote-glow 4s ease-in-out infinite;
+
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 14px 14px 0px $orange;
+    animation: none;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__left {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 4px solid #000;
+
+    @media (max-width: 640px) {
+      border-right: none;
+      border-bottom: 4px solid #000;
+    }
+  }
+
+  &__stars {
+    font-size: 1.25rem;
+    color: $orange;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    font-family: $font-heading;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 16px;
+  }
+
+  &__author {
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: $purple;
+  }
+
+  &__right {
+    width: 200px;
+    background: $purple;
+
+    @media (max-width: 640px) {
+      width: 100%;
+      height: 200px;
+    }
+  }
+
+  &__avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(30%);
+    mix-blend-mode: luminosity;
+    transition: filter 0.3s;
+  }
+
+  &:hover &__avatar {
+    filter: grayscale(0%);
+    mix-blend-mode: normal;
+  }
+}
+
+@keyframes quote-glow {
+  0%, 100% { box-shadow: 8px 8px 0px $purple; }
+  50% { box-shadow: 10px 10px 0px $orange; }
+}
+
+.lp-form-header {
+  text-align: center;
+  padding: 40px 0 32px;
+  border-top: 4px solid #000;
+  margin-bottom: 8px;
+
+  &__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+
+  &__sub {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+  }
 }
 </style>
