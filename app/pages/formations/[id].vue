@@ -1,114 +1,90 @@
 <template>
   <div v-if="formation">
     <!-- Hero -->
-    <section class="sale-hero section--light">
-      <div class="sale-hero__bg">
-        <div class="orb orb--purple sale-hero__orb sale-hero__orb--1"></div>
-        <div class="orb orb--orange sale-hero__orb sale-hero__orb--2"></div>
-      </div>
+    <section class="sale-hero">
       <div class="container">
-        <div class="split sale-hero__split">
+        <div class="sale-hero__split">
           <div class="sale-hero__content">
-            <ScrollReveal>
-              <GlassBadge variant="orange-light">
-                <Award :size="14" /> 100% finançable
-              </GlassBadge>
-            </ScrollReveal>
-            <ScrollReveal :delay="0.2">
-              <h1 class="sale-hero__title">{{ formation.titre }}</h1>
-            </ScrollReveal>
-            <ScrollReveal :delay="0.4">
-              <p class="sale-hero__desc">{{ formation.description }}</p>
-            </ScrollReveal>
-            <ScrollReveal :delay="0.6">
-              <div class="sale-hero__meta">
-                <span><Clock :size="16" /> {{ duree }}h environ</span>
-                <span><BarChart3 :size="16" /> {{ formation.niveau }}</span>
-                <span><Users :size="16" /> {{ formation.public }}</span>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal :delay="0.8">
-              <div class="btn-group">
-                <AppButton variant="primary" size="lg" @click="scrollToPrice">
-                  S'inscrire maintenant
-                  <ArrowRight :size="20" />
-                </AppButton>
-              </div>
-            </ScrollReveal>
-          </div>
-          <ScrollReveal direction="right" :delay="0.4">
-            <div class="sale-hero__image glass-card-light">
-              <img :src="formation.image" :alt="formation.titre" />
+            <div class="sale-hero__badge">
+              <Award :size="14" /> 100% FINANÇABLE
             </div>
-          </ScrollReveal>
+            <h1 class="sale-hero__title">{{ formation.titre }}</h1>
+            <p class="sale-hero__desc">{{ formation.description }}</p>
+            <div class="sale-hero__meta">
+              <span><Clock :size="16" /> {{ duree }}H ENVIRON</span>
+              <span><BarChart3 :size="16" /> {{ formation.niveau }}</span>
+              <span><Users :size="16" /> {{ formation.public }}</span>
+            </div>
+            <div class="btn-group">
+              <AppButton variant="primary" size="lg" @click="scrollToPrice">
+                S'inscrire maintenant
+                <ArrowRight :size="20" />
+              </AppButton>
+            </div>
+          </div>
+          <div class="sale-hero__image">
+            <img :src="formation.image" :alt="formation.titre" />
+          </div>
         </div>
       </div>
     </section>
 
     <!-- What you'll learn -->
-    <section class="learn section--light">
+    <section class="learn">
       <div class="container">
-        <ScrollReveal>
-          <span class="section-label">Ce que tu vas apprendre</span>
-          <h2 class="section-title">Objectifs <span class="gradient-text">pédagogiques</span></h2>
-        </ScrollReveal>
-        <StaggerGrid class="grid grid-2 mt-32">
+        <span class="section-label">OBJECTIFS_</span>
+        <h2 class="section-title">OBJECTIFS PÉDAGOGIQUES</h2>
+        <div class="learn__grid">
           <div
             v-for="(obj, i) in formation.objectifs_pedagogiques"
             :key="i"
-            class="learn__item glass-card-light"
+            class="learn__item"
           >
             <CheckCircle :size="20" class="learn__check" />
             <span>{{ obj }}</span>
           </div>
-        </StaggerGrid>
+        </div>
       </div>
     </section>
 
     <!-- Trust signals -->
-    <section class="trust section--white">
+    <section class="trust">
       <div class="container">
-        <StaggerGrid class="grid grid-3">
-          <GlassCard v-for="signal in trustSignals" :key="signal.title" variant="light">
+        <div class="trust__grid">
+          <div v-for="signal in trustSignals" :key="signal.title" class="trust__card">
             <div class="trust__signal">
               <component :is="signal.icon" :size="32" class="trust__icon" />
               <h4 class="trust__title">{{ signal.title }}</h4>
               <p class="trust__desc">{{ signal.description }}</p>
             </div>
-          </GlassCard>
-        </StaggerGrid>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="pricing section--light">
+    <section id="pricing" class="pricing">
       <div class="container">
-        <div class="split">
+        <div class="pricing__split">
           <div>
-            <ScrollReveal>
-              <span class="section-label">Tarif</span>
-              <h2 class="section-title">
-                Investis dans <span class="gradient-text">ton avenir</span>
-              </h2>
-              <p class="pricing__text">
-                Formation certifiante 100% finançable. Paiement sécurisé par carte bancaire.
-                Accès immédiat dès l'inscription.
-              </p>
-            </ScrollReveal>
+            <span class="section-label">TARIF_</span>
+            <h2 class="section-title">INVESTIS DANS TON AVENIR</h2>
+            <p class="pricing__text">
+              Formation certifiante 100% finançable. Paiement sécurisé par carte bancaire.
+              Accès immédiat dès l'inscription.
+            </p>
 
             <!-- Pack selector for anglais/compta -->
             <div v-if="showPacks" class="pricing__packs mt-32">
-              <ScrollReveal>
-                <h3 class="mb-16">Packs exclusifs</h3>
-                <p class="text-muted mb-24" style="font-size: 0.875rem">
-                  Économisez en combinant plusieurs formations
-                </p>
-              </ScrollReveal>
+              <h3 class="pricing__packs-heading">PACKS EXCLUSIFS_</h3>
+              <p class="pricing__packs-sub">
+                Économisez en combinant plusieurs formations
+              </p>
               <div class="pricing__packs-list">
                 <label
                   v-for="pack in availablePacks"
                   :key="pack.id"
-                  :class="['pricing__pack glass-card-light', { 'pricing__pack--selected': selectedPacks[pack.id] }]"
+                  :class="['pricing__pack', { 'pricing__pack--selected': selectedPacks[pack.id] }]"
                 >
                   <input
                     type="checkbox"
@@ -117,47 +93,49 @@
                   />
                   <div>
                     <strong>{{ pack.title }}</strong>
-                    <span class="pricing__pack-save">Économisez {{ pack.savings }}€</span>
+                    <span class="pricing__pack-save">ÉCONOMISEZ {{ pack.savings }}€</span>
                   </div>
                 </label>
               </div>
             </div>
           </div>
 
-          <ScrollReveal direction="right">
-            <PriceCard
-              :normalPrice="normalAmount"
-              :promoPrice="!isExpired ? promoAmount : (hasPackDiscount ? remise : undefined)"
-              :badge="!isExpired ? `-${percentage}% OFFRE LIMITÉE` : (hasPackDiscount ? `-${remisep}%` : undefined)"
-              :showTimer="!isExpired"
-              :ctaText="isLoading ? 'Chargement...' : 'S\'inscrire maintenant'"
-              @purchase="createOrder"
-            />
-          </ScrollReveal>
+          <PriceCard
+            :normalPrice="normalAmount"
+            :promoPrice="!isExpired ? promoAmount : (hasPackDiscount ? remise : undefined)"
+            :badge="!isExpired ? `-${percentage}% OFFRE LIMITÉE` : (hasPackDiscount ? `-${remisep}%` : undefined)"
+            :showTimer="!isExpired"
+            :ctaText="isLoading ? 'Chargement...' : 'S\'inscrire maintenant'"
+            @purchase="createOrder"
+          />
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="faq-section section--white">
+    <section class="faq-section">
       <div class="container container--narrow">
-        <ScrollReveal>
-          <span class="section-label text-center">FAQ</span>
-          <h2 class="section-title text-center">Questions <span class="gradient-text">fréquentes</span></h2>
-        </ScrollReveal>
-        <ScrollReveal class="mt-32">
+        <span class="section-label text-center">FAQ_</span>
+        <h2 class="section-title text-center">QUESTIONS FRÉQUENTES</h2>
+        <div class="mt-32">
           <FAQAccordion :items="faqItems" />
-        </ScrollReveal>
+        </div>
       </div>
     </section>
 
     <!-- Bottom CTA -->
-    <CTASection
-      title="Prêt à te <span class='gradient-text'>lancer</span> ?"
-      subtitle="Rejoins les 2100+ entrepreneurs qui ont transformé leur carrière."
-      primaryText="S'inscrire maintenant"
-      primaryLink="#pricing"
-    />
+    <section class="bottom-cta">
+      <div class="container">
+        <div class="bottom-cta__inner">
+          <h2 class="bottom-cta__title">PRÊT À TE LANCER ?</h2>
+          <p class="bottom-cta__sub">Rejoins les 2100+ entrepreneurs qui ont transformé leur carrière.</p>
+          <AppButton variant="primary" size="lg" @click="scrollToPrice">
+            S'inscrire maintenant
+            <ArrowRight :size="20" />
+          </AppButton>
+        </div>
+      </div>
+    </section>
 
     <!-- Mobile Sticky CTA -->
     <StickyCTA
@@ -169,10 +147,10 @@
   </div>
 
   <!-- 404 -->
-  <div v-else class="section--light" style="min-height: 100vh; display: flex; align-items: center; justify-content: center">
+  <div v-else style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #fff;">
     <div class="text-center">
-      <h1>Formation introuvable</h1>
-      <p class="text-muted mt-16">Cette formation n'existe pas dans notre catalogue.</p>
+      <h1 style="font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; border-bottom: 4px solid #000; display: inline-block; padding-bottom: 8px;">FORMATION INTROUVABLE</h1>
+      <p style="color: #000; margin-top: 16px; font-family: 'Space Mono', monospace;">Cette formation n'existe pas dans notre catalogue.</p>
       <AppButton variant="primary" to="/formations" class="mt-24">Voir le catalogue</AppButton>
     </div>
   </div>
@@ -394,39 +372,80 @@ const faqItems = [
 </script>
 
 <style lang="scss" scoped>
+/* ============================================
+   BRUTALIST DESIGN — formations/[id].vue
+   ============================================ */
+
+.section-label {
+  font-family: $font-mono;
+  font-size: $xs;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $purple;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: $font-heading;
+  font-size: $h3;
+  text-transform: uppercase;
+  color: #000;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+/* ---------- HERO ---------- */
 .sale-hero {
   padding: 120px 0 80px;
-  background: transparent;
+  background: #fff;
   position: relative;
-  overflow: hidden;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  &__orb {
-    position: absolute;
-    &--1 { width: 400px; height: 400px; top: -10%; right: -5%; opacity: 0.2; }
-    &--2 { width: 250px; height: 250px; bottom: 5%; left: 10%; opacity: 0.15; }
-  }
 
   &__split {
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 4px solid #000;
+    background: $orange;
+    color: #fff;
+    font-family: $font-mono;
+    font-size: $xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 4px 4px 0px #000;
+    margin-bottom: 24px;
   }
 
   &__title {
+    font-family: $font-heading;
     font-size: $h2;
-    color: $text-heading;
-    margin: 20px 0;
-    line-height: 1.15;
+    color: #000;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin: 0 0 20px;
   }
 
   &__desc {
-    color: $text-muted;
+    font-family: $font-mono;
+    color: #000;
     line-height: 1.8;
     margin-bottom: 24px;
+    font-size: $small;
   }
 
   &__meta {
@@ -434,40 +453,64 @@ const faqItems = [
     flex-wrap: wrap;
     gap: 20px;
     margin-bottom: 32px;
-    color: $text-muted;
-    font-size: $small;
+    font-family: $font-mono;
+    font-size: $xs;
+    color: #000;
+    text-transform: uppercase;
 
     span {
       display: flex;
       align-items: center;
       gap: 8px;
+      padding: 6px 12px;
+      border: 2px solid #000;
+      background: #fff;
     }
   }
 
   &__image {
-    padding: 0;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0px $purple;
     overflow: hidden;
 
     img {
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
-      border-radius: $radius-lg;
+      display: block;
     }
   }
 }
 
+/* ---------- LEARN / OBJECTIFS ---------- */
 .learn {
+  padding: $section-pad 0;
+  background: $bg-section-alt;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
   &__item {
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 16px 20px;
-    border-radius: 14px;
-    transition: all 0.3s ease;
+    border: 4px solid #000;
+    background: #fff;
+    box-shadow: 4px 4px 0px $purple;
+    transition: transform 0.15s ease;
 
     &:hover {
-      transform: none;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px $purple;
     }
   }
 
@@ -476,20 +519,45 @@ const faqItems = [
     width: 32px;
     height: 32px;
     padding: 6px;
-    border-radius: 50%;
-    background: rgba($purple, 0.1);
-    color: $purple;
+    background: $purple;
+    color: #fff;
   }
 
   span {
-    color: $text-body;
+    font-family: $font-mono;
+    color: #000;
     font-size: $small;
     line-height: 1.6;
   }
 }
 
+/* ---------- TRUST SIGNALS ---------- */
 .trust {
   padding: $section-pad-sm 0;
+  background: #fff;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    border: 4px solid #000;
+    background: #fff;
+    padding: 32px 24px;
+    box-shadow: 8px 8px 0px $orange;
+    transition: transform 0.15s ease;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 10px 10px 0px $orange;
+    }
+  }
 
   &__signal {
     text-align: center;
@@ -501,23 +569,59 @@ const faqItems = [
   }
 
   &__title {
-    color: $text-heading;
+    font-family: $font-heading;
+    color: #000;
     font-size: $h4;
+    text-transform: uppercase;
     margin-bottom: 8px;
   }
 
   &__desc {
-    color: $text-muted;
-    font-size: $small;
+    font-family: $font-mono;
+    color: #000;
+    font-size: $xs;
     line-height: 1.6;
   }
 }
 
+/* ---------- PRICING ---------- */
 .pricing {
+  padding: $section-pad 0;
+  background: $bg-section-alt;
+
+  &__split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
   &__text {
-    color: $text-muted;
+    font-family: $font-mono;
+    color: #000;
     line-height: 1.8;
     margin-top: 16px;
+    font-size: $small;
+  }
+
+  &__packs-heading {
+    font-family: $font-heading;
+    font-size: $h4;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 8px;
+  }
+
+  &__packs-sub {
+    font-family: $font-mono;
+    font-size: $xs;
+    color: #000;
+    margin-bottom: 24px;
   }
 
   &__packs-list {
@@ -531,8 +635,10 @@ const faqItems = [
     align-items: center;
     gap: 16px;
     padding: 20px;
+    border: 4px solid #000;
+    background: #fff;
     cursor: pointer;
-    transition: $transition-base;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 
     input {
       width: 20px;
@@ -541,25 +647,57 @@ const faqItems = [
     }
 
     &--selected {
-      border-color: rgba($purple, 0.4);
-      box-shadow: $card-shadow-purple;
+      box-shadow: 6px 6px 0px $purple;
+      transform: translate(-2px, -2px);
     }
 
     strong {
-      color: $text-heading;
+      font-family: $font-heading;
+      color: #000;
       font-size: $small;
+      text-transform: uppercase;
       display: block;
       margin-bottom: 4px;
     }
   }
 
   &__pack-save {
+    font-family: $font-mono;
     color: $purple;
     font-size: $xs;
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 }
 
+/* ---------- FAQ ---------- */
 .faq-section {
+  padding: $section-pad 0;
+  background: #fff;
+}
+
+/* ---------- BOTTOM CTA ---------- */
+.bottom-cta {
+  padding: $section-pad 0;
+  background: #000;
+
+  &__inner {
+    text-align: center;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $h2;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  &__sub {
+    font-family: $font-mono;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: $body;
+    margin-bottom: 32px;
+  }
 }
 </style>

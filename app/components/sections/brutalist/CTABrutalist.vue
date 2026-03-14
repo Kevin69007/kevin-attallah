@@ -1,5 +1,6 @@
 <template>
   <section class="cta-brutal">
+    <WaveLines />
     <div class="container cta-brutal__inner">
       <h2 class="cta-brutal__title">
         <span class="block">L'HÉSITATION</span>
@@ -55,6 +56,8 @@ onMounted(() => {
   overflow: hidden;
 
   &__inner {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;

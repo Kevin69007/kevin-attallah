@@ -1,28 +1,22 @@
 <template>
   <div>
-    <section class="lp section--light">
+    <section class="lp">
       <div class="container">
         <!-- Hero -->
-        <ScrollReveal>
-          <div class="text-center">
-            <GlassBadge v-magnetic="0.2" variant="orange-light">
-              <Gift :size="14" />
-              {{ config.badgeText }}
-            </GlassBadge>
-            <h1 class="lp__title mt-24">
-              Ta formation gratuite de la semaine
-              <span class="gradient-text">t'attend.</span>
-            </h1>
-            <p class="lp__subtitle">{{ config.subtitle }}</p>
-          </div>
-        </ScrollReveal>
+        <div class="text-center">
+          <span class="brutal-label">FORMATION_GRATUITE_</span>
+          <h1 class="lp__title">
+            TA FORMATION GRATUITE DE LA SEMAINE T'ATTEND.
+          </h1>
+          <p class="lp__subtitle">{{ config.subtitle }}</p>
+        </div>
 
         <div class="split mt-48">
           <!-- Left: Offer details -->
-          <ScrollReveal direction="left">
+          <div class="lp__left">
             <!-- Features -->
             <div class="lp__features">
-              <div v-for="feature in config.features" :key="feature" v-magnetic="0.15" class="lp__feature glass-card-light">
+              <div v-for="feature in config.features" :key="feature" class="lp__feature">
                 <CheckCircle :size="18" class="lp__check" />
                 <span>{{ feature }}</span>
               </div>
@@ -30,28 +24,26 @@
 
             <!-- Trust signals -->
             <div class="lp__trust mt-32">
-              <GlassBadge v-magnetic="0.2" variant="light">
+              <div class="lp__trust-badge">
                 <Users :size="14" />
                 2100+ entrepreneurs lancés
-              </GlassBadge>
-              <GlassBadge v-magnetic="0.2" variant="light">
+              </div>
+              <div class="lp__trust-badge">
                 <Star :size="14" />
                 4.8/5 satisfaction
-              </GlassBadge>
+              </div>
             </div>
 
             <!-- Reassurance -->
             <p class="lp__reassurance mt-24">{{ config.reassurance }}</p>
-          </ScrollReveal>
+          </div>
 
           <!-- Right: Form -->
-          <ScrollReveal direction="right" :delay="0.3">
-            <GlassCard v-magnetic="0.12" variant="light" :hoverable="false">
-              <h3 class="mb-8">Accès personnel</h3>
-              <p class="lp__form-subtitle">Remplis le formulaire et reçois tes identifiants</p>
-              <FreeFormationForm class="mt-24" />
-            </GlassCard>
-          </ScrollReveal>
+          <div class="lp__form-card brutal-card brutal-card--orange">
+            <h3 class="lp__form-title">ACCÈS PERSONNEL</h3>
+            <p class="lp__form-subtitle">Remplis le formulaire et reçois tes identifiants</p>
+            <FreeFormationForm class="mt-24" />
+          </div>
         </div>
       </div>
     </section>
@@ -82,19 +74,51 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+/* ── Brutalist shared ── */
+.brutal-label {
+  display: inline-block;
+  font-family: $font-mono;
+  font-size: $xs;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $purple;
+  border: 2px solid $purple;
+  padding: 6px 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.brutal-card {
+  background: #fff;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px $purple;
+  padding: 32px;
+
+  &--orange {
+    box-shadow: 8px 8px 0px $orange;
+  }
+}
+
+/* ── Page ── */
 .lp {
   padding: 140px 0 80px;
-  position: relative;
-  overflow: hidden;
+  background: #fff;
   min-height: 100vh;
 
   &__title {
+    font-family: $font-heading;
     font-size: $h1;
-    line-height: 1.15;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1.1;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
   &__subtitle {
-    color: $text-body;
+    font-family: $font-mono;
+    color: #000;
     font-size: $body-lg;
     line-height: 1.7;
     max-width: 600px;
@@ -104,17 +128,20 @@ onMounted(() => {
   &__features {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
   }
 
   &__feature {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: $text-body;
+    color: #000;
+    font-family: $font-mono;
     font-size: $small;
-    padding: 10px 16px;
-    border-radius: 12px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0px $purple;
   }
 
   &__check {
@@ -122,9 +149,8 @@ onMounted(() => {
     width: 28px;
     height: 28px;
     padding: 5px;
-    border-radius: 50%;
-    background: rgba($orange, 0.12);
-    color: $orange;
+    background: #000;
+    color: #fff;
   }
 
   &__trust {
@@ -133,15 +159,46 @@ onMounted(() => {
     flex-wrap: wrap;
   }
 
+  &__trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $font-mono;
+    font-size: $xs;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000;
+    border: 2px solid #000;
+    padding: 8px 14px;
+
+    svg { color: $orange; }
+  }
+
   &__reassurance {
-    color: $text-muted;
+    font-family: $font-mono;
+    color: #000;
     font-size: $xs;
     line-height: 1.6;
-    font-style: italic;
+    border-left: 4px solid $purple;
+    padding-left: 16px;
+  }
+
+  &__form-card {
+    @media (max-width: 768px) { margin-top: 32px; }
+  }
+
+  &__form-title {
+    font-family: $font-heading;
+    font-size: $h4;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 8px;
   }
 
   &__form-subtitle {
-    color: $text-muted;
+    font-family: $font-mono;
+    color: #000;
     font-size: $small;
   }
 }

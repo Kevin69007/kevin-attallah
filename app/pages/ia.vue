@@ -1,62 +1,43 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="ia-hero section--light">
-      <div class="ia-hero__bg">
-        <div class="orb orb--orange ia-hero__orb ia-hero__orb--1"></div>
-        <div class="orb orb--purple ia-hero__orb ia-hero__orb--2"></div>
-      </div>
+    <section class="ia-hero">
       <div class="container ia-hero__content text-center">
-        <ScrollReveal :delay="0.1">
-          <GlassBadge variant="orange-light">
-            <Bot :size="14" />
-            Intelligence Artificielle
-          </GlassBadge>
-        </ScrollReveal>
-        <TextSplit
-          text="L'IA ne remplace pas les entrepreneurs. Elle remplace ceux qui refusent"
-          gradient-text="refusent"
-          tag="h1"
-          :delay="0.3"
-          class="ia-hero__title"
-        />
-        <ScrollReveal :delay="0.6">
-          <p class="ia-hero__subtitle">
-            Tes concurrents automatisent déjà. Toi tu écris encore tes emails un par un.
-            Il est temps de changer ça.
-          </p>
-        </ScrollReveal>
-        <ScrollReveal :delay="0.8">
-          <div class="ia-hero__ctas">
-            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
-              Réserver mon audit IA
-              <ArrowRight :size="20" />
-            </AppButton>
-            <AppButton variant="ghost-light" size="lg" to="/formations">
-              Voir les formations IA
-            </AppButton>
-          </div>
-        </ScrollReveal>
+        <span class="ia-hero__label">INTELLIGENCE_ARTIFICIELLE_</span>
+        <h1 class="ia-hero__title">
+          L'IA NE REMPLACE PAS LES ENTREPRENEURS. ELLE REMPLACE CEUX QUI REFUSENT.
+        </h1>
+        <p class="ia-hero__subtitle">
+          Tes concurrents automatisent déjà. Toi tu écris encore tes emails un par un.
+          Il est temps de changer ça.
+        </p>
+        <div class="ia-hero__ctas">
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+            Réserver mon audit IA
+            <ArrowRight :size="20" />
+          </AppButton>
+          <AppButton variant="ghost-light" size="lg" to="/formations">
+            Voir les formations IA
+          </AppButton>
+        </div>
       </div>
     </section>
 
     <!-- Who is it for -->
-    <section class="ia-who section--light">
+    <section class="ia-who">
       <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Pour qui ?</span>
-          <h2 class="section-title text-center">
-            Que tu démarres ou que tu <span class="gradient-text">scales</span>
-          </h2>
-        </ScrollReveal>
+        <span class="brutal-label">POUR_QUI_</span>
+        <h2 class="brutal-title">
+          QUE TU DÉMARRES OU QUE TU SCALES
+        </h2>
 
-        <StaggerGrid class="ia-who__grid">
-          <GlassCard hoverable>
+        <div class="ia-who__grid">
+          <div class="brutal-card">
             <div class="ia-who__card">
               <div class="ia-who__icon">
                 <Rocket :size="32" />
               </div>
-              <h3 class="ia-who__title">Tu lances ton business</h3>
+              <h3 class="ia-who__title">TU LANCES TON BUSINESS</h3>
               <p class="ia-who__desc">
                 Démarre avec 10 ans d'avance sur tes futurs concurrents.
                 L'IA t'aide à valider ton idée, créer ton contenu, automatiser ton marketing
@@ -69,14 +50,14 @@
                 <li><CheckCircle :size="16" /> Chatbots et service client IA</li>
               </ul>
             </div>
-          </GlassCard>
+          </div>
 
-          <GlassCard hoverable>
+          <div class="brutal-card brutal-card--orange">
             <div class="ia-who__card">
               <div class="ia-who__icon ia-who__icon--orange">
                 <TrendingUp :size="32" />
               </div>
-              <h3 class="ia-who__title">Tu as déjà une entreprise</h3>
+              <h3 class="ia-who__title">TU AS DÉJÀ UNE ENTREPRISE</h3>
               <p class="ia-who__desc">
                 Optimise tes process, automatise le répétitif, scale intelligemment.
                 L'IA transforme ton business existant en machine de guerre : plus rapide,
@@ -89,23 +70,21 @@
                 <li><CheckCircle :size="16" /> Productivité x10 avec les bons outils</li>
               </ul>
             </div>
-          </GlassCard>
-        </StaggerGrid>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- 3 Solutions -->
-    <section class="ia-solutions section--white">
+    <section class="ia-solutions">
       <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Nos solutions</span>
-          <h2 class="section-title text-center">
-            3 façons de <span class="gradient-text">décoller</span> avec l'IA
-          </h2>
-        </ScrollReveal>
+        <span class="brutal-label">SOLUTIONS_</span>
+        <h2 class="brutal-title">
+          3 FAÇONS DE DÉCOLLER AVEC L'IA
+        </h2>
 
-        <StaggerGrid class="grid grid-3 mt-48">
-          <GlassCard v-for="(solution, i) in solutions" :key="solution.title" hoverable>
+        <div class="ia-solutions__grid">
+          <div v-for="(solution, i) in solutions" :key="solution.title" class="brutal-card">
             <div class="ia-sol">
               <span class="ia-sol__num">0{{ i + 1 }}</span>
               <div class="ia-sol__icon">
@@ -117,34 +96,43 @@
                 <li v-for="f in solution.features" :key="f">{{ f }}</li>
               </ul>
             </div>
-          </GlassCard>
-        </StaggerGrid>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Stats -->
-    <section class="ia-stats section--light">
+    <section class="ia-stats">
       <div class="container">
-        <StaggerGrid class="ia-stats__grid">
-          <div v-for="stat in stats" :key="stat.label" class="ia-stats__item glass-card-light">
-            <span class="ia-stats__value gradient-text">
+        <div class="ia-stats__grid">
+          <div v-for="stat in stats" :key="stat.label" class="brutal-card ia-stats__item">
+            <span class="ia-stats__value">
               <CountUp :end="stat.value" :suffix="stat.suffix" />
             </span>
             <span class="ia-stats__label">{{ stat.label }}</span>
           </div>
-        </StaggerGrid>
+        </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <CTASection
-      title="Prêt à intégrer l'IA dans ton <span class='gradient-text'>business</span> ?"
-      subtitle="Réserve un audit gratuit avec Kevin pour identifier tes leviers IA."
-      primaryText="Réserver mon audit IA"
-      :primaryLink="externalLinks.booking.brevoMeeting"
-      secondaryText="Voir les formations"
-      secondaryLink="/formations"
-    />
+    <section class="ia-cta">
+      <div class="container">
+        <div class="brutal-card brutal-card--cta">
+          <h2 class="ia-cta__title">PRÊT À INTÉGRER L'IA DANS TON BUSINESS ?</h2>
+          <p class="ia-cta__subtitle">Réserve un audit gratuit avec Kevin pour identifier tes leviers IA.</p>
+          <div class="ia-cta__buttons">
+            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+              Réserver mon audit IA
+              <ArrowRight :size="20" />
+            </AppButton>
+            <AppButton variant="ghost-light" size="lg" to="/formations">
+              Voir les formations
+            </AppButton>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -194,56 +182,155 @@ const stats = [
 </script>
 
 <style lang="scss" scoped>
+/* ── Brutalist shared ── */
+.brutal-label {
+  display: block;
+  font-family: $font-mono;
+  font-size: $xs;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $purple;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.brutal-title {
+  font-family: $font-heading;
+  font-size: $h2;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000;
+  line-height: 1.1;
+  margin-bottom: 48px;
+}
+
+.brutal-card {
+  background: #fff;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px $purple;
+  padding: 32px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 12px 12px 0px $purple;
+  }
+
+  &--orange {
+    box-shadow: 8px 8px 0px $orange;
+    &:hover { box-shadow: 12px 12px 0px $orange; }
+  }
+
+  &--cta {
+    background: #000;
+    color: #fff;
+    box-shadow: 8px 8px 0px $orange;
+    text-align: center;
+    padding: 64px 48px;
+    &:hover { box-shadow: 12px 12px 0px $orange; }
+  }
+}
+
+/* ── Hero ── */
 .ia-hero {
   min-height: 80vh;
   display: flex;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  background: transparent;
+  background: #fff;
+  border-bottom: 4px solid #000;
   padding-top: 120px;
   padding-bottom: 80px;
 
-  &__bg { position: absolute; inset: 0; pointer-events: none; }
-  &__orb {
-    position: absolute;
-    &--1 { width: 500px; height: 500px; top: -15%; right: -10%; opacity: 0.2; }
-    &--2 { width: 300px; height: 300px; bottom: -10%; left: -5%; opacity: 0.15; }
+  &__label {
+    display: inline-block;
+    font-family: $font-mono;
+    font-size: $xs;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: $purple;
+    border: 2px solid $purple;
+    padding: 6px 16px;
+    font-weight: 700;
+    margin-bottom: 24px;
   }
 
-  &__content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-  &__title { font-size: $h1; color: $text-heading; margin: 24px 0; line-height: 1.1; }
-  &__subtitle { font-size: $body-lg; color: $text-muted; line-height: 1.7; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
-  &__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  &__content { max-width: 800px; margin: 0 auto; }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $h1;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 24px;
+    line-height: 1.1;
+  }
+
+  &__subtitle {
+    font-family: $font-mono;
+    font-size: $body-lg;
+    color: #000;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
+/* ── Who section ── */
 .ia-who {
+  background: #fff;
+  border-bottom: 4px solid #000;
+  padding: 80px 0;
+
   &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 48px;
+    gap: 32px;
 
     @media (max-width: 768px) { grid-template-columns: 1fr; }
   }
 
-  &__card { padding: 8px; }
+  &__card { padding: 0; }
+
   &__icon {
     width: 64px;
     height: 64px;
-    border-radius: 50%;
-    background: rgba($purple, 0.1);
+    border: 4px solid #000;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     color: $purple;
     margin-bottom: 20px;
 
-    &--orange { background: rgba($purple, 0.1); color: $purple; }
+    &--orange { color: $orange; }
   }
 
-  &__title { font-size: $h4; color: $text-heading; margin-bottom: 12px; }
-  &__desc { color: $text-muted; font-size: $small; line-height: 1.7; margin-bottom: 20px; }
+  &__title {
+    font-family: $font-heading;
+    font-size: $h4;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 12px;
+  }
+
+  &__desc {
+    font-family: $font-mono;
+    color: #000;
+    font-size: $small;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
 
   &__list {
     list-style: none;
@@ -256,7 +343,8 @@ const stats = [
       display: flex;
       align-items: center;
       gap: 10px;
-      color: $text-body;
+      color: #000;
+      font-family: $font-mono;
       font-size: $small;
 
       svg { color: $purple; flex-shrink: 0; }
@@ -264,29 +352,37 @@ const stats = [
   }
 }
 
-.ia-solutions { }
+/* ── Solutions ── */
+.ia-solutions {
+  background: #fff;
+  border-bottom: 4px solid #000;
+  padding: 80px 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+
+    @media (max-width: 768px) { grid-template-columns: 1fr; }
+  }
+}
 
 .ia-sol {
   text-align: center;
-  padding: 8px;
 
   &__num {
     font-family: $font-heading;
     font-size: 3rem;
     font-weight: 900;
-    background: $gradient-primary;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    opacity: 0.5;
+    color: $purple;
     line-height: 1;
   }
 
   &__icon {
     width: 56px;
     height: 56px;
-    border-radius: 50%;
-    background: rgba($purple, 0.1);
+    border: 4px solid #000;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -294,8 +390,22 @@ const stats = [
     margin: 12px auto 16px;
   }
 
-  &__title { font-size: $body-lg; color: $text-heading; margin-bottom: 10px; font-weight: 700; }
-  &__desc { font-size: $small; color: $text-muted; line-height: 1.6; margin-bottom: 16px; }
+  &__title {
+    font-family: $font-heading;
+    font-size: $body-lg;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 10px;
+  }
+
+  &__desc {
+    font-family: $font-mono;
+    font-size: $small;
+    color: #000;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
 
   &__features {
     list-style: none;
@@ -309,35 +419,24 @@ const stats = [
       display: inline-flex;
       align-items: center;
       padding: 6px 14px;
+      font-family: $font-mono;
       font-size: 12px;
-      font-weight: 500;
-      color: $text-body;
-      background: rgba($purple, 0.05);
-      border: 1px solid $card-border;
-      border-radius: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #000;
+      background: #fff;
+      border: 2px solid #000;
       white-space: nowrap;
-      transition: all 0.3s $ease-smooth;
-
-      &::before {
-        content: '';
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: $purple;
-        margin-right: 8px;
-        box-shadow: 0 0 6px rgba($purple, 0.3);
-        flex-shrink: 0;
-      }
     }
-  }
-
-  &:hover .ia-sol__features li {
-    border-color: rgba($purple, 0.2);
-    background: rgba($purple, 0.08);
   }
 }
 
+/* ── Stats ── */
 .ia-stats {
+  background: #fff;
+  border-bottom: 4px solid #000;
+  padding: 80px 0;
+
   &__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -352,13 +451,46 @@ const stats = [
     font-family: $font-heading;
     font-size: 2.5rem;
     font-weight: 900;
+    color: $purple;
     display: block;
     margin-bottom: 8px;
   }
 
   &__label {
+    font-family: $font-mono;
     font-size: $xs;
-    color: $text-muted;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ── CTA ── */
+.ia-cta {
+  background: #fff;
+  padding: 80px 0;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $h2;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    font-family: $font-mono;
+    font-size: $body-lg;
+    color: rgba(#fff, 0.8);
+    margin-bottom: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 </style>

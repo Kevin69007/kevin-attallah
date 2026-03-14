@@ -4,9 +4,9 @@
     <Teleport to="body">
       <Transition name="overlay-fade">
         <div v-if="isProcessing" class="processing-overlay">
-          <div class="processing-overlay__card glass-card-light">
+          <div class="processing-overlay__card">
             <Loader2 :size="40" class="processing-overlay__spinner" />
-            <h3 class="processing-overlay__title">Paiement en cours</h3>
+            <h3 class="processing-overlay__title">PAIEMENT EN COURS</h3>
             <p class="processing-overlay__text">Veuillez patienter pendant le traitement de votre paiement...</p>
             <div class="processing-overlay__dots">
               <span></span><span></span><span></span>
@@ -16,120 +16,110 @@
       </Transition>
     </Teleport>
 
-    <section class="checkout section--light">
+    <section class="checkout">
       <div class="container">
-        <ScrollReveal>
-          <h1 class="checkout__title text-center">Finaliser votre <span class="gradient-text">inscription</span></h1>
-          <p class="checkout__subtitle text-center">Paiement sécurisé par carte bancaire</p>
-        </ScrollReveal>
+        <h1 class="checkout__title">FINALISER VOTRE INSCRIPTION</h1>
+        <p class="checkout__subtitle">PAIEMENT SÉCURISÉ PAR CARTE BANCAIRE</p>
 
-        <div class="checkout__grid split mt-48">
+        <div class="checkout__grid">
           <!-- Left: Billing form -->
           <div>
-            <ScrollReveal>
-              <GlassCard variant="light">
-                <h3 class="mb-24">Informations de facturation</h3>
-                <form @submit.prevent>
+            <div class="checkout__card">
+              <h3 class="checkout__card-heading">INFORMATIONS DE FACTURATION</h3>
+              <form @submit.prevent>
+                <FormInput
+                  id="name"
+                  v-model="form.name"
+                  label="Nom complet"
+                  placeholder="Jean Dupont"
+                  required
+                />
+                <div class="checkout__row">
                   <FormInput
-                    id="name"
-                    v-model="form.name"
-                    label="Nom complet"
-                    placeholder="Jean Dupont"
+                    id="email"
+                    v-model="form.email"
+                    label="E-mail"
+                    type="email"
+                    placeholder="jean@example.com"
                     required
                   />
-                  <div class="checkout__row">
-                    <FormInput
-                      id="email"
-                      v-model="form.email"
-                      label="E-mail"
-                      type="email"
-                      placeholder="jean@example.com"
-                      required
-                    />
-                    <FormInput
-                      id="phone"
-                      v-model="form.phone"
-                      label="Téléphone"
-                      type="tel"
-                      placeholder="+33612345678"
-                    />
-                  </div>
-                  <div class="checkout__row">
-                    <FormInput
-                      id="city"
-                      v-model="form.city"
-                      label="Ville"
-                      placeholder="Paris"
-                      required
-                    />
-                    <FormInput
-                      id="postcode"
-                      v-model="form.postcode"
-                      label="Code postal"
-                      placeholder="75002"
-                      required
-                    />
-                  </div>
-                </form>
-
-                <!-- Revolut Card Field -->
-                <div class="form-group mt-24">
-                  <label class="form-label">Carte bancaire</label>
-                  <div id="card-field" class="checkout__card-field"></div>
+                  <FormInput
+                    id="phone"
+                    v-model="form.phone"
+                    label="Téléphone"
+                    type="tel"
+                    placeholder="+33612345678"
+                  />
                 </div>
+                <div class="checkout__row">
+                  <FormInput
+                    id="city"
+                    v-model="form.city"
+                    label="Ville"
+                    placeholder="Paris"
+                    required
+                  />
+                  <FormInput
+                    id="postcode"
+                    v-model="form.postcode"
+                    label="Code postal"
+                    placeholder="75002"
+                    required
+                  />
+                </div>
+              </form>
 
-                <AppButton
-                  id="button-submit"
-                  variant="primary"
-                  block
-                  class="mt-24"
-                  :disabled="isProcessing"
-                  @click="handlePayment"
-                >
-                  <Loader2 v-if="isProcessing" :size="18" class="btn-spinner" />
-                  {{ isProcessing ? 'Traitement...' : `Payer ${orderAmount}€` }}
-                </AppButton>
-              </GlassCard>
-            </ScrollReveal>
+              <!-- Revolut Card Field -->
+              <div class="form-group" style="margin-top: 24px">
+                <label class="checkout__label">CARTE BANCAIRE</label>
+                <div id="card-field" class="checkout__card-field"></div>
+              </div>
+
+              <AppButton
+                id="button-submit"
+                variant="primary"
+                block
+                class="mt-24"
+                :disabled="isProcessing"
+                @click="handlePayment"
+              >
+                <Loader2 v-if="isProcessing" :size="18" class="btn-spinner" />
+                {{ isProcessing ? 'TRAITEMENT...' : `PAYER ${orderAmount}€` }}
+              </AppButton>
+            </div>
           </div>
 
           <!-- Right: Order summary -->
           <div>
-            <ScrollReveal direction="right" :delay="0.2">
-              <GlassCard variant="light" class="mb-24">
-                <h3 class="mb-16">Récapitulatif</h3>
-                <div class="checkout__summary">
-                  <div class="checkout__summary-row">
-                    <span>Formation</span>
-                    <span>{{ orderDescription }}</span>
-                  </div>
-                  <div class="glass-divider-light" style="margin: 16px 0"></div>
-                  <div class="checkout__summary-row checkout__summary-row--total">
-                    <span>Total</span>
-                    <span class="gradient-text">{{ orderAmount }}€</span>
-                  </div>
+            <div class="checkout__summary-card">
+              <h3 class="checkout__card-heading">RÉCAPITULATIF</h3>
+              <div class="checkout__summary">
+                <div class="checkout__summary-row">
+                  <span>FORMATION</span>
+                  <span>{{ orderDescription }}</span>
                 </div>
-              </GlassCard>
-            </ScrollReveal>
+                <div class="checkout__divider"></div>
+                <div class="checkout__summary-row checkout__summary-row--total">
+                  <span>TOTAL</span>
+                  <span class="checkout__total-price">{{ orderAmount }}€</span>
+                </div>
+              </div>
+            </div>
 
             <!-- Trust signals -->
-            <ScrollReveal direction="right" :delay="0.4">
-              <div class="checkout__trust-list">
-                <div v-for="signal in trustSignals" :key="signal.title" v-magnetic="0.12" class="checkout__trust-item glass-card-light">
-                  <component :is="signal.icon" :size="20" class="checkout__trust-icon" />
-                  <div>
-                    <strong>{{ signal.title }}</strong>
-                    <p>{{ signal.description }}</p>
-                  </div>
+            <div class="checkout__trust-list">
+              <div v-for="signal in trustSignals" :key="signal.title" class="checkout__trust-item">
+                <component :is="signal.icon" :size="20" class="checkout__trust-icon" />
+                <div>
+                  <strong>{{ signal.title }}</strong>
+                  <p>{{ signal.description }}</p>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
 
-            <ScrollReveal direction="right" :delay="0.6">
-              <div class="checkout__visa mt-24 text-center">
-                <img src="/img/visamastercard.png" alt="Visa MasterCard" style="max-width: 200px; margin: 0 auto" />
-              </div>
-            </ScrollReveal>
+            <div class="checkout__visa">
+              <img src="/img/visamastercard.png" alt="Visa MasterCard" style="max-width: 200px; margin: 0 auto" />
+            </div>
           </div>
         </div>
       </div>
@@ -349,9 +339,9 @@ async function showToast(msg: string, type: 'error' | 'success' = 'error') {
 }
 
 const trustSignals = [
-  { icon: Shield, title: 'Sécurisé SSL', description: 'Cryptage 256 bits' },
-  { icon: Lock, title: 'Données protégées', description: 'RGPD conforme' },
-  { icon: CreditCard, title: 'Revolut Checkout', description: 'Paiement sécurisé' },
+  { icon: Shield, title: 'SÉCURISÉ SSL', description: 'Cryptage 256 bits' },
+  { icon: Lock, title: 'DONNÉES PROTÉGÉES', description: 'RGPD conforme' },
+  { icon: CreditCard, title: 'REVOLUT CHECKOUT', description: 'Paiement sécurisé' },
 ]
 </script>
 
@@ -359,18 +349,68 @@ const trustSignals = [
 .checkout {
   padding: 160px 0 80px;
   min-height: 100vh;
+  background: #fff;
 
   &__title {
+    font-family: $font-heading;
     font-size: $h2;
+    font-weight: 900;
+    color: #000;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
   }
 
   &__subtitle {
-    color: $text-body;
-    font-size: $body-lg;
+    font-family: $font-mono;
+    font-size: $small;
+    color: #000;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.08em;
+    margin-bottom: 48px;
   }
 
   &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
     align-items: flex-start;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background: #fff;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0px $purple;
+    padding: 32px;
+  }
+
+  &__card-heading {
+    font-family: $font-heading;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 4px solid #000;
+  }
+
+  &__label {
+    font-family: $font-mono;
+    font-size: $small;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 8px;
   }
 
   &__row {
@@ -385,10 +425,17 @@ const trustSignals = [
 
   &__card-field {
     min-height: 50px;
-    background: $bg-card;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: $radius-sm;
+    background: #fff;
+    border: 4px solid #000;
     padding: 14px 18px;
+  }
+
+  &__summary-card {
+    background: #fff;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0px $orange;
+    padding: 32px;
+    margin-bottom: 24px;
   }
 
   &__summary {
@@ -396,17 +443,28 @@ const trustSignals = [
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: $text-body;
+      font-family: $font-mono;
       font-size: $small;
+      color: #000;
+      text-transform: uppercase;
 
       &--total {
-        span:last-child {
-          font-family: $font-heading;
-          font-size: 1.5rem;
-          font-weight: 800;
-        }
+        padding-top: 16px;
       }
     }
+  }
+
+  &__total-price {
+    font-family: $font-heading;
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: $purple;
+  }
+
+  &__divider {
+    border: none;
+    border-top: 4px solid #000;
+    margin: 16px 0;
   }
 
   &__trust-list {
@@ -420,24 +478,39 @@ const trustSignals = [
     align-items: center;
     gap: 16px;
     padding: 16px 20px;
+    background: #fff;
+    border: 4px solid #000;
 
     strong {
-      color: $text-heading;
+      font-family: $font-mono;
       font-size: $small;
+      color: #000;
+      text-transform: uppercase;
       display: block;
       margin-bottom: 2px;
+      letter-spacing: 0.04em;
     }
 
     p {
-      color: $text-body;
+      font-family: $font-mono;
       font-size: $xs;
+      color: #000;
       margin: 0;
+      text-transform: uppercase;
     }
   }
 
   &__trust-icon {
     color: $purple;
     flex-shrink: 0;
+  }
+
+  &__visa {
+    margin-top: 24px;
+    text-align: center;
+    padding: 16px;
+    border: 4px solid #000;
+    background: #fff;
   }
 }
 
@@ -453,19 +526,16 @@ const trustSignals = [
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(10, 5, 20, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.7);
 
   &__card {
     text-align: center;
     padding: 48px 40px;
-    border-radius: 20px;
     max-width: 380px;
     width: 90%;
-
-    &:hover {
-      transform: none;
-    }
+    background: #fff;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0px $purple;
   }
 
   &__spinner {
@@ -475,15 +545,19 @@ const trustSignals = [
   }
 
   &__title {
-    color: $text-heading;
+    font-family: $font-heading;
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 900;
+    color: #000;
+    text-transform: uppercase;
     margin-bottom: 8px;
+    letter-spacing: 0.04em;
   }
 
   &__text {
-    color: $text-body;
+    font-family: $font-mono;
     font-size: 0.875rem;
+    color: #000;
     line-height: 1.6;
     margin-bottom: 24px;
   }
@@ -496,7 +570,6 @@ const trustSignals = [
     span {
       width: 8px;
       height: 8px;
-      border-radius: 50%;
       background: $orange;
       animation: dot-pulse 1.4s ease-in-out infinite;
 

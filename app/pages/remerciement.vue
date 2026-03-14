@@ -1,47 +1,34 @@
 <template>
   <div>
-    <section class="thanks section--light">
+    <section class="thanks">
       <div class="container thanks__content text-center">
-        <ScrollReveal>
-          <div class="thanks__icon">
-            <CheckCircle :size="64" />
+        <div class="thanks__icon">
+          <CheckCircle :size="64" />
+        </div>
+
+        <h1 class="thanks__title">MERCI POUR VOTRE INSCRIPTION !</h1>
+
+        <p class="thanks__text">
+          VOTRE PAIEMENT A ÉTÉ CONFIRMÉ AVEC SUCCÈS. UN EMAIL DE CONFIRMATION
+          VOUS A ÉTÉ ENVOYÉ AVEC TOUS LES DÉTAILS DE VOTRE FORMATION.
+        </p>
+
+        <div class="thanks__steps">
+          <div v-for="step in nextSteps" :key="step.title" class="thanks__step">
+            <component :is="step.icon" :size="28" class="thanks__step-icon" />
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.description }}</p>
           </div>
-        </ScrollReveal>
+        </div>
 
-        <TextSplit
-          text="Merci pour votre inscription !"
-          tag="h1"
-          :delay="0.3"
-          class="thanks__title"
-        />
-
-        <ScrollReveal :delay="0.6">
-          <p class="thanks__text">
-            Votre paiement a été confirmé avec succès. Un email de confirmation
-            vous a été envoyé avec tous les détails de votre formation.
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal :delay="0.8">
-          <div class="thanks__steps">
-            <div class="thanks__step glass-card-light" v-magnetic="0.12" v-for="step in nextSteps" :key="step.title">
-              <component :is="step.icon" :size="28" class="thanks__step-icon" />
-              <h3>{{ step.title }}</h3>
-              <p>{{ step.description }}</p>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal :delay="1">
-          <div class="btn-group" style="justify-content: center; margin-top: 48px">
-            <AppButton variant="primary" to="/formations">
-              Découvrir d'autres formations
-            </AppButton>
-            <AppButton variant="ghost-light" to="/">
-              Retour à l'accueil
-            </AppButton>
-          </div>
-        </ScrollReveal>
+        <div class="thanks__ctas">
+          <AppButton variant="primary" to="/formations">
+            DÉCOUVRIR D'AUTRES FORMATIONS
+          </AppButton>
+          <AppButton variant="ghost-light" to="/">
+            RETOUR À L'ACCUEIL
+          </AppButton>
+        </div>
       </div>
     </section>
   </div>
@@ -70,17 +57,17 @@ onMounted(() => {
 const nextSteps = [
   {
     icon: Mail,
-    title: 'Vérifiez votre email',
+    title: 'VÉRIFIEZ VOTRE EMAIL',
     description: 'Un email de confirmation avec vos accès a été envoyé.',
   },
   {
     icon: BookOpen,
-    title: 'Accédez à la formation',
+    title: 'ACCÉDEZ À LA FORMATION',
     description: 'Connectez-vous à votre espace et commencez immédiatement.',
   },
   {
     icon: Headphones,
-    title: 'Support disponible',
+    title: 'SUPPORT DISPONIBLE',
     description: 'Notre équipe est là pour vous accompagner tout au long de votre formation.',
   },
 ]
@@ -91,13 +78,11 @@ const nextSteps = [
   min-height: 100vh;
   display: flex;
   align-items: center;
-  position: relative;
-  overflow: hidden;
+  background: #FFF;
+  border-bottom: 4px solid #000;
   padding: 120px 0;
 
   &__content {
-    position: relative;
-    z-index: 1;
     max-width: 800px;
     margin: 0 auto;
   }
@@ -105,31 +90,33 @@ const nextSteps = [
   &__icon {
     color: $orange;
     margin-bottom: 24px;
-
-    svg {
-      width: 64px;
-      height: 64px;
-    }
   }
 
   &__title {
-    font-size: $h2;
-    color: $text-heading;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: #000;
     margin-bottom: 24px;
   }
 
   &__text {
-    color: $text-body;
-    font-size: $body-lg;
-    line-height: 1.8;
+    font-family: $font-mono;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #000;
     max-width: 550px;
     margin: 0 auto 48px;
+    text-transform: uppercase;
   }
 
   &__steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 0;
+    border: 4px solid #000;
+    background: #000;
+    margin-bottom: 48px;
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -139,22 +126,46 @@ const nextSteps = [
   &__step {
     text-align: center;
     padding: 32px 24px;
+    background: #FFF;
+    border-right: 4px solid #000;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    @media (max-width: 768px) {
+      border-right: none;
+      border-bottom: 4px solid #000;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
 
     h3 {
-      color: $text-heading;
-      font-size: $body;
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: #000;
       margin: 12px 0 8px;
     }
 
     p {
-      color: $text-body;
-      font-size: $small;
+      font-family: $font-mono;
+      color: #000;
+      font-size: 0.875rem;
       line-height: 1.6;
     }
   }
 
   &__step-icon {
     color: $purple;
+  }
+
+  &__ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 </style>

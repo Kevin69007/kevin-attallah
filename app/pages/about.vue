@@ -1,110 +1,167 @@
 <template>
-  <div>
+  <div class="about-brutal">
     <!-- Hero -->
-    <section class="about-hero section--light">
-      <div class="about-hero__bg">
-        <div class="orb orb--purple about-hero__orb"></div>
-      </div>
+    <section class="about-brutal__hero">
       <div class="container">
-        <div class="split about-hero__split">
-          <ScrollReveal direction="left">
-            <GlassBadge variant="orange-light">À propos</GlassBadge>
-            <h1 class="about-hero__title">
-              Kevin <span class="gradient-text">Attallah</span>
+        <div class="about-brutal__grid">
+          <!-- Left: Photo -->
+          <div class="about-brutal__photo-col">
+            <div class="about-brutal__photo-wrap">
+              <NuxtImg
+                src="/img/about/about-1.png"
+                alt="Kevin Attallah"
+                class="about-brutal__photo-img"
+                format="webp"
+                quality="80"
+              />
+            </div>
+          </div>
+
+          <!-- Right: Content -->
+          <div class="about-brutal__content-col">
+            <span class="section-label">À_PROPOS_</span>
+
+            <h1 class="about-brutal__title">
+              KEVIN<br>
+              <span class="text-purple">ATTALLAH.</span>
             </h1>
-            <p class="about-hero__text">
-              Entrepreneur passionné, formateur certifié et expert en intégration IA,
-              Kevin accompagne depuis des années des milliers de personnes dans leur
-              reconversion professionnelle et le lancement de leur activité. Sa mission :
-              rendre l'entrepreneuriat accessible à tous grâce à des formations concrètes,
-              orientées résultats, et boostées par l'intelligence artificielle.
-            </p>
-            <div v-magnetic="0.15" class="about-hero__stats glass-card-light">
-              <div class="about-hero__stat" v-for="stat in stats" :key="stat.label">
-                <span class="about-hero__stat-value gradient-text">
+
+            <div class="about-brutal__text-block">
+              <p>
+                Entrepreneur passionné, formateur certifié et expert en intégration IA,
+                Kevin accompagne depuis des années des milliers de personnes dans leur
+                reconversion professionnelle et le lancement de leur activité.
+              </p>
+              <p>
+                Sa mission : rendre l'entrepreneuriat accessible à tous grâce à des
+                formations concrètes, orientées résultats, et boostées par
+                l'intelligence artificielle.
+              </p>
+            </div>
+
+            <div class="about-brutal__stats">
+              <div
+                v-for="stat in stats"
+                :key="stat.label"
+                class="about-brutal__stat"
+              >
+                <span class="about-brutal__stat-value">
                   <CountUp :end="stat.value" :suffix="stat.suffix" />
                 </span>
-                <span class="about-hero__stat-label">{{ stat.label }}</span>
+                <span class="about-brutal__stat-label">{{ stat.label }}</span>
               </div>
             </div>
-          </ScrollReveal>
-
-          <ScrollReveal direction="right">
-            <div class="about-hero__photo-wrap">
-              <!-- Glass panels behind photo -->
-              <div class="about-hero__glass-panel about-hero__glass-panel--1"></div>
-              <div class="about-hero__glass-panel about-hero__glass-panel--2"></div>
-              <div class="about-hero__glass-panel about-hero__glass-panel--3"></div>
-              <!-- Main photo -->
-              <div v-magnetic="0.12" class="about-hero__photo glass-card-light">
-                <NuxtImg src="/img/about/about-1.png" alt="Kevin Attallah" class="about-hero__photo-img" format="webp" quality="80" />
-              </div>
-              <!-- Small floating glass accents -->
-              <div class="about-hero__glass-accent about-hero__glass-accent--1"></div>
-              <div class="about-hero__glass-accent about-hero__glass-accent--2"></div>
-            </div>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Values — Reveal Path -->
-    <section class="section--light">
+    <!-- Values -->
+    <section class="about-brutal__values">
       <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Nos valeurs</span>
-          <h2 class="section-title text-center">
-            Ce qui nous <span class="gradient-text">guide</span>
-          </h2>
-        </ScrollReveal>
+        <span class="section-label">VALEURS_</span>
+        <h2 class="about-brutal__section-title">
+          CE QUI NOUS <span class="text-purple">GUIDE.</span>
+        </h2>
+
+        <div class="about-brutal__values-grid" ref="valuesGridRef">
+          <div
+            v-for="(val, i) in values"
+            :key="val.title"
+            class="about-brutal__value-card"
+          >
+            <div class="about-brutal__value-icon">
+              <component :is="val.icon" :size="32" />
+            </div>
+            <h3 class="about-brutal__value-title">{{ val.title }}</h3>
+            <p class="about-brutal__value-desc">{{ val.description }}</p>
+          </div>
+        </div>
       </div>
-      <ValuesRevealPath :values="values" />
     </section>
 
     <!-- Social -->
-    <section class="social section--white">
+    <section class="about-brutal__social">
       <div class="container text-center">
-        <ScrollReveal>
-          <h2 class="section-title">Suivez <span class="gradient-text">Kevin</span></h2>
-          <p class="section-subtitle" style="margin: 0 auto 32px">
-            Rejoignez la communauté sur les réseaux sociaux
-          </p>
-        </ScrollReveal>
-        <ScrollReveal :delay="0.3">
-          <div class="social__pills">
-            <a
-              v-for="(link, i) in socialLinks"
-              :key="link.name"
-              :href="link.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              v-magnetic="0.2"
-              class="social__pill"
-              :class="`social__pill--${i}`"
-            >
-              <span class="social__icon" v-html="socialIcons[link.icon]"></span>
-              <span class="social__name">{{ link.name }}</span>
-            </a>
-          </div>
-        </ScrollReveal>
+        <span class="section-label">RÉSEAUX_</span>
+        <h2 class="about-brutal__section-title">
+          SUIVEZ <span class="text-purple">KEVIN.</span>
+        </h2>
+        <p class="about-brutal__social-sub">
+          REJOIGNEZ LA COMMUNAUTÉ SUR LES RÉSEAUX SOCIAUX
+        </p>
+
+        <div class="about-brutal__social-pills" ref="socialPillsRef">
+          <a
+            v-for="link in socialLinks"
+            :key="link.name"
+            :href="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="about-brutal__social-pill"
+          >
+            <span class="about-brutal__social-icon" v-html="socialIcons[link.icon]"></span>
+            <span class="about-brutal__social-name">{{ link.name }}</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <CTASection />
+    <CTABrutalist />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import { Heart, Zap, Users, Target } from 'lucide-vue-next'
 import { socialLinks } from '~/data/social'
+import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 
 useHead({ title: 'À propos' })
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { $gsap } = useNuxtApp()
+
+const valuesGridRef = ref(null)
+const socialPillsRef = ref(null)
+
 onMounted(() => {
   trackViewContent({ content_name: 'À propos' })
   trackViewItem({ content_name: 'À propos' })
+
+  if (!$gsap) return
+  const gsap = $gsap as any
+
+  // Animate value cards
+  if (valuesGridRef.value) {
+    gsap.from((valuesGridRef.value as HTMLElement).children, {
+      y: 60,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: valuesGridRef.value,
+        start: 'top 80%',
+      },
+    })
+  }
+
+  // Animate social pills
+  if (socialPillsRef.value) {
+    gsap.from((socialPillsRef.value as HTMLElement).children, {
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'back.out(1.5)',
+      scrollTrigger: {
+        trigger: socialPillsRef.value,
+        start: 'top 80%',
+      },
+    })
+  }
 })
 
 const stats = [
@@ -131,247 +188,336 @@ const socialIcons: Record<string, string> = {
 </script>
 
 <style lang="scss" scoped>
-.about-hero {
-  padding: 140px 0 80px;
-  background: transparent;
+.about-brutal {
+  background: #FFF;
+}
+
+// ── Hero ──
+.about-brutal__hero {
   position: relative;
+  z-index: 20;
+  background: #FFF;
+  border-bottom: 4px solid #000;
+  padding: 140px 0 80px;
+}
+
+.about-brutal__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 0;
+  border: 4px solid #000;
+  background: #000;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-brutal__photo-col,
+.about-brutal__content-col {
+  background: #FFF;
+  padding: 60px;
+
+  @media (max-width: 768px) {
+    padding: 30px;
+  }
+}
+
+.about-brutal__content-col {
+  border-left: 4px solid #000;
+
+  @media (max-width: 1024px) {
+    border-left: none;
+    border-top: 4px solid #000;
+  }
+}
+
+.about-brutal__photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 4px solid #000;
+  box-shadow: 16px 16px 0px $purple;
   overflow: hidden;
+  background: $orange;
+  transition: transform 0.2s, box-shadow 0.2s;
 
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 20px 20px 0px $orange;
+  }
+}
+
+.about-brutal__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+
+  .about-brutal__photo-wrap:hover & {
+    transform: scale(1.03);
+  }
+}
+
+.about-brutal__title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin: 16px 0 30px;
+  color: #000;
+
+  .text-purple {
+    color: $purple;
+  }
+}
+
+.about-brutal__text-block {
+  font-family: $font-mono;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  padding-left: 20px;
+  border-left: 4px solid $orange;
+
+  p {
+    margin-bottom: 16px;
+    color: #000;
+  }
+}
+
+.about-brutal__stats {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  border: 4px solid #000;
+  background: #000;
+}
+
+.about-brutal__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #FFF;
+  padding: 20px 24px;
+  transition: background 0.2s, color 0.2s;
+
+  & + & {
+    border-left: 4px solid #000;
   }
 
-  &__orb {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    top: -10%;
-    right: 0;
-    opacity: 0.15;
-  }
+  &:hover {
+    background: #000;
 
-  &__title {
-    font-size: $h1;
-    color: $text-heading;
-    margin: 16px 0 24px;
-  }
+    .about-brutal__stat-value {
+      color: $orange;
+    }
 
-  &__text {
-    color: $text-muted;
-    line-height: 1.8;
-    margin-bottom: 32px;
-  }
-
-  &__stats {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    padding: 24px 32px;
-
-    &:hover {
-      transform: none;
+    .about-brutal__stat-label {
+      color: #FFF;
     }
   }
 
-  &__stat {
-    display: flex;
-    flex-direction: column;
-  }
+  @media (max-width: 600px) {
+    min-width: 100%;
 
-  &__stat-value {
-    font-family: $font-heading;
-    font-size: 2rem;
-    font-weight: 900;
-  }
-
-  &__stat-label {
-    font-size: $xs;
-    color: $text-muted;
-  }
-
-  &__photo-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 24px;
-  }
-
-  &__glass-panel {
-    position: absolute;
-    border-radius: $radius-lg;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 2px 6px rgba(0, 0, 0, 0.03),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-    animation: border-glow 6s ease-in-out infinite;
-    pointer-events: none;
-
-    &--1 {
-      width: 75%;
-      height: 65%;
-      top: -12px;
-      right: -16px;
-      transform: rotate(3deg);
-      animation-delay: -1s;
-    }
-
-    &--2 {
-      width: 50%;
-      height: 45%;
-      bottom: -8px;
-      left: -14px;
-      transform: rotate(-2deg);
-      animation-delay: -3s;
-    }
-
-    &--3 {
-      width: 30%;
-      height: 25%;
-      top: 50%;
-      right: -20px;
-      transform: translateY(-50%) rotate(5deg);
-      animation-delay: -5s;
-    }
-  }
-
-  &__photo {
-    padding: 0;
-    overflow: hidden;
-    aspect-ratio: 3 / 4;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-  }
-
-  &__photo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__glass-accent {
-    position: absolute;
-    border-radius: $radius-full;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow:
-      0 4px 16px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    animation: border-glow 6s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 2;
-
-    &--1 {
-      width: 48px;
-      height: 48px;
-      top: -8px;
-      left: 8px;
-      animation-delay: -2s;
-    }
-
-    &--2 {
-      width: 32px;
-      height: 32px;
-      bottom: 4px;
-      right: -4px;
-      animation-delay: -4s;
+    & + & {
+      border-left: none;
+      border-top: 4px solid #000;
     }
   }
 }
 
+.about-brutal__stat-value {
+  font-family: $font-heading;
+  font-size: 2rem;
+  font-weight: 900;
+  color: $purple;
+  transition: color 0.2s;
+}
 
-.social {
-  &__pills {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
+.about-brutal__stat-label {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000;
+  transition: color 0.2s;
+}
+
+// ── Values ──
+.about-brutal__values {
+  position: relative;
+  z-index: 20;
+  background: #FFF;
+  border-bottom: 4px solid #000;
+  padding: 80px 0;
+}
+
+.about-brutal__section-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 48px;
+  color: #000;
+
+  .text-purple {
+    color: $purple;
+  }
+}
+
+.about-brutal__values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 4px solid #000;
+  background: #000;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  &__pill {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 28px;
-    border-radius: $radius-full;
-    color: $text-body;
-    font-weight: 700;
-    font-size: $body;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    text-decoration: none;
-    transition: $transition-base;
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
 
-    // Glass card light styles (inlined to avoid hover transform conflict)
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 2px 6px rgba(0, 0, 0, 0.03),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-    animation: border-glow 6s ease-in-out infinite;
+.about-brutal__value-card {
+  background: #FFF;
+  padding: 40px 30px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 
-    // Scattered rotations for each pill
-    &--0 { transform: rotate(-8deg); }
-    &--1 { transform: rotate(4deg); }
-    &--2 { transform: rotate(-3deg); }
-    &--3 { transform: rotate(6deg); }
-    &--4 { transform: rotate(-5deg); }
-    &--5 { transform: rotate(7deg); }
+  & + & {
+    border-left: 4px solid #000;
+  }
 
-    &:hover {
-      color: $purple;
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba($purple, 0.25);
-      box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        0 2px 8px rgba(0, 0, 0, 0.04),
-        0 0 20px rgba($purple, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-      transform: rotate(0deg) scale(1.05);
-      animation: none;
+  @media (max-width: 1024px) {
+    &:nth-child(n + 3) {
+      border-top: 4px solid #000;
+    }
+
+    &:nth-child(odd) {
+      border-left: none;
     }
   }
 
-  &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $purple;
+  @media (max-width: 600px) {
+    & + & {
+      border-left: none;
+      border-top: 4px solid #000;
+    }
+  }
+
+  &:hover {
+    background: #000;
+
+    .about-brutal__value-icon {
+      color: $orange;
+    }
+
+    .about-brutal__value-title {
+      color: #FFF;
+    }
+
+    .about-brutal__value-desc {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+.about-brutal__value-icon {
+  color: $purple;
+  margin-bottom: 16px;
+  transition: color 0.2s;
+}
+
+.about-brutal__value-title {
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+
+.about-brutal__value-desc {
+  font-family: $font-mono;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+  transition: color 0.2s;
+}
+
+// ── Social ──
+.about-brutal__social {
+  position: relative;
+  z-index: 20;
+  background: #FFF;
+  border-bottom: 4px solid #000;
+  padding: 80px 0;
+}
+
+.about-brutal__social-sub {
+  font-family: $font-mono;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.about-brutal__social-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.about-brutal__social-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 28px;
+  border: 4px solid #000;
+  background: #FFF;
+  color: #000;
+  font-family: $font-mono;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 6px 6px 0px $purple;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px $orange;
+    background: #000;
+    color: #FFF;
+
+    .about-brutal__social-icon {
+      color: $orange;
+    }
   }
 
   @media (max-width: 768px) {
-    &__pills {
-      gap: 12px;
-    }
-
-    &__pill {
-      padding: 14px 24px;
-      font-size: $small;
-
-      &--0 { transform: rotate(-5deg); }
-      &--1 { transform: rotate(3deg); }
-      &--2 { transform: rotate(-2deg); }
-      &--3 { transform: rotate(4deg); }
-      &--4 { transform: rotate(-3deg); }
-      &--5 { transform: rotate(5deg); }
-    }
+    padding: 14px 24px;
+    font-size: 0.9rem;
   }
+}
+
+.about-brutal__social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $purple;
+  transition: color 0.2s;
+}
+
+.about-brutal__social-name {
+  // inherits from pill
 }
 </style>

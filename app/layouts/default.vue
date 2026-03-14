@@ -1,6 +1,5 @@
 <template>
   <div class="app-layout">
-    <BackgroundCanvas />
     <AnnouncementBar />
     <AppHeader />
     <main class="main-content">

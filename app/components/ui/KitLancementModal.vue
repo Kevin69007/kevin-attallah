@@ -2,26 +2,23 @@
   <Teleport to="body">
     <Transition name="modal">
       <div v-if="visible" class="kit-overlay" @click.self="$emit('close')">
-        <div class="kit-modal glass-card-light">
+        <div class="kit-modal">
           <button class="kit-modal__close" aria-label="Fermer" @click="$emit('close')">
             <X :size="20" />
           </button>
 
           <template v-if="!submitted">
             <div class="kit-modal__header text-center">
-              <GlassBadge variant="orange-light">
-                <FileDown :size="14" />
-                Kit de lancement
-              </GlassBadge>
-              <h2 class="kit-modal__title mt-16">
-                Avant de partir, prends le <span class="gradient-text">kit de lancement.</span>
+              <span class="kit-modal__badge">KIT_LANCEMENT_</span>
+              <h2 class="kit-modal__title">
+                AVANT DE PARTIR, PRENDS LE <span class="text-purple">KIT DE LANCEMENT.</span>
               </h2>
               <p class="kit-modal__desc">
-                Le guide pratique pour démarrer ton projet d'entreprise du bon pied. Gratuit, immédiat.
+                LE GUIDE PRATIQUE POUR DÉMARRER TON PROJET D'ENTREPRISE DU BON PIED. GRATUIT, IMMÉDIAT.
               </p>
             </div>
 
-            <form class="kit-modal__form mt-24" @submit.prevent="handleSubmit">
+            <form class="kit-modal__form" @submit.prevent="handleSubmit">
               <FormInput
                 id="kit-firstName"
                 v-model="form.firstName"
@@ -39,10 +36,10 @@
               />
               <AppButton variant="primary" block type="submit" :disabled="loading" class="mt-16">
                 <Loader2 v-if="loading" :size="18" class="kit-modal__spin" />
-                {{ loading ? 'Envoi...' : 'Je reçois mon kit' }}
+                {{ loading ? 'ENVOI...' : 'JE REÇOIS MON KIT' }}
               </AppButton>
               <p class="kit-modal__privacy">
-                Aucun spam. Juste de la valeur.
+                AUCUN SPAM. JUSTE DE LA VALEUR.
               </p>
             </form>
           </template>
@@ -52,8 +49,8 @@
             <div class="kit-modal__success-icon">
               <CheckCircle :size="48" />
             </div>
-            <h3 class="mt-16">C'est envoyé !</h3>
-            <p class="text-muted mt-8">Vérifie ta boîte email pour accéder à ton kit de lancement.</p>
+            <h3>C'EST ENVOYÉ !</h3>
+            <p>VÉRIFIE TA BOÎTE EMAIL POUR ACCÉDER À TON KIT DE LANCEMENT.</p>
           </div>
         </div>
       </div>
@@ -62,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { X, FileDown, Loader2, CheckCircle } from 'lucide-vue-next'
+import { X, Loader2, CheckCircle } from 'lucide-vue-next'
 
 defineProps<{
   visible: boolean
@@ -117,9 +114,7 @@ async function handleSubmit() {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(10, 5, 20, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,19 +128,9 @@ async function handleSubmit() {
   max-height: 90vh;
   overflow-y: auto;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(1.3);
-  -webkit-backdrop-filter: blur(24px) saturate(1.3);
-  box-shadow:
-    0 12px 48px rgba(0, 0, 0, 0.12),
-    0 4px 16px rgba(0, 0, 0, 0.06),
-    0 0 20px rgba($purple, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
-
-  &:hover {
-    transform: none;
-  }
+  background: #FFF;
+  border: 4px solid #000;
+  box-shadow: 12px 12px 0px $orange;
 
   @media (max-width: 640px) {
     padding: 28px 20px;
@@ -155,42 +140,82 @@ async function handleSubmit() {
     position: absolute;
     top: 16px;
     right: 16px;
-    background: none;
-    border: none;
-    color: $text-muted;
+    background: #000;
+    border: 2px solid #000;
+    color: #FFF;
     cursor: pointer;
     padding: 4px;
-    transition: color 0.3s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
 
     &:hover {
-      color: $text-heading;
+      background: $purple;
     }
   }
 
+  &__badge {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $orange;
+    text-transform: uppercase;
+  }
+
   &__title {
-    font-family: $font-heading;
-    font-size: $h3;
-    font-weight: 800;
-    line-height: 1.3;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: #000;
+    margin-top: 12px;
+
+    .text-purple { color: $purple; }
   }
 
   &__desc {
-    color: $text-body;
-    font-size: $small;
-    line-height: 1.7;
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    line-height: 1.6;
     margin-top: 12px;
+    color: #000;
+  }
+
+  &__form {
+    margin-top: 24px;
   }
 
   &__privacy {
-    font-size: $xs;
-    color: $text-body;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.5);
     text-align: center;
     margin-top: 12px;
-    opacity: 0.7;
   }
 
   &__spin {
     animation: spin 1s linear infinite;
+  }
+
+  &__success {
+    padding: 20px 0;
+
+    h3 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: #000;
+      margin-top: 16px;
+    }
+
+    p {
+      font-family: $font-mono;
+      font-size: 0.9rem;
+      color: #000;
+      margin-top: 8px;
+    }
   }
 
   &__success-icon {
@@ -203,13 +228,12 @@ async function handleSubmit() {
   to { transform: rotate(360deg); }
 }
 
-// Transition
 .modal-enter-active,
 .modal-leave-active {
-  transition: all 0.3s $ease-smooth;
+  transition: opacity 0.3s ease;
 
   .kit-modal {
-    transition: all 0.3s $ease-smooth;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 }
 
@@ -218,7 +242,7 @@ async function handleSubmit() {
   opacity: 0;
 
   .kit-modal {
-    transform: scale(0.95) translateY(10px);
+    transform: translateY(20px);
     opacity: 0;
   }
 }

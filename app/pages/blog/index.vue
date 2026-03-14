@@ -1,80 +1,77 @@
 <template>
   <div>
-    <section class="blog-hero section--light">
+    <section class="blog-hero">
       <div class="container text-center">
-        <TextSplit text="Le Blog" gradient-text="Blog" tag="h1" class="blog-hero__title" />
+        <span class="blog-hero__label">BLOG_</span>
+        <h1 class="blog-hero__title">LE BLOG</h1>
         <p class="blog-hero__subtitle">
-          Conseils, stratégies et retours d'expérience pour entrepreneurs
+          CONSEILS, STRATEGIES ET RETOURS D'EXPERIENCE POUR ENTREPRENEURS
         </p>
       </div>
     </section>
 
-    <section class="blog-list section--light">
+    <section class="blog-list">
       <div class="container">
         <!-- Featured post -->
-        <ScrollReveal>
-          <div
-            v-magnetic="0.15"
-            class="blog-featured glass-card-light"
-            @mouseenter="onCardEnter(featuredPost.id)"
-            @mouseleave="onCardLeave(featuredPost.id)"
-          >
-            <div class="blog-featured__carousel">
-              <GlassBadge variant="orange-light" class="blog-featured__badge">À la une</GlassBadge>
+        <div
+          class="blog-featured"
+          @mouseenter="onCardEnter(featuredPost.id)"
+          @mouseleave="onCardLeave(featuredPost.id)"
+        >
+          <div class="blog-featured__carousel">
+            <span class="blog-featured__badge">A LA UNE</span>
 
-              <div class="blog-card__progress" :class="{ 'blog-card__progress--visible': hoveredCard === featuredPost.id }">
-                <div
-                  :key="`prog-feat-${cardSlideIndex[featuredPost.id] || 0}`"
-                  class="blog-card__progress-bar"
-                  :class="{ 'blog-card__progress-bar--active': hoveredCard === featuredPost.id }"
-                ></div>
-              </div>
-
-              <span class="blog-card__count">
-                {{ (cardSlideIndex[featuredPost.id] || 0) + 1 }}/{{ allImages(featuredPost).length }}
-              </span>
-
-              <Swiper
-                :modules="[SwiperPagination]"
-                :slides-per-view="1"
-                :space-between="0"
-                :pagination="{ el: `.blog-dots-feat-list`, clickable: true }"
-                :loop="allImages(featuredPost).length > 1"
-                class="blog-featured__swiper"
-                @swiper="(s) => onCardSwiper(featuredPost.id, s)"
-                @slide-change="(s) => onCardSlideChange(featuredPost.id, s)"
-              >
-                <SwiperSlide v-for="(img, i) in allImages(featuredPost)" :key="i">
-                  <NuxtImg :src="img" :alt="`${featuredPost.title} - ${i + 1}`" loading="lazy" format="webp" quality="80" class="blog-featured__img" />
-                </SwiperSlide>
-              </Swiper>
-              <div class="blog-card__dots blog-dots-feat-list"></div>
+            <div class="blog-card__progress" :class="{ 'blog-card__progress--visible': hoveredCard === featuredPost.id }">
+              <div
+                :key="`prog-feat-${cardSlideIndex[featuredPost.id] || 0}`"
+                class="blog-card__progress-bar"
+                :class="{ 'blog-card__progress-bar--active': hoveredCard === featuredPost.id }"
+              ></div>
             </div>
 
-            <NuxtLink :to="`/blog/${featuredPost.id}`" class="blog-featured__content">
-              <span class="blog-featured__date">
-                <Calendar :size="12" />
-                {{ featuredPost.date }} {{ featuredPost.month }} {{ featuredPost.year }}
-              </span>
-              <h3 class="blog-featured__title">{{ featuredPost.title }}</h3>
-              <span class="blog-featured__read">
-                Lire l'article <ArrowRight :size="14" />
-              </span>
-            </NuxtLink>
+            <span class="blog-card__count">
+              {{ (cardSlideIndex[featuredPost.id] || 0) + 1 }}/{{ allImages(featuredPost).length }}
+            </span>
+
+            <Swiper
+              :modules="[SwiperPagination]"
+              :slides-per-view="1"
+              :space-between="0"
+              :pagination="{ el: `.blog-dots-feat-list`, clickable: true }"
+              :loop="allImages(featuredPost).length > 1"
+              class="blog-featured__swiper"
+              @swiper="(s) => onCardSwiper(featuredPost.id, s)"
+              @slide-change="(s) => onCardSlideChange(featuredPost.id, s)"
+            >
+              <SwiperSlide v-for="(img, i) in allImages(featuredPost)" :key="i">
+                <NuxtImg :src="img" :alt="`${featuredPost.title} - ${i + 1}`" loading="lazy" format="webp" quality="80" class="blog-featured__img" />
+              </SwiperSlide>
+            </Swiper>
+            <div class="blog-card__dots blog-dots-feat-list"></div>
           </div>
-        </ScrollReveal>
+
+          <NuxtLink :to="`/blog/${featuredPost.id}`" class="blog-featured__content">
+            <span class="blog-featured__date">
+              <Calendar :size="12" />
+              {{ featuredPost.date }} {{ featuredPost.month }} {{ featuredPost.year }}
+            </span>
+            <h3 class="blog-featured__title">{{ featuredPost.title }}</h3>
+            <span class="blog-featured__read">
+              LIRE L'ARTICLE <ArrowRight :size="14" />
+            </span>
+          </NuxtLink>
+        </div>
 
         <!-- Divider -->
-        <div class="glass-divider-light mt-48 mb-32"></div>
+        <div class="blog-divider"></div>
 
         <!-- Remaining posts -->
-        <StaggerGrid class="grid grid-3">
+        <div class="grid grid-3">
           <NuxtLink
             v-for="post in remainingPosts"
             :key="post.id"
             :to="`/blog/${post.id}`"
-            v-magnetic="0.15"
-            class="blog-card glass-card-light"
+            class="blog-card"
           >
             <div
               class="blog-card__carousel"
@@ -118,7 +115,7 @@
               <h3 class="blog-card__title">{{ post.title }}</h3>
             </div>
           </NuxtLink>
-        </StaggerGrid>
+        </div>
       </div>
     </section>
 
@@ -179,24 +176,52 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+// ========================
+// HERO
+// ========================
 .blog-hero {
   padding: 140px 0 60px;
-  background: transparent;
+  background: #fff;
+
+  &__label {
+    display: inline-block;
+    font-family: $font-mono;
+    font-size: $xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: $purple;
+    border: 4px solid #000;
+    padding: 6px 16px;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 0px $purple;
+  }
 
   &__title {
+    font-family: $font-heading;
     font-size: $h1;
-    color: $text-heading;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     margin-bottom: 16px;
   }
 
   &__subtitle {
-    color: $text-muted;
-    font-size: $body-lg;
+    font-family: $font-mono;
+    color: #000;
+    font-size: $body;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 }
 
-.mb-32 {
-  margin-bottom: 32px;
+// ========================
+// DIVIDER
+// ========================
+.blog-divider {
+  height: 4px;
+  background: #000;
+  margin: 48px 0 32px;
 }
 
 // ========================
@@ -205,22 +230,32 @@ onUnmounted(() => {
 .blog-featured {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px $purple;
+  background: #fff;
   overflow: hidden;
-
-  &:hover {
-    transform: none;
-  }
 
   &__badge {
     position: absolute;
     top: 16px;
     left: 16px;
     z-index: 10;
+    font-family: $font-mono;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #000;
+    background: $orange;
+    border: 3px solid #000;
+    padding: 4px 12px;
+    box-shadow: 3px 3px 0px #000;
   }
 
   &__carousel {
     position: relative;
     overflow: hidden;
+    border-right: 4px solid #000;
   }
 
   &__swiper {
@@ -238,19 +273,25 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: #fff;
   }
 
   &__date {
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-family: $font-mono;
     font-size: $xs;
-    color: $text-muted;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   &__title {
+    font-family: $font-heading;
     font-size: $h2;
-    color: $text-heading;
+    color: #000;
+    text-transform: uppercase;
     line-height: 1.3;
     margin: 16px 0 24px;
   }
@@ -260,8 +301,11 @@ onUnmounted(() => {
     align-items: center;
     gap: 6px;
     color: $purple;
+    font-family: $font-mono;
     font-size: $body;
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     transition: gap 0.3s ease;
   }
 
@@ -271,6 +315,11 @@ onUnmounted(() => {
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+
+    &__carousel {
+      border-right: none;
+      border-bottom: 4px solid #000;
+    }
 
     &__content {
       padding: 24px;
@@ -288,11 +337,21 @@ onUnmounted(() => {
 .blog-card {
   display: flex;
   flex-direction: column;
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px $orange;
+  background: #fff;
   overflow: hidden;
   position: relative;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px $orange;
+  }
 
   &__carousel {
     position: relative;
+    border-bottom: 4px solid #000;
   }
 
   &__swiper {
@@ -310,9 +369,9 @@ onUnmounted(() => {
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 4px;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.15);
     opacity: 0;
     transition: opacity 0.3s ease;
 
@@ -324,8 +383,7 @@ onUnmounted(() => {
   &__progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, $orange, $purple);
-    border-radius: 0 2px 2px 0;
+    background: $purple;
 
     &--active {
       animation: card-fill 1.5s linear forwards;
@@ -337,15 +395,13 @@ onUnmounted(() => {
     top: 10px;
     right: 10px;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 100px;
-    padding: 2px 8px;
+    background: #000;
+    border: 2px solid #000;
+    padding: 2px 10px;
+    font-family: $font-mono;
     font-size: 11px;
-    font-weight: 600;
-    color: $text-white;
+    font-weight: 700;
+    color: #fff;
   }
 
   &__dots {
@@ -358,19 +414,18 @@ onUnmounted(() => {
     gap: 5px;
 
     :deep(.swiper-pagination-bullet) {
-      width: 6px;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 2px solid #000;
+      border-radius: 0;
       opacity: 1;
-      transition: all 0.3s ease;
       cursor: pointer;
     }
 
     :deep(.swiper-pagination-bullet-active) {
       background: $purple;
-      width: 18px;
-      border-radius: 3px;
+      width: 20px;
     }
   }
 
@@ -379,20 +434,26 @@ onUnmounted(() => {
     flex: 1;
     display: flex;
     flex-direction: column;
+    background: #fff;
   }
 
   &__date {
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-family: $font-mono;
     font-size: $xs;
-    color: $text-muted;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     margin-bottom: 10px;
   }
 
   &__title {
+    font-family: $font-heading;
     font-size: $h4;
-    color: $text-heading;
+    color: #000;
+    text-transform: uppercase;
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;

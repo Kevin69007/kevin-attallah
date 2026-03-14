@@ -1,14 +1,12 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="catalog-hero section--light">
-      <div class="catalog-hero__bg">
-        <div class="orb orb--purple catalog-hero__orb"></div>
-      </div>
+    <section class="catalog-hero">
       <div class="container catalog-hero__content">
-        <TextSplit text="Notre catalogue de formations" tag="h1" class="catalog-hero__title" />
+        <span class="section-label">CATALOGUE_</span>
+        <h1 class="catalog-hero__title">NOS FORMATIONS.</h1>
         <p class="catalog-hero__subtitle">
-          +60 formations certifiantes pour propulser ta carrière
+          +60 FORMATIONS CERTIFIANTES POUR PROPULSER TA CARRIÈRE.
         </p>
 
         <!-- Search -->
@@ -17,27 +15,27 @@
           <input
             v-model="searchQuery"
             type="text"
-            placeholder="Rechercher une formation..."
-            class="glass-input catalog-hero__search-input"
+            placeholder="RECHERCHER UNE FORMATION..."
+            class="catalog-hero__search-input"
           />
         </div>
       </div>
     </section>
 
     <!-- Filters + Grid -->
-    <section class="catalog section--light">
+    <section class="catalog">
       <div class="container">
         <!-- Filter panel -->
-        <div class="catalog__filters glass-card-light">
+        <div class="catalog__filters">
           <!-- Category pills -->
           <div class="catalog__filter-row">
-            <span class="catalog__filter-label">Catégorie :</span>
+            <span class="catalog__filter-label">CATÉGORIE :</span>
             <div class="catalog__pills">
               <button
                 :class="['catalog__pill', { 'catalog__pill--active': !selectedCategory }]"
                 @click="selectedCategory = ''"
               >
-                Toutes
+                TOUTES
               </button>
               <button
                 v-for="cat in categoryCards"
@@ -54,21 +52,21 @@
 
           <!-- Level pills -->
           <div class="catalog__filter-row">
-            <span class="catalog__filter-label">Niveau :</span>
+            <span class="catalog__filter-label">NIVEAU :</span>
             <div class="catalog__pills">
               <button
-                :class="['catalog__pill catalog__pill--level', { 'catalog__pill--active-level': !selectedLevel }]"
+                :class="['catalog__pill', { 'catalog__pill--active': !selectedLevel }]"
                 @click="selectedLevel = ''"
               >
-                Tous
+                TOUS
               </button>
               <button
                 v-for="level in uniqueLevels"
                 :key="level"
-                :class="['catalog__pill catalog__pill--level', { 'catalog__pill--active-level': selectedLevel === level }]"
+                :class="['catalog__pill', { 'catalog__pill--active': selectedLevel === level }]"
                 @click="selectedLevel = level"
               >
-                {{ level }}
+                {{ level.toUpperCase() }}
               </button>
             </div>
           </div>
@@ -76,20 +74,20 @@
 
         <!-- Results count -->
         <p class="catalog__count">
-          {{ filteredFormations.length }} formation{{ filteredFormations.length > 1 ? 's' : '' }} trouvée{{ filteredFormations.length > 1 ? 's' : '' }}
+          {{ filteredFormations.length }} FORMATION{{ filteredFormations.length > 1 ? 'S' : '' }} TROUVÉE{{ filteredFormations.length > 1 ? 'S' : '' }}
         </p>
 
         <!-- Grid -->
-        <div class="grid grid-3 catalog__grid">
+        <div class="catalog__grid">
           <NuxtLink
             v-for="formation in filteredFormations"
             :key="formation.id"
             :to="`/formations/${formation.id}`"
-            class="formation-card glass-card-light"
+            class="formation-card"
           >
             <div class="formation-card__img">
               <NuxtImg :src="formation.image" :alt="formation.titre" loading="lazy" format="webp" quality="80" />
-              <GlassBadge variant="orange" class="formation-card__badge">Finançable</GlassBadge>
+              <span class="formation-card__badge">FINANÇABLE</span>
             </div>
             <div class="formation-card__body">
               <span class="formation-card__cat">{{ formation.categorie }}</span>
@@ -105,16 +103,14 @@
         <!-- Empty state -->
         <div v-if="filteredFormations.length === 0" class="catalog__empty text-center">
           <SearchX :size="48" />
-          <h3 class="mt-16">Aucune formation trouvée</h3>
-          <p class="text-muted mt-8">Essayez avec d'autres critères de recherche</p>
-          <AppButton variant="ghost" class="mt-24" @click="searchQuery = ''; selectedCategory = ''; selectedLevel = ''">
-            Réinitialiser les filtres
+          <h3>AUCUNE FORMATION TROUVÉE</h3>
+          <p>ESSAYEZ AVEC D'AUTRES CRITÈRES DE RECHERCHE</p>
+          <AppButton variant="ghost-light" @click="searchQuery = ''; selectedCategory = ''; selectedLevel = ''">
+            RÉINITIALISER LES FILTRES
           </AppButton>
         </div>
       </div>
     </section>
-
-    <CTASection />
   </div>
 </template>
 
@@ -125,7 +121,6 @@ useHead({ title: 'Formations' })
 
 const { searchQuery, selectedCategory, selectedLevel, uniqueLevels, categoryCards, filteredFormations } = useFormations()
 
-// Read category from URL query
 const route = useRoute()
 if (route.query.cat) {
   selectedCategory.value = route.query.cat as string
@@ -146,41 +141,28 @@ onMounted(() => {
 <style lang="scss" scoped>
 .catalog-hero {
   padding: 140px 0 60px;
-  background: transparent;
-  position: relative;
-  overflow: hidden;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  &__orb {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    top: -20%;
-    right: -5%;
-    opacity: 0.2;
-  }
+  background: #FFF;
+  border-bottom: 4px solid #000;
 
   &__content {
-    position: relative;
-    z-index: 1;
     text-align: center;
   }
 
   &__title {
-    font-size: $h2;
-    color: $text-heading;
-    margin-bottom: 16px;
+    font-size: clamp(3rem, 7vw, 5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: #000;
+    margin: 8px 0 20px;
   }
 
   &__subtitle {
-    color: $text-muted;
-    font-size: $body-lg;
-    margin-bottom: 32px;
+    font-family: $font-mono;
+    font-size: 1rem;
+    color: #000;
+    margin-bottom: 40px;
+    text-transform: uppercase;
   }
 
   &__search {
@@ -194,45 +176,45 @@ onMounted(() => {
     left: 18px;
     top: 50%;
     transform: translateY(-50%);
-    color: $text-muted;
+    color: #000;
     pointer-events: none;
   }
 
   &__search-input {
-    padding-left: 48px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: $text-heading;
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    animation: border-glow 6s ease-in-out infinite;
+    width: 100%;
+    padding: 16px 20px 16px 48px;
+    font-family: $font-mono;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    background: #FFF;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    outline: none;
+    transition: box-shadow 0.2s, transform 0.2s;
 
     &::placeholder {
-      color: $text-muted;
+      color: rgba(0, 0, 0, 0.4);
     }
 
     &:focus {
-      border-color: rgba($purple, 0.4);
-      box-shadow:
-        0 0 0 3px rgba($purple, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-      animation: none;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px $purple;
     }
   }
 }
 
 .catalog {
-  padding-top: 32px;
+  padding: 40px 0 80px;
+  background: #FFF;
+  border-bottom: 4px solid #000;
 
-  // Filter panel
   &__filters {
-    padding: 20px 24px;
-    margin-bottom: 28px;
-
-    &:hover {
-      transform: none;
-    }
+    padding: 24px;
+    border: 4px solid #000;
+    background: #FAFAFA;
+    margin-bottom: 32px;
   }
 
   &__filter-row {
@@ -248,17 +230,18 @@ onMounted(() => {
   }
 
   &__filter-label {
-    font-size: $small;
-    color: $text-muted;
-    font-weight: 600;
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000;
     white-space: nowrap;
     flex-shrink: 0;
   }
 
   &__filter-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 14px 0;
+    height: 2px;
+    background: #000;
+    margin: 16px 0;
   }
 
   &__pills {
@@ -267,76 +250,107 @@ onMounted(() => {
     gap: 8px;
   }
 
-  // Category pills
   &__pill {
-    padding: 7px 16px;
-    border-radius: $radius-full;
-    font-size: $xs;
-    font-weight: 600;
-    color: $text-muted;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    white-space: nowrap;
-    transition: all 0.3s ease;
+    padding: 8px 16px;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    background: #FFF;
+    border: 2px solid #000;
     cursor: pointer;
+    transition: all 0.2s;
 
     &:hover {
-      color: $text-heading;
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.25);
+      background: #000;
+      color: #FFF;
     }
 
     &--active {
       background: $purple;
       border-color: $purple;
-      color: #fff;
-      box-shadow: 0 0 16px rgba($purple, 0.25);
-    }
+      color: #FFF;
 
-    // Level variant
-    &--active-level {
-      background: $purple;
-      border-color: $purple;
-      color: #fff;
-      box-shadow: 0 0 16px rgba($purple, 0.25);
+      &:hover {
+        background: $purple;
+      }
     }
   }
 
   &__count {
-    color: $text-muted;
-    font-size: $small;
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000;
     margin-bottom: 32px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__empty {
     padding: 80px 0;
-    color: $text-muted;
+    color: #000;
+
+    h3 {
+      margin-top: 16px;
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-family: $font-mono;
+      margin: 8px 0 24px;
+      font-size: 0.9rem;
+    }
   }
 }
 
 .formation-card {
   display: block;
   overflow: hidden;
-  padding: 0;
-  cursor: pointer;
+  border: 4px solid #000;
+  background: #FFF;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px #000;
+
+    .formation-card__img img {
+      transform: scale(1.05);
+    }
+
+    .formation-card__title {
+      color: $purple;
+    }
+  }
 
   &__img {
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.04) 25%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.04) 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+    border-bottom: 4px solid #000;
+    background: #FAFAFA;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s $ease-smooth;
-    }
-
-    .formation-card:hover & img {
-      transform: scale(1.05);
+      transition: transform 0.4s;
     }
   }
 
@@ -344,6 +358,14 @@ onMounted(() => {
     position: absolute;
     top: 12px;
     right: 12px;
+    background: $orange;
+    color: #FFF;
+    font-family: $font-mono;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 0px #000;
   }
 
   &__body {
@@ -351,8 +373,9 @@ onMounted(() => {
   }
 
   &__cat {
-    font-size: $xs;
-    font-weight: 600;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: $purple;
@@ -361,21 +384,26 @@ onMounted(() => {
   }
 
   &__title {
-    font-size: $h4;
-    color: $text-heading;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: #000;
     margin-bottom: 16px;
-    line-height: 1.3;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    transition: color 0.2s;
   }
 
   &__meta {
     display: flex;
     gap: 16px;
-    color: $text-muted;
-    font-size: $xs;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #000;
 
     span {
       display: flex;

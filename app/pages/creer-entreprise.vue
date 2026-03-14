@@ -1,201 +1,179 @@
 <template>
-  <div>
+  <div class="ce-brutal">
     <!-- Hero -->
-    <section class="ce-hero section--light">
-      <div class="ce-hero__bg">
-        <div class="orb orb--purple ce-hero__orb ce-hero__orb--1"></div>
-        <div class="orb orb--orange ce-hero__orb ce-hero__orb--2"></div>
-      </div>
+    <section class="ce-hero-brutal">
       <div class="container">
-        <div class="split ce-hero__split">
-          <ScrollReveal direction="left">
-            <h1 class="ce-hero__title">
-              Ton entreprise, de l'idée au lancement
-              <span class="gradient-text">avec l'IA comme accélérateur.</span>
+        <div class="ce-hero-brutal__grid">
+          <div class="ce-hero-brutal__content">
+            <span class="ce-section-label">PROGRAMME_</span>
+            <h1 class="ce-hero-brutal__title">
+              TON ENTREPRISE, DE L'IDEE AU LANCEMENT
+              <span class="ce-hero-brutal__title--accent">AVEC L'IA.</span>
             </h1>
-            <p class="ce-hero__subtitle">
-              On commence par le plus dur : trouver la bonne idée, s'assurer qu'elle te correspond
-              vraiment, puis on construit tout le reste. De A à Z.
+            <p class="ce-hero-brutal__subtitle">
+              On commence par le plus dur : trouver la bonne idee, s'assurer qu'elle te correspond
+              vraiment, puis on construit tout le reste. De A a Z.
             </p>
-            <div class="hero__trust mt-32">
-              <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
+            <div class="ce-hero-brutal__badges">
+              <div class="ce-badge-brutal">
                 <Users :size="16" />
-                <span><strong>2 100+</strong> entrepreneurs lancés</span>
+                <span><strong>2 100+</strong> entrepreneurs lances</span>
               </div>
-              <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
+              <div class="ce-badge-brutal">
                 <Star :size="16" />
                 <span><strong>4.8/5</strong> satisfaction client</span>
               </div>
-              <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
+              <div class="ce-badge-brutal">
                 <Award :size="16" />
-                <span><strong>100%</strong> finançable</span>
+                <span><strong>100%</strong> financable</span>
               </div>
             </div>
-          </ScrollReveal>
-          <ScrollReveal direction="right">
-            <div class="ce-hero__image-wrap">
-              <!-- Glass panels behind image -->
-              <div class="ce-hero__glass-panel ce-hero__glass-panel--1"></div>
-              <div class="ce-hero__glass-panel ce-hero__glass-panel--2"></div>
-              <div class="ce-hero__glass-panel ce-hero__glass-panel--3"></div>
-              <!-- Main image -->
-              <div v-magnetic="0.12" class="ce-hero__image glass-card-light">
-                <NuxtImg src="/img/about/about-2.png" alt="Créer mon entreprise" format="webp" quality="80" />
-              </div>
-              <!-- Small floating glass accents -->
-              <div class="ce-hero__glass-accent ce-hero__glass-accent--1"></div>
-              <div class="ce-hero__glass-accent ce-hero__glass-accent--2"></div>
+          </div>
+          <div class="ce-hero-brutal__image-col">
+            <div class="ce-hero-brutal__image-wrap">
+              <NuxtImg src="/img/about/about-2.png" alt="Creer mon entreprise" format="webp" quality="80" />
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Modules -->
-    <section class="ce-modules section--white">
+    <section class="ce-modules-brutal">
       <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Ce qu'on couvre ensemble</span>
-          <h2 class="section-title text-center">
-            Un programme complet, pensé pour <span class="gradient-text">passer à l'action.</span>
-          </h2>
-        </ScrollReveal>
+        <div class="ce-modules-brutal__header text-center">
+          <span class="ce-section-label">PROGRAMME_</span>
+          <h2 class="ce-modules-brutal__title">UN PROGRAMME COMPLET, PENSE POUR PASSER A L'ACTION.</h2>
+        </div>
 
-        <StaggerGrid class="grid grid-bento-7 mt-48" :stagger="0.1">
-          <GlassCard v-for="(mod, i) in modules" :key="mod.title" variant="light">
-            <div class="ce-module" :class="i >= 5 ? 'ce-module--compact' : 'text-center'">
-              <span class="ce-module__step">{{ String(i + 1).padStart(2, '0') }}</span>
-              <div class="ce-module__icon">
+        <div class="ce-modules-brutal__grid">
+          <div
+            v-for="(mod, i) in modules"
+            :key="mod.title"
+            class="ce-mod-card"
+            :class="i % 2 === 0 ? 'ce-mod-card--purple' : 'ce-mod-card--orange'"
+          >
+            <div class="ce-mod-card__top">
+              <span class="ce-mod-card__step">{{ String(i + 1).padStart(2, '0') }}</span>
+              <div class="ce-mod-card__icon">
                 <component :is="mod.icon" :size="28" />
               </div>
-              <div>
-                <h4 class="ce-module__title">{{ mod.title }}</h4>
-                <p class="ce-module__desc">{{ mod.description }}</p>
-              </div>
             </div>
-          </GlassCard>
-        </StaggerGrid>
+            <h4 class="ce-mod-card__title">{{ mod.title }}</h4>
+            <p class="ce-mod-card__desc">{{ mod.description }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Two Formulas -->
-    <section id="formulas" class="ce-formulas section--light">
+    <section id="formulas" class="ce-formulas-brutal">
       <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Deux façons de se lancer</span>
-          <h2 class="section-title text-center">
-            Selon ton <span class="gradient-text">rythme.</span>
-          </h2>
-        </ScrollReveal>
+        <div class="ce-formulas-brutal__header text-center">
+          <span class="ce-section-label">FORMULES_</span>
+          <h2 class="ce-formulas-brutal__title">SELON TON RYTHME.</h2>
+        </div>
 
-        <div class="ce-formulas__grid mt-48">
+        <div class="ce-formulas-brutal__grid">
           <!-- Card 1: Autonomie (Standard) -->
-          <ScrollReveal direction="left">
-            <div v-magnetic="0.15" class="ce-formula ce-formula--standard glass-card-light">
-              <div class="ce-formula__icon ce-formula__icon--purple">
-                <BookOpen :size="28" />
+          <div class="ce-price-card ce-price-card--purple">
+            <div class="ce-price-card__icon ce-price-card__icon--purple">
+              <BookOpen :size="28" />
+            </div>
+            <span class="ce-price-card__badge ce-price-card__badge--purple">FORMATION EN AUTONOMIE</span>
+            <p class="ce-price-card__sub">Accessible 24h/24, 7j/7</p>
+            <p class="ce-price-card__desc">
+              Accede a l'integralite du programme en ligne, avance a ton rythme, et construis
+              ton projet pas a pas avec des modules concrets et actionnables.
+            </p>
+            <div class="ce-price-card__checks">
+              <div class="ce-price-card__check ce-price-card__check--purple">
+                <CheckCircle :size="16" />
+                <span>Acces immediat et a vie</span>
               </div>
-              <GlassBadge variant="purple-light">Formation en autonomie</GlassBadge>
-              <p class="ce-formula__subtitle mt-16">Accessible 24h/24, 7j/7</p>
-              <p class="ce-formula__desc">
-                Accède à l'intégralité du programme en ligne, avance à ton rythme, et construis
-                ton projet pas à pas avec des modules concrets et actionnables.
-              </p>
-              <div class="ce-formula__checks">
-                <div class="ce-formula__check ce-formula__check--purple">
-                  <CheckCircle :size="16" />
-                  <span>Accès immédiat et à vie</span>
-                </div>
-                <div class="ce-formula__check ce-formula__check--purple">
-                  <CheckCircle :size="16" />
-                  <span>Formation complémentaire offerte</span>
-                </div>
-                <div class="ce-formula__check ce-formula__check--purple">
-                  <CheckCircle :size="16" />
-                  <span>Contenu mis à jour</span>
-                </div>
+              <div class="ce-price-card__check ce-price-card__check--purple">
+                <CheckCircle :size="16" />
+                <span>Formation complementaire offerte</span>
               </div>
-              <div class="ce-formula__price">
-                <span class="ce-formula__amount">299€</span>
-              </div>
-              <AppButton variant="ghost-light" block :disabled="isLoading" @click="handlePurchase">
-                <Loader2 v-if="isLoading" :size="18" class="ce-formula__spin" />
-                {{ isLoading ? 'Chargement...' : 'Je me lance' }}
-                <ArrowRight v-if="!isLoading" :size="18" />
-              </AppButton>
-              <div class="ce-formula__trust">
-                <Shield :size="14" />
-                <span>Paiement sécurisé</span>
+              <div class="ce-price-card__check ce-price-card__check--purple">
+                <CheckCircle :size="16" />
+                <span>Contenu mis a jour</span>
               </div>
             </div>
-          </ScrollReveal>
+            <div class="ce-price-card__price">
+              <span class="ce-price-card__amount ce-price-card__amount--purple">299EUR</span>
+            </div>
+            <AppButton variant="ghost-light" block :disabled="isLoading" @click="handlePurchase">
+              <Loader2 v-if="isLoading" :size="18" class="ce-price-card__spin" />
+              {{ isLoading ? 'CHARGEMENT...' : 'JE ME LANCE' }}
+              <ArrowRight v-if="!isLoading" :size="18" />
+            </AppButton>
+            <div class="ce-price-card__trust">
+              <Shield :size="14" />
+              <span>PAIEMENT SECURISE</span>
+            </div>
+          </div>
 
           <!-- Card 2: Accompagnement (Featured) -->
-          <ScrollReveal direction="right">
-            <div v-magnetic="0.15" class="ce-formula ce-formula--featured glass-card-light">
-              <div class="ce-formula__ribbon">Recommandé</div>
-              <div class="ce-formula__icon ce-formula__icon--orange">
-                <Handshake :size="28" />
+          <div class="ce-price-card ce-price-card--orange">
+            <div class="ce-price-card__ribbon">RECOMMANDE</div>
+            <div class="ce-price-card__icon ce-price-card__icon--orange">
+              <Handshake :size="28" />
+            </div>
+            <span class="ce-price-card__badge ce-price-card__badge--orange">ACCOMPAGNEMENT PERSONNALISE</span>
+            <p class="ce-price-card__sub">Formation live + modules pratiques + suivi</p>
+            <p class="ce-price-card__desc">
+              Un vrai accompagnement sur mesure : sessions live avec Kevin, modules pratiques,
+              et un suivi personnalise jusqu'au lancement de ton activite.
+            </p>
+            <div class="ce-price-card__checks">
+              <div class="ce-price-card__check ce-price-card__check--orange">
+                <CheckCircle :size="16" />
+                <span>Sessions live avec Kevin</span>
               </div>
-              <GlassBadge variant="orange-light">Accompagnement personnalisé</GlassBadge>
-              <p class="ce-formula__subtitle mt-16">Formation live + modules pratiques + suivi</p>
-              <p class="ce-formula__desc">
-                Un vrai accompagnement sur mesure : sessions live avec Kevin, modules pratiques,
-                et un suivi personnalisé jusqu'au lancement de ton activité.
-              </p>
-              <div class="ce-formula__checks">
-                <div class="ce-formula__check ce-formula__check--orange">
-                  <CheckCircle :size="16" />
-                  <span>Sessions live avec Kevin</span>
-                </div>
-                <div class="ce-formula__check ce-formula__check--orange">
-                  <CheckCircle :size="16" />
-                  <span>Modules pratiques complets</span>
-                </div>
-                <div class="ce-formula__check ce-formula__check--orange">
-                  <CheckCircle :size="16" />
-                  <span>Formation complémentaire offerte</span>
-                </div>
-                <div class="ce-formula__check ce-formula__check--orange">
-                  <CheckCircle :size="16" />
-                  <span>100% finançable</span>
-                </div>
+              <div class="ce-price-card__check ce-price-card__check--orange">
+                <CheckCircle :size="16" />
+                <span>Modules pratiques complets</span>
               </div>
-              <AppButton variant="primary" block :href="externalLinks.booking.brevoMeeting">
-                Je veux être accompagné
-                <ArrowRight :size="18" />
-              </AppButton>
-              <div class="ce-formula__trust">
-                <Shield :size="14" />
-                <span>Appel gratuit, sans engagement</span>
+              <div class="ce-price-card__check ce-price-card__check--orange">
+                <CheckCircle :size="16" />
+                <span>Formation complementaire offerte</span>
+              </div>
+              <div class="ce-price-card__check ce-price-card__check--orange">
+                <CheckCircle :size="16" />
+                <span>100% financable</span>
               </div>
             </div>
-          </ScrollReveal>
+            <AppButton variant="primary" block :href="externalLinks.booking.brevoMeeting">
+              JE VEUX ETRE ACCOMPAGNE
+              <ArrowRight :size="18" />
+            </AppButton>
+            <div class="ce-price-card__trust">
+              <Shield :size="14" />
+              <span>APPEL GRATUIT, SANS ENGAGEMENT</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Reassurance Mosaic -->
     <ImageMosaic :images="mosaicImages">
-      <ScrollReveal>
-        <span class="section-label">Pourquoi c'est différent</span>
-        <h2 class="section-title">
-          Ce qui nous <span class="gradient-text">distingue.</span>
-        </h2>
-        <p class="mosaic-subtitle">
-          On commence par toi, pas par le business plan. L'IA est intégrée dès le départ, et derrière la formation, un vrai entrepreneur.
-        </p>
-        <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
-          En savoir plus <ArrowRight :size="16" />
-        </AppButton>
-      </ScrollReveal>
+      <span class="ce-section-label">POURQUOI_</span>
+      <h2 class="ce-mosaic-title">CE QUI NOUS DISTINGUE.</h2>
+      <p class="ce-mosaic-subtitle">
+        On commence par toi, pas par le business plan. L'IA est integree des le depart, et derriere la formation, un vrai entrepreneur.
+      </p>
+      <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
+        EN SAVOIR PLUS <ArrowRight :size="16" />
+      </AppButton>
     </ImageMosaic>
 
     <!-- Final CTA -->
     <CTASection
-      title="Prêt à te <span class='gradient-text'>lancer</span> ?"
-      subtitle="Un appel gratuit de 30 minutes pour faire le point sur ton projet et trouver la formule adaptée."
-      primaryText="Je réserve mon appel gratuit"
+      title="PRET A TE LANCER ?"
+      subtitle="Un appel gratuit de 30 minutes pour faire le point sur ton projet et trouver la formule adaptee."
+      primaryText="JE RESERVE MON APPEL GRATUIT"
       :primaryHref="externalLinks.booking.brevoMeeting"
       secondaryText=""
     />
@@ -290,283 +268,447 @@ async function handlePurchase() {
     isLoading.value = false
   }
 }
+
+// GSAP entrance animations
+const { $gsap } = useNuxtApp()
+
+onMounted(() => {
+  if (!$gsap) return
+  const gsap = $gsap as any
+
+  // Hero entrance
+  gsap.fromTo('.ce-hero-brutal__title',
+    { y: 80, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, ease: 'power4.out', delay: 0.2 }
+  )
+  gsap.fromTo('.ce-hero-brutal__subtitle',
+    { x: -40, opacity: 0 },
+    { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.5 }
+  )
+  gsap.fromTo('.ce-badge-brutal',
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power3.out', delay: 0.7 }
+  )
+  gsap.fromTo('.ce-hero-brutal__image-wrap',
+    { scale: 0.9, opacity: 0, rotationZ: 3 },
+    { scale: 1, opacity: 1, rotationZ: 0, duration: 0.8, ease: 'back.out(1.5)', delay: 0.4 }
+  )
+
+  // Module cards entrance with ScrollTrigger
+  gsap.fromTo('.ce-mod-card',
+    { y: 60, opacity: 0 },
+    {
+      y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out',
+      scrollTrigger: { trigger: '.ce-modules-brutal__grid', start: 'top 80%' },
+    }
+  )
+
+  // Pricing cards entrance
+  gsap.fromTo('.ce-price-card--purple',
+    { x: -60, opacity: 0 },
+    {
+      x: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
+      scrollTrigger: { trigger: '.ce-formulas-brutal__grid', start: 'top 75%' },
+    }
+  )
+  gsap.fromTo('.ce-price-card--orange',
+    { x: 60, opacity: 0 },
+    {
+      x: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.15,
+      scrollTrigger: { trigger: '.ce-formulas-brutal__grid', start: 'top 75%' },
+    }
+  )
+})
 </script>
 
 <style lang="scss" scoped>
-.ce-hero {
+// ============================================
+// BRUTALIST DESIGN — Creer Entreprise
+// ============================================
+
+.ce-brutal {
+  background: #FFF;
+  color: #000;
+}
+
+// --- Section Label ---
+.ce-section-label {
+  display: inline-block;
+  font-family: $font-mono;
+  font-size: $xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $purple;
+  border: 2px solid #000;
+  padding: 6px 16px;
+  margin-bottom: 20px;
+  background: #FFF;
+  box-shadow: 4px 4px 0px #000;
+}
+
+// ============================================
+// HERO
+// ============================================
+.ce-hero-brutal {
   padding: 140px 0 80px;
-  position: relative;
-  overflow: hidden;
+  background: #FFF;
+  border-bottom: 4px solid #000;
 
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  &__orb {
-    position: absolute;
-    &--1 { width: 400px; height: 400px; top: -10%; right: -5%; opacity: 0.2; }
-    &--2 { width: 250px; height: 250px; bottom: 10%; left: -5%; opacity: 0.15; }
-  }
-
-  &__split {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
     align-items: center;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__content {
+    width: 100%;
   }
 
   &__title {
-    font-size: $h1;
-    color: $text-heading;
-    line-height: 1.15;
+    font-family: $font-heading;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #000;
     margin-bottom: 24px;
+
+    &--accent {
+      display: block;
+      color: $purple;
+    }
   }
 
   &__subtitle {
-    font-size: $body-lg;
-    color: $text-muted;
+    font-family: $font-mono;
+    font-size: $body;
+    font-weight: 500;
+    color: #000;
     line-height: 1.7;
     max-width: 550px;
+    margin-bottom: 32px;
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__image-col {
+    @media (max-width: 1024px) {
+      max-width: 500px;
+      margin: 0 auto;
+    }
   }
 
   &__image-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-
-  &__glass-panel {
-    position: absolute;
-    border-radius: $radius-lg;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 2px 6px rgba(0, 0, 0, 0.03),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-    animation: border-glow 6s ease-in-out infinite;
-    pointer-events: none;
-
-    &--1 {
-      width: 75%;
-      height: 65%;
-      top: -12px;
-      right: -16px;
-      transform: rotate(3deg);
-      animation-delay: -1s;
-    }
-
-    &--2 {
-      width: 50%;
-      height: 45%;
-      bottom: -8px;
-      left: -14px;
-      transform: rotate(-2deg);
-      animation-delay: -3s;
-    }
-
-    &--3 {
-      width: 30%;
-      height: 25%;
-      top: 50%;
-      right: -20px;
-      transform: translateY(-50%) rotate(5deg);
-      animation-delay: -5s;
-    }
-  }
-
-  &__image {
-    padding: 0;
+    border: 4px solid #000;
+    box-shadow: 12px 12px 0px $purple;
     overflow: hidden;
-    border-radius: $radius-lg;
-    position: relative;
-    z-index: 1;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 16px 16px 0px $orange;
+    }
 
     img {
       width: 100%;
       display: block;
     }
   }
-
-  &__glass-accent {
-    position: absolute;
-    border-radius: $radius-full;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow:
-      0 4px 16px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    animation: border-glow 6s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 2;
-
-    &--1 {
-      width: 48px;
-      height: 48px;
-      top: -8px;
-      left: 8px;
-      animation-delay: -2s;
-    }
-
-    &--2 {
-      width: 32px;
-      height: 32px;
-      bottom: 4px;
-      right: -4px;
-      animation-delay: -4s;
-    }
-  }
 }
 
-// Reuse hero trust styles from HeroSection
-.hero__trust {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero__trust-item {
+.ce-badge-brutal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-mono;
   font-size: $xs;
-  strong { color: $text-heading; }
-}
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 2px solid #000;
+  background: #FFF;
+  color: #000;
+  box-shadow: 4px 4px 0px $purple;
+  transition: transform 0.15s, box-shadow 0.15s;
 
-.ce-module {
-  padding: 8px;
-
-  &__step {
-    display: block;
-    font-family: $font-heading;
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 8px;
-    opacity: 0.35;
-    background: linear-gradient(135deg, $purple, $orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px $orange;
   }
 
-  &__icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: rgba($purple, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
+  strong {
     color: $purple;
+  }
+}
+
+// ============================================
+// MODULES
+// ============================================
+.ce-modules-brutal {
+  padding: 100px 0;
+  background: #FFF;
+  border-bottom: 4px solid #000;
+
+  &__header {
+    margin-bottom: 48px;
   }
 
   &__title {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #000;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.ce-mod-card {
+  border: 4px solid #000;
+  background: #FFF;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &--purple {
+    box-shadow: 8px 8px 0px $purple;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px $purple;
+    }
+
+    .ce-mod-card__step {
+      color: $purple;
+    }
+
+    .ce-mod-card__icon {
+      border-color: $purple;
+      color: $purple;
+    }
+  }
+
+  &--orange {
+    box-shadow: 8px 8px 0px $orange;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px $orange;
+    }
+
+    .ce-mod-card__step {
+      color: $orange;
+    }
+
+    .ce-mod-card__icon {
+      border-color: $orange;
+      color: $orange;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__step {
+    font-family: $font-heading;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF;
+  }
+
+  &__title {
+    font-family: $font-heading;
     font-size: $body;
-    color: $text-heading;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
     margin-bottom: 8px;
   }
 
   &__desc {
+    font-family: $font-mono;
     font-size: $small;
-    color: $text-muted;
+    color: $text-body;
     line-height: 1.6;
   }
+}
 
-  // Compact variant for cards 6+7 (half-height, horizontal)
-  &--compact {
-    display: flex;
-    gap: 16px;
-    text-align: left;
-    padding: 4px;
-    align-items: center;
+// ============================================
+// FORMULAS / PRICING
+// ============================================
+.ce-formulas-brutal {
+  padding: 100px 0;
+  background: #FFF;
+  border-bottom: 4px solid #000;
 
-    .ce-module__step {
-      margin-bottom: 4px;
-    }
+  &__header {
+    margin-bottom: 48px;
+  }
 
-    .ce-module__icon {
-      margin: 0;
-      flex-shrink: 0;
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #000;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
     }
   }
 }
 
-.ce-formulas__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-
-  > :deep(*) {
-    height: 100%;
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.ce-formula {
-  padding: 32px;
+.ce-price-card {
+  border: 4px solid #000;
+  background: #FFF;
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
-  height: 100%;
   position: relative;
-  overflow: visible;
+  transition: transform 0.2s, box-shadow 0.2s;
 
-  &__icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+  &--purple {
+    box-shadow: 8px 8px 0px $purple;
+    border-left: 8px solid $purple;
 
-    &--purple {
-      background: rgba($purple, 0.08);
-      color: $purple;
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px $purple;
     }
+  }
 
-    &--orange {
-      background: rgba($orange, 0.1);
-      color: $orange;
+  &--orange {
+    box-shadow: 8px 8px 0px $orange;
+    border-left: 8px solid $orange;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px $orange;
     }
   }
 
   &__ribbon {
     position: absolute;
-    top: -14px;
+    top: -18px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 6px 24px;
-    border-radius: $radius-full;
+    padding: 8px 24px;
     background: $orange;
-    color: $text-white;
+    color: #FFF;
+    font-family: $font-mono;
     font-size: $xs;
     font-weight: 700;
-    font-family: $font-heading;
-    letter-spacing: 0.02em;
-    box-shadow: 0 4px 16px rgba($orange-dark, 0.3);
-    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px #000;
     white-space: nowrap;
+    z-index: 2;
   }
 
-  &__subtitle {
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border: 3px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: #FFF;
+
+    &--purple { color: $purple; }
+    &--orange { color: $orange; }
+  }
+
+  &__badge {
+    display: inline-block;
+    font-family: $font-mono;
+    font-size: $xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border: 2px solid #000;
+    margin-bottom: 16px;
+    align-self: flex-start;
+
+    &--purple {
+      color: $purple;
+      box-shadow: 3px 3px 0px $purple;
+    }
+
+    &--orange {
+      color: $orange;
+      box-shadow: 3px 3px 0px $orange;
+    }
+  }
+
+  &__sub {
+    font-family: $font-mono;
     font-size: $small;
-    color: $text-muted;
     font-weight: 600;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 16px;
   }
 
   &__desc {
-    color: $text-body;
+    font-family: $font-mono;
     font-size: $small;
+    color: $text-body;
     line-height: 1.7;
-    margin: 16px 0 24px;
+    margin-bottom: 24px;
   }
 
   &__checks {
@@ -581,35 +723,31 @@ async function handlePurchase() {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: $font-mono;
     font-size: $small;
-    color: $text-body;
+    color: #000;
 
-    svg {
-      flex-shrink: 0;
-    }
-
-    &--purple svg {
-      color: $purple;
-    }
-
-    &--orange svg {
-      color: $orange;
-    }
+    svg { flex-shrink: 0; }
+    &--purple svg { color: $purple; }
+    &--orange svg { color: $orange; }
   }
 
   &__price {
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    padding: 16px 0;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
   }
 
   &__amount {
     font-family: $font-heading;
-    font-size: 2.5rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, $purple, $orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+
+    &--purple { color: $purple; }
+    &--orange { color: $orange; }
   }
 
   &__trust {
@@ -618,35 +756,15 @@ async function handlePurchase() {
     justify-content: center;
     gap: 6px;
     margin-top: 12px;
+    font-family: $font-mono;
     font-size: $xs;
+    font-weight: 700;
     color: $text-muted;
+    text-transform: uppercase;
   }
 
   &__spin {
     animation: spin 1s linear infinite;
-  }
-
-  // Standard card (purple accent)
-  &--standard {
-    border-left: 3px solid $purple;
-  }
-
-  // Featured card (orange accent, dominant)
-  &--featured {
-    border-left: 3px solid $orange;
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba($orange, 0.2);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 0 40px rgba($orange, 0.08);
-
-    &:hover {
-      box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        0 0 48px rgba($orange, 0.12);
-      border-color: rgba($orange, 0.3);
-      border-left: 3px solid $orange;
-    }
   }
 }
 
@@ -655,12 +773,26 @@ async function handlePurchase() {
   to { transform: rotate(360deg); }
 }
 
-.mosaic-subtitle {
-  font-size: $body;
-  color: $text-muted;
-  line-height: 1.7;
-  max-width: 480px;
-  margin: 16px auto 0;
+// ============================================
+// MOSAIC TEXT OVERRIDES
+// ============================================
+.ce-mosaic-title {
+  font-family: $font-heading;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #FFF;
+  margin-bottom: 16px;
 }
 
+.ce-mosaic-subtitle {
+  font-family: $font-mono;
+  font-size: $body;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
 </style>

@@ -2,26 +2,23 @@
   <Teleport to="body">
     <Transition name="modal">
       <div v-if="visible" class="ffm-overlay" @click.self="$emit('close')">
-        <div class="ffm-modal glass-card-light">
+        <div class="ffm-modal">
           <button class="ffm-modal__close" aria-label="Fermer" @click="$emit('close')">
             <X :size="20" />
           </button>
 
           <div class="ffm-modal__header">
-            <GlassBadge variant="orange-light">
-              <Gift :size="14" />
-              {{ config.badgeText }}
-            </GlassBadge>
-            <h2 class="ffm-modal__title mt-16">
-              Attendez ! On a un <span class="gradient-text">cadeau</span> pour vous
+            <span class="ffm-modal__badge">CADEAU_</span>
+            <h2 class="ffm-modal__title">
+              ATTENDEZ ! ON A UN <span class="text-purple">CADEAU</span> POUR VOUS
             </h2>
           </div>
 
           <!-- Barred price -->
           <div class="ffm-modal__price">
             <span class="ffm-modal__price-original">{{ config.originalPrice }}€</span>
-            <span class="ffm-modal__price-arrow">→</span>
-            <span class="ffm-modal__price-free gradient-text">GRATUIT</span>
+            <span class="ffm-modal__price-arrow">►</span>
+            <span class="ffm-modal__price-free">GRATUIT</span>
           </div>
 
           <p class="ffm-modal__desc">{{ config.subtitle }}</p>
@@ -34,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { X, Gift } from 'lucide-vue-next'
+import { X } from 'lucide-vue-next'
 import { freeFormationConfig as config } from '~/data/free-formation'
 
 defineProps<{
@@ -49,9 +46,7 @@ defineEmits(['close'])
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(10, 5, 20, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,19 +60,9 @@ defineEmits(['close'])
   max-height: 90vh;
   overflow-y: auto;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(1.3);
-  -webkit-backdrop-filter: blur(24px) saturate(1.3);
-  box-shadow:
-    0 12px 48px rgba(0, 0, 0, 0.12),
-    0 4px 16px rgba(0, 0, 0, 0.06),
-    0 0 20px rgba($purple, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
-
-  &:hover {
-    transform: none;
-  }
+  background: #FFF;
+  border: 4px solid #000;
+  box-shadow: 12px 12px 0px $purple;
 
   @media (max-width: 640px) {
     padding: 28px 20px;
@@ -87,15 +72,20 @@ defineEmits(['close'])
     position: absolute;
     top: 16px;
     right: 16px;
-    background: none;
-    border: none;
-    color: $text-muted;
+    background: #000;
+    border: 2px solid #000;
+    color: #FFF;
     cursor: pointer;
     padding: 4px;
-    transition: color 0.3s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
 
     &:hover {
-      color: $text-heading;
+      background: $purple;
     }
   }
 
@@ -103,11 +93,23 @@ defineEmits(['close'])
     text-align: center;
   }
 
+  &__badge {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $orange;
+    text-transform: uppercase;
+  }
+
   &__title {
-    font-family: $font-heading;
-    font-size: $h3;
-    font-weight: 800;
-    line-height: 1.3;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: #000;
+    margin-top: 12px;
+
+    .text-purple { color: $purple; }
   }
 
   &__price {
@@ -115,44 +117,49 @@ defineEmits(['close'])
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 24px;
+    padding: 16px;
+    border: 2px solid #000;
+    background: #FAFAFA;
   }
 
   &__price-original {
     font-family: $font-heading;
     font-size: 1.5rem;
     font-weight: 700;
-    color: $text-muted;
+    color: rgba(0, 0, 0, 0.3);
     text-decoration: line-through;
   }
 
   &__price-arrow {
-    color: $text-muted;
-    font-size: 1.25rem;
+    color: $purple;
+    font-size: 1rem;
   }
 
   &__price-free {
     font-family: $font-heading;
     font-size: 2rem;
     font-weight: 900;
+    color: $purple;
   }
 
   &__desc {
-    color: $text-body;
-    font-size: $small;
+    font-family: $font-mono;
+    font-size: 0.9rem;
     text-align: center;
-    line-height: 1.7;
-    margin-top: 12px;
+    line-height: 1.6;
+    margin-top: 16px;
+    color: #000;
+    text-transform: uppercase;
   }
 }
 
-// Transition
 .modal-enter-active,
 .modal-leave-active {
-  transition: all 0.3s $ease-smooth;
+  transition: opacity 0.3s ease;
 
   .ffm-modal {
-    transition: all 0.3s $ease-smooth;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 }
 
@@ -161,7 +168,7 @@ defineEmits(['close'])
   opacity: 0;
 
   .ffm-modal {
-    transform: scale(0.95) translateY(10px);
+    transform: translateY(20px);
     opacity: 0;
   }
 }

@@ -1,215 +1,153 @@
 <template>
-  <div>
+  <div class="page-eia-brutal">
     <!-- Hero -->
-    <section class="eia-hero section--light">
-      <div class="eia-hero__bg">
-        <div class="orb orb--purple eia-hero__orb eia-hero__orb--1"></div>
-        <div class="orb orb--orange eia-hero__orb eia-hero__orb--2"></div>
-      </div>
-      <div class="container">
-        <div class="split eia-hero__split">
-          <ScrollReveal direction="left">
-            <h1 class="eia-hero__title">
-              Ton entreprise tourne déjà. L'IA peut la faire tourner
-              <span class="gradient-text">mieux, et plus vite.</span>
-            </h1>
-            <p class="eia-hero__subtitle">
-              On identifie ensemble ce que l'IA peut faire concrètement pour ton business. Pas des
-              promesses génériques, des solutions adaptées à ta réalité.
-            </p>
-            <div class="btn-group mt-32">
-              <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
-                Je veux un audit gratuit
-                <ArrowRight :size="20" />
-              </AppButton>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal direction="right">
-            <div class="eia-hero__image-wrap">
-              <!-- Glass panels behind image -->
-              <div class="eia-hero__glass-panel eia-hero__glass-panel--1"></div>
-              <div class="eia-hero__glass-panel eia-hero__glass-panel--2"></div>
-              <div class="eia-hero__glass-panel eia-hero__glass-panel--3"></div>
-              <!-- Main image -->
-              <div v-magnetic="0.12" class="eia-hero__image glass-card-light">
-                <NuxtImg src="/img/kevin-ia.png" alt="Faire évoluer avec l'IA" format="webp" quality="80" />
-              </div>
-              <!-- Small floating glass accents -->
-              <div class="eia-hero__glass-accent eia-hero__glass-accent--1"></div>
-              <div class="eia-hero__glass-accent eia-hero__glass-accent--2"></div>
-            </div>
-          </ScrollReveal>
+    <section class="eia-hero-brutal">
+      <div class="container eia-hero-brutal__grid">
+        <div class="eia-hero-brutal__content">
+          <span class="section-label">INTELLIGENCE_ARTIFICIELLE_</span>
+          <h1 class="eia-hero-brutal__title">
+            <span class="block">L'IA PEUT FAIRE</span>
+            <span class="block outline-text">TOURNER TON</span>
+            <span class="block text-purple">BUSINESS MIEUX.</span>
+          </h1>
+          <p class="eia-hero-brutal__subtitle">
+            ON IDENTIFIE ENSEMBLE CE QUE L'IA PEUT FAIRE CONCRÈTEMENT POUR TON BUSINESS. PAS DES PROMESSES GÉNÉRIQUES, DES SOLUTIONS ADAPTÉES À TA RÉALITÉ.
+          </p>
+          <div class="eia-hero-brutal__ctas">
+            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+              JE VEUX UN AUDIT GRATUIT
+              <ArrowRight :size="20" />
+            </AppButton>
+          </div>
+        </div>
+
+        <div class="eia-hero-brutal__image-col">
+          <div class="eia-hero-brutal__image-wrap">
+            <NuxtImg src="/img/kevin-ia.png" alt="Faire évoluer avec l'IA" format="webp" quality="80" class="eia-hero-brutal__img" />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Pain Point -->
-    <section class="eia-pain section--white">
-      <!-- WebGL glass "?" floating behind entire section -->
-      <ClientOnly>
-        <Glass3DQuestion />
-      </ClientOnly>
-
+    <!-- Pain Points -->
+    <section class="eia-pain-brutal">
       <div class="container">
-        <ScrollReveal>
-          <h2 class="section-title text-center">
-            Pendant que tu gères, tes concurrents <span class="gradient-text">automatisent.</span>
-          </h2>
-        </ScrollReveal>
+        <div class="eia-pain-brutal__header">
+          <span class="section-label">PROBLÈMES_</span>
+          <h2 class="eia-pain-brutal__title">PENDANT QUE TU GÈRES, TES CONCURRENTS AUTOMATISENT.</h2>
+        </div>
 
-        <StaggerGrid class="grid grid-2 mt-48" :stagger="0.15">
-          <div v-for="pain in painPoints" :key="pain.text" v-magnetic="0.15" class="eia-pain__item glass-card-light">
-            <component :is="pain.icon" :size="22" class="eia-pain__icon" />
-            <span>{{ pain.text }}</span>
+        <div class="eia-pain-brutal__list">
+          <div v-for="pain in painPoints" :key="pain.text" class="eia-pain-brutal__item">
+            <component :is="pain.icon" :size="24" class="eia-pain-brutal__icon" />
+            <span class="eia-pain-brutal__text">{{ pain.text }}</span>
           </div>
-        </StaggerGrid>
+        </div>
 
-        <ScrollReveal :delay="0.4">
-          <p class="eia-pain__closing text-center mt-48">
-            L'IA peut régler tout ça. La question c'est pas si tu vas t'y mettre,
-            <strong>c'est quand ?</strong>
-          </p>
-        </ScrollReveal>
+        <p class="eia-pain-brutal__closing">
+          L'IA PEUT RÉGLER TOUT ÇA. LA QUESTION C'EST PAS SI TU VAS T'Y METTRE, <strong>C'EST QUAND ?</strong>
+        </p>
       </div>
     </section>
 
     <!-- Parcours -->
-    <section class="eia-parcours section--light">
+    <section class="eia-parcours-brutal">
       <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Comment ça se passe</span>
-          <h2 class="section-title text-center">
-            On avance ensemble, <span class="gradient-text">étape par étape.</span>
-          </h2>
-        </ScrollReveal>
+        <div class="eia-parcours-brutal__header text-center">
+          <span class="section-label">PROCESSUS_</span>
+          <h2 class="eia-parcours-brutal__title">ON AVANCE ENSEMBLE, ÉTAPE PAR ÉTAPE.</h2>
+        </div>
 
-        <ScatteredCards :count="5" class="mt-48">
-          <template #card-0>
-            <div class="sc-content">
-              <div class="sc-content__number gradient-text">01</div>
-              <div class="sc-content__icon"><Phone :size="28" /></div>
-              <h3 class="sc-content__title">{{ parcours[0]!.title }}</h3>
-              <p class="sc-content__desc">{{ parcours[0]!.description }}</p>
-              <div class="sc-content__sub">
-                <div v-for="sub in parcours[0]!.subOptions" :key="sub" class="sc-content__sub-item">
-                  <CheckCircle :size="14" />
-                  <span>{{ sub }}</span>
-                </div>
-              </div>
-            </div>
-          </template>
-          <template #card-1>
-            <div class="sc-media">
-              <video autoplay loop muted playsinline>
-                <source src="/video/parcours-01.mp4" type="video/mp4" />
+        <div class="eia-parcours-brutal__grid">
+          <article
+            v-for="(step, index) in parcours"
+            :key="step.title"
+            :class="['eia-step-card', `eia-step-card--${stepColors[index]}`]"
+          >
+            <div class="eia-step-card__number">{{ String(index + 1).padStart(2, '0') }}</div>
+
+            <div v-if="stepVideos[index]" class="eia-step-card__video-wrap">
+              <video autoplay loop muted playsinline class="eia-step-card__video">
+                <source :src="stepVideos[index]" type="video/mp4" />
               </video>
             </div>
-          </template>
-          <template #card-2>
-            <div class="sc-content">
-              <div class="sc-content__number gradient-text">02</div>
-              <div class="sc-content__icon"><Search :size="28" /></div>
-              <h3 class="sc-content__title">{{ parcours[1]!.title }}</h3>
-              <p class="sc-content__desc">{{ parcours[1]!.description }}</p>
-              <div class="sc-content__sub">
-                <div v-for="sub in parcours[1]!.subOptions" :key="sub" class="sc-content__sub-item">
-                  <CheckCircle :size="14" />
-                  <span>{{ sub }}</span>
-                </div>
-              </div>
+
+            <div class="eia-step-card__icon">
+              <component :is="step.icon" :size="28" />
             </div>
-          </template>
-          <template #card-3>
-            <div class="sc-media">
-              <video autoplay loop muted playsinline>
-                <source src="/video/parcours-02.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </template>
-          <template #card-4>
-            <div class="sc-content">
-              <div class="sc-content__number gradient-text">03</div>
-              <div class="sc-content__icon"><Rocket :size="28" /></div>
-              <h3 class="sc-content__title">{{ parcours[2]!.title }}</h3>
-              <p class="sc-content__desc">{{ parcours[2]!.description }}</p>
-              <div class="sc-content__sub">
-                <div v-for="sub in parcours[2]!.subOptions" :key="sub" class="sc-content__sub-item">
-                  <CheckCircle :size="14" />
-                  <span>{{ sub }}</span>
-                </div>
-              </div>
-            </div>
-          </template>
-        </ScatteredCards>
+            <h3 class="eia-step-card__title">{{ step.title }}</h3>
+            <p class="eia-step-card__desc">{{ step.description }}</p>
+            <ul class="eia-step-card__sub">
+              <li v-for="sub in step.subOptions" :key="sub">
+                <CheckCircle :size="14" />
+                <span>{{ sub }}</span>
+              </li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- Solutions -->
-    <section class="eia-solutions section--white">
+    <section class="eia-solutions-brutal">
       <div class="container">
-        <ScrollReveal>
-          <span class="section-label text-center">Des solutions concrètes</span>
-          <h2 class="section-title text-center">
-            Des solutions concrètes, <span class="gradient-text">prêtes à brancher</span>
-          </h2>
-          <p class="section-subtitle text-center" style="margin: 8px auto 0; max-width: 500px">
-            Voici quelques exemples de ce qu'on a déjà mis en place...
-          </p>
-        </ScrollReveal>
+        <div class="eia-solutions-brutal__header text-center">
+          <span class="section-label">SOLUTIONS_</span>
+          <h2 class="eia-solutions-brutal__title">DES SOLUTIONS CONCRÈTES, PRÊTES À BRANCHER.</h2>
+          <p class="eia-solutions-brutal__subtitle">VOICI QUELQUES EXEMPLES DE CE QU'ON A DÉJÀ MIS EN PLACE...</p>
+        </div>
 
-        <StaggerGrid class="grid grid-bento-7 mt-48" :stagger="0.1">
-          <GlassCard v-for="(solution, i) in solutions" :key="solution.title" variant="light">
-            <div class="eia-solution" :class="i >= 5 ? 'eia-solution--compact' : 'text-center'">
-              <span class="eia-solution__step">{{ String(i + 1).padStart(2, '0') }}</span>
-              <div class="eia-solution__icon">
-                <component :is="solution.icon" :size="28" />
-              </div>
-              <div>
-                <h4 class="eia-solution__title">{{ solution.title }}</h4>
-                <p class="eia-solution__desc">{{ solution.description }}</p>
-              </div>
+        <div class="eia-solutions-brutal__grid">
+          <div v-for="(solution, i) in solutions" :key="solution.title" class="eia-sol-card">
+            <span class="eia-sol-card__step">{{ String(i + 1).padStart(2, '0') }}</span>
+            <div class="eia-sol-card__icon">
+              <component :is="solution.icon" :size="28" />
             </div>
-          </GlassCard>
-        </StaggerGrid>
-
-        <ScrollReveal :delay="0.3">
-          <p class="eia-solutions__note text-center mt-32">
-            Et bien d'autres selon ton activité...
-          </p>
-          <div class="text-center mt-24">
-            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
-              Je veux voir ce qu'on peut faire pour mon business
-              <ArrowRight :size="20" />
-            </AppButton>
+            <h4 class="eia-sol-card__title">{{ solution.title }}</h4>
+            <p class="eia-sol-card__desc">{{ solution.description }}</p>
           </div>
-        </ScrollReveal>
+        </div>
+
+        <div class="eia-solutions-brutal__footer text-center">
+          <p class="eia-solutions-brutal__note">ET BIEN D'AUTRES SELON TON ACTIVITÉ...</p>
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting" class="mt-24">
+            JE VEUX VOIR CE QU'ON PEUT FAIRE
+            <ArrowRight :size="20" />
+          </AppButton>
+        </div>
       </div>
     </section>
 
     <!-- Reassurance Mosaic -->
     <ImageMosaic :images="mosaicImages">
-      <ScrollReveal>
-        <span class="section-label">Pourquoi c'est différent</span>
-        <h2 class="section-title">
-          Ce qui nous <span class="gradient-text">distingue.</span>
-        </h2>
-        <p class="mosaic-subtitle">
-          Zéro solution générique. L'audit est gratuit et a de la valeur. Des résultats rapides et mesurables, portés par un vrai entrepreneur.
-        </p>
-        <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
-          En savoir plus <ArrowRight :size="16" />
-        </AppButton>
-      </ScrollReveal>
+      <span class="section-label">DIFFÉRENCE_</span>
+      <h2 class="eia-mosaic-brutal__title">CE QUI NOUS DISTINGUE.</h2>
+      <p class="eia-mosaic-brutal__subtitle">
+        ZÉRO SOLUTION GÉNÉRIQUE. L'AUDIT EST GRATUIT ET A DE LA VALEUR. DES RÉSULTATS RAPIDES ET MESURABLES, PORTÉS PAR UN VRAI ENTREPRENEUR.
+      </p>
+      <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
+        EN SAVOIR PLUS <ArrowRight :size="16" />
+      </AppButton>
     </ImageMosaic>
 
     <!-- Final CTA -->
-    <CTASection
-      title="Prêt à voir ce que l'IA peut faire pour ton <span class='gradient-text'>business</span> ?"
-      subtitle="Un appel gratuit de 30 minutes. On qualifie tes besoins et on te dit honnêtement ce qu'on peut faire pour toi."
-      primaryText="Je réserve mon appel gratuit"
-      :primaryHref="externalLinks.booking.brevoMeeting"
-      secondaryText=""
-    />
+    <section class="eia-cta-brutal">
+      <div class="container eia-cta-brutal__inner">
+        <h2 class="eia-cta-brutal__title">
+          <span class="block">PRÊT À VOIR CE QUE</span>
+          <span class="block outline-text">L'IA PEUT FAIRE</span>
+          <span class="block text-purple">POUR TON BUSINESS ?</span>
+        </h2>
+        <p class="eia-cta-brutal__subtitle">
+          UN APPEL GRATUIT DE 30 MINUTES. ON QUALIFIE TES BESOINS ET ON TE DIT HONNÊTEMENT CE QU'ON PEUT FAIRE POUR TOI.
+        </p>
+        <div class="eia-cta-brutal__btn-wrap">
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting" class="btn-massive">
+            JE RÉSERVE MON APPEL GRATUIT
+          </AppButton>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -279,6 +217,9 @@ const parcours = [
   },
 ]
 
+const stepColors = ['purple', 'orange', 'white']
+const stepVideos = ['/video/parcours-01.mp4', '/video/parcours-02.mp4', '']
+
 const solutions = [
   { icon: Phone, title: 'Agent réceptionniste', description: 'Répond aux appels 24/7, qualifie les demandes, transfère les urgences.' },
   { icon: Banknote, title: 'Agent relances & impayés', description: 'Relance automatiquement les factures en retard par email et SMS.' },
@@ -293,147 +234,160 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
 </script>
 
 <style lang="scss" scoped>
-.eia-hero {
-  padding: 140px 0 80px;
-  position: relative;
-  overflow: hidden;
+.page-eia-brutal {
+  background: #FFF;
+  color: #000;
+}
 
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
+// ─── HERO ────────────────────────────────────────────
+.eia-hero-brutal {
+  padding: 160px 0 100px;
+  background: #FFF;
+  border-bottom: 4px solid #000;
 
-  &__orb {
-    position: absolute;
-    &--1 { width: 400px; height: 400px; top: -10%; right: -5%; opacity: 0.2; }
-    &--2 { width: 250px; height: 250px; bottom: 10%; left: -5%; opacity: 0.15; }
-  }
-
-  &__split {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
     align-items: center;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__content {
+    width: 100%;
   }
 
   &__title {
-    font-size: $h1;
-    color: $text-heading;
-    line-height: 1.15;
-    margin-bottom: 24px;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin: 16px 0 32px;
+    color: #000;
+    text-transform: uppercase;
+
+    .block { display: block; }
+
+    .outline-text {
+      color: transparent;
+      -webkit-text-stroke: 3px #000;
+
+      @media (max-width: 768px) {
+        -webkit-text-stroke: 2px #000;
+      }
+    }
+
+    .text-purple {
+      color: $purple;
+    }
   }
 
   &__subtitle {
-    font-size: $body-lg;
-    color: $text-muted;
-    line-height: 1.7;
+    font-family: $font-mono;
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
     max-width: 550px;
+    margin-bottom: 40px;
+    background: #FFF;
+    padding: 16px 20px;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    display: inline-block;
+    line-height: 1.6;
+  }
+
+  &__ctas {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__image-col {
+    @media (max-width: 1024px) {
+      max-width: 500px;
+      margin: 0 auto;
+    }
   }
 
   &__image-wrap {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-
-  &__glass-panel {
-    position: absolute;
-    border-radius: $radius-lg;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 2px 6px rgba(0, 0, 0, 0.03),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-    animation: border-glow 6s ease-in-out infinite;
-    pointer-events: none;
-
-    &--1 {
-      width: 75%;
-      height: 65%;
-      top: -12px;
-      right: -16px;
-      transform: rotate(3deg);
-      animation-delay: -1s;
-    }
-
-    &--2 {
-      width: 50%;
-      height: 45%;
-      bottom: -8px;
-      left: -14px;
-      transform: rotate(-2deg);
-      animation-delay: -3s;
-    }
-
-    &--3 {
-      width: 30%;
-      height: 25%;
-      top: 50%;
-      right: -20px;
-      transform: translateY(-50%) rotate(5deg);
-      animation-delay: -5s;
-    }
-  }
-
-  &__image {
-    padding: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: #FAFAFA;
+    border: 4px solid #000;
+    box-shadow: 16px 16px 0px $purple;
     overflow: hidden;
-    border-radius: $radius-lg;
-    position: relative;
-    z-index: 1;
+    transition: transform 0.2s, box-shadow 0.2s;
 
-    img {
-      width: 100%;
-      display: block;
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 20px 20px 0px $orange;
+
+      .eia-hero-brutal__img {
+        transform: scale(1.03);
+      }
     }
   }
 
-  &__glass-accent {
-    position: absolute;
-    border-radius: $radius-full;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow:
-      0 4px 16px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    animation: border-glow 6s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 2;
-
-    &--1 {
-      width: 48px;
-      height: 48px;
-      top: -8px;
-      left: 8px;
-      animation-delay: -2s;
-    }
-
-    &--2 {
-      width: 32px;
-      height: 32px;
-      bottom: 4px;
-      right: -4px;
-      animation-delay: -4s;
-    }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.3s;
   }
 }
 
-.eia-pain {
-  position: relative;
+// ─── PAIN POINTS ─────────────────────────────────────
+.eia-pain-brutal {
+  padding: 100px 0;
+  background: #FFF;
+  border-bottom: 4px solid #000;
+
+  &__header {
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #000;
+    margin-top: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
 
   &__item {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 20px 24px;
-    font-size: $small;
-    color: $text-body;
+    gap: 20px;
+    padding: 24px 28px;
+    border: 4px solid #000;
+    border-bottom: none;
+    background: #FFF;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:last-child {
+      border-bottom: 4px solid #000;
+    }
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0px $orange;
+      z-index: 2;
+      position: relative;
+    }
   }
 
   &__icon {
@@ -441,193 +395,408 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
     flex-shrink: 0;
   }
 
+  &__text {
+    font-family: $font-mono;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #000;
+  }
+
   &__closing {
-    font-size: $h4;
-    color: $text-body;
+    font-family: $font-mono;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
-    position: relative;
-    z-index: 1;
+    margin-top: 48px;
+    line-height: 1.6;
 
     strong {
-      background: linear-gradient(135deg, $purple, $orange);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 800;
+      color: $purple;
     }
   }
 }
 
-// Scattered card content styles
-.sc-content {
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  justify-content: center;
-  gap: 8px;
+// ─── PARCOURS ────────────────────────────────────────
+.eia-parcours-brutal {
+  padding: 100px 0;
+  background: $bg-light-2;
+  border-bottom: 4px solid #000;
 
-  &__number {
-    font-family: $font-heading;
-    font-size: 2.5rem;
-    font-weight: 900;
-    line-height: 1;
-    opacity: 0.35;
-  }
-
-  &__icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba($purple, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $purple;
+  &__header {
+    margin-bottom: 60px;
   }
 
   &__title {
-    font-size: $body;
-    font-weight: 700;
-    color: $text-heading;
-    line-height: 1.3;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #000;
+    margin-top: 16px;
   }
 
-  &__desc {
-    font-size: $small;
-    color: $text-muted;
-    line-height: 1.5;
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.eia-step-card {
+  border: 4px solid #000;
+  border-right: none;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #FFF;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:last-child {
+    border-right: 4px solid #000;
   }
 
-  &__sub {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    text-align: left;
-  }
+  @media (max-width: 992px) {
+    border-right: 4px solid #000;
+    border-bottom: none;
 
-  &__sub-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: $xs;
-    color: $text-body;
-
-    svg {
-      color: $orange;
-      flex-shrink: 0;
+    &:last-child {
+      border-bottom: 4px solid #000;
     }
   }
 
-  @media (max-width: 768px) {
-    padding: 20px 16px;
-    gap: 6px;
-
-    &__number { font-size: 2rem; }
-    &__icon { width: 36px; height: 36px; }
-    &__title { font-size: $small; }
-    &__desc { font-size: $xs; }
+  &:hover {
+    transform: translateY(-8px);
+    z-index: 10;
+    border-right: 4px solid #000;
   }
 
-  @media (max-width: 480px) {
-    padding: 16px 12px;
-    gap: 4px;
-
-    &__number { font-size: 1.5rem; }
-    &__icon { width: 32px; height: 32px; }
-    &__title { font-size: $xs; }
-    &__desc { display: none; }
-    &__sub { display: none; }
+  &--purple {
+    &:hover { box-shadow: 12px 12px 0px $purple; }
   }
-}
 
-.sc-media {
-  height: 100%;
+  &--orange {
+    &:hover { box-shadow: 12px 12px 0px $orange; }
+  }
 
-  video {
+  &--white {
+    &:hover { box-shadow: 12px 12px 0px #000; }
+  }
+
+  &__number {
+    font-family: $font-mono;
+    font-size: clamp(4rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 0.8;
+    color: rgba(0, 0, 0, 0.06);
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    pointer-events: none;
+  }
+
+  &__video-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 4px solid #000;
+    overflow: hidden;
+    margin-bottom: 24px;
+    background: #000;
+  }
+
+  &__video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    filter: grayscale(100%) contrast(130%);
+    transition: filter 0.3s;
+    opacity: 0.8;
   }
-}
 
-.eia-solution {
-  padding: 8px;
-
-  &__step {
-    display: block;
-    font-family: $font-heading;
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 8px;
-    opacity: 0.35;
-    background: linear-gradient(135deg, $purple, $orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  &:hover &__video {
+    filter: grayscale(0%) contrast(110%);
+    opacity: 1;
   }
 
   &__icon {
     width: 56px;
     height: 56px;
-    border-radius: 50%;
-    background: rgba($purple, 0.08);
+    border: 4px solid #000;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 16px;
     color: $purple;
+    margin-bottom: 20px;
+    background: #FFF;
   }
 
   &__title {
-    font-size: $body;
-    color: $text-heading;
-    margin-bottom: 8px;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    text-transform: uppercase;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin-bottom: 12px;
+    font-weight: 700;
   }
 
   &__desc {
-    font-size: $small;
-    color: $text-muted;
+    font-family: $font-mono;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  &__sub {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: $font-mono;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #000;
+
+      svg {
+        color: $orange;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+// ─── SOLUTIONS ───────────────────────────────────────
+.eia-solutions-brutal {
+  padding: 100px 0;
+  background: #FFF;
+  border-bottom: 4px solid #000;
+
+  &__header {
+    margin-bottom: 60px;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #000;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    font-family: $font-mono;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__footer {
+    margin-top: 48px;
+  }
+
+  &__note {
+    font-family: $font-mono;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 24px;
+  }
+}
+
+.eia-sol-card {
+  border: 4px solid #000;
+  padding: 32px 24px;
+  background: #FFF;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  // Collapse duplicate borders
+  margin-top: -4px;
+  margin-left: -4px;
+
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0px $purple;
+    z-index: 2;
+    position: relative;
+  }
+
+  &__step {
+    display: block;
+    font-family: $font-mono;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.06);
+    margin-bottom: 8px;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $purple;
+    margin-bottom: 16px;
+    background: #FFF;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  &__desc {
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+}
+
+// ─── MOSAIC ──────────────────────────────────────────
+.eia-mosaic-brutal {
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #000;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    font-family: $font-mono;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    max-width: 480px;
+    line-height: 1.7;
+  }
+}
+
+// ─── CTA ─────────────────────────────────────────────
+.eia-cta-brutal {
+  background: #FFF;
+  border-top: 4px solid #000;
+  padding: 120px 0;
+  text-align: center;
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    margin-bottom: 30px;
+    color: #000;
+
+    .block { display: block; }
+
+    .outline-text {
+      color: transparent;
+      -webkit-text-stroke: 3px #000;
+
+      @media (max-width: 768px) {
+        -webkit-text-stroke: 2px #000;
+      }
+    }
+
+    .text-purple {
+      color: $purple;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-mono;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    max-width: 650px;
+    margin-bottom: 60px;
     line-height: 1.6;
   }
 
-  // Compact variant for cards 6+7 (half-height, horizontal)
-  &--compact {
-    display: flex;
-    gap: 16px;
-    text-align: left;
-    padding: 4px;
-    align-items: center;
+  &__btn-wrap {
+    display: inline-block;
+  }
 
-    .eia-solution__step {
-      margin-bottom: 4px;
+  .btn-massive {
+    font-size: 1.5rem;
+    padding: 24px 48px;
+    border-width: 4px;
+    box-shadow: 12px 12px 0px #000;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 16px 16px 0px #000;
     }
 
-    .eia-solution__icon {
-      margin: 0;
-      flex-shrink: 0;
+    &:active {
+      transform: translate(8px, 8px);
+      box-shadow: 0px 0px 0px #000;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.125rem;
+      padding: 20px 32px;
     }
   }
 }
 
-.eia-solutions__note {
-  color: $text-muted;
-  font-size: $small;
-  font-style: italic;
-}
-
-.mosaic-subtitle {
-  font-size: $body;
-  color: $text-muted;
-  line-height: 1.7;
-  max-width: 480px;
-  margin: 16px auto 0;
-}
+// ─── UTILITIES ───────────────────────────────────────
+.mt-24 { margin-top: 24px; }
 </style>
