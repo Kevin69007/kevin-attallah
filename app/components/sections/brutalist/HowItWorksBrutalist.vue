@@ -239,7 +239,7 @@ onBeforeUnmount(() => {
     position: absolute;
     left: 0;
     right: 0;
-    top: 35%;
+    top: 42%;
     transform: translateY(-50%) scale(0.92);
     height: 280px;
     border-top: 4px solid #000;
