@@ -1,39 +1,56 @@
 <template>
-  <div>
-    <HeroSection />
-    <SocialProofMarquee />
-    <TwoPathsSection />
-    <TestimonialsCarousel />
-    <WhyKevin />
-    <HowItWorks />
-    <BlogPreview />
-    <CTASection
-      title="T'es encore là ? C'est le moment de <span class='gradient-text'>passer à l'action.</span>"
-      subtitle="Un appel de 30 minutes, gratuit, sans engagement. On regarde ensemble ce qui est fait pour toi."
-      primaryText="Je réserve mon appel gratuit"
-      :primaryHref="externalLinks.booking.brevoMeeting"
-      secondaryText=""
-    />
-
-    <!-- Exit-intent modal -->
-    <FreeFormationModal
-      :visible="exitIntent.triggered.value && !exitIntent.dismissed.value"
-      @close="exitIntent.dismiss()"
-    />
+  <div class="page-home-brutal">
+    <WebGLBrutalistLight />
+    
+    <main class="brutal-content-stack">
+      <HeroBrutalist />
+      <MarqueeBrutalist />
+      
+      <WhyKevinBrutalist />
+      <TunnelTransition />
+      
+      <TwoPathsBrutalist />
+      <TunnelTransition />
+      
+      <HowItWorksBrutalist />
+      <TunnelTransition />
+      
+      <TestimonialsBrutalist />
+      <TunnelTransition />
+      
+      <BlogBrutalist />
+      <TunnelTransition />
+      
+      <CTABrutalist />
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { externalLinks } from '~/data/external-links'
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+import HeroBrutalist from '~/components/sections/brutalist/HeroBrutalist.vue'
+import MarqueeBrutalist from '~/components/sections/brutalist/MarqueeBrutalist.vue'
+import WhyKevinBrutalist from '~/components/sections/brutalist/WhyKevinBrutalist.vue'
+import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
+import TwoPathsBrutalist from '~/components/sections/brutalist/TwoPathsBrutalist.vue'
+import HowItWorksBrutalist from '~/components/sections/brutalist/HowItWorksBrutalist.vue'
+import TestimonialsBrutalist from '~/components/sections/brutalist/TestimonialsBrutalist.vue'
+import BlogBrutalist from '~/components/sections/brutalist/BlogBrutalist.vue'
+import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 
-useHead({ title: 'Accueil' })
-
-const { trackViewContent } = useFBPixel()
-const { trackViewItem } = useGoogleAds()
-onMounted(() => {
-  trackViewContent({ content_name: 'Homepage' })
-  trackViewItem({ content_name: 'Homepage' })
+definePageMeta({
+  layout: 'default'
 })
-
-const exitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6 })
 </script>
+
+<style scoped>
+.page-home-brutal {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
+</style>

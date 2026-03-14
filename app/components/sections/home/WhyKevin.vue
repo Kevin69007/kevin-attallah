@@ -9,7 +9,6 @@
             <div class="why__glass-panel why__glass-panel--1"></div>
             <div class="why__glass-panel why__glass-panel--2"></div>
             <div class="why__glass-panel why__glass-panel--3"></div>
-            <!-- Main photo -->
             <div v-magnetic="0.12" class="why__photo glass-card-light">
               <NuxtImg src="/img/testimonial/testimonial1.png" alt="Kevin Attallah" class="why__photo-img" format="webp" quality="80" />
             </div>
@@ -23,25 +22,21 @@
         <ScrollReveal direction="right">
           <SectionHeading
             label="Qui est Kevin"
-            title="Pas un théoricien. Un entrepreneur."
-            gradient-text="Un entrepreneur."
+            title="Le terrain, pas la théorie."
+            gradient-text="la théorie."
             mode="blur-in"
             :center="false"
+            :once="true"
           />
           <p class="why__text">
-            Depuis 11 ans, je crée des entreprises, je les développe, et j'aide les autres à faire
-            la même chose. J'ai lancé plus d'une dizaine de projets, dans des secteurs différents,
-            avec des modèles différents. Certains ont cartonné, d'autres m'ont appris plus que
-            n'importe quelle école.
+            J'ai construit, planté, relancé et scalé plus d'une dizaine de projets. Je connais 
+            le goût du sang, l'odeur des victoires et la réalité de la trésorerie. Mon école ? 
+            La vraie vie.
           </p>
           <p class="why__text">
-            Quand l'IA a commencé à tout changer, je ne l'ai pas observée de loin. Je l'ai
-            intégrée dans mes process, mes équipes, mes outils. Et aujourd'hui, c'est exactement
-            ce que je fais pour mes clients.
-          </p>
-          <p class="why__text">
-            Mon objectif est simple : t'aider à créer ou faire grandir ton business avec les
-            bons outils, les bonnes méthodes, et quelqu'un qui est passé par là avant toi.
+            Aujourd'hui, l'IA sépare ceux qui avancent de ceux qui disparaissent. Mon objectif 
+            est radical : vous faire gagner du temps, multiplier vos marges, et vous armer 
+            des systèmes qui dominent le marché.
           </p>
 
           <div class="why__bullets">
@@ -81,10 +76,10 @@ import { Building2, TrendingUp, Bot, Globe, ArrowRight } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
 
 const bullets = [
-  { icon: Building2, text: 'Une dizaine d\'entreprises créées de zéro' },
-  { icon: TrendingUp, text: 'Des millions générés et économisés pour mes clients' },
-  { icon: Bot, text: 'L\'IA intégrée comme outil de croissance depuis 2019' },
-  { icon: Globe, text: '+2100 entrepreneurs accompagnés en France et à l\'international' },
+  { icon: Building2, text: 'Stratégies validées sur +10 entreprises réelles' },
+  { icon: TrendingUp, text: 'Millions d\'euros générés pour mes clients' },
+  { icon: Bot, text: 'Systèmes IA implantés depuis l\'aube du marché' },
+  { icon: Globe, text: '+2100 leaders accompagnés vers l\'indépendance' },
 ]
 
 const stats: { value: number | string; suffix: string; label: string }[] = [
@@ -114,16 +109,16 @@ const stats: { value: number | string; suffix: string; label: string }[] = [
   &__glass-panel {
     position: absolute;
     border-radius: $radius-lg;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(24px) saturate(1.2);
+    -webkit-backdrop-filter: blur(24px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 2px 6px rgba(0, 0, 0, 0.03),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-    animation: border-glow 6s ease-in-out infinite;
+      0 12px 40px rgba(17, 24, 39, 0.04),
+      0 2px 6px rgba(17, 24, 39, 0.02),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(17, 24, 39, 0.01);
+    animation: border-glow-light 6s ease-in-out infinite;
     pointer-events: none;
 
     &--1 {
@@ -172,14 +167,14 @@ const stats: { value: number | string; suffix: string; label: string }[] = [
   &__glass-accent {
     position: absolute;
     border-radius: $radius-full;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     box-shadow:
-      0 4px 16px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    animation: border-glow 6s ease-in-out infinite;
+      0 8px 24px rgba(17, 24, 39, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    animation: border-glow-light 6s ease-in-out infinite;
     pointer-events: none;
     z-index: 2;
 
@@ -218,7 +213,8 @@ const stats: { value: number | string; suffix: string; label: string }[] = [
     display: flex;
     align-items: center;
     gap: 12px;
-    color: $text-body;
+    color: $text-heading;
+    font-weight: 500;
     font-size: $small;
   }
 
@@ -260,6 +256,7 @@ const stats: { value: number | string; suffix: string; label: string }[] = [
   &__band-label {
     font-size: $xs;
     color: $text-muted;
+    font-weight: 500;
     margin-top: 4px;
     display: block;
   }

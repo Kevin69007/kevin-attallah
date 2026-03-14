@@ -2,24 +2,35 @@
 // LIQUID GLASS — Glassmorphism Components
 // ============================================
 
-// Animated border — smooth breathing glow
-@keyframes border-glow {
+// Animated border — smooth breathing glow for Light Mode panels
+@keyframes border-glow-light {
   0%, 100% {
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 2px 6px rgba(0, 0, 0, 0.03),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+      0 12px 40px rgba(17, 24, 39, 0.04),
+      0 2px 6px rgba(17, 24, 39, 0.02),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(17, 24, 39, 0.01);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow:
+      0 12px 40px rgba(17, 24, 39, 0.04),
+      0 2px 6px rgba(17, 24, 39, 0.02),
+      0 0 20px rgba(255, 255, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(17, 24, 39, 0.01);
+  }
+}
+
+// Animated border - Tunnel mode (dark)
+@keyframes border-glow-dark {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.1);
   }
   50% {
     border-color: rgba($purple-light, 0.2);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 2px 6px rgba(0, 0, 0, 0.03),
-      0 0 16px rgba($purple, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+    box-shadow: 0 0 16px rgba($purple, 0.1);
   }
 }
 
@@ -33,19 +44,19 @@
   box-shadow: $shadow-glass;
 }
 
-// Light glass (on light backgrounds — frosted translucent)
+// Light glass (on light backgrounds — default frosted translucent)
 .glass-light {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+  backdrop-filter: blur(32px) saturate(1.5);
+  -webkit-backdrop-filter: blur(32px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: $radius-lg;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.06),
-    0 2px 6px rgba(0, 0, 0, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-  animation: border-glow 6s ease-in-out infinite;
+    0 16px 40px rgba(17, 24, 39, 0.03),
+    inset 0 2px 2px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
 }
 
 // Navigation glass (dark — for hero overlay)
@@ -82,31 +93,50 @@
   }
 }
 
-// Card on light backgrounds (liquid glass — frosted translucent)
+// Card on light backgrounds (Primary — thick frosted glass)
 .glass-card-light {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
+  backdrop-filter: blur(30px) saturate(1.5);
+  -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $radius-lg;
+  
+  // Advanced multi-layered shadow for thick glass volume
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.06),
-    0 2px 6px rgba(0, 0, 0, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-  transition: all 0.5s $ease-smooth;
-  animation: border-glow 6s ease-in-out infinite;
+    0 24px 48px rgba(17, 24, 39, 0.03), // Deep soft ambient shadow
+    0 8px 16px rgba(17, 24, 39, 0.02), // Mid shadow
+    inset 0 2px 3px rgba(255, 255, 255, 0.8), // Thick top inner lip
+    inset 0 -1px 2px rgba(0, 0, 0, 0.02), // Dark bottom inner lip
+    inset 1px 0 2px rgba(255, 255, 255, 0.4); // Side highlight
+    
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+
+  // Specular diagonal highlight
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.4) 0%, transparent 60%);
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+  }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba($purple, 0.25);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+    border-color: rgba(255, 255, 255, 1);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.08),
-      0 2px 8px rgba(0, 0, 0, 0.04),
-      0 0 20px rgba($purple, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    transform: translateY(-4px);
-    animation: none;
+      0 32px 64px rgba(108, 43, 217, 0.05), // Shift shadow to brand purple subtly
+      0 12px 24px rgba(17, 24, 39, 0.02),
+      inset 0 2px 4px rgba(255, 255, 255, 1),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.02);
+    transform: translateY(-4px) scale(1.01);
+    
+    &::before {
+      opacity: 1;
+    }
   }
 }
 
@@ -138,7 +168,7 @@
   color: $purple-light;
 }
 
-// Badge variants for light backgrounds (frosted glass)
+// Badge variants for light backgrounds (Primary — frosted glass)
 .glass-badge-light {
   display: inline-flex;
   align-items: center;
@@ -147,42 +177,33 @@
   padding: 6px 16px;
   font-size: 13px;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: $text-body;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: $text-heading;
+  // Thick edge lighting for badge
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.06),
-    0 2px 6px rgba(0, 0, 0, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
-  animation: border-glow 6s ease-in-out infinite;
-  transition: all 0.5s $ease-smooth;
+    0 8px 16px rgba(17, 24, 39, 0.03),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba($purple, 0.25);
+    background: rgba(255, 255, 255, 0.7);
+    transform: translateY(-3px) scale(1.03);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.08),
-      0 2px 8px rgba(0, 0, 0, 0.04),
-      0 0 20px rgba($purple, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    transform: translateY(-4px);
-    animation: none;
+      0 12px 24px rgba($purple, 0.06),
+      inset 0 1.5px 3px rgba(255, 255, 255, 1);
   }
 }
 
 .glass-badge-light--orange {
-  background: rgba($orange, 0.1);
-  border-color: rgba($orange, 0.2);
-  color: $orange;
+  color: $orange-dark;
 }
 
 .glass-badge-light--purple {
-  background: rgba($purple, 0.1);
-  border-color: rgba($purple, 0.2);
-  color: $purple;
+  color: $purple-dark;
 }
 
 // Glass input (dark backgrounds)

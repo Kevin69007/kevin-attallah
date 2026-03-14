@@ -1,5 +1,5 @@
 <template>
-  <section class="cta-section">
+  <section class="cta-section section--light">
     <WaveLines />
     <div class="container cta-section__content text-center">
       <ScrollReveal>
@@ -10,7 +10,7 @@
             {{ primaryText }}
             <ArrowRight :size="20" />
           </AppButton>
-          <AppButton v-if="secondaryText" variant="ghost-light" size="lg" :to="secondaryLink">
+          <AppButton v-if="secondaryText" variant="ghost" size="lg" :to="secondaryLink">
             {{ secondaryText }}
           </AppButton>
         </div>
@@ -56,6 +56,7 @@ withDefaults(defineProps<Props>(), {
   &__title {
     font-size: $h2;
     margin-bottom: 16px;
+    color: $text-heading;
   }
 
   &__text {

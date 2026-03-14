@@ -2,7 +2,7 @@
 // BASE — Reset & Global Styles
 // ============================================
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 *,
 *::before,
@@ -29,18 +29,20 @@ body {
   overflow-x: hidden;
 }
 
-// Headings
+// Headings - Brutalist Scale
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-heading;
-  font-weight: 800;
-  line-height: 1.15;
+  font-weight: 700;
+  line-height: 0.9;
   color: $text-heading;
+  letter-spacing: -0.05em; 
+  text-transform: uppercase;
 }
 
-h1 { font-size: $h1; }
-h2 { font-size: $h2; }
-h3 { font-size: $h3; }
-h4 { font-size: $h4; }
+h1 { font-size: $h1; font-weight: 700; letter-spacing: -0.06em; }
+h2 { font-size: $h2; letter-spacing: -0.05em; }
+h3 { font-size: $h3; letter-spacing: -0.04em; }
+h4 { font-size: $h4; letter-spacing: -0.03em; }
 
 p {
   color: $text-body;
@@ -51,6 +53,10 @@ a {
   text-decoration: none;
   color: inherit;
   transition: color 0.3s ease;
+  
+  &:hover {
+    color: $purple;
+  }
 }
 
 img {
@@ -105,8 +111,8 @@ input, textarea, select {
   position: relative;
 }
 
-// Light section (transparent — BackgroundCanvas shows through)
-.section--light {
+// Light section (default body)
+.section--light, .section {
   padding: $section-pad 0;
   background: transparent;
   color: $text-body;
@@ -125,10 +131,10 @@ input, textarea, select {
   }
 }
 
-// White section (transparent — unified with light)
+// White section (solid fallback)
 .section--white {
   padding: $section-pad 0;
-  background: transparent;
+  background: $bg-white;
   color: $text-body;
   position: relative;
 
@@ -138,10 +144,6 @@ input, textarea, select {
 
   p {
     color: $text-body;
-  }
-
-  .section-label {
-    color: $purple;
   }
 }
 
@@ -174,13 +176,18 @@ input, textarea, select {
 
 // Section label / eyebrow
 .section-label {
-  font-size: $xs;
+  font-family: $font-mono;
+  font-size: $small;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  color: $purple;
-  margin-bottom: 16px;
-  display: block;
+  letter-spacing: 0.1em;
+  color: $bg-page;
+  background: $purple;
+  padding: 8px 16px;
+  display: inline-block;
+  margin-bottom: 24px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px #000;
 }
 
 .section-title {

@@ -1,43 +1,31 @@
 <template>
   <section class="hero section--light">
-    <!-- Background orbs -->
-    <div class="hero__bg">
-      <FloatingElement :amplitude="30" :duration="6">
-        <div class="orb orb--purple hero__orb hero__orb--1"></div>
-      </FloatingElement>
-      <FloatingElement :amplitude="20" :duration="8">
-        <div class="orb orb--orange hero__orb hero__orb--2"></div>
-      </FloatingElement>
-      <div class="orb orb--purple hero__orb hero__orb--3"></div>
-    </div>
+    <!-- Fullscreen WebGL Background -->
+    <WebGLBackground />
 
     <div class="container hero__grid">
       <!-- Left: Text content -->
       <div class="hero__content">
-        <TextSplit
-          text="L'IA ne remplace pas les entrepreneurs. Elle remplace ceux qui attendent."
-          gradient-text="attendent."
-          tag="h1"
-          :delay="0.3"
-          :stagger="0.02"
-          class="hero__title"
-        />
+        <KineticText tag="h1" preset="chars-up" :delay="0.3" class="hero__title">
+          Ne laissez pas l'IA aux autres.<br>
+          Prenez une <span class="gradient-text">longueur d'avance.</span>
+        </KineticText>
 
         <ScrollReveal :delay="0.6">
           <p class="hero__subtitle">
-            Accompagnement personnalisé + formations finançables. C'est le tournant
-            du siècle. Tu montes dans le train ou tu regardes partir les autres ?
+            Accélérez votre croissance avec un accompagnement sur-mesure et des formations finançables.
+            Le marché évolue vite. Soyez parmi ceux qui le dominent.
           </p>
         </ScrollReveal>
 
         <ScrollReveal :delay="0.8">
           <div class="hero__ctas">
             <AppButton variant="primary" size="lg" to="/creer-entreprise">
-              Je veux créer mon entreprise
+              Propulser mon projet
               <ArrowRight :size="20" />
             </AppButton>
-            <AppButton variant="primary" size="lg" to="/evoluer-ia">
-              Je veux faire évoluer mon entreprise avec l'IA
+            <AppButton variant="ghost-light" size="lg" to="/evoluer-ia">
+              Intégrer l'IA à mon business
               <ArrowRight :size="20" />
             </AppButton>
           </div>
@@ -45,17 +33,17 @@
 
         <ScrollReveal :delay="1">
           <div class="hero__trust">
-            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
+            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light glass-badge-light--purple">
               <Users :size="16" />
-              <span><strong>2 100+</strong> entrepreneurs lancés</span>
+              <span><strong>2 100+</strong> leaders formés</span>
             </div>
-            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
+            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light glass-badge-light--purple">
               <Star :size="16" />
               <span><strong>4.8/5</strong> de satisfaction client</span>
             </div>
-            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light">
+            <div v-magnetic="0.2" class="hero__trust-item glass-badge-light glass-badge-light--orange">
               <Award :size="16" />
-              <span><strong>100%</strong> finançable</span>
+              <span><strong>100%</strong> éligible CPF</span>
             </div>
           </div>
         </ScrollReveal>
@@ -115,7 +103,7 @@ const chatBubbles = [
   {
     name: 'David B.',
     company: 'DB Prestige',
-    message: "J'hésitais à me lancer, du coup c'est décidé grâce aux conseils de Kevin !",
+    message: "Formation hyper concrète, j'ai gagné 3 mois de travail !",
   },
   {
     name: 'Anthony J.',
@@ -178,18 +166,6 @@ onMounted(() => {
   padding-top: 100px;
   padding-bottom: 60px;
 
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  &__orb {
-    position: absolute;
-    &--1 { width: 500px; height: 500px; top: -10%; right: -5%; opacity: 0.3; }
-    &--2 { width: 300px; height: 300px; bottom: 10%; left: -5%; opacity: 0.25; }
-    &--3 { width: 200px; height: 200px; top: 50%; left: 40%; opacity: 0.1; animation: pulse-glow 4s ease-in-out infinite; }
-  }
 
   &__grid {
     position: relative;
@@ -248,7 +224,7 @@ onMounted(() => {
 
   &__trust-item {
     font-size: $xs;
-    strong { color: $text-heading; }
+    strong { color: $text-heading; font-weight: 800; }
   }
 
   // Photo

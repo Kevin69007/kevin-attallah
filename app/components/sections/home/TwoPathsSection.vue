@@ -1,20 +1,21 @@
 <template>
-  <section class="two-paths section--light">
+  <section class="two-paths section--dark">
     <div class="container">
       <SectionHeading
         label="Ton parcours"
         title="Par où tu commences ?"
         gradient-text="commences"
         mode="chars"
+        :once="true"
       />
 
       <StaggerGrid class="two-paths__grid mt-48" :stagger="0.2">
         <!-- Card 1: Créer (Standard) -->
-        <div v-magnetic="0.15" class="two-paths__card two-paths__card--standard glass-card-light">
+        <div v-magnetic="0.15" class="two-paths__card two-paths__card--standard glass-dark">
           <div class="two-paths__icon two-paths__icon--purple">
             <Building2 :size="28" />
           </div>
-          <GlassBadge variant="purple-light">Création d'entreprise</GlassBadge>
+          <GlassBadge variant="purple">Création d'entreprise</GlassBadge>
           <h3 class="two-paths__title mt-16">Je veux créer mon entreprise</h3>
           <p class="two-paths__desc">
             Formation en autonomie ou accompagnement personnalisé, finançable
@@ -37,19 +38,19 @@
               <span>L'IA intégrée dès le départ</span>
             </div>
           </div>
-          <AppButton variant="ghost-light" to="/creer-entreprise" class="two-paths__button">
+          <AppButton variant="ghost" to="/creer-entreprise" class="two-paths__button">
             Je découvre
             <ArrowRight :size="18" />
           </AppButton>
         </div>
 
         <!-- Card 2: Évoluer (Featured) -->
-        <div v-magnetic="0.15" class="two-paths__card two-paths__card--featured glass-card-light">
+        <div v-magnetic="0.15" class="two-paths__card two-paths__card--featured glass-dark">
           <div class="two-paths__ribbon">Recommandé</div>
           <div class="two-paths__icon two-paths__icon--orange">
             <Rocket :size="28" />
           </div>
-          <GlassBadge variant="orange-light">Évolution avec l'IA</GlassBadge>
+          <GlassBadge variant="orange">Évolution avec l'IA</GlassBadge>
           <h3 class="two-paths__title mt-16">Je veux faire évoluer mon entreprise avec l'IA</h3>
           <p class="two-paths__desc">
             Formations équipes, audit IA, déploiement. Finançable
@@ -147,12 +148,12 @@ import { Building2, Rocket, ArrowRight, CheckCircle } from 'lucide-vue-next'
 
   &__title {
     font-size: $h4;
-    color: $text-heading;
+    color: $text-white;
     margin-bottom: 12px;
   }
 
   &__desc {
-    color: $text-muted;
+    color: $text-on-dark-muted;
     font-size: $small;
     line-height: 1.7;
   }
@@ -170,7 +171,7 @@ import { Building2, Rocket, ArrowRight, CheckCircle } from 'lucide-vue-next'
     align-items: center;
     gap: 10px;
     font-size: $small;
-    color: $text-body;
+    color: $text-on-dark;
 
     svg {
       flex-shrink: 0;
@@ -197,18 +198,17 @@ import { Building2, Rocket, ArrowRight, CheckCircle } from 'lucide-vue-next'
   // Featured card (orange accent, dominant)
   &__card--featured {
     border-left: 3px solid $orange;
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba($orange, 0.2);
+    background: rgba(255, 255, 255, 0.08); /* slightly brighter dark glass */
+    border-color: rgba($orange, 0.4);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.06),
-      0 0 40px rgba($orange, 0.08);
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      0 0 40px rgba($orange, 0.15);
 
     &:hover {
       box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        0 0 48px rgba($orange, 0.12);
-      border-color: rgba($orange, 0.3);
-      border-left: 3px solid $orange;
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba($orange, 0.25);
+      border-color: rgba($orange, 0.6);
     }
   }
 }

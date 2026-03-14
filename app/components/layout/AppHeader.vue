@@ -1,8 +1,8 @@
 <template>
   <header :class="['header', { 'header--scrolled': isScrolled }]" :style="{ top: barHeight + 'px' }">
     <div class="container header__container">
-      <!-- Dark glass pill with logo + nav -->
-      <div v-magnetic="0.1" class="header__pill glass-card-light">
+      <!-- Brutalist solid block with logo + nav -->
+      <div class="header__pill brutal-header-block">
         <NuxtLink to="/" class="header__logo">
           <NuxtImg src="/img/logo-1.png" alt="Kevin Attallah" class="header__logo-img" />
         </NuxtLink>
@@ -16,7 +16,6 @@
 
       <!-- CTA button — gold gradient, outside pill -->
       <a
-        v-magnetic="0.25"
         :href="externalLinks.booking.brevoMeeting"
         target="_blank"
         rel="noopener noreferrer"
@@ -97,27 +96,25 @@ watch(mobileOpen, (open) => {
     position: relative;
   }
 
-  // Liquid glass pill — frosted translucent
+  // Brutalist block — solid white, sharp shadow
   &__pill {
     display: flex;
     align-items: center;
     gap: 8px;
-    border-radius: 100px;
+    background: #FFFFFF;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
     padding: 10px 20px 10px 16px;
-    transition: all 0.4s $ease-smooth;
+    transition: all 0.2s;
 
     &:hover {
-      transform: none;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #000;
     }
 
     .header--scrolled & {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        0 2px 6px rgba(0, 0, 0, 0.04),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+      // Keeps same block style but could add a purple accent
+      box-shadow: 4px 4px 0px $purple;
     }
   }
 
@@ -173,34 +170,34 @@ watch(mobileOpen, (open) => {
     }
   }
 
-  // Clean solid CTA button — positioned right
+  // Brutalist solid CTA button
   &__cta {
     position: absolute;
     right: 0;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: $orange;
-    color: #fff;
-    border-radius: 100px;
+    background: #FFFFFF;
+    color: #000;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
     padding: 12px 28px;
-    font-family: $font-heading;
+    font-family: $font-mono;
     font-weight: 700;
     font-size: $small;
-    letter-spacing: 0.3px;
-    border: 1px solid rgba($orange-light, 0.3);
-    box-shadow:
-      0 4px 16px rgba($orange-dark, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    transition: all 0.4s $ease-smooth;
+    text-transform: uppercase;
+    transition: all 0.2s;
     white-space: nowrap;
 
     &:hover {
-      background: $orange-dark;
-      box-shadow:
-        0 6px 24px rgba($orange-dark, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      transform: translateY(-1px);
+      background: $orange;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #000;
+    }
+    
+    &:active {
+      transform: translate(2px, 2px);
+      box-shadow: 0px 0px 0px #000;
     }
 
     @media (max-width: 1024px) {

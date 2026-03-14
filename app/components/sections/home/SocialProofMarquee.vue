@@ -1,5 +1,6 @@
 <template>
-  <section class="proof section--white">
+  <section class="proof section--light">
+    <!-- Optional: a subtle white/glass background if needed, but transparent works on the white body -->
     <InfiniteMarquee :speed="15">
       <div class="proof__items">
         <div class="proof__item" v-for="item in proofItems" :key="item.label">
@@ -59,7 +60,7 @@ const proofItems = [
   }
 
   &__dot {
-    color: $text-muted;
+    color: $purple-light;
     font-size: 1.5rem;
   }
 }

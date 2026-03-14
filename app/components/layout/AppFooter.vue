@@ -1,14 +1,16 @@
 <template>
-  <footer class="footer">
-    <div class="container">
-      <!-- Large decorative K behind -->
-      <span class="footer__letter" aria-hidden="true">K</span>
-      <!-- Large decorative watermark -->
-      <h2 class="footer__watermark" aria-hidden="true">KEVINATTALLAH</h2>
+  <footer class="footer-brutal">
+    <div class="container relative">
+      <div class="footer-brutal__top">
+        <h2 class="footer-brutal__title" aria-hidden="true">KEVIN_ATTALLAH<span class="cursor">_</span></h2>
+        <div class="footer-brutal__desc">
+          <span>// INTELLIGENCE ARTIFICIELLE</span>
+          <span>// STRATÉGIE BUSINESS</span>
+          <span>// SCALING OPÉRATIONNEL</span>
+        </div>
+      </div>
 
-      <!-- Link columns -->
-      <div class="footer__grid">
-        <!-- Site links -->
+      <div class="footer-brutal__grid">
         <div class="footer__col">
           <h4 class="footer__heading">Site</h4>
           <NuxtLink to="/">Accueil</NuxtLink>
@@ -19,7 +21,6 @@
           <NuxtLink to="/formation-gratuite" class="footer__free-link">Formation Gratuite</NuxtLink>
         </div>
 
-        <!-- Legal + Contact -->
         <div class="footer__col footer__col--right">
           <h4 class="footer__heading">Légal</h4>
           <NuxtLink to="/mentions-legales">Mentions légales</NuxtLink>
@@ -30,21 +31,21 @@
       </div>
 
       <!-- Bottom bar -->
-      <div class="footer__bottom">
-        <p class="footer__copy">
-          &copy; {{ currentYear }} Kevin Attallah. Tous droits réservés.
+      <div class="footer-brutal__bottom">
+        <p class="footer-brutal__copy">
+          &copy; {{ currentYear }} KEVIN ATTALLAH. TOUS DROITS RÉSERVÉS.
         </p>
-        <div class="footer__social">
+        <div class="footer-brutal__social">
           <a
             v-for="link in socialLinks"
             :key="link.name"
             :href="link.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="footer__social-link"
+            class="footer-brutal__social-link"
             :aria-label="link.name"
           >
-            <component :is="socialIcons[link.icon]" :size="18" />
+            <component :is="socialIcons[link.icon]" :size="24" />
           </a>
         </div>
       </div>
@@ -70,145 +71,152 @@ const socialIcons: Record<string, any> = {
 </script>
 
 <style lang="scss" scoped>
-.footer {
-  background: transparent;
-  color: $text-body;
+.footer-brutal {
+  background: #000;
+  color: #FFF;
+  border-top: 4px solid #000; // In case we place it right after a white section
   padding: 80px 0 32px;
   position: relative;
   overflow: hidden;
+  z-index: 20;
 
-  // Large background "K" — stretches full height of footer
-  &__letter {
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    font-family: $font-heading;
-    font-size: clamp(28rem, 60vw, 55rem);
-    font-weight: 900;
-    line-height: 0.75;
-    color: rgba(0, 0, 0, 0.04);
-    user-select: none;
-    pointer-events: none;
-    z-index: 0;
+  &__top {
+    margin-bottom: 60px;
+    border-bottom: 4px solid #FFF;
+    padding-bottom: 40px;
   }
 
-  // Large decorative text — 3D gradient copper fill + white border
-  &__watermark {
-    position: relative;
-    z-index: 1;
-    font-family: $font-heading;
-    font-size: clamp(3rem, 9.5vw, 10rem);
-    font-weight: 900;
+  &__title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: -4px;
-    text-align: center;
-    line-height: 1;
-    margin-bottom: 48px;
-    user-select: none;
-    // 3D metallic gradient — lighter top, darker bottom
-    background: linear-gradient(
-      180deg,
-      $orange-light 0%,
-      $orange 40%,
-      $orange-dark 70%,
-      darken($orange-dark, 8%) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    // White border around letters
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.6);
-    paint-order: stroke fill;
-    // Warm glow behind text
-    filter: drop-shadow(0 0 40px rgba($orange, 0.2)) drop-shadow(0 0 80px rgba($orange-dark, 0.15));
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    color: #FFF;
+    margin-bottom: 24px;
+    
+    .cursor {
+      color: $orange;
+      animation: blink 1s step-end infinite;
+    }
   }
 
-  // 2-column layout
+  &__desc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: $font-mono;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $purple;
+  }
+
   &__grid {
     display: flex;
     justify-content: space-between;
     gap: 40px;
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       flex-direction: column;
-      gap: 32px;
+      gap: 40px;
     }
   }
 
-  &__col {
+  .footer__col {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 
     &--right {
       text-align: right;
 
-      @media (max-width: 640px) {
+      @media (max-width: 768px) {
         text-align: left;
       }
     }
 
     a {
-      color: $text-body;
-      font-size: $small;
+      font-family: $font-mono;
+      color: #FFF;
+      font-size: 1.125rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: color 0.3s ease;
+      font-weight: 700;
+      transition: color 0.2s, padding-left 0.2s;
 
       &:hover {
-        color: $text-heading;
+        color: $orange;
+        padding-left: 8px; // mechanical shift
       }
     }
   }
 
-  &__heading {
-    font-family: $font-heading;
-    font-size: $xs;
-    font-weight: 600;
+  .footer__heading {
+    font-family: $font-mono;
+    font-size: 0.85rem;
     color: $text-muted;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
-  &__free-link {
+  .footer__free-link {
     color: $orange !important;
-    font-weight: 600;
+    background: #FFF;
+    padding: 4px 8px;
+    color: #000 !important;
+    width: fit-content;
+    border: 2px solid #FFF;
+    
+    &:hover {
+      background: #000;
+      color: #FFF !important;
+    }
   }
 
-  // Bottom bar
   &__bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid $card-border;
-    margin-top: 48px;
+    border-top: 4px solid #FFF;
+    margin-top: 60px;
     padding-top: 24px;
 
-    @media (max-width: 640px) {
-      flex-direction: column;
-      gap: 16px;
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+      gap: 24px;
       text-align: center;
     }
   }
 
   &__copy {
-    font-size: $xs;
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    font-weight: 700;
     color: $text-muted;
   }
 
   &__social {
     display: flex;
-    gap: 16px;
+    gap: 24px;
   }
 
   &__social-link {
-    color: $text-muted;
-    transition: all 0.3s ease;
+    color: #FFF;
+    border: 2px solid #FFF;
+    padding: 8px;
+    transition: all 0.2s;
+    background: #000;
 
     &:hover {
-      color: $purple;
+      background: $purple;
+      transform: translate(-4px, -4px);
+      box-shadow: 4px 4px 0px $orange;
     }
   }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 </style>

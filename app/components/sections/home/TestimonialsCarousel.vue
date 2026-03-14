@@ -6,6 +6,7 @@
         title="Ils ont transformé leur vie"
         gradient-text="transformé"
         mode="words"
+        :once="true"
       />
     </div>
 
@@ -168,18 +169,19 @@ onMounted(() => {
     gap: 20px;
     margin-top: 48px;
     margin-bottom: 48px;
+    // Fade edges for light mode
     mask-image: linear-gradient(
       to right,
       transparent 0%,
-      black 5%,
-      black 95%,
+      white 5%,
+      white 95%,
       transparent 100%
     );
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0%,
-      black 5%,
-      black 95%,
+      white 5%,
+      white 95%,
       transparent 100%
     );
 
@@ -249,7 +251,7 @@ onMounted(() => {
   &__trust-sep {
     width: 1px;
     height: 24px;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(17, 24, 39, 0.1);
 
     @media (max-width: 480px) {
       width: 40px;

@@ -6,10 +6,11 @@
         title="Derniers articles"
         gradient-text="articles"
         mode="words"
+        :once="true"
       />
 
       <!-- Featured post: full-bleed immersive card -->
-      <ScrollReveal class="mt-48">
+      <ScrollReveal :once="true" class="mt-48">
         <div
           ref="featuredRef"
           class="blog-hero"
@@ -48,14 +49,14 @@
       </ScrollReveal>
 
       <!-- Articles strip header -->
-      <ScrollReveal class="mt-48">
+      <ScrollReveal :once="true" class="mt-48">
         <div class="blog-strip-header">
           <h3 class="blog-strip-header__title">Autres articles</h3>
           <AppButton variant="ghost-light" to="/blog" size="sm">
             Voir tout <ArrowRight :size="14" />
           </AppButton>
         </div>
-        <div class="glass-divider-light"></div>
+        <div class="glass-divider"></div>
       </ScrollReveal>
 
       <!-- Horizontal article strip -->
@@ -151,7 +152,7 @@ onMounted(() => {
         scrollTrigger: {
           trigger: stripRef.value,
           start: 'top 85%',
-          toggleActions: 'play reverse play reverse',
+          toggleActions: 'play none none none',
         },
       },
     )
@@ -292,7 +293,7 @@ function onStripCardLeave(e: MouseEvent) {
     font-family: $font-heading;
     font-size: $h2;
     font-weight: 800;
-    color: $text-white;
+    color: $text-white; // Overlay is dark, keep this white
     line-height: 1.2;
     max-width: 700px;
     margin: 8px 0;
