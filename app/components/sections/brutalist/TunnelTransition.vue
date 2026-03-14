@@ -3,13 +3,17 @@
     <!-- This section is mostly empty space to allow the user to
          scroll and experience the WebGL background twisting violently -->
     <div class="tunnel-transition__fixed" ref="textRef">
-      <h2 class="str-tunnel">ENTER THE SYSTEM.</h2>
+      <h2 class="str-tunnel">{{ text }}</h2>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+
+const props = withDefaults(defineProps<{ text?: string }>(), {
+  text: 'ENTER THE SYSTEM.'
+})
 
 const sectionRef = ref<HTMLElement | null>(null)
 const textRef = ref<HTMLElement | null>(null)

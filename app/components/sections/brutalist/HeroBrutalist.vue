@@ -163,10 +163,20 @@ onMounted(() => {
   border: 4px solid #000;
   box-shadow: 16px 16px 0px $purple;
   overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
 
   @media (max-width: 1024px) {
     max-width: 500px;
     margin: 0 auto 60px;
+  }
+
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 20px 20px 0px $orange;
+
+    .hero-img {
+      transform: scale(1.03);
+    }
   }
 
   .hero-img {
@@ -174,6 +184,7 @@ onMounted(() => {
     height: 100%;
     object-fit: cover;
     object-position: top center;
+    transition: transform 0.3s;
   }
 }
 </style>

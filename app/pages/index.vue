@@ -8,18 +8,18 @@
       
       <WhyKevinBrutalist />
       <TunnelTransition />
-      
+
       <TwoPathsBrutalist />
-      <TunnelTransition />
-      
+      <TunnelTransition text="ACTIVATE THE PROTOCOL." />
+
       <HowItWorksBrutalist />
-      <TunnelTransition />
-      
+      <TunnelTransition text="DOMINATE THE GAME." />
+
       <TestimonialsBrutalist />
-      <TunnelTransition />
-      
+      <TunnelTransition text="UNLOCK THE MATRIX." />
+
       <BlogBrutalist />
-      <TunnelTransition />
+      <TunnelTransition text="OWN THE SYSTEM." />
       
       <CTABrutalist />
     </main>
