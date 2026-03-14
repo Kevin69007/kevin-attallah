@@ -18,7 +18,7 @@
 
     <section class="checkout">
       <div class="container">
-        <h1 class="checkout__title">FINALISER VOTRE INSCRIPTION</h1>
+        <h1 class="checkout__title">DERNIÈRE ÉTAPE.</h1>
         <p class="checkout__subtitle">PAIEMENT SÉCURISÉ PAR CARTE BANCAIRE</p>
 
         <div class="checkout__grid">

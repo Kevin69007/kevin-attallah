@@ -7,7 +7,7 @@
       </div>
       <h2 class="not-found__title">PAGE INTROUVABLE.</h2>
       <p class="not-found__text">
-        LA PAGE QUE VOUS RECHERCHEZ N'EXISTE PAS OU A ÉTÉ DÉPLACÉE.
+        CETTE PAGE N'EXISTE PAS OU A ÉTÉ DÉPLACÉE.
       </p>
       <div class="not-found__ctas">
         <AppButton variant="primary" to="/">

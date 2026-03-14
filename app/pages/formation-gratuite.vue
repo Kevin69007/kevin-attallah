@@ -6,7 +6,7 @@
         <div class="text-center">
           <span class="brutal-label">FORMATION_GRATUITE_</span>
           <h1 class="lp__title">
-            TA FORMATION GRATUITE DE LA SEMAINE T'ATTEND.
+            UNE FORMATION GRATUITE. CHAQUE SEMAINE.
           </h1>
           <p class="lp__subtitle">{{ config.subtitle }}</p>
         </div>
@@ -40,8 +40,8 @@
 
           <!-- Right: Form -->
           <div class="lp__form-card brutal-card brutal-card--orange">
-            <h3 class="lp__form-title">ACCÈS PERSONNEL</h3>
-            <p class="lp__form-subtitle">Remplis le formulaire et reçois tes identifiants</p>
+            <h3 class="lp__form-title">ACCÈS IMMÉDIAT</h3>
+            <p class="lp__form-subtitle">Remplis le formulaire. Reçois tes accès par email.</p>
             <FreeFormationForm class="mt-24" />
           </div>
         </div>

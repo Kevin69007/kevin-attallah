@@ -8,8 +8,8 @@
           L'IA NE REMPLACE PAS LES ENTREPRENEURS. ELLE REMPLACE CEUX QUI REFUSENT.
         </h1>
         <p class="ia-hero__subtitle">
-          Tes concurrents automatisent déjà. Toi tu écris encore tes emails un par un.
-          Il est temps de changer ça.
+          Tes concurrents automatisent déjà. L'écart se creuse chaque jour.
+          Il est temps de passer à l'action.
         </p>
         <div class="ia-hero__ctas">
           <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
@@ -39,9 +39,7 @@
               </div>
               <h3 class="ia-who__title">TU LANCES TON BUSINESS</h3>
               <p class="ia-who__desc">
-                Démarre avec 10 ans d'avance sur tes futurs concurrents.
-                L'IA t'aide à valider ton idée, créer ton contenu, automatiser ton marketing
-                et trouver tes premiers clients, le tout en une fraction du temps.
+                Tu démarres ? L'IA t'aide à valider ton idée, créer ton contenu, automatiser ton marketing et trouver tes premiers clients — en une fraction du temps.
               </p>
               <ul class="ia-who__list">
                 <li><CheckCircle :size="16" /> Validation d'idée accélérée par l'IA</li>
@@ -59,9 +57,7 @@
               </div>
               <h3 class="ia-who__title">TU AS DÉJÀ UNE ENTREPRISE</h3>
               <p class="ia-who__desc">
-                Optimise tes process, automatise le répétitif, scale intelligemment.
-                L'IA transforme ton business existant en machine de guerre : plus rapide,
-                plus efficace, plus rentable.
+                Tu as déjà une entreprise ? Optimise tes process, automatise le répétitif, et scale intelligemment. Plus rapide, plus efficace, plus rentable.
               </p>
               <ul class="ia-who__list">
                 <li><CheckCircle :size="16" /> Automatisation des tâches répétitives</li>
@@ -146,19 +142,19 @@ const solutions = [
   {
     icon: GraduationCap,
     title: 'Formations IA',
-    description: 'Maîtrise les outils qui changent la donne : ChatGPT, automatisation, marketing IA, vente IA, productivité.',
+    description: 'Maîtrise les outils qui comptent : ChatGPT, automatisation, marketing IA, vente IA, productivité.',
     features: ['ChatGPT avancé', 'Automatisation marketing', 'IA pour la vente', 'Productivité boostée'],
   },
   {
     icon: Search,
     title: 'Audit IA personnalisé',
-    description: 'On analyse ton business et on identifie les leviers IA qui te font gagner du temps et de l\'argent.',
+    description: 'On analyse ton business et on identifie exactement où l\'IA peut te faire gagner du temps et de l\'argent.',
     features: ['Diagnostic complet', 'Plan d\'action IA', 'ROI estimé', 'Priorisation des actions'],
   },
   {
     icon: Wrench,
     title: 'Accompagnement IA',
-    description: 'Outils concrets et suivi personnalisé pour intégrer l\'IA dans ton quotidien d\'entrepreneur.',
+    description: 'Outils concrets, suivi personnalisé, support illimité. On déploie avec toi.',
     features: ['Outils prêts à l\'emploi', 'Suivi mensuel', 'Support illimité', 'Mises à jour incluses'],
   },
 ]

@@ -11,7 +11,7 @@
             <span class="block text-purple">BUSINESS MIEUX.</span>
           </h1>
           <p class="eia-hero-brutal__subtitle">
-            ON IDENTIFIE ENSEMBLE CE QUE L'IA PEUT FAIRE CONCRÈTEMENT POUR TON BUSINESS. PAS DES PROMESSES GÉNÉRIQUES, DES SOLUTIONS ADAPTÉES À TA RÉALITÉ.
+            On identifie ensemble ce que l'IA peut faire concrètement pour ton business. Pas de promesses vagues, des solutions adaptées à ta réalité.
           </p>
           <div class="eia-hero-brutal__ctas">
             <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
@@ -45,7 +45,7 @@
         </div>
 
         <p class="eia-pain-brutal__closing">
-          L'IA PEUT RÉGLER TOUT ÇA. LA QUESTION C'EST PAS SI TU VAS T'Y METTRE, <strong>C'EST QUAND ?</strong>
+          L'IA peut régler tout ça. La question, c'est pas si tu vas t'y mettre — <strong>c'est quand.</strong>
         </p>
       </div>
     </section>
@@ -94,7 +94,6 @@
         <div class="eia-solutions-brutal__header text-center">
           <span class="section-label">SOLUTIONS_</span>
           <h2 class="eia-solutions-brutal__title">DES SOLUTIONS CONCRÈTES, PRÊTES À BRANCHER.</h2>
-          <p class="eia-solutions-brutal__subtitle">VOICI QUELQUES EXEMPLES DE CE QU'ON A DÉJÀ MIS EN PLACE...</p>
         </div>
 
         <div class="eia-solutions-brutal__grid">
@@ -116,7 +115,6 @@
         </div>
 
         <div class="eia-solutions-brutal__footer text-center">
-          <p class="eia-solutions-brutal__note">ET BIEN D'AUTRES SELON TON ACTIVITÉ...</p>
           <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting" class="mt-24">
             JE VEUX VOIR CE QU'ON PEUT FAIRE
             <ArrowRight :size="20" />
@@ -130,7 +128,7 @@
       <span class="section-label">DIFFÉRENCE_</span>
       <h2 class="eia-mosaic-brutal__title">CE QUI NOUS DISTINGUE.</h2>
       <p class="eia-mosaic-brutal__subtitle">
-        ZÉRO SOLUTION GÉNÉRIQUE. L'AUDIT EST GRATUIT ET A DE LA VALEUR. DES RÉSULTATS RAPIDES ET MESURABLES, PORTÉS PAR UN VRAI ENTREPRENEUR.
+        Zéro solution générique. L'audit est gratuit et il a de la vraie valeur. Des résultats rapides, mesurables, portés par un vrai entrepreneur.
       </p>
       <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
         EN SAVOIR PLUS <ArrowRight :size="16" />
@@ -171,10 +169,10 @@ onMounted(() => {
 })
 
 const painPoints = [
-  { icon: AlertCircle, text: 'Des relances clients oubliées, des opportunités perdues' },
-  { icon: PhoneOff, text: 'Le téléphone sonne dans le vide quand tu es en rendez-vous' },
-  { icon: Repeat, text: 'Des tâches répétitives qui te bouffent des heures chaque semaine' },
-  { icon: FolderSearch, text: 'Des infos éparpillées entre 10 outils différents' },
+  { icon: AlertCircle, text: 'Des relances oubliées, des opportunités qui passent à côté.' },
+  { icon: PhoneOff, text: 'Le téléphone sonne dans le vide quand tu es en rendez-vous.' },
+  { icon: Repeat, text: 'Des heures perdues chaque semaine sur des tâches répétitives.' },
+  { icon: FolderSearch, text: 'Des infos éparpillées entre 10 outils. Aucune vue d\'ensemble.' },
 ]
 
 const parcours = [

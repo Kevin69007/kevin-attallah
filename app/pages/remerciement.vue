@@ -6,11 +6,11 @@
           <CheckCircle :size="64" />
         </div>
 
-        <h1 class="thanks__title">MERCI POUR VOTRE INSCRIPTION !</h1>
+        <h1 class="thanks__title">C'EST CONFIRMÉ !</h1>
 
         <p class="thanks__text">
-          VOTRE PAIEMENT A ÉTÉ CONFIRMÉ AVEC SUCCÈS. UN EMAIL DE CONFIRMATION
-          VOUS A ÉTÉ ENVOYÉ AVEC TOUS LES DÉTAILS DE VOTRE FORMATION.
+          TON PAIEMENT EST VALIDÉ. UN EMAIL AVEC TES ACCÈS EST EN ROUTE.
+          TU PEUX COMMENCER DÈS MAINTENANT.
         </p>
 
         <div class="thanks__steps">
@@ -57,18 +57,18 @@ onMounted(() => {
 const nextSteps = [
   {
     icon: Mail,
-    title: 'VÉRIFIEZ VOTRE EMAIL',
-    description: 'Un email de confirmation avec vos accès a été envoyé.',
+    title: 'CHECK TON EMAIL',
+    description: 'Un email de confirmation avec tes accès a été envoyé.',
   },
   {
     icon: BookOpen,
-    title: 'ACCÉDEZ À LA FORMATION',
-    description: 'Connectez-vous à votre espace et commencez immédiatement.',
+    title: 'ACCÈDE À LA FORMATION',
+    description: 'Connecte-toi à ton espace et commence immédiatement.',
   },
   {
     icon: Headphones,
-    title: 'SUPPORT DISPONIBLE',
-    description: 'Notre équipe est là pour vous accompagner tout au long de votre formation.',
+    title: 'ON EST LÀ',
+    description: 'Notre équipe t\'accompagne tout au long de ta formation.',
   },
 ]
 </script>

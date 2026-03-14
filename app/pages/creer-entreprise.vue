@@ -11,8 +11,7 @@
               <span class="ce-hero-brutal__title--accent">AVEC L'IA.</span>
             </h1>
             <p class="ce-hero-brutal__subtitle">
-              On commence par le plus dur : trouver la bonne idee, s'assurer qu'elle te correspond
-              vraiment, puis on construit tout le reste. De A a Z.
+              On commence par le plus dur : trouver la bonne idée et s'assurer qu'elle te correspond. Ensuite, on construit tout le reste ensemble. De A à Z, avec l'IA comme accélérateur.
             </p>
             <div class="ce-hero-brutal__badges">
               <div class="ce-badge-brutal">
@@ -83,8 +82,7 @@
             <span class="ce-price-card__badge ce-price-card__badge--purple">FORMATION EN AUTONOMIE</span>
             <p class="ce-price-card__sub">Accessible 24h/24, 7j/7</p>
             <p class="ce-price-card__desc">
-              Accede a l'integralite du programme en ligne, avance a ton rythme, et construis
-              ton projet pas a pas avec des modules concrets et actionnables.
+              Tout le programme en ligne. Avance à ton rythme. Accès immédiat et à vie.
             </p>
             <div class="ce-price-card__checks">
               <div class="ce-price-card__check ce-price-card__check--purple">
@@ -123,8 +121,7 @@
             <span class="ce-price-card__badge ce-price-card__badge--orange">ACCOMPAGNEMENT PERSONNALISE</span>
             <p class="ce-price-card__sub">Formation live + modules pratiques + suivi</p>
             <p class="ce-price-card__desc">
-              Un vrai accompagnement sur mesure : sessions live avec Kevin, modules pratiques,
-              et un suivi personnalise jusqu'au lancement de ton activite.
+              Le full package : sessions live avec Kevin, modules pratiques, et un suivi personnalisé jusqu'au lancement.
             </p>
             <div class="ce-price-card__checks">
               <div class="ce-price-card__check ce-price-card__check--orange">
@@ -162,7 +159,7 @@
       <span class="ce-section-label">POURQUOI_</span>
       <h2 class="ce-mosaic-title">CE QUI NOUS DISTINGUE.</h2>
       <p class="ce-mosaic-subtitle">
-        On commence par toi, pas par le business plan. L'IA est integree des le depart, et derriere la formation, un vrai entrepreneur.
+        On commence par toi, pas par un business plan théorique. L'IA est intégrée dès le premier jour, et derrière la formation, un vrai entrepreneur.
       </p>
       <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
         EN SAVOIR PLUS <ArrowRight :size="16" />
@@ -213,13 +210,13 @@ onMounted(() => {
 const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit' })
 
 const modules = [
-  { icon: Lightbulb, title: 'Trouver & valider ton idée', description: 'Identifie une idée qui te correspond vraiment et qui a un potentiel business réel.' },
-  { icon: CheckCircle, title: 'Valider que le marché suit', description: 'Étudie ton marché, ta cible et la concurrence avant de te lancer.' },
-  { icon: Scale, title: 'Choisir la bonne structure', description: 'Micro-entreprise, SASU, SARL : on t\'aide à choisir la forme adaptée.' },
-  { icon: BarChart3, title: 'Business plan & financement', description: 'Construis un plan solide pour convaincre et financer ton projet.' },
-  { icon: Megaphone, title: 'Marketing & développement commercial', description: 'Trouve tes premiers clients et mets en place ta stratégie de croissance.' },
-  { icon: Bot, title: 'L\'IA comme copilote dès le départ', description: 'Intègre l\'IA dans tes process pour gagner du temps et de l\'efficacité.' },
-  { icon: Gift, title: 'Une formation offerte au choix', description: 'En bonus, choisis une formation complémentaire pour combler tes lacunes.' },
+  { icon: Lightbulb, title: 'Trouver & valider ton idée', description: 'Identifie une idée solide avec un vrai potentiel business. Validée par la data, pas par l\'intuition.' },
+  { icon: CheckCircle, title: 'Valider que le marché suit', description: 'Analyse ton marché, ta cible et la concurrence. Avant de foncer, on vérifie.' },
+  { icon: Scale, title: 'Choisir la bonne structure', description: 'Micro, SASU, SARL — on t\'aide à choisir la forme adaptée. Rapidement, sans prise de tête.' },
+  { icon: BarChart3, title: 'Business plan & financement', description: 'Un plan solide, chiffré, qui convainc. Financement et lancement au programme.' },
+  { icon: Megaphone, title: 'Marketing & développement commercial', description: 'Trouve tes premiers clients et mets en place une stratégie d\'acquisition efficace.' },
+  { icon: Bot, title: 'L\'IA comme copilote dès le départ', description: 'L\'IA intégrée dès le départ. Gagne du temps, automatise, et avance plus vite.' },
+  { icon: Gift, title: 'Une formation offerte au choix', description: 'En bonus : une formation complémentaire offerte pour aller encore plus loin.' },
 ]
 
 const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)

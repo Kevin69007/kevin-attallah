@@ -28,14 +28,10 @@
 
             <div class="about-brutal__text-block">
               <p>
-                Entrepreneur passionné, formateur certifié et expert en intégration IA,
-                Kevin accompagne depuis des années des milliers de personnes dans leur
-                reconversion professionnelle et le lancement de leur activité.
+                Ex-finance, expert IA et formateur certifié. Depuis des années, j'accompagne des entrepreneurs à lancer et faire grandir leur activité grâce à l'IA. +2100 entrepreneurs formés, des résultats concrets, et une approche sans blabla.
               </p>
               <p>
-                Sa mission : rendre l'entrepreneuriat accessible à tous grâce à des
-                formations concrètes, orientées résultats, et boostées par
-                l'intelligence artificielle.
+                Des formations concrètes, orientées résultats, boostées par l'intelligence artificielle. L'objectif : que tu passes à l'action avec les bons outils.
               </p>
             </div>
 
@@ -88,7 +84,7 @@
           SUIVEZ <span class="text-purple">KEVIN.</span>
         </h2>
         <p class="about-brutal__social-sub">
-          REJOIGNEZ LA COMMUNAUTÉ SUR LES RÉSEAUX SOCIAUX
+          REJOINS LA COMMUNAUTÉ.
         </p>
 
         <div class="about-brutal__social-pills" ref="socialPillsRef">
@@ -165,16 +161,16 @@ onMounted(() => {
 })
 
 const stats = [
-  { value: 2100, suffix: '+', label: 'Entrepreneurs lancés' },
-  { value: 11, suffix: ' ans', label: "D'expérience" },
+  { value: 2100, suffix: '+', label: 'Entrepreneurs formés' },
+  { value: 11, suffix: ' ans', label: "Ans d'expérience" },
   { value: 98, suffix: '%', label: 'Satisfaction' },
 ]
 
 const values = [
-  { icon: Heart, title: 'Authenticité', description: 'Des formations créées par un entrepreneur, pour des entrepreneurs.' },
-  { icon: Zap, title: 'Innovation IA', description: "L'IA intégrée à chaque formation pour des résultats concrets et modernes." },
-  { icon: Users, title: 'Accessibilité', description: 'Formations 100% finançables, accessibles à tous les budgets et niveaux.' },
-  { icon: Target, title: 'Résultats', description: '+2100 entrepreneurs formés avec un taux de satisfaction de 98%.' },
+  { icon: Heart, title: 'Authenticité', description: 'Créées par un entrepreneur, pour des entrepreneurs. Du concret, pas de la théorie.' },
+  { icon: Zap, title: 'Innovation IA', description: "L'IA est intégrée à chaque formation. Des résultats modernes avec les bons outils." },
+  { icon: Users, title: 'Accessibilité', description: '100% finançable. Accessible à tous les niveaux et tous les budgets.' },
+  { icon: Target, title: 'Résultats', description: '+2100 entrepreneurs formés avec 98% de satisfaction. Les chiffres parlent.' },
 ]
 
 const socialIcons: Record<string, string> = {
