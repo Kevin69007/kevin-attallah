@@ -8,23 +8,27 @@
     </div>
 
     <!-- Infinite GSAP Marquee for Reviews -->
-    <div class="testi-marquee-wrap">
+    <div
+      class="testi-marquee-wrap"
+      @mouseenter="onHoverIn"
+      @mouseleave="onHoverOut"
+    >
       <div class="testi-marquee" ref="marqueeRef">
         <!-- Duplicate array for seamless infinite scroll -->
-        <div 
-          v-for="(review, index) in [...reviews, ...reviews]" 
-          :key="index" 
+        <div
+          v-for="(review, index) in [...reviews, ...reviews]"
+          :key="index"
           class="brutal-card"
         >
           <div class="brutal-card__top">
             <span class="brutal-card__id">ID_{{ String((index % reviews.length) + 1).padStart(3, '0') }}</span>
             <span class="brutal-card__rating">★★★★★</span>
           </div>
-          
+
           <p class="brutal-card__quote">
             "{{ review.text }}"
           </p>
-          
+
           <div class="brutal-card__footer">
             <div class="brutal-card__avatar-wrap">
               <NuxtImg :src="review.image" :alt="review.name" class="brutal-card__avatar" />
@@ -46,36 +50,38 @@ import { ref, onMounted } from 'vue'
 const marqueeRef = ref<HTMLElement | null>(null)
 const { $gsap } = useNuxtApp()
 
+let marqueeAnimation: any = null
+
 const reviews = [
   {
     name: "Alexandre P.",
-    company: "E-com Scale",
-    text: "En 3 mois, on a automatisé 70% de notre support client grâce aux frameworks de Kevin. Le ROI est absurde.",
-    image: "/img/testimonial/01.png"
+    company: "CEO, DataFlow",
+    text: "Grâce aux stratégies de Kevin, on a intégré l'IA dans notre pipeline de vente et automatisé 70% du support client. Le ROI a été immédiat.",
+    image: "/img/avatar/avatar-1.jpg"
   },
   {
     name: "Sarah M.",
-    company: "Agence Creative",
-    text: "Une approche radicale qui m'a forcé à revoir tout mon modèle d'agence. On a fait x3 sur la marge ce trimestre.",
-    image: "/img/testimonial/02.png"
+    company: "Fondatrice, NeoAgency",
+    text: "Kevin m'a aidé à restructurer mon agence autour de l'IA. On a triplé notre marge en un trimestre sans recruter. Une transformation radicale.",
+    image: "/img/avatar/avatar-2.jpg"
   },
   {
     name: "David D.",
-    company: "Tech Founder",
-    text: "Pas de théorie fumeuse. Que du concret, de la data et des process applicables le jour même. Une machine de guerre.",
-    image: "/img/testimonial/03.png"
+    company: "CTO, ScaleUp Labs",
+    text: "Pas de théorie. Des frameworks concrets pour automatiser la R&D et le déploiement produit. On a gagné 2 ans d'avance sur nos concurrents.",
+    image: "/img/avatar/avatar-3.jpg"
   },
   {
     name: "Julie T.",
-    company: "SaaS Dev",
-    text: "L'intégration de l'IA dans nos pipelines nous a fait gagner 2 ans de R&D. Exceptionnel. Le marché n'est pas prêt.",
-    image: "/img/testimonial/04.png"
+    company: "Directrice IA, Pulse Tech",
+    text: "L'accompagnement de Kevin sur l'intégration des agents IA dans nos workflows a changé la donne. Notre productivité a explosé de 400%.",
+    image: "/img/avatar/avatar-4.jpg"
   },
   {
     name: "Marc L.",
-    company: "Growth Agency",
-    text: "On a scalé nos process d'acquisition x10 sans recruter une seule personne. Les méthodes de Kevin sont chirurgicales.",
-    image: "/img/testimonial/05.png"
+    company: "Growth Lead, Vertex",
+    text: "On a scalé notre acquisition x10 grâce à l'automatisation IA sans embaucher. Les méthodes sont chirurgicales et immédiatement applicables.",
+    image: "/img/avatar/avatar-5.jpg"
   }
 ]
 
@@ -83,16 +89,27 @@ onMounted(() => {
   if (!$gsap || !marqueeRef.value) return
   const gsap = $gsap as any
 
-  // Calculate duration based on number of cards to ensure consistent speed
-  const duration = reviews.length * 8
+  const duration = reviews.length * 6
 
-  gsap.to(marqueeRef.value, {
-    xPercent: -50, // Move exactly half the width (since we duplicated the array)
+  marqueeAnimation = gsap.to(marqueeRef.value, {
+    xPercent: -50,
     ease: 'none',
     duration: duration,
     repeat: -1
   })
 })
+
+function onHoverIn() {
+  if (!marqueeAnimation || !$gsap) return
+  const gsap = $gsap as any
+  gsap.to(marqueeAnimation, { timeScale: 0, duration: 0.8, ease: 'power2.out' })
+}
+
+function onHoverOut() {
+  if (!marqueeAnimation || !$gsap) return
+  const gsap = $gsap as any
+  gsap.to(marqueeAnimation, { timeScale: 1, duration: 0.8, ease: 'power2.in' })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -121,7 +138,7 @@ onMounted(() => {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   overflow: hidden;
-  padding: 20px 0 40px 0; // padding for shadows
+  padding: 20px 0 40px 0;
 }
 
 .testi-marquee {
@@ -132,7 +149,7 @@ onMounted(() => {
 }
 
 .brutal-card {
-  flex: 0 0 500px; // Fixed width for marquee items
+  flex: 0 0 500px;
   border: 4px solid #000;
   padding: 30px;
   background: #FAFAFA;
@@ -140,7 +157,7 @@ onMounted(() => {
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   display: flex;
   flex-direction: column;
-  
+
   @media (max-width: 768px) {
     flex: 0 0 85vw;
   }
@@ -196,13 +213,13 @@ onMounted(() => {
     overflow: hidden;
     background: $purple;
     flex-shrink: 0;
+    border-radius: 50%;
   }
-  
+
   &__avatar {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%) contrast(120%);
   }
 
   &__author {
@@ -212,7 +229,7 @@ onMounted(() => {
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
-    
+
     strong {
       background: #000;
       color: #FFF;

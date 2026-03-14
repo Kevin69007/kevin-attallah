@@ -12,29 +12,26 @@
       </div>
 
       <div class="blog-brutal__grid">
-        <article v-for="i in 3" :key="i" class="brutal-article">
-          <NuxtLink :to="`/blog/article-${i}`" class="brutal-article__link">
+        <article v-for="post in displayedPosts" :key="post.id" class="brutal-article">
+          <NuxtLink :to="`/blog/${post.id}`" class="brutal-article__link">
             <div class="brutal-article__image-wrap">
-              <NuxtImg 
-                src="/img/blog/blog-1.jpg" 
-                alt="Article Thumbnail" 
-                class="brutal-article__img" 
+              <NuxtImg
+                :src="post.image"
+                :alt="post.title"
+                class="brutal-article__img"
               />
               <div class="brutal-article__tag">INTELLIGENCE_ARTIFICIELLE</div>
             </div>
-            
+
             <div class="brutal-article__content">
               <div class="brutal-article__meta">
-                <span>12 MARS 2026</span>
+                <span>{{ post.date }} {{ post.month.toUpperCase() }} {{ post.year }}</span>
                 <span class="text-orange">///</span>
                 <span>5 MIN READ</span>
               </div>
               <h3 class="brutal-article__title">
-                Comment remplacer 3 départements par 1 Agent IA en 2026.
+                {{ post.title }}
               </h3>
-              <p class="brutal-article__desc">
-                Analyse disséquée d'un scaling explosif. Les outils, les prompts et l'architecture exacte.
-              </p>
               <div class="brutal-article__readmore">
                 LIRE_MAINTENANT <span class="arr">►</span>
               </div>
@@ -45,6 +42,13 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { blogPosts } from '~/data/blog'
+
+const displayedPosts = computed(() => blogPosts.slice(0, 3))
+</script>
 
 <style lang="scss" scoped>
 .blog-brutal {
@@ -84,7 +88,7 @@
     @media (max-width: 1024px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    
+
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
     }
@@ -100,17 +104,17 @@
   &:hover {
     transform: translate(-4px, -4px);
     box-shadow: 12px 12px 0px #000;
-    
+
     .brutal-article__img {
       transform: scale(1.05);
       filter: grayscale(0%) contrast(110%);
     }
-    
+
     .brutal-article__title {
       color: $purple;
       text-decoration: underline;
     }
-    
+
     .arr {
       transform: translateX(4px);
       color: $orange;
@@ -172,7 +176,7 @@
     margin-bottom: 16px;
     display: flex;
     gap: 8px;
-    
+
     .text-orange { color: $orange; }
   }
 
@@ -184,12 +188,6 @@
     color: #000;
     margin-bottom: 16px;
     transition: color 0.2s;
-  }
-
-  &__desc {
-    font-size: 1rem;
-    color: $text-body;
-    margin-bottom: 24px;
     flex-grow: 1;
   }
 
@@ -200,7 +198,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    
+
     .arr {
       transition: transform 0.2s, color 0.2s;
       display: inline-block;

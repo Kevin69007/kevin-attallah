@@ -1,6 +1,6 @@
 <template>
-  <section class="tunnel-transition">
-    <!-- This section is mostly empty space to allow the user to 
+  <section class="tunnel-transition" ref="sectionRef">
+    <!-- This section is mostly empty space to allow the user to
          scroll and experience the WebGL background twisting violently -->
     <div class="tunnel-transition__fixed" ref="textRef">
       <h2 class="str-tunnel">ENTER THE SYSTEM.</h2>
@@ -11,23 +11,27 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
+const sectionRef = ref<HTMLElement | null>(null)
 const textRef = ref<HTMLElement | null>(null)
 const { $gsap } = useNuxtApp()
 
 onMounted(() => {
-  if (!$gsap || !textRef.value) return
+  if (!$gsap || !textRef.value || !sectionRef.value) return
   const gsap = $gsap as any
 
   gsap.to(textRef.value, {
-    yPercent: 100,
-    rotationZ: 10,
-    scale: 0.5,
-    ease: 'power1.inOut',
+    yPercent: 80,
+    xPercent: -30,
+    rotationZ: 18,
+    rotateX: 60,
+    scale: 0.3,
+    opacity: 0,
+    ease: 'power2.inOut',
     scrollTrigger: {
-      trigger: '.tunnel-transition',
+      trigger: sectionRef.value,
       start: 'top center',
       end: 'bottom top',
-      scrub: true
+      scrub: 0.8
     }
   })
 })
@@ -35,7 +39,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .tunnel-transition {
-  height: 150vh; /* Long scroll area to show off the tunnel */
+  height: 100vh;
   position: relative;
   z-index: 10;
   display: flex;
@@ -47,6 +51,7 @@ onMounted(() => {
     position: sticky;
     top: 50%;
     transform: translateY(-50%);
+    perspective: 800px;
   }
 }
 

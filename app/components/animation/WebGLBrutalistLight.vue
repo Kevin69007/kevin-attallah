@@ -13,69 +13,112 @@ let animationFrameId: number
 let scene: THREE.Scene
 let camera: THREE.PerspectiveCamera
 let renderer: THREE.WebGLRenderer
-let meshGroup: THREE.Group
+let meshGroupFront: THREE.Group
+let meshGroupBack: THREE.Group
+let clock: THREE.Clock
+let handleResize: () => void
 
 onMounted(() => {
   if (!container.value || !window) return
 
   gsap.registerPlugin(ScrollTrigger)
+  clock = new THREE.Clock()
 
   scene = new THREE.Scene()
   scene.background = new THREE.Color(0xFFFFFF)
-  scene.fog = new THREE.FogExp2(0xFFFFFF, 0.05) // Dense white fog
+  scene.fog = new THREE.FogExp2(0xFFFFFF, 0.018)
 
-  camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 100)
-  camera.position.z = 10
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 120)
+  camera.position.z = 12
 
   renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true })
   renderer.setSize(window.innerWidth, window.innerHeight)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   container.value.appendChild(renderer.domElement)
 
-  meshGroup = new THREE.Group()
-  scene.add(meshGroup)
+  // Two groups for parallax depth
+  meshGroupFront = new THREE.Group()
+  meshGroupBack = new THREE.Group()
+  scene.add(meshGroupBack)
+  scene.add(meshGroupFront)
 
-  const geometry = new THREE.IcosahedronGeometry(1, 0)
-  
-  // Mix of Purple and Orange wireframes
   const colorPurple = new THREE.Color(0x6C2BD9)
   const colorOrange = new THREE.Color(0xC67651)
-  
-  for (let i = 0; i < 500; i++) {
-    const isPurple = Math.random() > 0.5
-    
-    // We use a LineBasicMaterial to create crisp wireframes
+
+  // Geometry variety
+  const geometries = [
+    new THREE.IcosahedronGeometry(1, 1),
+    new THREE.OctahedronGeometry(1, 0),
+    new THREE.TorusGeometry(0.7, 0.25, 8, 16),
+  ]
+
+  // Front layer — closer, more visible
+  for (let i = 0; i < 70; i++) {
+    const isPurple = Math.random() > 0.35
+    const geoIndex = Math.floor(Math.random() * geometries.length)
+
     const material = new THREE.MeshBasicMaterial({
       color: isPurple ? colorPurple : colorOrange,
       wireframe: true,
       transparent: true,
-      opacity: Math.random() * 0.5 + 0.1
+      opacity: Math.random() * 0.22 + 0.08
     })
 
-    const mesh = new THREE.Mesh(geometry, material)
-    
-    // Distribute them in a long tunnel stretching back along the Z axis
+    const mesh = new THREE.Mesh(geometries[geoIndex], material)
+
     mesh.position.set(
-      (Math.random() - 0.5) * 30, // Spread X
-      (Math.random() - 0.5) * 30, // Spread Y
-      (Math.random() - 0.5) * 60 // Long tunnel Z
+      (Math.random() - 0.5) * 35,
+      (Math.random() - 0.5) * 35,
+      (Math.random() - 0.5) * 70
     )
-    
+
     mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0)
-    const scale = Math.random() * 3 + 0.5
+    const scale = Math.random() * 2.2 + 0.6
     mesh.scale.set(scale, scale, scale)
-    
-    // Add custom rotation speeds
+
     mesh.userData = {
-      rx: (Math.random() - 0.5) * 0.02,
-      ry: (Math.random() - 0.5) * 0.02,
-      rz: (Math.random() - 0.5) * 0.02
+      rx: (Math.random() - 0.5) * 0.01,
+      ry: (Math.random() - 0.5) * 0.01,
+      rz: (Math.random() - 0.5) * 0.005
     }
-    
-    meshGroup.add(mesh)
+
+    meshGroupFront.add(mesh)
   }
 
-  // Aggressive scroll trigger - move camera THRU the tunnel
+  // Back layer — deeper, subtler, for parallax
+  for (let i = 0; i < 50; i++) {
+    const isPurple = Math.random() > 0.5
+    const geoIndex = Math.floor(Math.random() * geometries.length)
+
+    const material = new THREE.MeshBasicMaterial({
+      color: isPurple ? colorPurple : colorOrange,
+      wireframe: true,
+      transparent: true,
+      opacity: Math.random() * 0.12 + 0.04
+    })
+
+    const mesh = new THREE.Mesh(geometries[geoIndex], material)
+
+    mesh.position.set(
+      (Math.random() - 0.5) * 50,
+      (Math.random() - 0.5) * 50,
+      (Math.random() - 0.5) * 90 - 15
+    )
+
+    mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0)
+    const scale = Math.random() * 3.5 + 1.5
+    mesh.scale.set(scale, scale, scale)
+
+    mesh.userData = {
+      rx: (Math.random() - 0.5) * 0.004,
+      ry: (Math.random() - 0.5) * 0.004,
+      rz: (Math.random() - 0.5) * 0.002
+    }
+
+    meshGroupBack.add(mesh)
+  }
+
+  // Scroll-driven camera travel through the tunnel
   gsap.to(camera.position, {
     z: -40,
     ease: 'power1.inOut',
@@ -87,9 +130,9 @@ onMounted(() => {
     }
   })
 
-  // Twist the world heavily
-  gsap.to(meshGroup.rotation, {
-    z: Math.PI * 1.5,
+  // Front group rotates more on scroll
+  gsap.to(meshGroupFront.rotation, {
+    z: Math.PI * 0.8,
     ease: 'power2.inOut',
     scrollTrigger: {
       trigger: document.body,
@@ -99,7 +142,19 @@ onMounted(() => {
     }
   })
 
-  const handleResize = () => {
+  // Back group rotates slower for parallax
+  gsap.to(meshGroupBack.rotation, {
+    z: Math.PI * 0.3,
+    ease: 'power2.inOut',
+    scrollTrigger: {
+      trigger: document.body,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 0.5
+    }
+  })
+
+  handleResize = () => {
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
     renderer.setSize(window.innerWidth, window.innerHeight)
@@ -108,9 +163,24 @@ onMounted(() => {
 
   const animate = () => {
     animationFrameId = requestAnimationFrame(animate)
-    
-    // Continuous chaotic rotation of individual geometries
-    meshGroup.children.forEach(child => {
+    const elapsed = clock.getElapsedTime()
+
+    // Organic camera drift
+    camera.position.x = Math.sin(elapsed * 0.15) * 1.2
+    camera.position.y = Math.cos(elapsed * 0.12) * 0.8
+
+    // Subtle group float
+    meshGroupFront.position.y = Math.sin(elapsed * 0.3) * 0.4
+    meshGroupBack.position.y = Math.sin(elapsed * 0.2 + 1) * 0.6
+
+    // Individual mesh rotations
+    meshGroupFront.children.forEach(child => {
+      child.rotation.x += child.userData.rx
+      child.rotation.y += child.userData.ry
+      child.rotation.z += child.userData.rz
+    })
+
+    meshGroupBack.children.forEach(child => {
       child.rotation.x += child.userData.rx
       child.rotation.y += child.userData.ry
       child.rotation.z += child.userData.rz
@@ -123,7 +193,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (animationFrameId) cancelAnimationFrame(animationFrameId)
-  window.removeEventListener('resize', () => {})
+  if (handleResize) window.removeEventListener('resize', handleResize)
   if (renderer && container.value) {
     container.value.removeChild(renderer.domElement)
     renderer.dispose()

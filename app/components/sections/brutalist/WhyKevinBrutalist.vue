@@ -7,8 +7,8 @@
         <div class="brutal-grid__image-col">
           <div class="brutal-image-wrap">
             <NuxtImg 
-              src="/img/about-kevin.webp" 
-              alt="Kevin Attallah" 
+              src="/img/kevin-ia.png"
+              alt="Kevin Attallah IA"
               class="brutal-image" 
               format="webp" 
               quality="80" 
@@ -109,17 +109,11 @@
   transition: transform 0.2s, box-shadow 0.2s;
 
   &:hover {
-    transform: translate(6px, 6px);
-    box-shadow: 0px 0px 0px $purple;
+    transform: translate(-4px, -4px);
+    box-shadow: 16px 16px 0px $orange;
 
-    .brutal-image-overlay {
-      mix-blend-mode: difference;
-      background: rgba($purple, 0.5);
-    }
-    
     .brutal-image {
-      filter: grayscale(100%) contrast(150%);
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
   }
 }

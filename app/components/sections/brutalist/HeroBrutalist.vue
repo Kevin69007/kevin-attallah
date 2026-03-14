@@ -26,12 +26,12 @@
       <!-- Image Column -->
       <div class="hero-brutal__image-col">
         <div class="hero-image-wrap">
-          <NuxtImg 
-            src="/img/kevin-ia.png" 
-            alt="Kevin Attallah IA" 
-            class="hero-img" 
-            format="webp" 
-            quality="90" 
+          <NuxtImg
+            src="/img/banner-right-img.jpg"
+            alt="Kevin Attallah"
+            class="hero-img"
+            format="webp"
+            quality="90"
           />
         </div>
       </div>
@@ -159,7 +159,7 @@ onMounted(() => {
   position: relative;
   width: 100%;
   aspect-ratio: 1/1;
-  background: $orange;
+  background: #FAFAFA;
   border: 4px solid #000;
   box-shadow: 16px 16px 0px $purple;
   overflow: hidden;
@@ -174,8 +174,6 @@ onMounted(() => {
     height: 100%;
     object-fit: cover;
     object-position: top center;
-    filter: contrast(120%) grayscale(20%);
-    mix-blend-mode: multiply; // Blends the image with the orange background harshly
   }
 }
 </style>
