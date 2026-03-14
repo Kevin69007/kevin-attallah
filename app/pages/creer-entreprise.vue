@@ -170,12 +170,12 @@
     </ImageMosaic>
 
     <!-- Final CTA -->
-    <CTASection
-      title="PRET A TE LANCER ?"
-      subtitle="Un appel gratuit de 30 minutes pour faire le point sur ton projet et trouver la formule adaptee."
-      primaryText="JE RESERVE MON APPEL GRATUIT"
-      :primaryHref="externalLinks.booking.brevoMeeting"
-      secondaryText=""
+    <CTABrutalist
+      titleLine1="PRÊT À TE"
+      titleLine2="LANCER ?"
+      subtitle="Un appel gratuit de 30 minutes pour faire le point sur ton projet."
+      buttonText="JE RÉSERVE MON APPEL"
+      :buttonHref="externalLinks.booking.brevoMeeting"
     />
 
     <!-- Exit Intent Popup -->
@@ -783,14 +783,14 @@ onMounted(() => {
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: #FFF;
+  color: #000;
   margin-bottom: 16px;
 }
 
 .ce-mosaic-subtitle {
   font-family: $font-mono;
   font-size: $body;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.7);
   line-height: 1.7;
   max-width: 480px;
   margin: 0 auto;

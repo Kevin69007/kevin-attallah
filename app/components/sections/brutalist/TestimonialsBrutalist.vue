@@ -55,7 +55,7 @@ let marqueeAnimation: any = null
 const reviews = [
   {
     name: "Alexandre P.",
-    company: "CEO, DataFlow",
+    company: "Entrepreneur, DataFlow",
     text: "Grâce aux stratégies de Kevin, on a intégré l'IA dans notre pipeline de vente et automatisé 70% du support client. Le ROI a été immédiat.",
     image: "/img/avatar/avatar-1.jpg"
   },
@@ -67,7 +67,7 @@ const reviews = [
   },
   {
     name: "David D.",
-    company: "CTO, ScaleUp Labs",
+    company: "Responsable Tech, ScaleUp Labs",
     text: "Pas de théorie. Des frameworks concrets pour automatiser la R&D et le déploiement produit. On a gagné 2 ans d'avance sur nos concurrents.",
     image: "/img/avatar/avatar-3.jpg"
   },

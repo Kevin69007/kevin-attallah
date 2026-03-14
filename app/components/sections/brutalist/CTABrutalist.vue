@@ -1,20 +1,17 @@
 <template>
-  <section class="cta-brutal">
+  <section class="cta-brutal" ref="sectionRef">
     <WaveLines />
     <div class="container cta-brutal__inner">
       <h2 class="cta-brutal__title">
-        <span class="block">L'HÉSITATION</span>
-        <span class="block outline-text">COÛTE CHER.</span>
+        <span class="block">{{ titleLine1 }}</span>
+        <span class="block outline-text">{{ line2Text }}<span v-if="line2Suffix" class="text-purple">{{ line2Suffix }}</span></span>
       </h2>
-      
-      <p class="cta-brutal__subtitle">
-        Le marché n'attend pas ceux qui réfléchissent trop. <br>
-        Passez à l'action. Maintenant.
-      </p>
+
+      <p class="cta-brutal__subtitle">{{ subtitle }}</p>
 
       <div class="cta-brutal__btn-wrap" ref="btnWrapRef">
-        <AppButton variant="primary" size="lg" to="/creer-entreprise" class="btn-massive">
-          LANCER LA MACHINE
+        <AppButton variant="primary" size="lg" :to="!buttonHref ? buttonTo : undefined" :href="buttonHref || undefined" class="btn-massive">
+          {{ buttonText }}
         </AppButton>
       </div>
     </div>
@@ -22,13 +19,41 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
+const props = withDefaults(defineProps<{
+  titleLine1?: string
+  titleLine2?: string
+  subtitle?: string
+  buttonText?: string
+  buttonTo?: string
+  buttonHref?: string
+}>(), {
+  titleLine1: "L'HÉSITATION",
+  titleLine2: 'COÛTE CHER.',
+  subtitle: "Le marché n'attend pas ceux qui réfléchissent trop. Passez à l'action. Maintenant.",
+  buttonText: 'LANCER LA MACHINE',
+  buttonTo: '/creer-entreprise',
+})
+
+const line2Text = computed(() => {
+  if (props.titleLine2.endsWith(' ?')) return props.titleLine2.slice(0, -2)
+  if (props.titleLine2.endsWith('?')) return props.titleLine2.slice(0, -1)
+  return props.titleLine2
+})
+
+const line2Suffix = computed(() => {
+  if (props.titleLine2.endsWith(' ?')) return ' ?'
+  if (props.titleLine2.endsWith('?')) return '?'
+  return ''
+})
+
+const sectionRef = ref<HTMLElement | null>(null)
 const btnWrapRef = ref(null)
 const { $gsap } = useNuxtApp()
 
 onMounted(() => {
-  if (!$gsap || !btnWrapRef.value) return
+  if (!$gsap || !btnWrapRef.value || !sectionRef.value) return
   const gsap = $gsap as any
 
   gsap.from(btnWrapRef.value, {
@@ -38,7 +63,7 @@ onMounted(() => {
     duration: 0.8,
     ease: 'back.out(2)',
     scrollTrigger: {
-      trigger: '.cta-brutal',
+      trigger: sectionRef.value,
       start: 'top 70%'
     }
   })
@@ -48,7 +73,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .cta-brutal {
   position: relative;
-  z-index: 20; // Above WebGL
+  z-index: 20;
   background: #FFF;
   border-top: 4px solid #000;
   padding: 120px 0;
@@ -70,15 +95,20 @@ onMounted(() => {
     letter-spacing: -0.05em;
     margin-bottom: 30px;
     color: #000;
-    
+
     .block {
       display: block;
+    }
+
+    .text-purple {
+      color: $purple;
+      -webkit-text-stroke: 0;
     }
 
     .outline-text {
       color: transparent;
       -webkit-text-stroke: 4px #000;
-      
+
       @media (max-width: 768px) {
         -webkit-text-stroke: 2px #000;
       }
@@ -114,7 +144,7 @@ onMounted(() => {
       transform: translate(8px, 8px);
       box-shadow: 0px 0px 0px #000;
     }
-    
+
     @media (max-width: 768px) {
       font-size: 1.25rem;
       padding: 20px 40px;

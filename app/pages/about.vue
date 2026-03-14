@@ -370,16 +370,19 @@ const socialIcons: Record<string, string> = {
 .about-brutal__values-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 48px 1fr;
   gap: 0;
   border: 4px solid #000;
   background: #000;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 48px 1fr 48px 1fr;
   }
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 }
 
@@ -387,6 +390,29 @@ const socialIcons: Record<string, string> = {
   background: #FFF;
   padding: 40px 30px;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+
+  // Odd cards (1st, 3rd): span both rows, start at top
+  &:nth-child(odd) {
+    grid-row: 1 / 3;
+  }
+
+  // Even cards (2nd, 4th): only in row 2, black gap in row 1
+  &:nth-child(even) {
+    grid-row: 2 / 3;
+  }
+
+  @media (max-width: 1024px) {
+    &:nth-child(1) { grid-row: 1 / 3; }
+    &:nth-child(2) { grid-row: 2 / 3; }
+    &:nth-child(3) { grid-row: 3 / 5; }
+    &:nth-child(4) { grid-row: 4 / 5; }
+  }
+
+  @media (max-width: 600px) {
+    &:nth-child(n) {
+      grid-row: auto;
+    }
+  }
 
   & + & {
     border-left: 4px solid #000;

@@ -5,7 +5,6 @@
       <div
         v-for="(tile, i) in tiles"
         :key="i"
-        v-magnetic="0.1"
         class="mosaic__tile"
         :style="tileGridStyle(i)"
       >
@@ -149,7 +148,7 @@ onUnmounted(() => {
 
   &__tile {
     aspect-ratio: 1;
-    border-radius: 12px;
+    border: 2px solid #000;
     overflow: hidden;
     position: relative;
   }
@@ -157,7 +156,7 @@ onUnmounted(() => {
   &__placeholder {
     position: absolute;
     inset: 0;
-    background: rgba($orange, 0.06);
+    background: #FAFAFA;
   }
 
   &__img {

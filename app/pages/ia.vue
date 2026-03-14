@@ -116,23 +116,13 @@
     </section>
 
     <!-- CTA -->
-    <section class="ia-cta">
-      <div class="container">
-        <div class="brutal-card brutal-card--cta">
-          <h2 class="ia-cta__title">PRÊT À INTÉGRER L'IA DANS TON BUSINESS ?</h2>
-          <p class="ia-cta__subtitle">Réserve un audit gratuit avec Kevin pour identifier tes leviers IA.</p>
-          <div class="ia-cta__buttons">
-            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
-              Réserver mon audit IA
-              <ArrowRight :size="20" />
-            </AppButton>
-            <AppButton variant="ghost-light" size="lg" to="/formations">
-              Voir les formations
-            </AppButton>
-          </div>
-        </div>
-      </div>
-    </section>
+    <CTABrutalist
+      titleLine1="PRÊT À INTÉGRER"
+      titleLine2="L'IA ?"
+      subtitle="Réserve un audit gratuit avec Kevin pour identifier tes leviers IA."
+      buttonText="RÉSERVER MON AUDIT IA"
+      :buttonHref="externalLinks.booking.brevoMeeting"
+    />
   </div>
 </template>
 
@@ -221,14 +211,6 @@ const stats = [
     &:hover { box-shadow: 12px 12px 0px $orange; }
   }
 
-  &--cta {
-    background: #000;
-    color: #fff;
-    box-shadow: 8px 8px 0px $orange;
-    text-align: center;
-    padding: 64px 48px;
-    &:hover { box-shadow: 12px 12px 0px $orange; }
-  }
 }
 
 /* ── Hero ── */
@@ -465,32 +447,4 @@ const stats = [
   }
 }
 
-/* ── CTA ── */
-.ia-cta {
-  background: #fff;
-  padding: 80px 0;
-
-  &__title {
-    font-family: $font-heading;
-    font-size: $h2;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 16px;
-  }
-
-  &__subtitle {
-    font-family: $font-mono;
-    font-size: $body-lg;
-    color: rgba(#fff, 0.8);
-    margin-bottom: 32px;
-  }
-
-  &__buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-}
 </style>

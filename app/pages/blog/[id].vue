@@ -66,7 +66,7 @@
       </div>
     </section>
 
-    <CTASection />
+    <CTABrutalist />
   </div>
 
   <div v-else style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #fff;">

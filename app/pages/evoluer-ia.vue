@@ -98,10 +98,17 @@
         </div>
 
         <div class="eia-solutions-brutal__grid">
-          <div v-for="(solution, i) in solutions" :key="solution.title" class="eia-sol-card">
-            <span class="eia-sol-card__step">{{ String(i + 1).padStart(2, '0') }}</span>
-            <div class="eia-sol-card__icon">
-              <component :is="solution.icon" :size="28" />
+          <div
+            v-for="(solution, i) in solutions"
+            :key="solution.title"
+            class="eia-sol-card"
+            :class="i % 2 === 0 ? 'eia-sol-card--purple' : 'eia-sol-card--orange'"
+          >
+            <div class="eia-sol-card__top">
+              <span class="eia-sol-card__step">{{ String(i + 1).padStart(2, '0') }}</span>
+              <div class="eia-sol-card__icon">
+                <component :is="solution.icon" :size="28" />
+              </div>
             </div>
             <h4 class="eia-sol-card__title">{{ solution.title }}</h4>
             <p class="eia-sol-card__desc">{{ solution.description }}</p>
@@ -131,23 +138,7 @@
     </ImageMosaic>
 
     <!-- Final CTA -->
-    <section class="eia-cta-brutal">
-      <div class="container eia-cta-brutal__inner">
-        <h2 class="eia-cta-brutal__title">
-          <span class="block">PRÊT À VOIR CE QUE</span>
-          <span class="block outline-text">L'IA PEUT FAIRE</span>
-          <span class="block text-purple">POUR TON BUSINESS ?</span>
-        </h2>
-        <p class="eia-cta-brutal__subtitle">
-          UN APPEL GRATUIT DE 30 MINUTES. ON QUALIFIE TES BESOINS ET ON TE DIT HONNÊTEMENT CE QU'ON PEUT FAIRE POUR TOI.
-        </p>
-        <div class="eia-cta-brutal__btn-wrap">
-          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting" class="btn-massive">
-            JE RÉSERVE MON APPEL GRATUIT
-          </AppButton>
-        </div>
-      </div>
-    </section>
+    <CTABrutalist titleLine1="PRÊT À VOIR" titleLine2="CE QUE L'IA PEUT FAIRE ?" subtitle="Un appel gratuit de 30 minutes. On qualifie tes besoins et on te dit honnêtement ce qu'on peut faire pour toi." buttonText="JE RÉSERVE MON APPEL" :buttonHref="externalLinks.booking.brevoMeeting" />
   </div>
 </template>
 
@@ -159,6 +150,7 @@ import {
   Search, Rocket,
 } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
+import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 
 useHead({
   title: 'Faire évoluer mon entreprise avec l\'IA',
@@ -218,7 +210,7 @@ const parcours = [
 ]
 
 const stepColors = ['purple', 'orange', 'white']
-const stepVideos = ['/video/parcours-01.mp4', '/video/parcours-02.mp4', '']
+const stepVideos = ['/video/parcours-01.mp4', '/video/parcours-02.mp4', '/video/parcours-01.mp4']
 
 const solutions = [
   { icon: Phone, title: 'Agent réceptionniste', description: 'Répond aux appels 24/7, qualifie les demandes, transfère les urgences.' },
@@ -614,13 +606,13 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    gap: 24px;
 
     @media (max-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       grid-template-columns: 1fr;
     }
   }
@@ -641,60 +633,86 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
 
 .eia-sol-card {
   border: 4px solid #000;
-  padding: 32px 24px;
   background: #FFF;
-  position: relative;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.2s, box-shadow 0.2s;
 
-  // Collapse duplicate borders
-  margin-top: -4px;
-  margin-left: -4px;
-
-  &:hover {
-    transform: translate(-4px, -4px);
+  &--purple {
     box-shadow: 8px 8px 0px $purple;
-    z-index: 2;
-    position: relative;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px $purple;
+    }
+
+    .eia-sol-card__step {
+      color: $purple;
+    }
+
+    .eia-sol-card__icon {
+      border-color: $purple;
+      color: $purple;
+    }
+  }
+
+  &--orange {
+    box-shadow: 8px 8px 0px $orange;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px $orange;
+    }
+
+    .eia-sol-card__step {
+      color: $orange;
+    }
+
+    .eia-sol-card__icon {
+      border-color: $orange;
+      color: $orange;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
   }
 
   &__step {
-    display: block;
-    font-family: $font-mono;
-    font-size: 3rem;
-    font-weight: 700;
+    font-family: $font-heading;
+    font-size: 2.5rem;
+    font-weight: 900;
     line-height: 1;
-    color: rgba(0, 0, 0, 0.06);
-    margin-bottom: 8px;
   }
 
   &__icon {
     width: 48px;
     height: 48px;
-    border: 4px solid #000;
+    border: 3px solid #000;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $purple;
-    margin-bottom: 16px;
     background: #FFF;
   }
 
   &__title {
-    font-size: 1.125rem;
+    font-family: $font-heading;
+    font-size: $body;
+    font-weight: 700;
     text-transform: uppercase;
     color: #000;
     margin-bottom: 8px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
   }
 
   &__desc {
     font-family: $font-mono;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: rgba(0, 0, 0, 0.6);
+    font-size: $small;
+    color: $text-body;
     line-height: 1.6;
-    text-transform: uppercase;
   }
 }
 
@@ -718,82 +736,6 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
     color: #000;
     max-width: 480px;
     line-height: 1.7;
-  }
-}
-
-// ─── CTA ─────────────────────────────────────────────
-.eia-cta-brutal {
-  background: #FFF;
-  border-top: 4px solid #000;
-  padding: 120px 0;
-  text-align: center;
-  overflow: hidden;
-
-  &__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__title {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    text-transform: uppercase;
-    line-height: 0.85;
-    letter-spacing: -0.05em;
-    margin-bottom: 30px;
-    color: #000;
-
-    .block { display: block; }
-
-    .outline-text {
-      color: transparent;
-      -webkit-text-stroke: 3px #000;
-
-      @media (max-width: 768px) {
-        -webkit-text-stroke: 2px #000;
-      }
-    }
-
-    .text-purple {
-      color: $purple;
-    }
-  }
-
-  &__subtitle {
-    font-family: $font-mono;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #000;
-    text-transform: uppercase;
-    max-width: 650px;
-    margin-bottom: 60px;
-    line-height: 1.6;
-  }
-
-  &__btn-wrap {
-    display: inline-block;
-  }
-
-  .btn-massive {
-    font-size: 1.5rem;
-    padding: 24px 48px;
-    border-width: 4px;
-    box-shadow: 12px 12px 0px #000;
-
-    &:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 16px 16px 0px #000;
-    }
-
-    &:active {
-      transform: translate(8px, 8px);
-      box-shadow: 0px 0px 0px #000;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 1.125rem;
-      padding: 20px 32px;
-    }
   }
 }
 

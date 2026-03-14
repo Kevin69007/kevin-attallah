@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!dismissed" ref="barRef" class="announce glass-card-light">
+  <div v-if="!dismissed" ref="barRef" class="announce">
     <div class="container">
       <NuxtLink to="/formation-gratuite" class="announce__content">
         <Gift :size="14" class="announce__icon" />
@@ -52,16 +52,8 @@ function dismiss() {
   left: 0;
   right: 0;
   z-index: 1001;
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
-  -webkit-backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
-
-  &:hover {
-    transform: none;
-  }
+  background: #FFF;
+  border-bottom: 3px solid #000;
 
   .container {
     display: flex;
@@ -75,14 +67,17 @@ function dismiss() {
     align-items: center;
     gap: 8px;
     padding: 10px 0;
-    color: $text-heading;
+    color: #000;
+    font-family: $font-mono;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 700;
     flex: 1;
     justify-content: center;
+    text-decoration: none;
+    text-transform: uppercase;
 
     @media (max-width: 640px) {
-      font-size: 12px;
+      font-size: 11px;
       gap: 6px;
     }
   }
@@ -99,6 +94,7 @@ function dismiss() {
   &__text {
     strong {
       font-weight: 700;
+      color: $purple;
     }
   }
 
@@ -106,30 +102,34 @@ function dismiss() {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    font-family: $font-mono;
     font-weight: 700;
-    color: #fff;
-    background: $orange;
-    padding: 4px 12px;
-    border-radius: $radius-full;
+    font-size: 12px;
+    color: #FFF;
+    background: #000;
+    padding: 5px 14px;
+    border: 2px solid #000;
     white-space: nowrap;
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+    transition: background 0.2s;
 
     &:hover {
-      background: $orange-dark;
+      background: $purple;
+      border-color: $purple;
     }
   }
 
   &__close {
     background: none;
     border: none;
-    color: $text-muted;
+    color: #000;
     cursor: pointer;
     padding: 4px;
     flex-shrink: 0;
-    transition: color 0.3s ease;
+    transition: color 0.2s;
 
     &:hover {
-      color: $text-heading;
+      color: $purple;
     }
   }
 }

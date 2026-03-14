@@ -119,7 +119,7 @@
       </div>
     </section>
 
-    <CTASection />
+    <CTABrutalist />
   </div>
 </template>
 

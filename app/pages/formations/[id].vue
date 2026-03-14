@@ -124,18 +124,13 @@
     </section>
 
     <!-- Bottom CTA -->
-    <section class="bottom-cta">
-      <div class="container">
-        <div class="bottom-cta__inner">
-          <h2 class="bottom-cta__title">PRÊT À TE LANCER ?</h2>
-          <p class="bottom-cta__sub">Rejoins les 2100+ entrepreneurs qui ont transformé leur carrière.</p>
-          <AppButton variant="primary" size="lg" @click="scrollToPrice">
-            S'inscrire maintenant
-            <ArrowRight :size="20" />
-          </AppButton>
-        </div>
-      </div>
-    </section>
+    <CTABrutalist
+      titleLine1="PRÊT À TE"
+      titleLine2="LANCER ?"
+      subtitle="Rejoins les 2100+ entrepreneurs qui ont transformé leur carrière."
+      buttonText="S'INSCRIRE"
+      buttonTo="/formations"
+    />
 
     <!-- Mobile Sticky CTA -->
     <StickyCTA
@@ -676,28 +671,4 @@ const faqItems = [
   background: #fff;
 }
 
-/* ---------- BOTTOM CTA ---------- */
-.bottom-cta {
-  padding: $section-pad 0;
-  background: #000;
-
-  &__inner {
-    text-align: center;
-  }
-
-  &__title {
-    font-family: $font-heading;
-    font-size: $h2;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 16px;
-  }
-
-  &__sub {
-    font-family: $font-mono;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: $body;
-    margin-bottom: 32px;
-  }
-}
 </style>
