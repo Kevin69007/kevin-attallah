@@ -7,37 +7,33 @@
     <!-- The horizontal track -->
     <div class="hiw-brutal__track-wrap" ref="trackWrapRef">
       <div class="hiw-brutal__track" ref="trackRef">
-        
-        <!-- Step 1 -->
-        <article class="brutal-step brutal-step--purple">
-          <div class="brutal-step__number">01</div>
-          <h3 class="brutal-step__title">AUDIT &<br>STRATÉGIE</h3>
-          <p class="brutal-step__desc">
-            On détruit ce qui ne marche pas. On garde l'essentiel.
-            Mise en place d'un plan d'action implacable.
-          </p>
+
+        <article
+          v-for="(step, index) in steps"
+          :key="step.number"
+          :class="['brutal-step', `brutal-step--${step.color}`]"
+          @mouseenter="onStepEnter(index)"
+          @mouseleave="onStepLeave(index)"
+        >
+          <div class="brutal-step__number">{{ step.number }}</div>
+
+          <!-- Video preview on hover -->
+          <div v-if="step.video" class="brutal-step__video-wrap" ref="videoWrapRefs">
+            <video
+              ref="videoRefs"
+              :src="step.video"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              class="brutal-step__video"
+            />
+          </div>
+
+          <h3 class="brutal-step__title" v-html="step.title"></h3>
+          <p class="brutal-step__desc">{{ step.desc }}</p>
         </article>
 
-        <!-- Step 2 -->
-        <article class="brutal-step brutal-step--orange">
-          <div class="brutal-step__number">02</div>
-          <h3 class="brutal-step__title">INTÉGRATION<br>IA</h3>
-          <p class="brutal-step__desc">
-            Déploiement des workflows automatisés. Vos processus 
-            deviennent des machines de guerre infatigables.
-          </p>
-        </article>
-
-        <!-- Step 3 -->
-        <article class="brutal-step brutal-step--white">
-          <div class="brutal-step__number">03</div>
-          <h3 class="brutal-step__title">SCALE &<br>DOMINATION</h3>
-          <p class="brutal-step__desc">
-            Acquisition agressive. Optimisation des conversions.
-            On prend la place qui vous revient sur le marché.
-          </p>
-        </article>
-        
         <!-- Ending block -->
         <article class="brutal-step brutal-step--black">
           <h3 class="brutal-step__title text-white">PRÊT ?</h3>
@@ -57,16 +53,60 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 const sectionRef = ref<HTMLElement | null>(null)
 const trackWrapRef = ref<HTMLElement | null>(null)
 const trackRef = ref<HTMLElement | null>(null)
+const videoRefs = ref<HTMLVideoElement[]>([])
+const videoWrapRefs = ref<HTMLElement[]>([])
 
 const { $gsap } = useNuxtApp()
 let ctx: any
+
+const steps = [
+  {
+    number: '01',
+    title: 'AUDIT &<br>STRATÉGIE',
+    desc: "On détruit ce qui ne marche pas. On garde l'essentiel. Mise en place d'un plan d'action implacable.",
+    color: 'purple',
+    video: '/video/home-step-01.mp4'
+  },
+  {
+    number: '02',
+    title: 'INTÉGRATION<br>IA',
+    desc: 'Déploiement des workflows automatisés. Vos processus deviennent des machines de guerre infatigables.',
+    color: 'orange',
+    video: '/video/home-step-02.mp4'
+  },
+  {
+    number: '03',
+    title: 'SCALE &<br>DOMINATION',
+    desc: 'Acquisition agressive. Optimisation des conversions. On prend la place qui vous revient sur le marché.',
+    color: 'white',
+    video: '/video/parcours-01.mp4'
+  }
+]
+
+function onStepEnter(index: number) {
+  const video = videoRefs.value?.[index]
+  const wrap = videoWrapRefs.value?.[index]
+  if (!video || !wrap) return
+
+  video.currentTime = 0
+  video.play().catch(() => {})
+  wrap.classList.add('is-visible')
+}
+
+function onStepLeave(index: number) {
+  const video = videoRefs.value?.[index]
+  const wrap = videoWrapRefs.value?.[index]
+  if (!video || !wrap) return
+
+  wrap.classList.remove('is-visible')
+  video.pause()
+}
 
 onMounted(() => {
   if (!$gsap) return
   const gsap = $gsap as any
 
   ctx = gsap.context(() => {
-    // Mechanical horizontal scroll
     const trackWidth = trackRef.value?.scrollWidth || window.innerWidth * 3
     const amountToScroll = trackWidth - window.innerWidth
 
@@ -76,9 +116,9 @@ onMounted(() => {
       scrollTrigger: {
         trigger: trackWrapRef.value,
         start: 'top top',
-        end: `+=${amountToScroll}`, // Pin for the duration of the scroll width
+        end: `+=${amountToScroll}`,
         pin: true,
-        scrub: 1, // slight lag for mechanical heavy feel
+        scrub: 1,
         invalidateOnRefresh: true,
       }
     })
@@ -125,7 +165,7 @@ onBeforeUnmount(() => {
     display: flex;
     height: 70vh;
     padding: 0 10vw;
-    gap: 0; // Negative or zero gap to have borders touch perfectly
+    gap: 0;
   }
 }
 
@@ -133,8 +173,8 @@ onBeforeUnmount(() => {
   flex: 0 0 600px;
   height: 100%;
   border: 4px solid #000;
-  border-right: none; // prevent double borders
-  padding: 60px 40px; // Increased side padding so text doesn't hit edge
+  border-right: none;
+  padding: 60px 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -153,10 +193,35 @@ onBeforeUnmount(() => {
     padding: 30px 20px;
   }
 
-  &--purple { background: $purple; color: #FFF; }
-  &--orange { background: $orange; color: #000; }
-  &--white { background: #FFF; color: #000; }
-  &--black { background: #000; color: #FFF; }
+  &--purple {
+    background: $purple;
+    color: #FFF;
+
+    .brutal-step__title { color: #FFF; }
+    .brutal-step__desc { color: rgba(255, 255, 255, 0.85); }
+    .brutal-step__number { color: rgba(255, 255, 255, 0.2); }
+  }
+
+  &--orange {
+    background: $orange;
+    color: #FFF;
+
+    .brutal-step__title { color: #FFF; }
+    .brutal-step__desc { color: rgba(255, 255, 255, 0.85); }
+    .brutal-step__number { color: rgba(255, 255, 255, 0.2); }
+  }
+
+  &--white {
+    background: #FFF;
+    color: #000;
+
+    .brutal-step__number { color: rgba(0, 0, 0, 0.08); }
+  }
+
+  &--black {
+    background: #000;
+    color: #FFF;
+  }
 
   &__number {
     position: absolute;
@@ -166,8 +231,35 @@ onBeforeUnmount(() => {
     font-size: clamp(6rem, 15vw, 12rem);
     font-weight: 700;
     line-height: 0.8;
-    opacity: 0.2;
+    opacity: 1;
     pointer-events: none;
+  }
+
+  &__video-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 35%;
+    transform: translateY(-50%) scale(0.92);
+    height: 280px;
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__title {
@@ -192,7 +284,7 @@ onBeforeUnmount(() => {
 
   &:hover {
     transform: translateY(-8px);
-    border-right: 4px solid #000; // restore border on hover if shifted
+    border-right: 4px solid #000;
     box-shadow: 16px 16px 0px rgba(0,0,0,0.5);
     z-index: 10;
   }
