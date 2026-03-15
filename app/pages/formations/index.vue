@@ -426,4 +426,18 @@ onMounted(() => {
     }
   }
 }
+
+@media (max-width: 640px) {
+  .catalog-hero {
+    padding: 120px 0 40px;
+  }
+
+  .catalog-hero__search-input {
+    padding: 14px 16px 14px 40px;
+  }
+
+  .catalog-hero__search-icon {
+    left: 14px;
+  }
+}
 </style>

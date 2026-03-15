@@ -212,6 +212,8 @@ watch(mobileOpen, (open) => {
     gap: 5px;
     z-index: 10;
     padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
 
     @media (max-width: 1024px) {
       display: flex;
@@ -238,14 +240,13 @@ watch(mobileOpen, (open) => {
     }
   }
 
-  // Mobile overlay (frosted glass)
+  // Mobile overlay
   &__mobile {
     position: fixed;
     inset: 0;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
-    -webkit-backdrop-filter: blur($glass-blur-heavy) saturate(1.3);
-    z-index: 5;
+    background: #FFF;
+    z-index: 999;
+    border-top: 4px solid #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -259,10 +260,16 @@ watch(mobileOpen, (open) => {
 
     a {
       color: $text-heading;
-      font-family: $font-heading;
-      font-size: 1.5rem;
+      font-family: $font-mono;
+      font-size: 1.25rem;
       font-weight: 700;
       transition: color 0.3s ease;
+      border-bottom: 2px solid #000;
+      padding: 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      width: 100%;
+      display: block;
 
       &:hover {
         color: $purple;
@@ -276,14 +283,14 @@ watch(mobileOpen, (open) => {
     gap: 8px;
     background: $orange !important;
     color: #fff !important;
-    border-radius: 100px;
     padding: 16px 36px;
     font-weight: 700 !important;
     font-size: 1rem !important;
-    border: 1px solid rgba($orange-light, 0.3);
-    box-shadow:
-      0 4px 16px rgba($orange-dark, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    font-family: $font-mono;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0px $purple;
   }
 }
 
@@ -294,5 +301,6 @@ watch(mobileOpen, (open) => {
 .mobile-menu-enter-from,
 .mobile-menu-leave-to {
   opacity: 0;
+  transform: translateY(-20px);
 }
 </style>

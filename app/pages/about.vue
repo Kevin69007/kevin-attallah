@@ -557,4 +557,30 @@ const socialIcons: Record<string, string> = {
 .about-brutal__social-name {
   // inherits from pill
 }
+
+@media (max-width: 640px) {
+  .about-brutal__hero {
+    padding: 120px 0 40px;
+  }
+
+  .about-brutal__photo-wrap {
+    box-shadow: 8px 8px 0px $purple;
+  }
+
+  .about-brutal__photo-col,
+  .about-brutal__content-col {
+    padding: 24px;
+  }
+
+  .about-brutal__values,
+  .about-brutal__social {
+    padding: 60px 0;
+  }
+
+  .about-brutal__social-pill {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    box-shadow: 3px 3px 0px $purple;
+  }
+}
 </style>

@@ -74,4 +74,19 @@ onMounted(() => {
     }
   }
 }
+
+@media (max-width: 640px) {
+  .marquee-brutal__content span {
+    font-size: 16px;
+  }
+
+  .marquee-brutal__content {
+    gap: 20px;
+    padding-right: 20px;
+  }
+
+  .marquee-brutal__content .star {
+    font-size: 18px;
+  }
+}
 </style>

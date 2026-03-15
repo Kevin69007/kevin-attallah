@@ -739,4 +739,40 @@ onMounted(() => {
 
 .text-center { text-align: center; }
 .mt-48 { margin-top: 48px; }
+
+@media (max-width: 640px) {
+  .auto-hero-brutal {
+    padding: 120px 0 40px;
+  }
+
+  .auto-hero-brutal__image-wrap {
+    box-shadow: 6px 6px 0px $purple;
+  }
+
+  .auto-av-card {
+    padding: 20px 16px;
+
+    &--purple { box-shadow: 4px 4px 0px $purple; }
+    &--orange { box-shadow: 4px 4px 0px $orange; }
+  }
+
+  .auto-pricing-card {
+    padding: 24px 20px;
+  }
+
+  .auto-pricing-card__amount {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .auto-avantages-brutal,
+  .auto-pricing-brutal {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .auto-hero-brutal__badges {
+    flex-direction: column;
+  }
+}
 </style>

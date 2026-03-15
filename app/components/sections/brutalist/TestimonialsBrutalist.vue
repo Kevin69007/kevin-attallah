@@ -245,4 +245,19 @@ function onHoverOut() {
     }
   }
 }
+
+@media (max-width: 640px) {
+  .testi-brutal__header {
+    margin-bottom: 32px;
+  }
+
+  .brutal-card {
+    padding: 20px;
+    border-width: 2px;
+  }
+
+  .brutal-card__quote {
+    font-size: 0.95rem;
+  }
+}
 </style>

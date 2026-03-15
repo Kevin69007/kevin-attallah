@@ -795,4 +795,40 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
 // ─── UTILITIES ───────────────────────────────────────
 .mt-24 { margin-top: 24px; }
 .mt-48 { margin-top: 48px; }
+
+@media (max-width: 640px) {
+  .eia-hero-brutal {
+    padding: 120px 0 60px;
+  }
+
+  .eia-hero-brutal__image-wrap {
+    box-shadow: 8px 8px 0px $purple;
+  }
+
+  .eia-pain-brutal__item {
+    padding: 16px 20px;
+  }
+
+  .eia-pain-brutal__closing {
+    padding: 24px 20px;
+    box-shadow: 6px 6px 0px $purple;
+  }
+
+  .eia-hero-brutal__subtitle {
+    box-shadow: 2px 2px 0px #000;
+  }
+
+  .eia-sol-card {
+    padding: 20px 16px;
+
+    &--purple { box-shadow: 4px 4px 0px $purple; }
+    &--orange { box-shadow: 4px 4px 0px $orange; }
+  }
+
+  .eia-pain-brutal,
+  .eia-parcours-brutal,
+  .eia-solutions-brutal {
+    padding: 60px 0;
+  }
+}
 </style>

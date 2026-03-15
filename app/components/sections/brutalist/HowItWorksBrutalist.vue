@@ -290,4 +290,28 @@ onBeforeUnmount(() => {
     z-index: 10;
   }
 }
+
+@media (max-width: 640px) {
+  .hiw-brutal__header {
+    top: 20px;
+    left: 20px;
+  }
+
+  .hiw-brutal__track-wrap {
+    padding: 0 5vw;
+  }
+
+  .brutal-step {
+    flex: 0 0 90vw;
+    padding: 30px 20px;
+  }
+
+  .brutal-step__number {
+    font-size: clamp(3rem, 10vw, 6rem);
+  }
+
+  .brutal-step__title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+}
 </style>

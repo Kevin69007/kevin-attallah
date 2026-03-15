@@ -15,9 +15,6 @@
         <AppButton variant="primary" to="/">
           RETOUR À L'ACCUEIL
         </AppButton>
-        <AppButton variant="ghost-light" to="/formations">
-          VOIR LES FORMATIONS
-        </AppButton>
       </div>
     </div>
     </main>
@@ -102,6 +99,12 @@ useHead({ title: '404 - Page introuvable' })
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .not-found {
+    padding: 120px 0 40px;
   }
 }
 </style>

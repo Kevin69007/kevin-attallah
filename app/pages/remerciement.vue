@@ -361,4 +361,17 @@ const nextSteps = [
     flex-wrap: wrap;
   }
 }
+
+@media (max-width: 640px) {
+  .thanks {
+    padding: 120px 0 40px;
+  }
+
+  .thanks__step {
+    padding: 20px 16px;
+
+    &--purple { box-shadow: 4px 4px 0px $purple; }
+    &--orange { box-shadow: 4px 4px 0px $orange; }
+  }
+}
 </style>

@@ -214,4 +214,16 @@
 .mt-6 {
   margin-top: 24px;
 }
+
+@media (max-width: 480px) {
+  .path-card {
+    padding: 20px;
+  }
+
+  .path-card__overlay {
+    font-size: 1rem;
+    bottom: 12px;
+    right: 12px;
+  }
+}
 </style>

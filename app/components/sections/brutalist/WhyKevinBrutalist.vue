@@ -191,4 +191,16 @@
     font-size: 1.5rem;
   }
 }
+
+@media (max-width: 640px) {
+  .brutal-image-wrap {
+    box-shadow: 6px 6px 0px $purple;
+  }
+}
+
+@media (max-width: 480px) {
+  .brutal-grid__content-col {
+    padding: 20px;
+  }
+}
 </style>

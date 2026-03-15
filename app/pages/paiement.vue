@@ -612,4 +612,22 @@ const trustSignals = [
   40% { opacity: 1; transform: scale(1); }
 }
 
+@media (max-width: 640px) {
+  .checkout {
+    padding: 120px 0 40px;
+  }
+
+  .checkout__card {
+    padding: 20px;
+  }
+
+  .checkout__summary {
+    padding: 20px;
+  }
+
+  .processing-overlay__card {
+    padding: 32px 24px;
+  }
+}
+
 </style>

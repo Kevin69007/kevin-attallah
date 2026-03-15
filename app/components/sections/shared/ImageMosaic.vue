@@ -202,5 +202,11 @@ onUnmounted(() => {
       padding: 40px 16px;
     }
   }
+
+  @media (max-width: 480px) {
+    &__center {
+      padding: 32px 16px;
+    }
+  }
 }
 </style>

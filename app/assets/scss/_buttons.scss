@@ -111,3 +111,30 @@
     }
   }
 }
+
+@media (max-width: 640px) {
+  .btn {
+    white-space: normal;
+
+    &--lg {
+      padding: 16px 28px;
+      font-size: 1rem;
+    }
+  }
+
+  .btn--primary {
+    box-shadow: 2px 2px 0px #000;
+
+    &:hover {
+      box-shadow: 4px 4px 0px #000;
+    }
+  }
+
+  .btn--ghost-light {
+    box-shadow: 2px 2px 0px #000;
+
+    &:hover {
+      box-shadow: 4px 4px 0px #000;
+    }
+  }
+}

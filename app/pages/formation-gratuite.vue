@@ -270,4 +270,14 @@ onMounted(() => {
     font-size: $small;
   }
 }
+
+@media (max-width: 640px) {
+  .lp {
+    padding: 120px 0 40px;
+  }
+
+  .lp__feature {
+    box-shadow: 2px 2px 0px $purple;
+  }
+}
 </style>

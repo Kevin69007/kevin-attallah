@@ -858,4 +858,43 @@ onMounted(() => {
 
 .mt-48 { margin-top: 48px; }
 .text-center { text-align: center; }
+
+@media (max-width: 640px) {
+  .ce-hero-brutal {
+    padding: 120px 0 40px;
+  }
+
+  .ce-hero-brutal__image-wrap {
+    box-shadow: 6px 6px 0px $purple;
+  }
+
+  .ce-mod-card {
+    padding: 20px 16px;
+
+    &--purple { box-shadow: 4px 4px 0px $purple; }
+    &--orange { box-shadow: 4px 4px 0px $orange; }
+  }
+
+  .ce-price-card {
+    padding: 24px 20px;
+
+    &--purple { box-shadow: 4px 4px 0px $purple; }
+    &--orange { box-shadow: 4px 4px 0px $orange; }
+  }
+
+  .ce-modules-brutal,
+  .ce-formulas-brutal {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .ce-hero-brutal__badges {
+    flex-direction: column;
+  }
+
+  .ce-hero-brutal__ctas {
+    flex-direction: column;
+  }
+}
 </style>

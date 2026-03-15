@@ -336,4 +336,14 @@ useHead({
     }
   }
 }
+
+@media (max-width: 640px) {
+  .blog-detail {
+    padding: 120px 0 40px;
+  }
+
+  .blog-detail__gallery {
+    margin-bottom: 24px;
+  }
+}
 </style>

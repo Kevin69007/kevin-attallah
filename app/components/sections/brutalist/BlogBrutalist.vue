@@ -205,4 +205,18 @@ const displayedPosts = computed(() => blogPosts.slice(0, 3))
     }
   }
 }
+
+@media (max-width: 640px) {
+  .brutal-article {
+    border-width: 2px;
+  }
+
+  .brutal-article__content {
+    padding: 16px;
+  }
+
+  .brutal-article__title {
+    font-size: 1.1rem;
+  }
+}
 </style>

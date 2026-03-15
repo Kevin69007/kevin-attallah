@@ -484,4 +484,18 @@ onUnmounted(() => {
   from { width: 0%; }
   to { width: 100%; }
 }
+
+@media (max-width: 640px) {
+  .blog-featured__content {
+    padding: 24px;
+  }
+
+  .blog-divider {
+    margin: 24px 0 16px;
+  }
+
+  .blog-hero {
+    padding: 120px 0 40px;
+  }
+}
 </style>

@@ -73,4 +73,14 @@ onMounted(() => {
   display: inline-block;
   white-space: nowrap;
 }
+
+@media (max-width: 640px) {
+  .str-tunnel {
+    white-space: normal;
+    text-align: center;
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    padding: 8px 16px;
+    box-shadow: 4px 4px 0px $purple;
+  }
+}
 </style>

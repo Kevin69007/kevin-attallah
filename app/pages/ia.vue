@@ -464,4 +464,30 @@ const stats = [
   }
 }
 
+@media (max-width: 640px) {
+  .ia-hero {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  .ia-stats__value {
+    font-size: 1.8rem;
+  }
+
+  .brutal-card {
+    padding: 24px;
+    box-shadow: 4px 4px 0px $purple;
+
+    &--orange {
+      box-shadow: 4px 4px 0px $orange;
+    }
+  }
+
+  .ia-who,
+  .ia-solutions,
+  .ia-stats {
+    padding: 60px 0;
+  }
+}
+
 </style>

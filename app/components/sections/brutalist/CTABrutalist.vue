@@ -152,4 +152,22 @@ onMounted(() => {
     }
   }
 }
+
+@media (max-width: 640px) {
+  .cta-brutal__subtitle {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .btn-massive {
+    padding: 20px 32px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-brutal__title .outline-text {
+    -webkit-text-stroke: 1px #000;
+  }
+}
 </style>

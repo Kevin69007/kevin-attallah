@@ -690,4 +690,31 @@ const faqItems = [
   background: #fff;
 }
 
+@media (max-width: 480px) {
+  .sale-hero__meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .trust__card {
+    padding: 20px 16px;
+  }
+
+  .pricing__split {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sale-hero {
+    padding: 120px 0 40px;
+  }
+
+  .learn,
+  .trust,
+  .pricing {
+    padding: 60px 0;
+  }
+}
+
 </style>

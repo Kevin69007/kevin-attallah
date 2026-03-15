@@ -187,4 +187,20 @@ onMounted(() => {
     transition: transform 0.3s;
   }
 }
+
+@media (max-width: 640px) {
+  .hero-brutal__subtitle {
+    box-shadow: 2px 2px 0px #000;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-brutal__ctas {
+    flex-direction: column;
+  }
+
+  .hero-brutal__image-col .hero-image-wrap {
+    max-width: 100%;
+  }
+}
 </style>
