@@ -37,7 +37,7 @@
         <!-- Ending block -->
         <article class="brutal-step brutal-step--black">
           <h3 class="brutal-step__title text-white">PRÊT ?</h3>
-          <AppButton variant="primary" class="mt-4">
+          <AppButton variant="primary" class="mt-4" :href="externalLinks.booking.brevoMeeting">
             LANCER LE PROTOCOLE
           </AppButton>
         </article>
@@ -49,6 +49,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { externalLinks } from '~/data/external-links'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const trackWrapRef = ref<HTMLElement | null>(null)

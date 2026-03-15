@@ -54,6 +54,12 @@
           </p>
           <span class="eia-pain-brutal__closing-punch">c'est quand ?</span>
         </div>
+        <div class="text-center mt-48">
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+            JE VEUX MON AUDIT IA
+            <ArrowRight :size="20" />
+          </AppButton>
+        </div>
       </div>
     </section>
 
@@ -93,6 +99,12 @@
               </li>
             </ul>
           </article>
+        </div>
+        <div class="text-center mt-48">
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+            JE RÉSERVE MON APPEL
+            <ArrowRight :size="20" />
+          </AppButton>
         </div>
       </div>
     </section>
@@ -782,4 +794,5 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
 
 // ─── UTILITIES ───────────────────────────────────────
 .mt-24 { margin-top: 24px; }
+.mt-48 { margin-top: 48px; }
 </style>

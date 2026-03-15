@@ -76,7 +76,7 @@
             <span class="section-label">TARIF_</span>
             <h2 class="section-title">INVESTIS DANS TON AVENIR</h2>
             <p class="pricing__text">
-              Formation certifiante 100% finançable. Paiement sécurisé par carte bancaire.
+              Formation professionnelle 100% finançable. Paiement sécurisé par carte bancaire.
               Accès immédiat dès l'inscription.
             </p>
 
@@ -361,14 +361,14 @@ onMounted(() => {
 // Trust signals
 const trustSignals = [
   { icon: Shield, title: 'Paiement Sécurisé', description: 'Transactions protégées par Revolut avec cryptage SSL 256 bits.' },
-  { icon: Award, title: 'Certification CPF', description: 'Formation éligible au Compte Personnel de Formation.' },
+  { icon: Award, title: '100% Finançable', description: 'Formation éligible au Compte Personnel de Formation.' },
   { icon: CreditCard, title: 'Satisfait ou Remboursé', description: 'Garantie de remboursement sous 14 jours.' },
 ]
 
 // FAQ
 const faqItems = [
   { question: 'Comment financer ma formation avec le CPF ?', answer: 'Nos formations sont éligibles au CPF. Contactez-nous pour vérifier votre solde CPF et nous vous accompagnerons dans les démarches administratives.' },
-  { question: 'Combien de temps ai-je accès à la formation ?', answer: 'Vous bénéficiez d\'un accès à vie à la formation dès votre inscription. Vous pouvez la suivre à votre rythme.' },
+  { question: 'Combien de temps ai-je accès à la formation ?', answer: 'Vous bénéficiez d\'un accès dès votre inscription. Vous pouvez la suivre à votre rythme.' },
   { question: 'Puis-je obtenir une facture ?', answer: 'Oui, une facture vous sera automatiquement envoyée par email après votre inscription.' },
   { question: 'Y a-t-il un accompagnement personnalisé ?', answer: 'Oui, vous bénéficiez d\'un suivi personnalisé tout au long de votre formation. Notre équipe est disponible pour répondre à vos questions.' },
   { question: 'Le paiement est-il sécurisé ?', answer: 'Absolument. Tous les paiements sont traités par Revolut avec un cryptage SSL 256 bits. Vos données bancaires sont protégées.' },

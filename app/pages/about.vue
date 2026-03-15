@@ -30,7 +30,7 @@
 
             <div class="about-brutal__text-block">
               <p>
-                Ex-finance, expert IA et formateur certifié. Depuis des années, j'accompagne des entrepreneurs à lancer et faire grandir leur activité grâce à l'IA. +2100 entrepreneurs formés, des résultats concrets, et une approche sans blabla.
+                Ex-finance, expert IA et formateur. Depuis des années, j'accompagne des entrepreneurs à lancer et faire grandir leur activité grâce à l'IA. +2100 entrepreneurs formés, des résultats concrets, et une approche sans blabla.
               </p>
               <p>
                 Des formations concrètes, orientées résultats, boostées par l'intelligence artificielle. L'objectif : que tu passes à l'action avec les bons outils.

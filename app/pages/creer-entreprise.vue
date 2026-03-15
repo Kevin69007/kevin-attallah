@@ -30,6 +30,16 @@
                 <span><strong>100%</strong> financable</span>
               </div>
             </div>
+            <div class="ce-hero-brutal__ctas">
+              <AppButton variant="primary" size="lg" to="/autonomie">
+                JE ME FORME EN AUTONOMIE
+                <ArrowRight :size="18" />
+              </AppButton>
+              <AppButton variant="ghost-light" size="lg" :href="externalLinks.booking.brevoMeeting">
+                JE VEUX ÊTRE ACCOMPAGNÉ
+                <ArrowRight :size="18" />
+              </AppButton>
+            </div>
           </div>
           <div class="ce-hero-brutal__image-col">
             <div class="ce-hero-brutal__image-wrap">
@@ -67,6 +77,12 @@
             <p class="ce-mod-card__desc">{{ mod.description }}</p>
           </div>
         </div>
+        <div class="text-center mt-48">
+          <AppButton variant="primary" size="lg" @click="scrollToFormulas">
+            DÉCOUVRIR LES FORMULES
+            <ArrowRight :size="18" />
+          </AppButton>
+        </div>
       </div>
     </section>
 
@@ -89,12 +105,12 @@
             <span class="ce-price-card__badge ce-price-card__badge--purple">FORMATION EN AUTONOMIE</span>
             <p class="ce-price-card__sub">Accessible 24h/24, 7j/7</p>
             <p class="ce-price-card__desc">
-              Tout le programme en ligne. Avance à ton rythme. Accès immédiat et à vie.
+              Tout le programme en ligne. Avance à ton rythme. Accès immédiat.
             </p>
             <div class="ce-price-card__checks">
               <div class="ce-price-card__check ce-price-card__check--purple">
                 <CheckCircle :size="16" />
-                <span>Acces immediat et a vie</span>
+                <span>Acces immediat</span>
               </div>
               <div class="ce-price-card__check ce-price-card__check--purple">
                 <CheckCircle :size="16" />
@@ -105,18 +121,14 @@
                 <span>Contenu mis a jour</span>
               </div>
             </div>
-            <div class="ce-price-card__price">
-              <span class="ce-price-card__amount ce-price-card__amount--purple">299EUR</span>
+            <div class="ce-price-card__financable">
+              <Award :size="18" />
+              <span>100% FINANÇABLE</span>
             </div>
-            <AppButton variant="ghost-light" block :disabled="isLoading" @click="handlePurchase">
-              <Loader2 v-if="isLoading" :size="18" class="ce-price-card__spin" />
-              {{ isLoading ? 'CHARGEMENT...' : 'JE ME LANCE' }}
-              <ArrowRight v-if="!isLoading" :size="18" />
+            <AppButton variant="ghost-light" block to="/autonomie">
+              DÉCOUVRIR LA FORMATION
+              <ArrowRight :size="18" />
             </AppButton>
-            <div class="ce-price-card__trust">
-              <Shield :size="14" />
-              <span>PAIEMENT SECURISE</span>
-            </div>
           </div>
 
           <!-- Card 2: Accompagnement (Featured) -->
@@ -143,10 +155,10 @@
                 <CheckCircle :size="16" />
                 <span>Formation complementaire offerte</span>
               </div>
-              <div class="ce-price-card__check ce-price-card__check--orange">
-                <CheckCircle :size="16" />
-                <span>100% financable</span>
-              </div>
+            </div>
+            <div class="ce-price-card__financable">
+              <Award :size="18" />
+              <span>100% FINANÇABLE</span>
             </div>
             <AppButton variant="primary" block :href="externalLinks.booking.brevoMeeting">
               JE VEUX ETRE ACCOMPAGNE
@@ -230,6 +242,10 @@ const modules = [
   { icon: Bot, title: 'L\'IA comme copilote dès le départ', description: 'L\'IA intégrée dès le départ. Gagne du temps, automatise, et avance plus vite.' },
   { icon: Gift, title: 'Une formation offerte au choix', description: 'En bonus : une formation complémentaire offerte pour aller encore plus loin.' },
 ]
+
+function scrollToFormulas() {
+  document.querySelector('#formulas')?.scrollIntoView({ behavior: 'smooth' })
+}
 
 const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
 
@@ -415,6 +431,13 @@ onMounted(() => {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+  }
+
+  &__ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 32px;
   }
 
   &__image-col {
@@ -765,6 +788,28 @@ onMounted(() => {
     &--orange { color: $orange; }
   }
 
+  &__financable {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+    margin-bottom: 20px;
+    background: #000;
+    color: $orange;
+    font-family: $font-heading;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+
+    svg {
+      color: $orange;
+    }
+  }
+
   &__trust {
     display: flex;
     align-items: center;
@@ -810,4 +855,7 @@ onMounted(() => {
   max-width: 480px;
   margin: 0 auto;
 }
+
+.mt-48 { margin-top: 48px; }
+.text-center { text-align: center; }
 </style>

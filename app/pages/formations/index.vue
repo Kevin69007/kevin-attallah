@@ -8,7 +8,7 @@
         <span class="section-label">CATALOGUE_</span>
         <h1 class="catalog-hero__title">NOS FORMATIONS.</h1>
         <p class="catalog-hero__subtitle">
-          +60 FORMATIONS CERTIFIANTES POUR BOOSTER TA CARRIÈRE. 100% FINANÇABLES.
+          +60 FORMATIONS PROFESSIONNELLES POUR BOOSTER TA CARRIÈRE. 100% FINANÇABLES.
         </p>
 
         <!-- Search -->

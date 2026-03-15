@@ -15,8 +15,7 @@ export const freeFormationConfig: FreeFormationConfig = {
     'On te crée un accès personnel à ta formation — remplis le formulaire et reçois tes identifiants sous 48h ouvrées.',
   features: [
     'Formation complète en ligne',
-    'Certificat de fin de formation',
-    'Accès à vie au contenu',
+    'Accès immédiat au contenu',
     'Support pédagogique inclus',
   ],
   badgeText: 'Formation Gratuite',

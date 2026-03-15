@@ -32,8 +32,9 @@ const props = withDefaults(defineProps<{
   titleLine1: "L'HÉSITATION",
   titleLine2: 'COÛTE CHER.',
   subtitle: "Le marché n'attend pas ceux qui réfléchissent trop. Passez à l'action. Maintenant.",
-  buttonText: 'LANCER LA MACHINE',
-  buttonTo: '/creer-entreprise',
+  buttonText: 'RÉSERVER MON APPEL',
+  buttonTo: '',
+  buttonHref: 'https://meet.brevo.com/kevin-a2ta2l/presentation',
 })
 
 const line2Text = computed(() => {
