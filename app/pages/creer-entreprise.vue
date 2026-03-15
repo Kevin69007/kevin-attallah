@@ -1,5 +1,8 @@
 <template>
   <div class="ce-brutal">
+    <WebGLBrutalistLight />
+
+    <main class="brutal-content-stack">
     <!-- Hero -->
     <section class="ce-hero-brutal">
       <div class="container">
@@ -37,6 +40,8 @@
       </div>
     </section>
 
+    <TunnelTransition text="CONSTRUIS TA VISION." />
+
     <!-- Modules -->
     <section class="ce-modules-brutal">
       <div class="container">
@@ -64,6 +69,8 @@
         </div>
       </div>
     </section>
+
+    <TunnelTransition text="PASSE À L'ACTION." />
 
     <!-- Two Formulas -->
     <section id="formulas" class="ce-formulas-brutal">
@@ -154,6 +161,8 @@
       </div>
     </section>
 
+    <TunnelTransition text="LANCE-TOI." />
+
     <!-- Reassurance Mosaic -->
     <ImageMosaic :images="mosaicImages">
       <span class="ce-section-label">POURQUOI_</span>
@@ -180,6 +189,7 @@
       :visible="kitIntent.triggered.value && !kitIntent.dismissed.value"
       @close="kitIntent.dismiss()"
     />
+    </main>
   </div>
 </template>
 
@@ -189,6 +199,8 @@ import {
   ArrowRight, Award, Users, Star, Shield, Loader2, BookOpen, Handshake,
 } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 
 useHead({
   title: 'Créer mon entreprise',
@@ -324,8 +336,14 @@ onMounted(() => {
 // ============================================
 
 .ce-brutal {
+  position: relative;
   background: #FFF;
   color: #000;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
 }
 
 // --- Section Label ---
