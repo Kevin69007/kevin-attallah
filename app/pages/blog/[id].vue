@@ -1,5 +1,7 @@
 <template>
-  <div v-if="post">
+  <div v-if="post" class="page-blog-detail">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <section class="blog-detail">
       <div class="container container--narrow">
         <NuxtLink to="/blog" class="blog-detail__back">
@@ -66,7 +68,10 @@
       </div>
     </section>
 
+    <TunnelTransition text="CONTINUE À APPRENDRE." />
+
     <CTABrutalist />
+    </main>
   </div>
 
   <div v-else style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #fff;">
@@ -78,6 +83,8 @@
 </template>
 
 <script setup lang="ts">
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { EffectFade as SwiperEffectFade, Navigation as SwiperNavigation } from 'swiper/modules'
 import { ArrowLeft, Calendar, ChevronLeft, ChevronRight } from 'lucide-vue-next'
@@ -113,6 +120,16 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+.page-blog-detail {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
+
 .blog-detail {
   padding: 160px 0 80px;
   background: #fff;

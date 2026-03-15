@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="page-remerciement">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <section class="thanks">
       <div class="container thanks__content text-center">
         <!-- Success badge -->
@@ -59,10 +61,12 @@
         </div>
       </div>
     </section>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import { CheckCircle, Mail, BookOpen, Headphones, Rocket, Zap } from 'lucide-vue-next'
 
 useHead({ title: 'Merci !' })
@@ -130,6 +134,16 @@ const nextSteps = [
 </script>
 
 <style lang="scss" scoped>
+.page-remerciement {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
+
 .text-purple { color: $purple; }
 .text-orange { color: $orange; }
 

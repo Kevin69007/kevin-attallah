@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="page-formation-gratuite">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <section class="lp">
       <div class="container">
         <!-- Hero -->
@@ -47,10 +49,12 @@
         </div>
       </div>
     </section>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import { Gift, CheckCircle, Users, Star } from 'lucide-vue-next'
 import { freeFormationConfig as config } from '~/data/free-formation'
 
@@ -74,6 +78,16 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.page-formation-gratuite {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
+
 /* ── Brutalist shared ── */
 .brutal-label {
   display: inline-block;

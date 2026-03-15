@@ -1,5 +1,7 @@
 <template>
   <div class="not-found">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <div class="container text-center not-found__content">
       <div class="not-found__code-wrap">
         <span class="not-found__code-bg">404</span>
@@ -18,15 +20,24 @@
         </AppButton>
       </div>
     </div>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+
 useHead({ title: '404 - Page introuvable' })
 </script>
 
 <style lang="scss" scoped>
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
+
 .not-found {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;

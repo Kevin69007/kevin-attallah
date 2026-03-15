@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="page-paiement">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <!-- Processing overlay -->
     <Teleport to="body">
       <Transition name="overlay-fade">
@@ -208,10 +210,12 @@
         </div>
       </div>
     </section>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import { Shield, Lock, CreditCard, Loader2 } from 'lucide-vue-next'
 import RevolutCheckout from '@revolut/checkout'
 
@@ -493,6 +497,16 @@ const trustSignals = [
 </script>
 
 <style lang="scss" scoped>
+.page-paiement {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
+
 .checkout {
   padding: 160px 0 80px;
   min-height: 100vh;

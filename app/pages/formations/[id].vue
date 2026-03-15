@@ -1,5 +1,7 @@
 <template>
-  <div v-if="formation">
+  <div v-if="formation" class="page-formation-detail">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <!-- Hero -->
     <section class="sale-hero">
       <div class="container">
@@ -28,6 +30,8 @@
         </div>
       </div>
     </section>
+
+    <TunnelTransition text="CE QUE TU VAS APPRENDRE." />
 
     <!-- What you'll learn -->
     <section class="learn">
@@ -61,6 +65,8 @@
         </div>
       </div>
     </section>
+
+    <TunnelTransition text="COMMENCE MAINTENANT." />
 
     <!-- Pricing -->
     <section id="pricing" class="pricing">
@@ -139,6 +145,7 @@
       :visible="showSticky"
       @click="createOrder"
     />
+    </main>
   </div>
 
   <!-- 404 -->
@@ -153,6 +160,8 @@
 
 <script setup lang="ts">
 import { Award, Clock, BarChart3, Users, ArrowRight, CheckCircle, Shield, CreditCard, BookOpen } from 'lucide-vue-next'
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -370,6 +379,16 @@ const faqItems = [
 /* ============================================
    BRUTALIST DESIGN — formations/[id].vue
    ============================================ */
+
+.page-formation-detail {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
 
 .section-label {
   font-family: $font-mono;

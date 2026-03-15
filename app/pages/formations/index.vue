@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="page-formations">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <!-- Hero -->
     <section class="catalog-hero">
       <div class="container catalog-hero__content">
@@ -111,11 +113,13 @@
         </div>
       </div>
     </section>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Search, Clock, BarChart3, SearchX } from 'lucide-vue-next'
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 
 useHead({ title: 'Formations' })
 
@@ -139,6 +143,16 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.page-formations {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
+
 .catalog-hero {
   padding: 140px 0 60px;
   background: #FFF;

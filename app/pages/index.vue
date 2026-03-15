@@ -7,19 +7,19 @@
       <MarqueeBrutalist />
       
       <WhyKevinBrutalist />
-      <TunnelTransition />
+      <TunnelTransition text="ENTRE DANS LE SYSTÈME." />
 
       <TwoPathsBrutalist />
-      <TunnelTransition text="ACTIVATE THE PROTOCOL." />
+      <TunnelTransition text="ACTIVE LE PROTOCOLE." />
 
       <HowItWorksBrutalist />
-      <TunnelTransition text="DOMINATE THE GAME." />
+      <TunnelTransition text="DOMINE LE JEU." />
 
       <TestimonialsBrutalist />
-      <TunnelTransition text="UNLOCK THE MATRIX." />
+      <TunnelTransition text="DÉVERROUILLE LA MATRICE." />
 
       <BlogBrutalist />
-      <TunnelTransition text="OWN THE SYSTEM." />
+      <TunnelTransition text="PRENDS LE CONTRÔLE." />
       
       <CTABrutalist />
     </main>

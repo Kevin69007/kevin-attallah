@@ -1,5 +1,7 @@
 <template>
   <div class="about-brutal">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <!-- Hero -->
     <section class="about-brutal__hero">
       <div class="container">
@@ -52,6 +54,8 @@
       </div>
     </section>
 
+    <TunnelTransition text="QUI EST KEVIN." />
+
     <!-- Values -->
     <section class="about-brutal__values">
       <div class="container">
@@ -75,6 +79,8 @@
         </div>
       </div>
     </section>
+
+    <TunnelTransition text="REJOINS-NOUS." />
 
     <!-- Social -->
     <section class="about-brutal__social">
@@ -104,6 +110,7 @@
     </section>
 
     <CTABrutalist />
+    </main>
   </div>
 </template>
 
@@ -112,6 +119,8 @@ import { ref, onMounted } from 'vue'
 import { Heart, Zap, Users, Target } from 'lucide-vue-next'
 import { socialLinks } from '~/data/social'
 import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 
 useHead({ title: 'À propos' })
 
@@ -185,7 +194,13 @@ const socialIcons: Record<string, string> = {
 
 <style lang="scss" scoped>
 .about-brutal {
+  position: relative;
   background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
 }
 
 // ── Hero ──

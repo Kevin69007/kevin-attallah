@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="page-ia">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <!-- Hero -->
     <section class="ia-hero">
       <div class="container ia-hero__content text-center">
@@ -22,6 +24,8 @@
         </div>
       </div>
     </section>
+
+    <TunnelTransition text="L'IA, C'EST MAINTENANT." />
 
     <!-- Who is it for -->
     <section class="ia-who">
@@ -71,6 +75,8 @@
       </div>
     </section>
 
+    <TunnelTransition text="3 LEVIERS POUR DÉCOLLER." />
+
     <!-- 3 Solutions -->
     <section class="ia-solutions">
       <div class="container">
@@ -97,6 +103,8 @@
       </div>
     </section>
 
+    <TunnelTransition text="LES CHIFFRES PARLENT." />
+
     <!-- Stats -->
     <section class="ia-stats">
       <div class="container">
@@ -119,12 +127,15 @@
       buttonText="RÉSERVER MON AUDIT IA"
       :buttonHref="externalLinks.booking.brevoMeeting"
     />
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Bot, Rocket, TrendingUp, CheckCircle, ArrowRight, GraduationCap, Search, Wrench } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 
 useHead({
   title: 'Décoller avec l\'IA',
@@ -168,6 +179,16 @@ const stats = [
 </script>
 
 <style lang="scss" scoped>
+.page-ia {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
+}
+
 /* ── Brutalist shared ── */
 .brutal-label {
   display: block;

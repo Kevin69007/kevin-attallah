@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="page-blog">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <section class="blog-hero">
       <div class="container text-center">
         <span class="blog-hero__label">BLOG_</span>
@@ -119,11 +121,16 @@
       </div>
     </section>
 
+    <TunnelTransition text="ENCORE PLUS D'ARTICLES." />
+
     <CTABrutalist />
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination as SwiperPagination } from 'swiper/modules'
 import { ArrowRight, Calendar } from 'lucide-vue-next'
@@ -461,6 +468,16 @@ onUnmounted(() => {
     overflow: hidden;
     flex: 1;
   }
+}
+
+.page-blog {
+  position: relative;
+  background: #FFF;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
 }
 
 @keyframes card-fill {

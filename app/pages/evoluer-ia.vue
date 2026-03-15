@@ -1,5 +1,7 @@
 <template>
   <div class="page-eia-brutal">
+    <WebGLBrutalistLight />
+    <main class="brutal-content-stack">
     <!-- Hero -->
     <section class="eia-hero-brutal">
       <div class="container eia-hero-brutal__grid">
@@ -29,6 +31,8 @@
       </div>
     </section>
 
+    <TunnelTransition text="LE PROBLÈME EST LÀ." />
+
     <!-- Pain Points -->
     <section class="eia-pain-brutal">
       <div class="container">
@@ -49,6 +53,8 @@
         </p>
       </div>
     </section>
+
+    <TunnelTransition text="LA MÉTHODE." />
 
     <!-- Parcours -->
     <section class="eia-parcours-brutal">
@@ -88,6 +94,8 @@
       </div>
     </section>
 
+    <TunnelTransition text="DES SOLUTIONS CONCRÈTES." />
+
     <!-- Solutions -->
     <section class="eia-solutions-brutal">
       <div class="container">
@@ -123,6 +131,8 @@
       </div>
     </section>
 
+    <TunnelTransition text="CE QUI CHANGE TOUT." />
+
     <!-- Reassurance Mosaic -->
     <ImageMosaic :images="mosaicImages">
       <span class="section-label">DIFFÉRENCE_</span>
@@ -137,6 +147,7 @@
 
     <!-- Final CTA -->
     <CTABrutalist titleLine1="PRÊT À VOIR" titleLine2="CE QUE L'IA PEUT FAIRE ?" subtitle="Un appel gratuit de 30 minutes. On qualifie tes besoins et on te dit honnêtement ce qu'on peut faire pour toi." buttonText="JE RÉSERVE MON APPEL" :buttonHref="externalLinks.booking.brevoMeeting" />
+    </main>
   </div>
 </template>
 
@@ -149,6 +160,8 @@ import {
 } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
 import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
+import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
+import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 
 useHead({
   title: 'Faire évoluer mon entreprise avec l\'IA',
@@ -225,8 +238,14 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
 
 <style lang="scss" scoped>
 .page-eia-brutal {
+  position: relative;
   background: #FFF;
   color: #000;
+}
+
+.brutal-content-stack {
+  position: relative;
+  z-index: 10;
 }
 
 // ─── HERO ────────────────────────────────────────────
