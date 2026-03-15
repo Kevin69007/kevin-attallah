@@ -48,9 +48,12 @@
           </div>
         </div>
 
-        <p class="eia-pain-brutal__closing">
-          L'IA peut régler tout ça. La question, c'est pas si tu vas t'y mettre — <strong>c'est quand.</strong>
-        </p>
+        <div class="eia-pain-brutal__closing">
+          <p class="eia-pain-brutal__closing-text">
+            L'IA peut régler tout ça. La question, c'est pas si tu vas t'y mettre —
+          </p>
+          <span class="eia-pain-brutal__closing-punch">c'est quand ?</span>
+        </div>
       </div>
     </section>
 
@@ -413,18 +416,39 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
   }
 
   &__closing {
+    margin-top: 60px;
+    padding: 40px 36px;
+    border: 4px solid #000;
+    background: #000;
+    box-shadow: 12px 12px 0px $purple;
+    max-width: 700px;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 16px 16px 0px $orange;
+    }
+  }
+
+  &__closing-text {
     font-family: $font-mono;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     font-weight: 700;
     text-transform: uppercase;
-    color: #000;
-    max-width: 600px;
-    margin-top: 48px;
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
+    margin-bottom: 12px;
+  }
 
-    strong {
-      color: $purple;
-    }
+  &__closing-punch {
+    display: inline-block;
+    font-family: $font-heading;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: $orange;
+    line-height: 1;
+    letter-spacing: -0.03em;
   }
 }
 
