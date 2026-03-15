@@ -41,6 +41,15 @@ import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 definePageMeta({
   layout: 'default'
 })
+
+const { trackViewContent } = useFBPixel()
+const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
+onMounted(() => {
+  trackViewContent({ content_name: 'Accueil' })
+  trackViewItem({ content_name: 'Accueil' })
+  trackConversion()
+})
 </script>
 
 <style scoped>

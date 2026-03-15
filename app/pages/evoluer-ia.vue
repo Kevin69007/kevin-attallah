@@ -190,10 +190,12 @@ useHead({
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 
 onMounted(() => {
   trackViewContent({ content_name: 'Faire évoluer avec IA' })
   trackViewItem({ content_name: 'Faire évoluer avec IA' })
+  trackConversion()
 })
 
 const painPoints = [

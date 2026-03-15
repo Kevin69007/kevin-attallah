@@ -126,6 +126,7 @@ useHead({ title: 'À propos' })
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 const { $gsap } = useNuxtApp()
 
 const valuesGridRef = ref(null)
@@ -134,6 +135,7 @@ const socialPillsRef = ref(null)
 onMounted(() => {
   trackViewContent({ content_name: 'À propos' })
   trackViewItem({ content_name: 'À propos' })
+  trackConversion()
 
   if (!$gsap) return
   const gsap = $gsap as any

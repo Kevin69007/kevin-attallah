@@ -78,6 +78,7 @@ const stepsRef = ref<HTMLElement | null>(null)
 const router = useRouter()
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 onMounted(() => {
   const paid = localStorage.getItem('paymentSuccess')
   if (!paid) {
@@ -88,6 +89,7 @@ onMounted(() => {
 
   trackViewContent({ content_name: 'Merci - Confirmation' })
   trackViewItem({ content_name: 'Merci - Confirmation' })
+  trackConversion()
 
   // GSAP entrance animations
   const { $gsap } = useNuxtApp()

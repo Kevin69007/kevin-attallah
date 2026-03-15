@@ -178,9 +178,11 @@ useHead({
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 onMounted(() => {
   trackViewContent({ content_name: 'Créer mon entreprise - Autonomie' })
   trackViewItem({ content_name: 'Créer mon entreprise - Autonomie' })
+  trackConversion()
 })
 
 const avantages = [

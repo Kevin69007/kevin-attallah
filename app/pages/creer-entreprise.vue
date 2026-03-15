@@ -226,9 +226,11 @@ useHead({
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 onMounted(() => {
   trackViewContent({ content_name: 'Créer mon entreprise' })
   trackViewItem({ content_name: 'Créer mon entreprise' })
+  trackConversion()
 })
 
 const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit' })

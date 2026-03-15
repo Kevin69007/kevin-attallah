@@ -142,6 +142,15 @@ import 'swiper/css/pagination'
 
 useHead({ title: 'Blog' })
 
+const { trackViewContent } = useFBPixel()
+const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
+onMounted(() => {
+  trackViewContent({ content_name: 'Blog' })
+  trackViewItem({ content_name: 'Blog' })
+  trackConversion()
+})
+
 const featuredPost = computed(() => blogPosts[blogPosts.length - 1])
 const remainingPosts = computed(() => blogPosts.slice(0, -1).reverse())
 

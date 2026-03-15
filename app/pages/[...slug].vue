@@ -25,6 +25,15 @@
 import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 
 useHead({ title: '404 - Page introuvable' })
+
+const { trackViewContent } = useFBPixel()
+const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
+onMounted(() => {
+  trackViewContent({ content_name: '404' })
+  trackViewItem({ content_name: '404' })
+  trackConversion()
+})
 </script>
 
 <style lang="scss" scoped>

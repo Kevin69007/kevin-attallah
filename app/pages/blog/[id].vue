@@ -117,6 +117,17 @@ function goToSlide(index: number) {
 useHead({
   title: computed(() => post.value?.title || 'Blog'),
 })
+
+const { trackViewContent } = useFBPixel()
+const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
+onMounted(() => {
+  if (post.value) {
+    trackViewContent({ content_name: post.value.title })
+    trackViewItem({ content_name: post.value.title })
+    trackConversion()
+  }
+})
 </script>
 
 <style lang="scss" scoped>

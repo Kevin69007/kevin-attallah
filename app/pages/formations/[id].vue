@@ -168,6 +168,7 @@ const router = useRouter()
 const { getFormationById } = useFormations()
 const { trackViewContent, trackAddToCart } = useFBPixel()
 const { trackViewItem, trackAddToCart: gTrackAddToCart } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 
 const formation = computed(() => getFormationById(route.params.id as string))
 
@@ -349,6 +350,7 @@ onMounted(() => {
       value: promoAmount.value,
       currency: 'EUR',
     })
+    trackConversion()
   }
 
   const onScroll = () => {

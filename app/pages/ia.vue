@@ -144,9 +144,11 @@ useHead({
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 onMounted(() => {
   trackViewContent({ content_name: 'Intelligence Artificielle' })
   trackViewItem({ content_name: 'Intelligence Artificielle' })
+  trackConversion()
 })
 
 const solutions = [

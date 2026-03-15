@@ -71,12 +71,14 @@ useHead({
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 
 const { $gsap } = useNuxtApp()
 
 onMounted(() => {
   trackViewContent({ content_name: 'Formation Gratuite Landing Page' })
   trackViewItem({ content_name: 'Formation Gratuite Landing Page' })
+  trackConversion()
 
   if (!$gsap) return
   const gsap = $gsap as any

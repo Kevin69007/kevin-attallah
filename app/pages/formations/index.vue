@@ -136,9 +136,11 @@ function formatCategory(cat: string): string {
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+const { trackConversion } = useLinkedIn()
 onMounted(() => {
   trackViewContent({ content_name: 'Catalogue Formations' })
   trackViewItem({ content_name: 'Catalogue Formations' })
+  trackConversion()
 })
 </script>
 
