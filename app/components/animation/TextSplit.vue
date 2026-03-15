@@ -128,7 +128,7 @@ onMounted(() => {
       },
     )
   } else {
-    // Default 'chars' mode — original behavior
+    // Default 'chars' mode - original behavior
     const chars = el.value.querySelectorAll('.text-split__char')
 
     tween.value = $gsap.fromTo(

@@ -105,7 +105,7 @@ export function useCursorTracker() {
     currentY += (mouseY - currentY) * speed
     gsap.set(cursorEl.value, { x: currentX, y: currentY })
 
-    // Proximity distortion — shape deformation on content elements
+    // Proximity distortion - shape deformation on content elements
     const viewH = window.innerHeight
     for (let i = 0; i < distortTargets.length; i++) {
       const target = distortTargets[i]
@@ -135,15 +135,15 @@ export function useCursorTracker() {
         const nx = dx / dist
         const ny = dy / dist
 
-        // Translate — pull toward cursor
+        // Translate - pull toward cursor
         target.qx(nx * force * DISTORT_STRENGTH)
         target.qy(ny * force * DISTORT_STRENGTH)
 
-        // Skew — shape bends toward cursor
+        // Skew - shape bends toward cursor
         target.qsx(nx * force * SKEW_STRENGTH)
         target.qsy(ny * force * SKEW_STRENGTH * 0.5)
 
-        // Rotation — slight twist
+        // Rotation - slight twist
         target.qr(nx * force * ROTATION_STRENGTH)
 
         target.active = true
@@ -160,7 +160,7 @@ export function useCursorTracker() {
   }
 
   onMounted(() => {
-    // Touch detection — bail out entirely
+    // Touch detection - bail out entirely
     if (
       'ontouchstart' in window
       || navigator.maxTouchPoints > 0

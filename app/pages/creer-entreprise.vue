@@ -236,7 +236,7 @@ const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePref
 const modules = [
   { icon: Lightbulb, title: 'Trouver & valider ton idée', description: 'Identifie une idée solide avec un vrai potentiel business. Validée par la data, pas par l\'intuition.' },
   { icon: CheckCircle, title: 'Valider que le marché suit', description: 'Analyse ton marché, ta cible et la concurrence. Avant de foncer, on vérifie.' },
-  { icon: Scale, title: 'Choisir la bonne structure', description: 'Micro, SASU, SARL — on t\'aide à choisir la forme adaptée. Rapidement, sans prise de tête.' },
+  { icon: Scale, title: 'Choisir la bonne structure', description: 'Micro, SASU, SARL, on t\'aide à choisir la forme adaptée. Rapidement, sans prise de tête.' },
   { icon: BarChart3, title: 'Business plan & financement', description: 'Un plan solide, chiffré, qui convainc. Financement et lancement au programme.' },
   { icon: Megaphone, title: 'Marketing & développement commercial', description: 'Trouve tes premiers clients et mets en place une stratégie d\'acquisition efficace.' },
   { icon: Bot, title: 'L\'IA comme copilote dès le départ', description: 'L\'IA intégrée dès le départ. Gagne du temps, automatise, et avance plus vite.' },
@@ -260,14 +260,14 @@ async function handlePurchase() {
   if (isLoading.value) return
 
   trackAddToCart({
-    content_name: 'Créer mon entreprise — Autonomie',
+    content_name: 'Créer mon entreprise - Autonomie',
     content_category: 'Formations',
     content_ids: ['creation-entreprise-autonomie'],
     value: 299,
     currency: 'EUR',
   })
   gTrackAddToCart({
-    items: [{ item_name: 'Créer mon entreprise — Autonomie', item_id: 'creation-entreprise-autonomie', price: 299 }],
+    items: [{ item_name: 'Créer mon entreprise - Autonomie', item_id: 'creation-entreprise-autonomie', price: 299 }],
     value: 299,
     currency: 'EUR',
   })
@@ -280,7 +280,7 @@ async function handlePurchase() {
       body: {
         productId: 'creation-entreprise-autonomie',
         currency: 'EUR',
-        description: 'Créer mon entreprise — Formation en autonomie',
+        description: 'Créer mon entreprise - Formation en autonomie',
       },
     })
 
@@ -348,7 +348,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 // ============================================
-// BRUTALIST DESIGN — Creer Entreprise
+// BRUTALIST DESIGN - Creer Entreprise
 // ============================================
 
 .ce-brutal {

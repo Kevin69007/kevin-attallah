@@ -50,7 +50,7 @@
 
         <div class="eia-pain-brutal__closing">
           <p class="eia-pain-brutal__closing-text">
-            L'IA peut régler tout ça. La question, c'est pas si tu vas t'y mettre —
+            L'IA peut régler tout ça. La question, c'est pas si tu vas t'y mettre,
           </p>
           <span class="eia-pain-brutal__closing-punch">c'est quand ?</span>
         </div>

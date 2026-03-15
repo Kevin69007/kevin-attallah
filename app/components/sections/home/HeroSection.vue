@@ -67,7 +67,7 @@
             <span class="hero__particle hero__particle--5"></span>
           </div>
 
-          <!-- WhatsApp chat bubbles — anchored to photo -->
+          <!-- WhatsApp chat bubbles - anchored to photo -->
           <div
             v-for="(bubble, i) in chatBubbles"
             :key="i"
@@ -370,35 +370,35 @@ onMounted(() => {
     // Positions relative to hero__photo (≈440×440 container)
     // Clustered tightly around the circular photo
 
-    // Top-right — "1 o'clock"
+    // Top-right - "1 o'clock"
     &--1 {
       top: -20px;
       right: -60px;
       animation: bubble-float 6s ease-in-out infinite;
     }
 
-    // Right — "3 o'clock"
+    // Right - "3 o'clock"
     &--2 {
       top: 40%;
       right: -80px;
       animation: bubble-float 7s ease-in-out 0.8s infinite;
     }
 
-    // Bottom-right — "5 o'clock"
+    // Bottom-right - "5 o'clock"
     &--3 {
       bottom: -15px;
       right: -50px;
       animation: bubble-float 5.5s ease-in-out 0.3s infinite;
     }
 
-    // Top-left — "10 o'clock"
+    // Top-left - "10 o'clock"
     &--4 {
       top: -35px;
       left: 40px;
       animation: bubble-float 6.5s ease-in-out 1.2s infinite;
     }
 
-    // Bottom-left — "8 o'clock"
+    // Bottom-left - "8 o'clock"
     &--5 {
       bottom: -10px;
       left: -30px;

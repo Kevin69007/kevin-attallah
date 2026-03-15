@@ -70,7 +70,7 @@ onMounted(async () => {
       textGeo.computeBoundingBox()
       textGeo.center()
 
-      // Glass material — translucent with refraction feel
+      // Glass material - translucent with refraction feel
       const glassMaterial = new THREE.MeshPhysicalMaterial({
         color: 0x8B5CF6,
         metalness: 0.0,

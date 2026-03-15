@@ -43,7 +43,7 @@
               </div>
               <h3 class="ia-who__title">TU LANCES TON BUSINESS</h3>
               <p class="ia-who__desc">
-                Tu démarres ? L'IA t'aide à valider ton idée, créer ton contenu, automatiser ton marketing et trouver tes premiers clients — en une fraction du temps.
+                Tu démarres ? L'IA t'aide à valider ton idée, créer ton contenu, automatiser ton marketing et trouver tes premiers clients, en une fraction du temps.
               </p>
               <ul class="ia-who__list">
                 <li><CheckCircle :size="16" /> Validation d'idée accélérée par l'IA</li>

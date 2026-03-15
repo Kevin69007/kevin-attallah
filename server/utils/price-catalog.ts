@@ -1,5 +1,5 @@
 // server/utils/price-catalog.ts
-// Server-side price catalog — the single source of truth for all product pricing.
+// Server-side price catalog - the single source of truth for all product pricing.
 // The client sends a productId; the server resolves the price from this catalog.
 
 export interface Product {
@@ -159,7 +159,7 @@ const FORMATION_IDS = [
 const STANDALONE_PRODUCTS: Product[] = [
   {
     id: 'creation-entreprise-autonomie',
-    description: 'Créer mon entreprise — Formation en autonomie',
+    description: 'Créer mon entreprise - Formation en autonomie',
     price: 299,
   },
 ]

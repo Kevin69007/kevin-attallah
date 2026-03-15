@@ -22,7 +22,7 @@
   overflow: hidden;
   background: $bg-page;
 
-  // Grid pattern — visible squares, masked to top-right area
+  // Grid pattern - visible squares, masked to top-right area
   &__grid {
     position: absolute;
     inset: 0;
@@ -38,13 +38,13 @@
     }
   }
 
-  // Flowing glow blobs — warm purple + orange blend, clearly visible
+  // Flowing glow blobs - warm purple + orange blend, clearly visible
   &__glow {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
 
-    // Top-right — strong purple-orange blend (hero area)
+    // Top-right - strong purple-orange blend (hero area)
     &--1 {
       width: 1100px;
       height: 1000px;
@@ -61,7 +61,7 @@
       }
     }
 
-    // Top-left — visible clair purple wash
+    // Top-left - visible clair purple wash
     &--2 {
       width: 800px;
       height: 750px;
@@ -78,7 +78,7 @@
       }
     }
 
-    // Mid-right — warm orange accent, clearly visible
+    // Mid-right - warm orange accent, clearly visible
     &--3 {
       width: 850px;
       height: 800px;
@@ -96,7 +96,7 @@
       }
     }
 
-    // Mid-left — strong clair purple with warm edge
+    // Mid-left - strong clair purple with warm edge
     &--4 {
       width: 900px;
       height: 800px;
@@ -113,7 +113,7 @@
       }
     }
 
-    // Center — visible warm purple-orange diffusion
+    // Center - visible warm purple-orange diffusion
     &--5 {
       width: 1000px;
       height: 600px;
@@ -132,7 +132,7 @@
       }
     }
 
-    // Lower-right — orange-warm accent, clearly visible
+    // Lower-right - orange-warm accent, clearly visible
     &--6 {
       width: 800px;
       height: 750px;
@@ -150,7 +150,7 @@
       }
     }
 
-    // Lower-left — strong clair purple
+    // Lower-left - strong clair purple
     &--7 {
       width: 900px;
       height: 850px;
@@ -168,7 +168,7 @@
       }
     }
 
-    // Bottom-right — warm purple-orange blend
+    // Bottom-right - warm purple-orange blend
     &--8 {
       width: 1050px;
       height: 800px;
@@ -186,7 +186,7 @@
       }
     }
 
-    // Bottom-left — warm accent
+    // Bottom-left - warm accent
     &--9 {
       width: 700px;
       height: 600px;

@@ -377,7 +377,7 @@ const faqItems = [
 
 <style lang="scss" scoped>
 /* ============================================
-   BRUTALIST DESIGN — formations/[id].vue
+   BRUTALIST DESIGN - formations/[id].vue
    ============================================ */
 
 .page-formation-detail {

@@ -1,8 +1,8 @@
 // ============================================
-// LIQUID GLASS — Glassmorphism Components
+// LIQUID GLASS - Glassmorphism Components
 // ============================================
 
-// Animated border — smooth breathing glow for Light Mode panels
+// Animated border - smooth breathing glow for Light Mode panels
 @keyframes border-glow-light {
   0%, 100% {
     border-color: rgba(255, 255, 255, 0.6);
@@ -44,7 +44,7 @@
   box-shadow: $shadow-glass;
 }
 
-// Light glass (on light backgrounds — default frosted translucent)
+// Light glass (on light backgrounds - default frosted translucent)
 .glass-light {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
   backdrop-filter: blur(32px) saturate(1.5);
@@ -59,7 +59,7 @@
   overflow: hidden;
 }
 
-// Navigation glass (dark — for hero overlay)
+// Navigation glass (dark - for hero overlay)
 .glass-nav {
   background: rgba(10, 5, 20, 0.7);
   backdrop-filter: blur($glass-blur-heavy);
@@ -67,7 +67,7 @@
   border-bottom: 1px solid $glass-border;
 }
 
-// Navigation glass (light — scrolled state)
+// Navigation glass (light - scrolled state)
 .glass-nav-light {
   background: $nav-bg-scrolled;
   backdrop-filter: blur($glass-blur-heavy);
@@ -93,7 +93,7 @@
   }
 }
 
-// Card on light backgrounds (Primary — thick frosted glass)
+// Card on light backgrounds (Primary - thick frosted glass)
 .glass-card-light {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
   backdrop-filter: blur(30px) saturate(1.5);
@@ -168,7 +168,7 @@
   color: $purple-light;
 }
 
-// Badge variants for light backgrounds (Primary — frosted glass)
+// Badge variants for light backgrounds (Primary - frosted glass)
 .glass-badge-light {
   display: inline-flex;
   align-items: center;
@@ -258,9 +258,9 @@
 // ============================================
 
 // Small cursor dot + radial glass ripple that fades out from center
-// Like a water droplet hitting a lake — blur is strongest at center, fades to nothing
+// Like a water droplet hitting a lake - blur is strongest at center, fades to nothing
 
-// Glass cursor — visible circle + GSAP proximity distortion on content
+// Glass cursor - visible circle + GSAP proximity distortion on content
 .glass-cursor {
   position: fixed;
   top: 0;
@@ -285,7 +285,7 @@
     opacity: 1;
   }
 
-  // Glass circle — no backdrop-filter so text underneath never changes color
+  // Glass circle - no backdrop-filter so text underneath never changes color
   &__circle {
     position: absolute;
     inset: 0;
@@ -313,7 +313,7 @@
     }
   }
 
-  // Interactive hover — subtle purple border, no text color change
+  // Interactive hover - subtle purple border, no text color change
   &--hover {
     .glass-cursor__circle {
       border-color: rgba($purple, 0.3);

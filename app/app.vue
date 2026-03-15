@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 useHead({
-  titleTemplate: (title) => title ? `${title} — Kevin Attallah` : 'Kevin Attallah — Formations Professionnelles',
+  titleTemplate: (title) => title ? `${title} | Kevin Attallah` : 'Kevin Attallah | Formations Professionnelles',
 })
 </script>
 

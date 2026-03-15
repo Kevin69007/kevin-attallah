@@ -12,7 +12,7 @@ export interface FreeFormationConfig {
 export const freeFormationConfig: FreeFormationConfig = {
   title: 'Formation Gratuite',
   subtitle:
-    'On te crée un accès personnel à ta formation — remplis le formulaire et reçois tes identifiants sous 48h ouvrées.',
+    'On te crée un accès personnel à ta formation. Remplis le formulaire et reçois tes identifiants sous 48h ouvrées.',
   features: [
     'Formation complète en ligne',
     'Accès immédiat au contenu',

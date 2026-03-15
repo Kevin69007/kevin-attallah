@@ -167,7 +167,7 @@ import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 import ImageMosaic from '~/components/sections/shared/ImageMosaic.vue'
 
 useHead({
-  title: 'Créer mon entreprise — Formation en autonomie',
+  title: 'Créer mon entreprise - Formation en autonomie',
   meta: [
     {
       name: 'description',
@@ -179,8 +179,8 @@ useHead({
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
 onMounted(() => {
-  trackViewContent({ content_name: 'Créer mon entreprise — Autonomie' })
-  trackViewItem({ content_name: 'Créer mon entreprise — Autonomie' })
+  trackViewContent({ content_name: 'Créer mon entreprise - Autonomie' })
+  trackViewItem({ content_name: 'Créer mon entreprise - Autonomie' })
 })
 
 const avantages = [
@@ -208,14 +208,14 @@ async function handlePurchase() {
   if (isLoading.value) return
 
   trackAddToCart({
-    content_name: 'Créer mon entreprise — Autonomie',
+    content_name: 'Créer mon entreprise - Autonomie',
     content_category: 'Formations',
     content_ids: ['creation-entreprise-autonomie'],
     value: 299,
     currency: 'EUR',
   })
   gTrackAddToCart({
-    items: [{ item_name: 'Créer mon entreprise — Autonomie', item_id: 'creation-entreprise-autonomie', price: 299 }],
+    items: [{ item_name: 'Créer mon entreprise - Autonomie', item_id: 'creation-entreprise-autonomie', price: 299 }],
     value: 299,
     currency: 'EUR',
   })
@@ -228,7 +228,7 @@ async function handlePurchase() {
       body: {
         productId: 'creation-entreprise-autonomie',
         currency: 'EUR',
-        description: 'Créer mon entreprise — Formation en autonomie',
+        description: 'Créer mon entreprise - Formation en autonomie',
       },
     })
 
@@ -289,7 +289,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 // ============================================
-// BRUTALIST DESIGN — Autonomie
+// BRUTALIST DESIGN - Autonomie
 // ============================================
 
 .auto-brutal {

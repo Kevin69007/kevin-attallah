@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  // Server-side price lookup — never trust client-provided amount
+  // Server-side price lookup - never trust client-provided amount
   const product = getProduct(productId)
   if (!product) {
     throw createError({

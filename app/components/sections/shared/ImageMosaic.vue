@@ -80,7 +80,7 @@ function nextImage(): string {
   return imagePool[poolIndex++]
 }
 
-// Initialize tiles — every tile gets a permanent image, ~60% start visible
+// Initialize tiles - every tile gets a permanent image, ~60% start visible
 const tiles = reactive<Tile[]>(
   edgeIndices.map((gridIndex) => ({
     gridIndex,

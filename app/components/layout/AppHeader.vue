@@ -14,7 +14,7 @@
         </nav>
       </div>
 
-      <!-- CTA button — gold gradient, outside pill -->
+      <!-- CTA button - gold gradient, outside pill -->
       <a
         :href="externalLinks.booking.brevoMeeting"
         target="_blank"
@@ -96,7 +96,7 @@ watch(mobileOpen, (open) => {
     position: relative;
   }
 
-  // Brutalist block — solid white, sharp shadow
+  // Brutalist block - solid white, sharp shadow
   &__pill {
     display: flex;
     align-items: center;

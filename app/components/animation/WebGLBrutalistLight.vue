@@ -52,7 +52,7 @@ onMounted(() => {
     new THREE.TorusGeometry(0.7, 0.25, 8, 16),
   ]
 
-  // Front layer — closer, more visible
+  // Front layer - closer, more visible
   for (let i = 0; i < 70; i++) {
     const isPurple = Math.random() > 0.35
     const geoIndex = Math.floor(Math.random() * geometries.length)
@@ -85,7 +85,7 @@ onMounted(() => {
     meshGroupFront.add(mesh)
   }
 
-  // Back layer — deeper, subtler, for parallax
+  // Back layer - deeper, subtler, for parallax
   for (let i = 0; i < 50; i++) {
     const isPurple = Math.random() > 0.5
     const geoIndex = Math.floor(Math.random() * geometries.length)
