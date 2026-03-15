@@ -8,7 +8,7 @@
         <div class="text-center">
           <span class="brutal-label">FORMATION_GRATUITE_</span>
           <h1 class="lp__title">
-            UNE FORMATION GRATUITE. CHAQUE SEMAINE.
+            UNE FORMATION GRATUITE. <span class="text-purple">CHAQUE SEMAINE.</span>
           </h1>
           <p class="lp__subtitle">{{ config.subtitle }}</p>
         </div>
@@ -71,13 +71,55 @@ useHead({
 
 const { trackViewContent } = useFBPixel()
 const { trackViewItem } = useGoogleAds()
+
+const { $gsap } = useNuxtApp()
+
 onMounted(() => {
   trackViewContent({ content_name: 'Formation Gratuite Landing Page' })
   trackViewItem({ content_name: 'Formation Gratuite Landing Page' })
+
+  if (!$gsap) return
+  const gsap = $gsap as any
+
+  // Hero entrance
+  gsap.fromTo('.lp__title',
+    { y: 80, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, ease: 'power4.out', delay: 0.2 }
+  )
+  gsap.fromTo('.lp__subtitle',
+    { y: 40, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.4 }
+  )
+
+  // Feature cards stagger
+  gsap.fromTo('.lp__feature',
+    { x: -60, opacity: 0 },
+    { x: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power3.out', delay: 0.6 }
+  )
+
+  // Trust badges
+  gsap.fromTo('.lp__trust-badge',
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: 'power3.out', delay: 1 }
+  )
+
+  // Reassurance text
+  gsap.fromTo('.lp__reassurance',
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', delay: 1.2 }
+  )
+
+  // Form card entrance
+  gsap.fromTo('.lp__form-card',
+    { x: 60, opacity: 0, rotationZ: 3 },
+    { x: 0, opacity: 1, rotationZ: 0, duration: 0.8, ease: 'back.out(1.5)', delay: 0.5 }
+  )
 })
 </script>
 
 <style lang="scss" scoped>
+.text-purple { color: $purple; }
+
 .page-formation-gratuite {
   position: relative;
   background: #FFF;
@@ -156,6 +198,12 @@ onMounted(() => {
     background: #fff;
     border: 4px solid #000;
     box-shadow: 4px 4px 0px $purple;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px $orange;
+    }
   }
 
   &__check {
@@ -184,8 +232,14 @@ onMounted(() => {
     color: #000;
     border: 2px solid #000;
     padding: 8px 14px;
+    transition: transform 0.15s, box-shadow 0.15s;
 
     svg { color: $orange; }
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px $purple;
+    }
   }
 
   &__reassurance {
