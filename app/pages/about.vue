@@ -54,7 +54,7 @@
       </div>
     </section>
 
-    <TunnelTransition text="QUI EST KEVIN." />
+    <TunnelTransition text="AU CŒUR DU SYSTÈME." />
 
     <!-- Values -->
     <section class="about-brutal__values">
