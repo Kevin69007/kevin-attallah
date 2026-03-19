@@ -66,21 +66,21 @@ const steps = [
     title: 'AUDIT &<br>STRATÉGIE',
     desc: "On détruit ce qui ne marche pas. On garde l'essentiel. Mise en place d'un plan d'action implacable.",
     color: 'purple',
-    video: '/video/home-step-01.mp4'
+    video: '/video/audit-strategie.mp4'
   },
   {
     number: '02',
     title: 'INTÉGRATION<br>IA',
     desc: 'Déploiement des workflows automatisés. Vos processus deviennent des machines de guerre infatigables.',
     color: 'orange',
-    video: '/video/home-step-02.mp4'
+    video: '/video/integration-ia.mp4'
   },
   {
     number: '03',
     title: 'AUTOMATISATION<br>BUSINESS',
     desc: 'Acquisition agressive. Optimisation des conversions. On prend la place qui vous revient sur le marché.',
     color: 'white',
-    video: '/video/parcours-01.mp4'
+    video: '/video/scale-domination.mp4'
   }
 ]
 

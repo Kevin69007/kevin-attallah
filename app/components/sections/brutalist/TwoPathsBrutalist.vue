@@ -12,7 +12,7 @@
         <article class="path-card path-card--purple">
           <div class="path-card__video-wrap">
             <video 
-              src="/video/parcours-01.mp4" 
+              src="/video/creer-entreprise.mp4" 
               autoplay 
               loop 
               muted 
@@ -41,7 +41,7 @@
         <article class="path-card path-card--orange">
           <div class="path-card__video-wrap">
             <video 
-              src="/video/parcours-02.mp4" 
+              src="/video/evoluer-ia.mp4" 
               autoplay 
               loop 
               muted 

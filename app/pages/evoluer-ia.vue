@@ -245,7 +245,7 @@ const parcours = [
 ]
 
 const stepColors = ['purple', 'orange', 'white']
-const stepVideos = ['/video/parcours-01.mp4', '/video/parcours-02.mp4', '/video/parcours-01.mp4']
+const stepVideos = ['/video/audit-strategie.mp4', '/video/integration-ia.mp4', '/video/evoluer-ia.mp4']
 
 const solutions = [
   { icon: Phone, title: 'Agent réceptionniste', description: 'Répond aux appels 24/7, qualifie les demandes, transfère les urgences.' },

@@ -67,9 +67,9 @@ import { Phone, Route, Rocket, ArrowRight } from 'lucide-vue-next'
 import { externalLinks } from '~/data/external-links'
 
 const steps = [
-  { icon: Phone, title: 'Cadrage stratégique offert', description: '30 minutes d\'appel cash pour auditer votre situation. Pas de blabla, juste de la valeur. Si je peux vous aider, je vous le dis. Sinon, je vous oriente.', video: '/video/home-step-01.mp4' },
-  { icon: Route, title: 'Roadmap sur-mesure & Financement', description: 'Nous élaborons un plan de bataille chirurgical (création ou scale). Et cerise sur le gâteau : l\'accompagnement est intégralement finançable par vos droits.', video: '/video/home-step-02.mp4' },
-  { icon: Rocket, title: 'Exécution implacable', description: 'Fini le doute. Vous agissez avec des systèmes qui ont fait leurs preuves et mon expertise pour débloquer chaque obstacle en temps réel.', video: '/video/home-step-01.mp4' },
+  { icon: Phone, title: 'Cadrage stratégique offert', description: '30 minutes d\'appel cash pour auditer votre situation. Pas de blabla, juste de la valeur. Si je peux vous aider, je vous le dis. Sinon, je vous oriente.', video: '/video/audit-strategie.mp4' },
+  { icon: Route, title: 'Roadmap sur-mesure & Financement', description: 'Nous élaborons un plan de bataille chirurgical (création ou scale). Et cerise sur le gâteau : l\'accompagnement est intégralement finançable par vos droits.', video: '/video/integration-ia.mp4' },
+  { icon: Rocket, title: 'Exécution implacable', description: 'Fini le doute. Vous agissez avec des systèmes qui ont fait leurs preuves et mon expertise pour débloquer chaque obstacle en temps réel.', video: '/video/scale-domination.mp4' },
 ]
 
 const sectionEl = ref<HTMLElement>()
