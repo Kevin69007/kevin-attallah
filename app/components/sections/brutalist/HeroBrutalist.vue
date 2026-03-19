@@ -5,12 +5,12 @@
       <div class="hero-brutal__content">
         <h1 class="hero-brutal__title">
           <span class="block line-1">CRÉEZ.</span>
-          <span class="block line-2 outline-text">SCALEZ.</span>
+          <span class="block line-2 outline-text">BOOSTEZ.</span>
           <span class="block line-3 text-purple">DOMINEZ.</span>
         </h1>
         
         <p class="hero-brutal__subtitle">
-          Ne laissez pas l'IA aux autres. Prenez une longueur d'avance avec un accompagnement radical.
+          L'IA va créer les gagnants de demain. Décide maintenant dans quel camp tu veux être.
         </p>
 
         <div class="hero-brutal__ctas">
@@ -18,7 +18,7 @@
             CRÉER MON ENTREPRISE
           </AppButton>
           <AppButton variant="ghost-light" size="lg" to="/evoluer-ia">
-            FAIRE ÉVOLUER (IA)
+            BOOSTER MON ENTREPRISE
           </AppButton>
         </div>
       </div>

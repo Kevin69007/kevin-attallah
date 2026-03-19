@@ -22,6 +22,10 @@
       <TunnelTransition text="PRENDS LE CONTRÔLE." />
       
       <CTABrutalist />
+      <FreeFormationModal
+        :visible="ffmIntent.triggered.value && !ffmIntent.dismissed.value"
+        @close="ffmIntent.dismiss()"
+      />
     </main>
   </div>
 </template>
@@ -37,6 +41,9 @@ import HowItWorksBrutalist from '~/components/sections/brutalist/HowItWorksBruta
 import TestimonialsBrutalist from '~/components/sections/brutalist/TestimonialsBrutalist.vue'
 import BlogBrutalist from '~/components/sections/brutalist/BlogBrutalist.vue'
 import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
+import FreeFormationModal from '~/components/ui/FreeFormationModal.vue'
+
+const ffmIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'ffm' })
 
 definePageMeta({
   layout: 'default'

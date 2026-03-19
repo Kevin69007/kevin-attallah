@@ -30,10 +30,10 @@
 
             <div class="about-brutal__text-block">
               <p>
-                Ex-finance, expert IA et formateur. Depuis des années, j'accompagne des entrepreneurs à lancer et faire grandir leur activité grâce à l'IA. +2100 entrepreneurs formés, des résultats concrets, et une approche sans blabla.
+                Serial entrepreneur, aujourd'hui expert en IA. Je construis des machines à cash et j'automatise les entreprises de ceux qui refusent de stagner.
               </p>
               <p>
-                Des formations concrètes, orientées résultats, boostées par l'intelligence artificielle. L'objectif : que tu passes à l'action avec les bons outils.
+                Oublie la théorie. Je te livre les méthodes exactes que j'ai utilisées pour générer des millions et faire tourner mes entreprises sans moi.
               </p>
             </div>
 
@@ -110,6 +110,10 @@
     </section>
 
     <CTABrutalist />
+    <KitLancementModal
+      :visible="kitIntent.triggered.value && !kitIntent.dismissed.value"
+      @close="kitIntent.dismiss()"
+    />
     </main>
   </div>
 </template>
@@ -121,6 +125,9 @@ import { socialLinks } from '~/data/social'
 import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
+import KitLancementModal from '~/components/ui/KitLancementModal.vue'
+
+const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit_about' })
 
 useHead({ title: 'À propos' })
 

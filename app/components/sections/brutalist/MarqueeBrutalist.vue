@@ -6,7 +6,7 @@
         <span class="star">✶</span>
         <span>ACCOMPAGNEMENT 1-TO-1</span>
         <span class="star">✶</span>
-        <span>ÉLIGIBLE CPF</span>
+        <span>100% FINANÇABLE</span>
         <span class="star">✶</span>
         <span>CROISSANCE RADICALE</span>
         <span class="star">✶</span>
@@ -29,7 +29,7 @@ onMounted(() => {
   gsap.to(marqueeRef.value, {
     xPercent: -33.3333,
     ease: 'none',
-    duration: 10,
+    duration: 20,
     repeat: -1
   })
 })

@@ -42,8 +42,8 @@
 
           <!-- Right: Form -->
           <div class="lp__form-card brutal-card brutal-card--orange">
-            <h3 class="lp__form-title">ACCÈS IMMÉDIAT</h3>
-            <p class="lp__form-subtitle">Remplis le formulaire. Reçois tes accès par email.</p>
+            <h3 class="lp__form-title">ACCÈS SOUS 48H</h3>
+            <p class="lp__form-subtitle">Remplis le formulaire. Reçois tes accès sous 48h ouvrées.</p>
             <FreeFormationForm class="mt-24" />
           </div>
         </div>

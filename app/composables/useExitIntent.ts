@@ -6,7 +6,7 @@ export function useExitIntent(options: { delay?: number; scrollThreshold?: numbe
   function shouldShow(): boolean {
     if (typeof window === 'undefined') return false
     const stored = localStorage.getItem(`${storagePrefix}_dismissed`)
-    if (stored && Date.now() - parseInt(stored) < 24 * 60 * 60 * 1000) return false
+    if (stored && Date.now() - parseInt(stored) < 2 * 60 * 60 * 1000) return false
     if (localStorage.getItem(`${storagePrefix}_submitted`)) return false
     return true
   }

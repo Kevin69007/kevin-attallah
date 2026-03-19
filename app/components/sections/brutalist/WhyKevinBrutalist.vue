@@ -22,33 +22,31 @@
           <span class="section-label">IDENTITÉ_</span>
           
           <h2 class="brutal-title">
-            PAS DE BLABLA.<br>
-            <span class="text-purple">DES RÉSULTATS.</span>
+            L'IA TRAVAILLE. TOI TU <br>
+            <span class="text-purple">ENCAISSES.</span>
           </h2>
           
           <div class="brutal-text-block">
             <p>
-              Ancien de la finance devenu expert en IA. Je construis des machines à cash 
-              et j'optimise les workflows de ceux qui refusent la stagnation.
+              Serial entrepreneur, aujourd'hui expert en IA. Je construis des machines à cash et j'automatise les entreprises de ceux qui refusent de stagner.
             </p>
             <p>
-              Oubliez la théorie. Je vous livre les frameworks exacts que j'ai utilisés pour 
-              générer des millions et automatiser mes entreprises.
+              Oublie la théorie. Je te livre les méthodes exactes que j'ai utilisées pour générer des millions et faire tourner mes entreprises sans moi.
             </p>
           </div>
 
           <ul class="brutal-list">
             <li>
               <span class="brutal-list-icon">►</span>
-              <strong>15+ M€</strong> GÉNÉRÉS EN LIGNE
+              <strong>15+ M€</strong> générés en ligne
             </li>
             <li>
               <span class="brutal-list-icon">►</span>
-              <strong>2 100+</strong> ENTREPRENEURS FORMÉS
+              <strong>2100+</strong> entrepreneurs formés
             </li>
             <li>
               <span class="brutal-list-icon">►</span>
-              <strong>+400%</strong> DE CROISSANCE MOYENNE
+              <strong>80%+</strong> de croissance moyenne
             </li>
           </ul>
 

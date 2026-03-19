@@ -121,10 +121,6 @@
                 <span>Contenu mis a jour</span>
               </div>
             </div>
-            <div class="ce-price-card__financable">
-              <Award :size="18" />
-              <span>100% FINANÇABLE</span>
-            </div>
             <AppButton variant="ghost-light" block to="/autonomie">
               DÉCOUVRIR LA FORMATION
               <ArrowRight :size="18" />
@@ -233,7 +229,7 @@ onMounted(() => {
   trackConversion()
 })
 
-const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit' })
+const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit_creer' })
 
 const modules = [
   { icon: Lightbulb, title: 'Trouver & valider ton idée', description: 'Identifie une idée solide avec un vrai potentiel business. Validée par la data, pas par l\'intuition.' },
@@ -463,6 +459,9 @@ onMounted(() => {
     img {
       width: 100%;
       display: block;
+      max-height: 500px;
+      object-fit: cover;
+      object-position: top;
     }
   }
 }

@@ -6,7 +6,7 @@
         <div class="footer-brutal__desc">
           <span>// INTELLIGENCE ARTIFICIELLE</span>
           <span>// STRATÉGIE BUSINESS</span>
-          <span>// SCALING OPÉRATIONNEL</span>
+          <span>// AUTOMATISATION BUSINESS</span>
         </div>
       </div>
 

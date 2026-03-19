@@ -77,7 +77,7 @@ const steps = [
   },
   {
     number: '03',
-    title: 'SCALE &<br>DOMINATION',
+    title: 'AUTOMATISATION<br>BUSINESS',
     desc: 'Acquisition agressive. Optimisation des conversions. On prend la place qui vous revient sur le marché.',
     color: 'white',
     video: '/video/parcours-01.mp4'

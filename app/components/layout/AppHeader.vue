@@ -8,7 +8,7 @@
         </NuxtLink>
         <nav class="header__nav">
           <NuxtLink to="/creer-entreprise" class="header__link" active-class="header__link--active">Créer mon entreprise</NuxtLink>
-          <NuxtLink to="/evoluer-ia" class="header__link" active-class="header__link--active">Faire évoluer mon entreprise</NuxtLink>
+          <NuxtLink to="/evoluer-ia" class="header__link" active-class="header__link--active">Booster mon entreprise</NuxtLink>
           <NuxtLink to="/about" class="header__link" active-class="header__link--active">À propos</NuxtLink>
           <NuxtLink to="/blog" class="header__link" active-class="header__link--active">Blog</NuxtLink>
         </nav>
@@ -42,7 +42,7 @@
       <div v-if="mobileOpen" class="header__mobile">
         <nav class="header__mobile-nav">
           <NuxtLink to="/creer-entreprise" @click="mobileOpen = false">Créer mon entreprise</NuxtLink>
-          <NuxtLink to="/evoluer-ia" @click="mobileOpen = false">Faire évoluer mon entreprise</NuxtLink>
+          <NuxtLink to="/evoluer-ia" @click="mobileOpen = false">Booster mon entreprise</NuxtLink>
           <NuxtLink to="/about" @click="mobileOpen = false">À propos</NuxtLink>
           <NuxtLink to="/blog" @click="mobileOpen = false">Blog</NuxtLink>
           <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener noreferrer" class="header__mobile-cta" @click="mobileOpen = false">

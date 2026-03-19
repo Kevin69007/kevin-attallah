@@ -7,6 +7,7 @@ export interface FreeFormationConfig {
   successMessage: string
   reassurance: string
   brevoListId: number
+  originalPrice: number
 }
 
 export const freeFormationConfig: FreeFormationConfig = {
@@ -25,4 +26,5 @@ export const freeFormationConfig: FreeFormationConfig = {
   reassurance:
     'Tu recevras un email de notre part avec tes accès. Pense à vérifier tes spams si tu ne reçois rien sous 48h.',
   brevoListId: 56,
+  originalPrice: 99,
 }

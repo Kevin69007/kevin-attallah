@@ -11,10 +11,10 @@
             <div class="kit-modal__header text-center">
               <span class="kit-modal__badge">KIT_LANCEMENT_</span>
               <h2 class="kit-modal__title">
-                AVANT DE PARTIR, PRENDS LE <span class="text-purple">KIT DE LANCEMENT.</span>
+                🎁 AVANT DE PARTIR, PRENDS LE <span class="text-purple">KIT DE LANCEMENT.</span>
               </h2>
               <p class="kit-modal__desc">
-                LE GUIDE PRATIQUE POUR DÉMARRER TON PROJET D'ENTREPRISE DU BON PIED. GRATUIT, IMMÉDIAT.
+                🚀 LE GUIDE PRATIQUE POUR DÉMARRER TON PROJET D'ENTREPRISE DU BON PIED. GRATUIT, IMMÉDIAT.
               </p>
             </div>
 
@@ -39,7 +39,7 @@
                 {{ loading ? 'ENVOI...' : 'JE REÇOIS MON KIT' }}
               </AppButton>
               <p class="kit-modal__privacy">
-                AUCUN SPAM. JUSTE DE LA VALEUR.
+                🔒 AUCUN SPAM. JUSTE DE LA VALEUR.
               </p>
             </form>
           </template>

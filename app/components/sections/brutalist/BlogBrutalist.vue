@@ -3,10 +3,10 @@
     <div class="container">
       <div class="blog-brutal__header">
         <span class="section-label">RÉFLEXIONS_</span>
-        <h2 class="blog-brutal__title">LE PROTOCOLE.</h2>
+        <h2 class="blog-brutal__title">LES DOSSIERS.</h2>
         <div class="blog-brutal__ctas">
           <AppButton variant="ghost-light" to="/blog">
-            LIRE TOUTES LES DOSSIERS
+            LIRE TOUS LES DOSSIERS
           </AppButton>
         </div>
       </div>
@@ -20,7 +20,7 @@
                 :alt="post.title"
                 class="brutal-article__img"
               />
-              <div class="brutal-article__tag">INTELLIGENCE_ARTIFICIELLE</div>
+
             </div>
 
             <div class="brutal-article__content">

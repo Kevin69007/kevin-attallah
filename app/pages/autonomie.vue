@@ -190,7 +190,7 @@ const avantages = [
   { icon: Bot, title: 'L\'IA comme copilote', description: 'L\'intelligence artificielle intégrée dès le premier module. Tu gagnes du temps avant même de finir.' },
   { icon: Gauge, title: 'Avance à ton rythme', description: 'Accessible 24h/24, 7j/7. Pas de sessions live imposées. Tu gères ton planning.' },
   { icon: RefreshCw, title: 'Contenu mis à jour', description: 'Les modules évoluent avec le marché. Tu as toujours accès à la dernière version.' },
-  { icon: Gift, title: 'UNE FORMATION OFFERTE', description: 'En bonus : choisis une formation complémentaire parmi +100 formations professionnelles.', bonus: true },
+  { icon: Gift, title: 'UNE FORMATION OFFERTE', description: 'En bonus : une formation de ton choix d\'une valeur de 99€ offerte parmi un catalogue de +100 formations professionnelles.', bonus: true },
 ]
 
 const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)

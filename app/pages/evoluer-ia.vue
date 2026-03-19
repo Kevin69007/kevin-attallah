@@ -8,9 +8,9 @@
         <div class="eia-hero-brutal__content">
           <span class="section-label">INTELLIGENCE_ARTIFICIELLE_</span>
           <h1 class="eia-hero-brutal__title">
-            <span class="block">L'IA PEUT FAIRE</span>
-            <span class="block outline-text">TOURNER TON</span>
-            <span class="block text-purple">BUSINESS MIEUX.</span>
+            <span class="block">L'IA TRAVAILLE.</span>
+            <span class="block outline-text">TOI TU</span>
+            <span class="block text-purple">ENCAISSES.</span>
           </h1>
           <p class="eia-hero-brutal__subtitle">
             On identifie ensemble ce que l'IA peut faire concrètement pour ton business. Pas de promesses vagues, des solutions adaptées à ta réalité.
@@ -162,6 +162,10 @@
 
     <!-- Final CTA -->
     <CTABrutalist titleLine1="PRÊT À VOIR" titleLine2="CE QUE L'IA PEUT FAIRE ?" subtitle="Un appel gratuit de 30 minutes. On qualifie tes besoins et on te dit honnêtement ce qu'on peut faire pour toi." buttonText="JE RÉSERVE MON APPEL" :buttonHref="externalLinks.booking.brevoMeeting" />
+    <KitLancementModal
+      :visible="kitIntent.triggered.value && !kitIntent.dismissed.value"
+      @close="kitIntent.dismiss()"
+    />
     </main>
   </div>
 </template>
@@ -177,6 +181,9 @@ import { externalLinks } from '~/data/external-links'
 import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
+import KitLancementModal from '~/components/ui/KitLancementModal.vue'
+
+const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit_evoluer' })
 
 useHead({
   title: 'Faire évoluer mon entreprise avec l\'IA',

@@ -27,9 +27,9 @@
               Tu pars de zéro. Je t'aide à construire une machine rentable dès le premier jour en utilisant l'IA comme levier principal.
             </p>
             <ul class="path-card__list">
-              <li>► Stratégie GTM</li>
-              <li>► Automatisation MVP</li>
-              <li>► Acquisition agressive</li>
+              <li>► Stratégie de lancement</li>
+              <li>► Première version qui vend</li>
+              <li>► Acquisition client dès le départ</li>
             </ul>
             <AppButton variant="primary" class="w-full mt-6" to="/creer-entreprise">
               SÉLECTIONNER
@@ -58,7 +58,7 @@
             <ul class="path-card__list">
               <li>► Audit des process</li>
               <li>► Déploiement d'agents IA</li>
-              <li>► Scaling exponentiel</li>
+              <li>► Croissance sans embaucher</li>
             </ul>
             <AppButton variant="ghost-light" class="w-full mt-6" to="/evoluer-ia">
               SÉLECTIONNER
