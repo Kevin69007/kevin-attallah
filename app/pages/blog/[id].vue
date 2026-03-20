@@ -390,6 +390,7 @@ onMounted(() => {
     text-transform: uppercase;
     margin-top: 16px;
     letter-spacing: 0.05em;
+    color: #fff;
   }
 
   &__locked-sub {
