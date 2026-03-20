@@ -7,7 +7,7 @@
         <div class="brutal-grid__image-col">
           <div class="brutal-image-wrap">
             <NuxtImg 
-              src="/img/kevin-ia.png"
+              src="/img/kevin-identite.jpg"
               alt="Kevin Attallah IA"
               class="brutal-image" 
               format="webp" 

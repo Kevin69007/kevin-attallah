@@ -25,7 +25,7 @@
 
         <div class="eia-hero-brutal__image-col">
           <div class="eia-hero-brutal__image-wrap">
-            <NuxtImg src="/img/kevin-ia.png" alt="Faire évoluer avec l'IA" format="webp" quality="80" class="eia-hero-brutal__img" />
+            <NuxtImg src="/img/kevin-evoluer.jpeg" alt="Faire évoluer avec l'IA" format="webp" quality="80" class="eia-hero-brutal__img" />
           </div>
         </div>
       </div>
@@ -257,7 +257,7 @@ const solutions = [
   { icon: Smartphone, title: 'Pilotage depuis ton téléphone', description: 'Supervise tout depuis une app : KPIs, alertes, décisions rapides.' },
 ]
 
-const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
+const mosaicImages = Array.from({ length: 28 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
 </script>
 
 <style lang="scss" scoped>
@@ -350,7 +350,7 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
   &__image-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 3/4;
     background: #FAFAFA;
     border: 4px solid #000;
     box-shadow: 16px 16px 0px $purple;
@@ -371,7 +371,7 @@ const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center 50%;
     transition: transform 0.3s;
   }
 }

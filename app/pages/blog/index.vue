@@ -14,14 +14,30 @@
 
     <section class="blog-list">
       <div class="container">
-        <!-- Featured post -->
+        <!-- Category filters -->
+        <div class="blog-filters">
+          <button
+            v-for="cat in blogCategories"
+            :key="cat.key"
+            class="blog-filters__btn"
+            :class="{ 'blog-filters__btn--active': activeCategory === cat.key }"
+            @click="activeCategory = cat.key"
+          >
+            {{ cat.label }}
+          </button>
+        </div>
+
+        <!-- Featured post (only when showing all) -->
         <div
+          v-if="activeCategory === 'all'"
           class="blog-featured"
           @mouseenter="onCardEnter(featuredPost.id)"
           @mouseleave="onCardLeave(featuredPost.id)"
         >
           <div class="blog-featured__carousel">
             <span class="blog-featured__badge">A LA UNE</span>
+
+            <span class="blog-featured__category-tag">{{ getCategoryLabel(featuredPost.category) }}</span>
 
             <div class="blog-card__progress" :class="{ 'blog-card__progress--visible': hoveredCard === featuredPost.id }">
               <div
@@ -65,22 +81,29 @@
         </div>
 
         <!-- Divider -->
-        <div class="blog-divider"></div>
+        <div v-if="activeCategory === 'all'" class="blog-divider"></div>
 
-        <!-- Remaining posts -->
+        <!-- Posts grid -->
         <div class="grid grid-3">
           <NuxtLink
-            v-for="post in remainingPosts"
+            v-for="post in displayedPosts"
             :key="post.id"
             :to="`/blog/${post.id}`"
             class="blog-card"
+            :class="{ 'blog-card--locked': post.locked }"
           >
             <div
               class="blog-card__carousel"
               @mouseenter.stop="onCardEnter(post.id)"
               @mouseleave.stop="onCardLeave(post.id)"
             >
-              <div class="blog-card__progress" :class="{ 'blog-card__progress--visible': hoveredCard === post.id }">
+              <span class="blog-card__category">{{ getCategoryLabel(post.category) }}</span>
+
+              <div v-if="post.locked" class="blog-card__lock-badge">
+                <Lock :size="12" /> EXCLUSIF
+              </div>
+
+              <div v-if="!post.locked" class="blog-card__progress" :class="{ 'blog-card__progress--visible': hoveredCard === post.id }">
                 <div
                   :key="`prog-${post.id}-${cardSlideIndex[post.id] || 0}`"
                   class="blog-card__progress-bar"
@@ -88,7 +111,7 @@
                 ></div>
               </div>
 
-              <span class="blog-card__count">
+              <span v-if="!post.locked" class="blog-card__count">
                 {{ (cardSlideIndex[post.id] || 0) + 1 }}/{{ allImages(post).length }}
               </span>
 
@@ -137,9 +160,9 @@ import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination as SwiperPagination } from 'swiper/modules'
-import { ArrowRight, Calendar } from 'lucide-vue-next'
+import { ArrowRight, Calendar, Lock } from 'lucide-vue-next'
 import KitLancementModal from '~/components/ui/KitLancementModal.vue'
-import { blogPosts } from '~/data/blog'
+import { blogPosts, blogCategories } from '~/data/blog'
 import type { BlogPost } from '~/data/blog'
 
 import 'swiper/css'
@@ -158,8 +181,19 @@ onMounted(() => {
   trackConversion()
 })
 
+const activeCategory = ref('all')
+
+function getCategoryLabel(key: string): string {
+  return blogCategories.find((c) => c.key === key)?.label || key
+}
+
 const featuredPost = computed(() => blogPosts[blogPosts.length - 1])
 const remainingPosts = computed(() => blogPosts.slice(0, -1).reverse())
+
+const displayedPosts = computed(() => {
+  if (activeCategory.value === 'all') return remainingPosts.value
+  return blogPosts.filter((p) => p.category === activeCategory.value).reverse()
+})
 
 const swiperRefs: Record<string, any> = {}
 const cardSlideIndex = reactive<Record<string, number>>({})
@@ -239,6 +273,42 @@ onUnmounted(() => {
 }
 
 // ========================
+// CATEGORY FILTERS
+// ========================
+.blog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+
+  &__btn {
+    font-family: $font-mono;
+    font-size: $xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #000;
+    background: #fff;
+    border: 3px solid #000;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $orange;
+      box-shadow: 4px 4px 0px #000;
+      transform: translate(-2px, -2px);
+    }
+
+    &--active {
+      background: $purple;
+      color: #fff;
+      box-shadow: 4px 4px 0px #000;
+    }
+  }
+}
+
+// ========================
 // DIVIDER
 // ========================
 .blog-divider {
@@ -257,6 +327,12 @@ onUnmounted(() => {
   box-shadow: 8px 8px 0px $purple;
   background: #fff;
   overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0px $orange;
+  }
 
   &__badge {
     position: absolute;
@@ -273,6 +349,27 @@ onUnmounted(() => {
     border: 3px solid #000;
     padding: 4px 12px;
     box-shadow: 3px 3px 0px #000;
+  }
+
+  &__category-tag {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    z-index: 10;
+    font-family: $font-mono;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: $purple;
+    border: 2px solid #000;
+    padding: 3px 10px;
+    transition: background 0.2s ease;
+  }
+
+  &:hover &__category-tag {
+    background: $orange;
   }
 
   &__carousel {
@@ -361,7 +458,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   border: 4px solid #000;
-  box-shadow: 6px 6px 0px $orange;
+  box-shadow: 6px 6px 0px $purple;
   background: #fff;
   overflow: hidden;
   position: relative;
@@ -370,6 +467,50 @@ onUnmounted(() => {
   &:hover {
     transform: translate(-2px, -2px);
     box-shadow: 8px 8px 0px $orange;
+  }
+
+  &__category {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 10;
+    font-family: $font-mono;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: $purple;
+    border: 2px solid #000;
+    padding: 3px 10px;
+    transition: background 0.2s ease;
+  }
+
+  &:hover &__category {
+    background: $orange;
+  }
+
+  &--locked &__img {
+    filter: grayscale(0.4);
+  }
+
+  &__lock-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: $font-mono;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #000;
+    background: $orange;
+    border: 2px solid #000;
+    padding: 3px 10px;
   }
 
   &__carousel {

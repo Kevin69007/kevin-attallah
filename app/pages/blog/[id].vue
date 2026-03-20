@@ -17,7 +17,24 @@
 
         <h1 class="blog-detail__title">{{ post.title }}</h1>
 
-        <!-- Image gallery -->
+        <!-- Locked state -->
+        <div v-if="post.locked" class="blog-detail__locked">
+          <div class="blog-detail__locked-preview">
+            <img :src="post.image" :alt="post.title" class="blog-detail__locked-img" />
+            <div class="blog-detail__locked-overlay">
+              <Lock :size="48" />
+              <p class="blog-detail__locked-text">CONTENU EXCLUSIF</p>
+              <p class="blog-detail__locked-sub">CET ARTICLE FAIT PARTIE DE NOS RESSOURCES EXCLUSIVES. INSCRIS-TOI POUR LE RECEVOIR GRATUITEMENT PAR EMAIL.</p>
+              <button class="blog-detail__locked-btn" @click="showKit = true">
+                <Mail :size="18" />
+                RECEVOIR L'ARTICLE GRATUITEMENT
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image gallery (unlocked posts only) -->
+        <template v-else>
         <div class="blog-detail__gallery">
           <!-- Main image -->
           <div class="blog-detail__main">
@@ -65,6 +82,12 @@
             </button>
           </div>
         </div>
+        </template>
+
+        <KitLancementModal
+          :visible="showKit"
+          @close="showKit = false"
+        />
       </div>
     </section>
 
@@ -87,7 +110,8 @@ import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { EffectFade as SwiperEffectFade, Navigation as SwiperNavigation } from 'swiper/modules'
-import { ArrowLeft, Calendar, ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { ArrowLeft, Calendar, ChevronLeft, ChevronRight, Lock, Mail } from 'lucide-vue-next'
+import KitLancementModal from '~/components/ui/KitLancementModal.vue'
 import { blogPosts } from '~/data/blog'
 
 import 'swiper/css'
@@ -96,6 +120,7 @@ import 'swiper/css/navigation'
 
 const route = useRoute()
 const post = computed(() => blogPosts.find((p) => p.id === route.params.id))
+const showKit = ref(false)
 
 const allImages = computed(() => (post.value ? [post.value.image, ...post.value.images] : []))
 const currentSlide = ref(1)
@@ -324,6 +349,81 @@ onMounted(() => {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+
+  // Locked state
+  &__locked {
+    margin-bottom: 24px;
+  }
+
+  &__locked-preview {
+    position: relative;
+    overflow: hidden;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0px $purple;
+  }
+
+  &__locked-img {
+    width: 100%;
+    display: block;
+    filter: blur(6px) grayscale(0.3);
+    transform: scale(1.05);
+  }
+
+  &__locked-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+  }
+
+  &__locked-text {
+    font-family: $font-heading;
+    font-size: $h3;
+    text-transform: uppercase;
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  &__locked-sub {
+    font-family: $font-mono;
+    font-size: $small;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 8px;
+    max-width: 400px;
+    opacity: 0.8;
+  }
+
+  &__locked-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    font-family: $font-mono;
+    font-size: $body;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #000;
+    background: $orange;
+    border: 4px solid #000;
+    padding: 14px 28px;
+    box-shadow: 6px 6px 0px #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #fff;
+      transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0px #000;
     }
   }
 

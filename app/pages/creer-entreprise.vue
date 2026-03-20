@@ -43,7 +43,7 @@
           </div>
           <div class="ce-hero-brutal__image-col">
             <div class="ce-hero-brutal__image-wrap">
-              <NuxtImg src="/img/about/about-2.png" alt="Creer mon entreprise" format="webp" quality="80" />
+              <NuxtImg src="/img/kevin-creer.jpeg" alt="Creer mon entreprise" format="webp" quality="80" />
             </div>
           </div>
         </div>
@@ -245,7 +245,7 @@ function scrollToFormulas() {
   document.querySelector('#formulas')?.scrollIntoView({ behavior: 'smooth' })
 }
 
-const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
+const mosaicImages = Array.from({ length: 28 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
 
 // Payment for autonomie formula
 const router = useRouter()
@@ -459,9 +459,9 @@ onMounted(() => {
     img {
       width: 100%;
       display: block;
-      max-height: 500px;
+      max-height: 800px;
       object-fit: cover;
-      object-position: top;
+      object-position: center 50%;
     }
   }
 }

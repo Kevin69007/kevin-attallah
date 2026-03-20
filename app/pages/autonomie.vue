@@ -193,7 +193,7 @@ const avantages = [
   { icon: Gift, title: 'UNE FORMATION OFFERTE', description: 'En bonus : une formation de ton choix d\'une valeur de 99€ offerte parmi un catalogue de +100 formations professionnelles.', bonus: true },
 ]
 
-const mosaicImages = Array.from({ length: 20 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
+const mosaicImages = Array.from({ length: 28 }, (_, i) => `/img/mosaic/${String(i + 1).padStart(2, '0')}.jpg`)
 
 // Payment
 const router = useRouter()

@@ -255,7 +255,7 @@ const socialIcons: Record<string, string> = {
 .about-brutal__photo-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 7 / 10;
   border: 4px solid #000;
   box-shadow: 16px 16px 0px $purple;
   overflow: hidden;

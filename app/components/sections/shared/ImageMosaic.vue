@@ -69,22 +69,14 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
-// Pick a random image from the pool
-let imagePool = shuffle([...props.images])
-let poolIndex = 0
-function nextImage(): string {
-  if (poolIndex >= imagePool.length) {
-    imagePool = shuffle([...props.images])
-    poolIndex = 0
-  }
-  return imagePool[poolIndex++]
-}
+// Assign one unique image per tile (1:1 mapping)
+const shuffledImages = shuffle([...props.images])
 
-// Initialize tiles - every tile gets a permanent image, ~60% start visible
+// Initialize tiles - each tile gets its own unique image, ~60% start visible
 const tiles = reactive<Tile[]>(
-  edgeIndices.map((gridIndex) => ({
+  edgeIndices.map((gridIndex, i) => ({
     gridIndex,
-    image: nextImage(),
+    image: shuffledImages[i % shuffledImages.length],
     visible: Math.random() < 0.6,
   })),
 )
