@@ -38,7 +38,7 @@
           </div>
           <div class="auto-hero-brutal__image-col">
             <div class="auto-hero-brutal__image-wrap">
-              <NuxtImg src="/img/about/about-2.png" alt="Formation en autonomie" format="webp" quality="80" />
+              <NuxtImg src="/img/kevin-creer.jpeg" alt="Formation en autonomie" format="webp" quality="80" />
             </div>
           </div>
         </div>
