@@ -399,7 +399,8 @@ onMounted(() => {
     letter-spacing: 0.05em;
     margin-top: 8px;
     max-width: 400px;
-    opacity: 0.8;
+    opacity: 1;
+    color: #fff;
   }
 
   &__locked-btn {

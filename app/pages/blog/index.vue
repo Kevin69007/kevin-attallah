@@ -187,8 +187,11 @@ function getCategoryLabel(key: string): string {
   return blogCategories.find((c) => c.key === key)?.label || key
 }
 
-const featuredPost = computed(() => blogPosts[blogPosts.length - 1])
-const remainingPosts = computed(() => blogPosts.slice(0, -1).reverse())
+const featuredPost = computed(() => {
+  const unlocked = blogPosts.filter((p) => !p.locked)
+  return unlocked[unlocked.length - 1]
+})
+const remainingPosts = computed(() => blogPosts.filter((p) => p.id !== featuredPost.value.id).reverse())
 
 const displayedPosts = computed(() => {
   if (activeCategory.value === 'all') return remainingPosts.value
