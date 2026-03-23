@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
           SMS: phone,
           LEAD_SOURCE: 'formation_gratuite',
         },
-        listIds: [98],
+        listIds: [99],
         updateEnabled: true,
       },
       {
