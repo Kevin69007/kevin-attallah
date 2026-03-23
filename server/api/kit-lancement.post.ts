@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { notifyAdmin, ADMIN_TEMPLATES } from '~/server/utils/admin-notify'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
@@ -20,8 +21,9 @@ export default defineEventHandler(async (event) => {
         attributes: {
           FIRSTNAME: firstName,
           LEAD_SOURCE: 'kit_lancement',
+          DOWNLOAD_LINK: 'https://www.swisstransfer.com/d/fe0f0fd8-6680-4704-bac7-524bc6370da5',
         },
-        listIds: [56],
+        listIds: [98],
         updateEnabled: true,
       },
       {
@@ -32,6 +34,12 @@ export default defineEventHandler(async (event) => {
         },
       },
     )
+
+    // Admin notification (fire-and-forget)
+    notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.KIT_LANCEMENT, {
+      FIRSTNAME: firstName,
+      EMAIL: email,
+    })
 
     return { success: true, message: 'Inscription enregistrée avec succès' }
   } catch (error: any) {

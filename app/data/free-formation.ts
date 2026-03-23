@@ -25,6 +25,6 @@ export const freeFormationConfig: FreeFormationConfig = {
     'Vérifiez votre boîte email pour accéder à votre formation !',
   reassurance:
     'Tu recevras un email de notre part avec tes accès. Pense à vérifier tes spams si tu ne reçois rien sous 48h.',
-  brevoListId: 56,
+  brevoListId: 98,
   originalPrice: 99,
 }

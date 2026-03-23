@@ -316,8 +316,8 @@ async function onPaymentSuccess() {
 
   try {
     await Promise.all([
-      $fetch('/api/payment-received', { method: 'POST', body: data }),
       $fetch('/api/send-data-to-brevo', { method: 'POST', body: data }),
+      $fetch('/api/payment-received', { method: 'POST', body: data }),
     ])
   } catch (err) {
     console.error('Post-payment error:', err)
@@ -334,6 +334,20 @@ function onPaymentError(error: any) {
   isProcessing.value = false
   console.error('Payment error:', error)
   showToast('Erreur de paiement. Veuillez réessayer.', 'error')
+
+  $fetch('/api/notify-error', {
+    method: 'POST',
+    body: {
+      type: 'payment_error',
+      userName: form.name,
+      userEmail: form.email,
+      userPhone: form.phone,
+      formation: orderDescription.value,
+      amount: orderAmount.value,
+      errorMessage: error?.message || String(error),
+      page: 'paiement',
+    },
+  }).catch(() => {})
 }
 
 async function showToast(msg: string, type: 'error' | 'success' = 'error') {

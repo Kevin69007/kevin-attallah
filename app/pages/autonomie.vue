@@ -236,9 +236,19 @@ async function handlePurchase() {
 
     localStorage.setItem('orderResponse', JSON.stringify(data))
     router.push('/paiement')
-  } catch {
+  } catch (err: any) {
     const { useToast } = await import('vue-toastification')
     useToast().error('Une erreur est survenue. Veuillez réessayer.')
+
+    $fetch('/api/notify-error', {
+      method: 'POST',
+      body: {
+        type: 'order_creation_error',
+        formation: 'Créer mon entreprise - Formation en autonomie',
+        errorMessage: err?.message || String(err),
+        page: 'autonomie',
+      },
+    }).catch(() => {})
   } finally {
     isLoading.value = false
   }

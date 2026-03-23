@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { notifyAdmin, ADMIN_TEMPLATES } from '~/server/utils/admin-notify'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
@@ -23,7 +24,7 @@ export default defineEventHandler(async (event) => {
           SMS: phone,
           LEAD_SOURCE: 'formation_gratuite',
         },
-        listIds: [56],
+        listIds: [98],
         updateEnabled: true,
       },
       {
@@ -34,6 +35,14 @@ export default defineEventHandler(async (event) => {
         },
       },
     )
+
+    // Admin notification (fire-and-forget)
+    notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.FORMATION_GRATUITE, {
+      FIRSTNAME: firstName,
+      LASTNAME: lastName,
+      EMAIL: email,
+      PHONE: phone,
+    })
 
     return { success: true, message: 'Inscription enregistrée avec succès' }
   } catch (error: any) {

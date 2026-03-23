@@ -33,6 +33,7 @@ export default defineEventHandler(async (event) => {
         PHONE_CABINET: phone,
         JOB_TITLE: formation,
         NOMBRE_DE_CAS_TOTAL: mount,
+        MONTANT_FORMATE: mount ? `${(mount / 100).toFixed(2)} €` : '',
         VILLE: city,
         CODE_POSTALE: postcode,
         ADRESS: city || '',
