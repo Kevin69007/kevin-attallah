@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { notifyAdmin, ADMIN_TEMPLATES } from '~/server/utils/admin-notify'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()

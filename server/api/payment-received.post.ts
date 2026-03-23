@@ -1,7 +1,6 @@
 // server/api/payment-received.post.ts
 // User email handled by Brevo workflow (list 53). Admin notification sent here via SMTP API.
 
-import { notifyAdmin, ADMIN_TEMPLATES } from '~/server/utils/admin-notify'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
