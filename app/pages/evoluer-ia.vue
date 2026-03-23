@@ -16,7 +16,7 @@
             On identifie ensemble ce que l'IA peut faire concrètement pour ton business. Pas de promesses vagues, des solutions adaptées à ta réalité.
           </p>
           <div class="eia-hero-brutal__ctas">
-            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+            <AppButton variant="primary" size="lg" :href="externalLinks.booking.propulseAvecIA">
               JE VEUX UN AUDIT GRATUIT
               <ArrowRight :size="20" />
             </AppButton>
@@ -55,7 +55,7 @@
           <span class="eia-pain-brutal__closing-punch">c'est quand ?</span>
         </div>
         <div class="text-center mt-48">
-          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.propulseAvecIA">
             JE VEUX MON AUDIT IA
             <ArrowRight :size="20" />
           </AppButton>
@@ -101,7 +101,7 @@
           </article>
         </div>
         <div class="text-center mt-48">
-          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.propulseAvecIA">
             JE RÉSERVE MON APPEL
             <ArrowRight :size="20" />
           </AppButton>
@@ -138,7 +138,7 @@
         </div>
 
         <div class="eia-solutions-brutal__footer text-center">
-          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting" class="mt-24">
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.propulseAvecIA" class="mt-24">
             JE VEUX VOIR CE QU'ON PEUT FAIRE
             <ArrowRight :size="20" />
           </AppButton>
@@ -155,13 +155,13 @@
       <p class="eia-mosaic-brutal__subtitle">
         Zéro solution générique. L'audit est gratuit et il a de la vraie valeur. Des résultats rapides, mesurables, portés par un vrai entrepreneur.
       </p>
-      <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
+      <AppButton variant="primary" :href="externalLinks.booking.propulseAvecIA" class="mt-24">
         EN SAVOIR PLUS <ArrowRight :size="16" />
       </AppButton>
     </ImageMosaic>
 
     <!-- Final CTA -->
-    <CTABrutalist titleLine1="PRÊT À VOIR" titleLine2="CE QUE L'IA PEUT FAIRE ?" subtitle="Un appel gratuit de 30 minutes. On qualifie tes besoins et on te dit honnêtement ce qu'on peut faire pour toi." buttonText="JE RÉSERVE MON APPEL" :buttonHref="externalLinks.booking.brevoMeeting" />
+    <CTABrutalist titleLine1="PRÊT À VOIR" titleLine2="CE QUE L'IA PEUT FAIRE ?" subtitle="Un appel gratuit de 30 minutes. On qualifie tes besoins et on te dit honnêtement ce qu'on peut faire pour toi." buttonText="JE RÉSERVE MON APPEL" :buttonHref="externalLinks.booking.propulseAvecIA" />
     <KitLancementModal
       :visible="kitIntent.triggered.value && !kitIntent.dismissed.value"
       @close="kitIntent.dismiss()"

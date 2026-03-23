@@ -1,8 +1,8 @@
 export const externalLinks = {
   // Booking & meetings
   booking: {
-    brevoMeeting: 'https://meet.brevo.com/kevin-a2ta2l/presentation',
-    brevoBilan: 'https://meet.brevo.com/kevin-a2ta2l/faites-le-point-sur-votre-avenir-professionnel-avec-un-bilan-de-competences-',
+    debloqueTonPotentiel: 'https://meet.brevo.com/kevin-a2ta2l/presentation',
+    propulseAvecIA: 'https://meet.brevo.com/kevin-a2ta2l/faites-le-point-sur-votre-avenir-professionnel-avec-un-bilan-de-competences-',
   },
 
   // Contact

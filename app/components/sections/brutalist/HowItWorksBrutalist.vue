@@ -37,7 +37,7 @@
         <!-- Ending block -->
         <article class="brutal-step brutal-step--black">
           <h3 class="brutal-step__title text-white">PRÊT ?</h3>
-          <AppButton variant="primary" class="mt-4" :href="externalLinks.booking.brevoMeeting">
+          <AppButton variant="primary" class="mt-4" :href="externalLinks.booking.debloqueTonPotentiel">
             LANCER LE PROTOCOLE
           </AppButton>
         </article>

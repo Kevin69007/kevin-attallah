@@ -35,7 +35,7 @@
                 JE ME FORME EN AUTONOMIE
                 <ArrowRight :size="18" />
               </AppButton>
-              <AppButton variant="ghost-light" size="lg" :href="externalLinks.booking.brevoMeeting">
+              <AppButton variant="ghost-light" size="lg" :href="externalLinks.booking.debloqueTonPotentiel">
                 JE VEUX ÊTRE ACCOMPAGNÉ
                 <ArrowRight :size="18" />
               </AppButton>
@@ -156,7 +156,7 @@
               <Award :size="18" />
               <span>100% FINANÇABLE</span>
             </div>
-            <AppButton variant="primary" block :href="externalLinks.booking.brevoMeeting">
+            <AppButton variant="primary" block :href="externalLinks.booking.debloqueTonPotentiel">
               JE VEUX ETRE ACCOMPAGNE
               <ArrowRight :size="18" />
             </AppButton>
@@ -178,7 +178,7 @@
       <p class="ce-mosaic-subtitle">
         On commence par toi, pas par un business plan théorique. L'IA est intégrée dès le premier jour, et derrière la formation, un vrai entrepreneur.
       </p>
-      <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting" class="mt-24">
+      <AppButton variant="primary" :href="externalLinks.booking.debloqueTonPotentiel" class="mt-24">
         EN SAVOIR PLUS <ArrowRight :size="16" />
       </AppButton>
     </ImageMosaic>
@@ -189,7 +189,7 @@
       titleLine2="LANCER ?"
       subtitle="Un appel gratuit de 30 minutes pour faire le point sur ton projet."
       buttonText="JE RÉSERVE MON APPEL"
-      :buttonHref="externalLinks.booking.brevoMeeting"
+      :buttonHref="externalLinks.booking.debloqueTonPotentiel"
     />
 
     <!-- Exit Intent Popup -->

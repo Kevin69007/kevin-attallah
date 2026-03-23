@@ -26,7 +26,7 @@
           <NuxtLink to="/mentions-legales">Mentions légales</NuxtLink>
           <NuxtLink to="/cgv">CGV</NuxtLink>
           <a :href="'mailto:' + externalLinks.contact.email">{{ externalLinks.contact.email }}</a>
-          <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener">Prendre rendez-vous</a>
+          <a :href="externalLinks.booking.debloqueTonPotentiel" target="_blank" rel="noopener">Prendre rendez-vous</a>
         </div>
       </div>
 

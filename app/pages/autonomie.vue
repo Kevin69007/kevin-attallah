@@ -149,7 +149,7 @@
       titleLine2="ACCOMPAGNÉ ?"
       subtitle="Un appel gratuit de 30 minutes pour faire le point sur ton projet."
       buttonText="JE RÉSERVE MON APPEL"
-      :buttonHref="externalLinks.booking.brevoMeeting"
+      :buttonHref="externalLinks.booking.debloqueTonPotentiel"
     />
     </main>
   </div>

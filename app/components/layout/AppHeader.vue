@@ -16,7 +16,7 @@
 
       <!-- CTA button - gold gradient, outside pill -->
       <a
-        :href="externalLinks.booking.brevoMeeting"
+        :href="externalLinks.booking.debloqueTonPotentiel"
         target="_blank"
         rel="noopener noreferrer"
         class="header__cta"
@@ -45,7 +45,7 @@
           <NuxtLink to="/evoluer-ia" @click="mobileOpen = false">Booster mon entreprise</NuxtLink>
           <NuxtLink to="/about" @click="mobileOpen = false">À propos</NuxtLink>
           <NuxtLink to="/blog" @click="mobileOpen = false">Blog</NuxtLink>
-          <a :href="externalLinks.booking.brevoMeeting" target="_blank" rel="noopener noreferrer" class="header__mobile-cta" @click="mobileOpen = false">
+          <a :href="externalLinks.booking.debloqueTonPotentiel" target="_blank" rel="noopener noreferrer" class="header__mobile-cta" @click="mobileOpen = false">
             Prendre rendez-vous
           </a>
         </nav>

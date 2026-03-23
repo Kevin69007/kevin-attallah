@@ -47,7 +47,7 @@
           </div>
 
           <div class="btn-group mt-32">
-            <AppButton variant="primary" :href="externalLinks.booking.brevoMeeting">
+            <AppButton variant="primary" :href="externalLinks.booking.debloqueTonPotentiel">
               Travaillons ensemble
               <ArrowRight :size="18" />
             </AppButton>

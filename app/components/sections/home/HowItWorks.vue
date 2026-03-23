@@ -51,7 +51,7 @@
       <div class="how-it-works__footer">
         <div class="container">
           <div class="text-center">
-            <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+            <AppButton variant="primary" size="lg" :href="externalLinks.booking.debloqueTonPotentiel">
               Je prends mon appel gratuit
               <ArrowRight :size="20" />
             </AppButton>

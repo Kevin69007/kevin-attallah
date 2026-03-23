@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<{
   subtitle: "Le marché n'attend pas ceux qui réfléchissent trop. Passez à l'action. Maintenant.",
   buttonText: 'RÉSERVER MON APPEL',
   buttonTo: '',
-  buttonHref: 'https://meet.brevo.com/kevin-a2ta2l/presentation',
+  buttonHref: '',
 })
 
 const line2Text = computed(() => {

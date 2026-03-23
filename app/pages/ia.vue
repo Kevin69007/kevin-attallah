@@ -14,7 +14,7 @@
           Il est temps de passer à l'action.
         </p>
         <div class="ia-hero__ctas">
-          <AppButton variant="primary" size="lg" :href="externalLinks.booking.brevoMeeting">
+          <AppButton variant="primary" size="lg" :href="externalLinks.booking.propulseAvecIA">
             Réserver mon audit IA
             <ArrowRight :size="20" />
           </AppButton>
@@ -125,7 +125,7 @@
       titleLine2="L'IA ?"
       subtitle="Réserve un audit gratuit avec Kevin pour identifier tes leviers IA."
       buttonText="RÉSERVER MON AUDIT IA"
-      :buttonHref="externalLinks.booking.brevoMeeting"
+      :buttonHref="externalLinks.booking.propulseAvecIA"
     />
     </main>
   </div>
