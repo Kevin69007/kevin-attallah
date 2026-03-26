@@ -1,8 +1,8 @@
 export const externalLinks = {
   // Booking & meetings
   booking: {
-    debloqueTonPotentiel: 'https://meet.brevo.com/kevin-a2ta2l/presentation',
-    propulseAvecIA: 'https://meet.brevo.com/kevin-a2ta2l/faites-le-point-sur-votre-avenir-professionnel-avec-un-bilan-de-competences-',
+    debloqueTonPotentiel: 'https://meet.brevo.com/kevin-a2ta2l/debloque-ton-potentiel',
+    propulseAvecIA: 'https://meet.brevo.com/kevin-a2ta2l/propulse-ton-business-avec-lia',
   },
 
   // Contact
