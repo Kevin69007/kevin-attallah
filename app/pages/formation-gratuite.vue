@@ -36,6 +36,18 @@
               </div>
             </div>
 
+            <!-- Instagram CTA -->
+            <a
+              :href="externalLinks.social.instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="lp__instagram mt-24"
+            >
+              <Instagram :size="20" />
+              <span>SUIVRE SUR INSTAGRAM</span>
+              <ArrowRight :size="16" />
+            </a>
+
             <!-- Reassurance -->
             <p class="lp__reassurance mt-24">{{ config.reassurance }}</p>
           </div>
@@ -55,8 +67,9 @@
 
 <script setup lang="ts">
 import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
-import { Gift, CheckCircle, Users, Star } from 'lucide-vue-next'
+import { Gift, CheckCircle, Users, Star, Instagram, ArrowRight } from 'lucide-vue-next'
 import { freeFormationConfig as config } from '~/data/free-formation'
+import { externalLinks } from '~/data/external-links'
 
 useHead({
   title: 'Formation Gratuite',
@@ -241,6 +254,28 @@ onMounted(() => {
     &:hover {
       transform: translate(-2px, -2px);
       box-shadow: 4px 4px 0px $purple;
+    }
+  }
+
+  &__instagram {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: $font-mono;
+    font-size: $small;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #FFF;
+    background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+    padding: 14px 20px;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px $purple;
     }
   }
 

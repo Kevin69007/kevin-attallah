@@ -20,6 +20,13 @@
 
             <form class="kit-modal__form" @submit.prevent="handleSubmit">
               <FormInput
+                id="kit-lastName"
+                v-model="form.lastName"
+                label="Nom"
+                placeholder="Dupont"
+                required
+              />
+              <FormInput
                 id="kit-firstName"
                 v-model="form.firstName"
                 label="Prénom"
@@ -32,6 +39,14 @@
                 label="Email"
                 type="email"
                 placeholder="jean@example.com"
+                required
+              />
+              <FormInput
+                id="kit-phone"
+                v-model="form.phone"
+                label="Téléphone"
+                type="tel"
+                placeholder="06 12 34 56 78"
                 required
               />
               <AppButton variant="primary" block type="submit" :disabled="loading" class="mt-16">
@@ -71,15 +86,17 @@ const loading = ref(false)
 const submitted = ref(false)
 
 const form = reactive({
+  lastName: '',
   firstName: '',
   email: '',
+  phone: '',
 })
 
 const { trackLead } = useFBPixel()
 const { trackGenerateLead } = useGoogleAds()
 
 async function handleSubmit() {
-  if (!form.firstName || !form.email) {
+  if (!form.lastName || !form.firstName || !form.email || !form.phone) {
     const { useToast } = await import('vue-toastification')
     useToast().error('Veuillez remplir tous les champs.')
     return
@@ -91,8 +108,10 @@ async function handleSubmit() {
     await $fetch('/api/kit-lancement', {
       method: 'POST',
       body: {
+        lastName: form.lastName,
         firstName: form.firstName,
         email: form.email,
+        phone: form.phone,
       },
     })
 

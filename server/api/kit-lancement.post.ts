@@ -3,9 +3,9 @@ import axios from 'axios'
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const body = await readBody(event)
-  const { firstName, email } = body
+  const { lastName, firstName, email, phone } = body
 
-  if (!firstName || !email) {
+  if (!lastName || !firstName || !email || !phone) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Tous les champs sont obligatoires.',
@@ -19,6 +19,8 @@ export default defineEventHandler(async (event) => {
         email,
         attributes: {
           FIRSTNAME: firstName,
+          LASTNAME: lastName,
+          SMS: phone,
           LEAD_SOURCE: 'kit_lancement',
           DOWNLOAD_LINK: 'https://www.swisstransfer.com/d/fe0f0fd8-6680-4704-bac7-524bc6370da5',
         },
@@ -37,7 +39,9 @@ export default defineEventHandler(async (event) => {
     // Admin notification (fire-and-forget)
     notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.KIT_LANCEMENT, {
       FIRSTNAME: firstName,
+      LASTNAME: lastName,
       EMAIL: email,
+      PHONE: phone,
     })
 
     return { success: true, message: 'Inscription enregistrée avec succès' }

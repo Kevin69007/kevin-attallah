@@ -162,10 +162,6 @@
 
     <!-- Final CTA -->
     <CTABrutalist titleLine1="PRÊT À VOIR" titleLine2="CE QUE L'IA PEUT FAIRE ?" subtitle="Un appel gratuit de 30 minutes. On qualifie tes besoins et on te dit honnêtement ce qu'on peut faire pour toi." buttonText="JE RÉSERVE MON APPEL" :buttonHref="externalLinks.booking.propulseAvecIA" />
-    <KitLancementModal
-      :visible="kitIntent.triggered.value && !kitIntent.dismissed.value"
-      @close="kitIntent.dismiss()"
-    />
     </main>
   </div>
 </template>
@@ -181,9 +177,7 @@ import { externalLinks } from '~/data/external-links'
 import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
-import KitLancementModal from '~/components/ui/KitLancementModal.vue'
 
-const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit_evoluer' })
 
 useHead({
   title: 'Faire évoluer mon entreprise avec l\'IA',

@@ -110,10 +110,6 @@
     </section>
 
     <CTABrutalist />
-    <KitLancementModal
-      :visible="kitIntent.triggered.value && !kitIntent.dismissed.value"
-      @close="kitIntent.dismiss()"
-    />
     </main>
   </div>
 </template>
@@ -125,9 +121,7 @@ import { socialLinks } from '~/data/social'
 import CTABrutalist from '~/components/sections/brutalist/CTABrutalist.vue'
 import WebGLBrutalistLight from '~/components/animation/WebGLBrutalistLight.vue'
 import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.vue'
-import KitLancementModal from '~/components/ui/KitLancementModal.vue'
 
-const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit_about' })
 
 useHead({ title: 'À propos' })
 

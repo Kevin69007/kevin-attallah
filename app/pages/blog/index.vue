@@ -147,10 +147,6 @@
     <TunnelTransition text="ENCORE PLUS D'ARTICLES." />
 
     <CTABrutalist />
-    <KitLancementModal
-      :visible="kitIntent.triggered.value && !kitIntent.dismissed.value"
-      @close="kitIntent.dismiss()"
-    />
     </main>
   </div>
 </template>
@@ -161,14 +157,12 @@ import TunnelTransition from '~/components/sections/brutalist/TunnelTransition.v
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination as SwiperPagination } from 'swiper/modules'
 import { ArrowRight, Calendar, Lock } from 'lucide-vue-next'
-import KitLancementModal from '~/components/ui/KitLancementModal.vue'
 import { blogPosts, blogCategories } from '~/data/blog'
 import type { BlogPost } from '~/data/blog'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit_blog' })
 
 useHead({ title: 'Blog' })
 

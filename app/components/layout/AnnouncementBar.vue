@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!dismissed" ref="barRef" class="announce">
+  <div ref="barRef" class="announce">
     <div class="container">
       <NuxtLink to="/formation-gratuite" class="announce__content">
         <Gift :size="14" class="announce__icon" />
@@ -11,48 +11,46 @@
           <ArrowRight :size="14" />
         </span>
       </NuxtLink>
-      <button class="announce__close" aria-label="Fermer" @click.stop="dismiss">
-        <X :size="14" />
-      </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Gift, ArrowRight, X } from 'lucide-vue-next'
+import { Gift, ArrowRight } from 'lucide-vue-next'
 
-const dismissed = ref(false)
 const barRef = ref<HTMLElement | null>(null)
 const barHeight = useState('announceBarHeight', () => 0)
 
 onMounted(() => {
-  if (localStorage.getItem('announce_dismissed')) {
-    dismissed.value = true
-    barHeight.value = 0
-  } else {
-    nextTick(() => {
-      if (barRef.value) {
-        barHeight.value = barRef.value.offsetHeight
-      }
-    })
-  }
+  nextTick(() => {
+    if (barRef.value) {
+      barHeight.value = barRef.value.offsetHeight
+    }
+  })
 })
-
-function dismiss() {
-  dismissed.value = true
-  barHeight.value = 0
-  localStorage.setItem('announce_dismissed', Date.now().toString())
-}
 </script>
 
 <style lang="scss" scoped>
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
 .announce {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
-  background: #FFF;
+  background: linear-gradient(90deg, $purple, #8B45E6, $orange, $purple);
+  background-size: 300% 100%;
+  animation: gradient-shift 6s ease infinite;
   border-bottom: 3px solid #000;
 
   .container {
@@ -65,9 +63,9 @@ function dismiss() {
   &__content {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     padding: 10px 0;
-    color: #000;
+    color: #FFF;
     font-family: $font-mono;
     font-size: 13px;
     font-weight: 700;
@@ -84,7 +82,8 @@ function dismiss() {
 
   &__icon {
     flex-shrink: 0;
-    color: $orange;
+    color: #FFF;
+    animation: icon-pulse 2s ease-in-out infinite;
 
     @media (max-width: 640px) {
       display: none;
@@ -92,9 +91,14 @@ function dismiss() {
   }
 
   &__text {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
     strong {
-      font-weight: 700;
-      color: $purple;
+      font-weight: 900;
+      color: #FFF;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
     }
   }
 
@@ -105,31 +109,19 @@ function dismiss() {
     font-family: $font-mono;
     font-weight: 700;
     font-size: 12px;
-    color: #FFF;
-    background: #000;
+    color: $purple;
+    background: #FFF;
     padding: 5px 14px;
-    border: 2px solid #000;
+    border: 2px solid #FFF;
     white-space: nowrap;
     text-transform: uppercase;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
 
     &:hover {
-      background: $purple;
-      border-color: $purple;
-    }
-  }
-
-  &__close {
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    padding: 4px;
-    flex-shrink: 0;
-    transition: color 0.2s;
-
-    &:hover {
-      color: $purple;
+      background: #000;
+      color: #FFF;
+      border-color: #000;
+      transform: translateY(-1px);
     }
   }
 }

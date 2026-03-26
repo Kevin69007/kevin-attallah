@@ -192,11 +192,6 @@
       :buttonHref="externalLinks.booking.debloqueTonPotentiel"
     />
 
-    <!-- Exit Intent Popup -->
-    <KitLancementModal
-      :visible="kitIntent.triggered.value && !kitIntent.dismissed.value"
-      @close="kitIntent.dismiss()"
-    />
     </main>
   </div>
 </template>
@@ -229,7 +224,7 @@ onMounted(() => {
   trackConversion()
 })
 
-const kitIntent = useExitIntent({ delay: 8000, scrollThreshold: 0.6, storagePrefix: 'kit_creer' })
+
 
 const modules = [
   { icon: Lightbulb, title: 'Trouver & valider ton idée', description: 'Identifie une idée solide avec un vrai potentiel business. Validée par la data, pas par l\'intuition.' },
