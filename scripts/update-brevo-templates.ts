@@ -1,27 +1,23 @@
 /**
- * Brevo Setup Script
- * Creates contact attributes, error list, email templates, and automation workflows.
- * Run once: BREVO_API_KEY=xkeysib-... npx tsx scripts/setup-brevo.ts
+ * Update Brevo email templates to light mode.
+ * Run: BREVO_API_KEY=xkeysib-... npx tsx scripts/update-brevo-templates.ts
  */
 
-import { writeFileSync } from 'fs'
+import config from './brevo-config.json'
 
 const API_KEY = process.env.BREVO_API_KEY || process.env.NUXT_SENDINBLUE_API_KEY
 if (!API_KEY) {
-  console.error('Missing BREVO_API_KEY. Run: BREVO_API_KEY=xkeysib-... npx tsx scripts/setup-brevo.ts')
+  console.error('Missing BREVO_API_KEY. Run: BREVO_API_KEY=xkeysib-... npx tsx scripts/update-brevo-templates.ts')
   process.exit(1)
 }
 
 const BASE = 'https://api.brevo.com/v3'
-const SENDER = { name: 'Kevin Attallah', email: 'formation@kelaj-company.com' }
-const ADMIN_EMAIL = 'asathoud16@gmail.com'
 const LOGO_URL = 'https://www.kevin-attallah.com/img/logo-2.png'
 const SITE_URL = 'https://www.kevin-attallah.com'
 const CONTACT_EMAIL = 'contact@kevin-attallah.com'
 
 const PURPLE = '#6C2BD9'
 const ORANGE = '#C67651'
-const DARK = '#0A0514'
 
 const SOCIALS = {
   Facebook: 'https://web.facebook.com/profile.php?id=61563587830934',
@@ -30,31 +26,6 @@ const SOCIALS = {
   Instagram: 'https://www.instagram.com/kevin_attallah_',
   TikTok: 'https://www.tiktok.com/@kevin_attallah',
 }
-
-async function brevoRequest(path: string, method: string, body?: any) {
-  const res = await fetch(`${BASE}${path}`, {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'api-key': API_KEY!,
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  })
-
-  const text = await res.text()
-  if (!res.ok) {
-    // Attribute already exists is OK
-    if (res.status === 400 && text.includes('already exists')) {
-      return { alreadyExists: true }
-    }
-    throw new Error(`${method} ${path} failed (${res.status}): ${text}`)
-  }
-
-  return text ? JSON.parse(text) : {}
-}
-
-// ── Branded Email Template ──
 
 function buildTemplate(heading: string, bodyHtml: string, isError = false): string {
   const accentColor = isError ? '#E53E3E' : PURPLE
@@ -128,11 +99,8 @@ ${rowsHtml}
 </table>`
 }
 
-// ── Template Definitions ──
-
-const templates = [
-  {
-    name: 'kit-lancement-user',
+const templates: Record<string, { subject: string; html: string }> = {
+  'kit-lancement-user': {
     subject: 'Votre Kit de Lancement est pret !',
     html: buildTemplate(
       'Votre Kit de Lancement',
@@ -144,8 +112,7 @@ ${ctaButton('Telecharger mon Kit', '{{ params.DOWNLOAD_LINK }}')}
 <p>A tres vite,<br><strong>Kevin Attallah</strong></p>`
     ),
   },
-  {
-    name: 'kit-lancement-admin',
+  'kit-lancement-admin': {
     subject: 'Nouveau lead Kit : {{ params.FIRSTNAME }}',
     html: buildTemplate(
       'Nouvelle demande de Kit Lancement',
@@ -153,8 +120,7 @@ ${ctaButton('Telecharger mon Kit', '{{ params.DOWNLOAD_LINK }}')}
 ${infoTable([['Prenom', '{{ params.FIRSTNAME }}'], ['Email', '{{ params.EMAIL }}']])}`
     ),
   },
-  {
-    name: 'formation-gratuite-user',
+  'formation-gratuite-user': {
     subject: 'Votre demande a bien ete recue',
     html: buildTemplate(
       'Demande bien recue !',
@@ -165,8 +131,7 @@ ${infoTable([['Prenom', '{{ params.FIRSTNAME }}'], ['Email', '{{ params.EMAIL }}
 <p>A tres vite,<br><strong>Kevin Attallah</strong></p>`
     ),
   },
-  {
-    name: 'formation-gratuite-admin',
+  'formation-gratuite-admin': {
     subject: 'Nouveau lead Formation : {{ params.FIRSTNAME }}',
     html: buildTemplate(
       'Nouvelle demande de formation gratuite',
@@ -179,8 +144,7 @@ ${infoTable([
 ])}`
     ),
   },
-  {
-    name: 'paiement-user',
+  'paiement-user': {
     subject: 'Confirmation de votre commande',
     html: buildTemplate(
       'Merci pour votre achat !',
@@ -195,8 +159,7 @@ ${infoTable([
 <p>A tres vite,<br><strong>Kevin Attallah</strong></p>`
     ),
   },
-  {
-    name: 'paiement-admin',
+  'paiement-admin': {
     subject: 'Nouveau paiement : {{ params.FORMATION }}',
     html: buildTemplate(
       'Nouveau paiement recu',
@@ -212,8 +175,7 @@ ${infoTable([
 ])}`
     ),
   },
-  {
-    name: 'erreur-admin',
+  'erreur-admin': {
     subject: '[ERREUR] {{ params.ERROR_TYPE }}',
     html: buildTemplate(
       'Erreur detectee',
@@ -223,114 +185,52 @@ ${infoTable([
   ['Utilisateur', '{{ params.USER_NAME }}'],
   ['Email', '{{ params.USER_EMAIL }}'],
   ['Formation', '{{ params.FORMATION }}'],
-  ['Message d\'erreur', '{{ params.ERROR_MESSAGE }}'],
+  ["Message d'erreur", '{{ params.ERROR_MESSAGE }}'],
 ])}`,
       true
     ),
   },
-]
-
-// ── Main Setup ──
+}
 
 async function main() {
-  console.log('🔧 Setting up Brevo...\n')
+  console.log('Updating Brevo templates to light mode...\n')
 
-  // 1. Create contact attributes
-  console.log('1/5 Creating contact attributes...')
-  const attributes = ['DOWNLOAD_LINK', 'ERROR_TYPE', 'ERROR_MESSAGE', 'ERROR_PAGE', 'ERROR_FORMATION']
-  for (const attr of attributes) {
-    try {
-      await brevoRequest(`/contacts/attributes/normal/${attr}`, 'POST', { type: 'text' })
-      console.log(`  + ${attr}`)
-    } catch (e: any) {
-      if (e.message?.includes('already exists')) {
-        console.log(`  = ${attr} (already exists)`)
-      } else {
-        console.log(`  ! ${attr}: ${e.message}`)
-      }
+  for (const [name, templateId] of Object.entries(config.templateIds)) {
+    const tpl = templates[name]
+    if (!tpl) {
+      console.log(`  ? ${name}: no template definition found, skipping`)
+      continue
     }
-  }
 
-  // 2. Create error notification list
-  console.log('\n2/5 Creating error notification list...')
-  let errorListId: number
-  try {
-    const res = await brevoRequest('/contacts/lists', 'POST', {
-      name: 'Error Notifications',
-      folderId: 51,
-    })
-    errorListId = res.id
-    console.log(`  + List created: ID ${errorListId}`)
-  } catch (e: any) {
-    if (e.message?.includes('already exists')) {
-      // Try to find existing list
-      const lists = await brevoRequest('/contacts/lists?limit=50', 'GET')
-      const existing = lists.lists?.find((l: any) => l.name === 'Error Notifications')
-      if (existing) {
-        errorListId = existing.id
-        console.log(`  = List already exists: ID ${errorListId}`)
-      } else {
-        throw new Error('Could not find or create Error Notifications list')
-      }
-    } else {
-      throw e
-    }
-  }
-
-  // 3. Create email templates
-  console.log('\n3/5 Creating email templates...')
-  const templateIds: Record<string, number> = {}
-  for (const tpl of templates) {
     try {
-      const res = await brevoRequest('/smtp/templates', 'POST', {
-        sender: SENDER,
-        templateName: tpl.name,
-        subject: tpl.subject,
-        htmlContent: tpl.html,
-        isActive: true,
+      const res = await fetch(`${BASE}/smtp/templates/${templateId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'api-key': API_KEY!,
+        },
+        body: JSON.stringify({
+          htmlContent: tpl.html,
+          subject: tpl.subject,
+        }),
       })
-      templateIds[tpl.name] = res.id
-      console.log(`  + ${tpl.name}: ID ${res.id}`)
+
+      if (!res.ok) {
+        const text = await res.text()
+        console.log(`  ! ${name} (ID ${templateId}): failed (${res.status}) ${text}`)
+      } else {
+        console.log(`  + ${name} (ID ${templateId}): updated`)
+      }
     } catch (e: any) {
-      console.log(`  ! ${tpl.name}: ${e.message}`)
+      console.log(`  ! ${name} (ID ${templateId}): ${e.message}`)
     }
   }
 
-  // 4. Create automation workflows
-  console.log('\n4/5 Creating automation workflows...')
-  console.log('  Note: Brevo automation workflows must be created manually in the dashboard.')
-  console.log('  Use the template IDs above when configuring workflow email steps.')
-  console.log('')
-  console.log('  Workflows to create:')
-  console.log(`  1. Kit Lancement: Trigger on list 98 + LEAD_SOURCE="kit_lancement"`)
-  console.log(`     -> Send template ${templateIds['kit-lancement-user'] || 'TBD'} to contact`)
-  console.log(`     -> Send template ${templateIds['kit-lancement-admin'] || 'TBD'} to ${ADMIN_EMAIL}`)
-  console.log(`  2. Formation Gratuite: Trigger on list 98 + LEAD_SOURCE="formation_gratuite"`)
-  console.log(`     -> Send template ${templateIds['formation-gratuite-user'] || 'TBD'} to contact`)
-  console.log(`     -> Send template ${templateIds['formation-gratuite-admin'] || 'TBD'} to ${ADMIN_EMAIL}`)
-  console.log(`  3. Paiement Reussi: Trigger on list 53`)
-  console.log(`     -> Send template ${templateIds['paiement-user'] || 'TBD'} to contact`)
-  console.log(`     -> Send template ${templateIds['paiement-admin'] || 'TBD'} to ${ADMIN_EMAIL}`)
-  console.log(`  4. Erreur: Trigger on list ${errorListId}`)
-  console.log(`     -> Send template ${templateIds['erreur-admin'] || 'TBD'} to ${ADMIN_EMAIL}`)
-
-  // 5. Save config
-  const config = {
-    errorListId,
-    templateIds,
-    adminEmail: ADMIN_EMAIL,
-    createdAt: new Date().toISOString(),
-  }
-
-  console.log('\n5/5 Saving configuration...')
-  writeFileSync('scripts/brevo-config.json', JSON.stringify(config, null, 2))
-  console.log('  + Saved to scripts/brevo-config.json')
-
-  console.log('\n✅ Brevo setup complete!')
-  console.log(JSON.stringify(config, null, 2))
+  console.log('\nDone! All templates updated to light mode.')
 }
 
 main().catch((err) => {
-  console.error('Setup failed:', err)
+  console.error('Update failed:', err)
   process.exit(1)
 })
