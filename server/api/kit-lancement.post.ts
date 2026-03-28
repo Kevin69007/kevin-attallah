@@ -46,10 +46,12 @@ export default defineEventHandler(async (event) => {
 
     return { success: true, message: 'Inscription enregistrée avec succès' }
   } catch (error: any) {
-    const brevoError = error?.response?.data || error.message
+    const brevoError = error?.response?.data || {}
+    const brevoCode = brevoError?.code || ''
+    const brevoMsg = brevoError?.message || error.message
     console.error('Erreur kit-lancement:', JSON.stringify(brevoError))
 
-    if (error?.response?.status === 400) {
+    if (brevoCode === 'invalid_parameter' && brevoMsg?.includes('email')) {
       throw createError({
         statusCode: 400,
         statusMessage: 'Adresse email invalide. Veuillez utiliser une adresse email valide.',
@@ -59,7 +61,7 @@ export default defineEventHandler(async (event) => {
     throw createError({
       statusCode: 500,
       statusMessage: "Erreur lors de l'enregistrement",
-      data: { error: error.message },
+      data: { brevoCode, brevoMsg },
     })
   }
 })
