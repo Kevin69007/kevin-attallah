@@ -24,8 +24,8 @@ export async function notifyAdmin(apiKey: string, templateId: number, params: Re
 
 // Template IDs (from Brevo)
 export const ADMIN_TEMPLATES = {
-  KIT_LANCEMENT: 130,
-  FORMATION_GRATUITE: 132,
-  PAIEMENT: 134,
-  ERREUR: 135,
+  KIT_LANCEMENT: 153,
+  FORMATION_GRATUITE: 154,
+  PAIEMENT: 155,
+  ERREUR: 156,
 }

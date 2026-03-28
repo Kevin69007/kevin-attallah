@@ -45,7 +45,17 @@ export default defineEventHandler(async (event) => {
 
     return { success: true, message: 'Inscription enregistrée avec succès' }
   } catch (error: any) {
-    console.error('Erreur free-formation-lead:', error)
+    const brevoError = error?.response?.data || error.message
+    console.error('Erreur free-formation-lead:', JSON.stringify(brevoError))
+
+    // Brevo rejects invalid/disposable emails
+    if (error?.response?.status === 400) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Adresse email invalide. Veuillez utiliser une adresse email valide.',
+      })
+    }
+
     throw createError({
       statusCode: 500,
       statusMessage: "Erreur lors de l'enregistrement",

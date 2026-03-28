@@ -2,12 +2,12 @@
   "errorListId": 97,
   "templateIds": {
     "kit-lancement-user": 129,
-    "kit-lancement-admin": 130,
+    "kit-lancement-admin": 153,
     "formation-gratuite-user": 131,
-    "formation-gratuite-admin": 132,
+    "formation-gratuite-admin": 154,
     "paiement-user": 133,
-    "paiement-admin": 134,
-    "erreur-admin": 135
+    "paiement-admin": 155,
+    "erreur-admin": 156
   },
   "adminEmail": "asathoud16@gmail.com",
   "createdAt": "2026-03-23T13:47:50.690Z"
