@@ -95,7 +95,7 @@ function buildTemplate(heading: string, bodyHtml: string, isError = false): stri
     <a href="mailto:${CONTACT_EMAIL}" style="color:${ORANGE};text-decoration:none;">${CONTACT_EMAIL}</a>
   </p>
   <p style="margin:0;font-size:11px;color:#999999;font-family:'Space Mono','Courier New',monospace;">
-    &copy; ${new Date().getFullYear()} Kevin Attallah. Tous droits reserves.
+    &copy; ${new Date().getFullYear()} Kevin Attallah. Tous droits réservés.
   </p>
 </td></tr>
 
@@ -133,15 +133,15 @@ ${rowsHtml}
 const templates = [
   {
     name: 'kit-lancement-user',
-    subject: 'Votre Kit de Lancement est pret !',
+    subject: 'Votre Kit de Lancement est prêt !',
     html: buildTemplate(
       'Votre Kit de Lancement',
       `<p>Bonjour {{ params.FIRSTNAME }},</p>
-<p>Merci pour votre interet ! Votre Kit de Lancement pour creer votre entreprise est pret.</p>
-<p>Cliquez sur le bouton ci-dessous pour le telecharger :</p>
-${ctaButton('Telecharger mon Kit', '{{ params.DOWNLOAD_LINK }}')}
-<p style="font-size:13px;color:#777;">Ce lien est valable pour une duree limitee. Pensez a telecharger votre kit rapidement.</p>
-<p>A tres vite,<br><strong>Kevin Attallah</strong></p>`
+<p>Merci pour votre intérêt ! Votre Kit de Lancement pour créer votre entreprise est prêt.</p>
+<p>Cliquez sur le bouton ci-dessous pour le télécharger :</p>
+${ctaButton('Télécharger mon Kit', '{{ params.DOWNLOAD_LINK }}')}
+<p style="font-size:13px;color:#777;">Ce lien est valable pour une durée limitée. Pensez à télécharger votre kit rapidement.</p>
+<p>À très vite,<br><strong>Kevin Attallah</strong></p>`
     ),
   },
   {
@@ -149,20 +149,20 @@ ${ctaButton('Telecharger mon Kit', '{{ params.DOWNLOAD_LINK }}')}
     subject: 'Nouveau lead Kit : {{ params.FIRSTNAME }}',
     html: buildTemplate(
       'Nouvelle demande de Kit Lancement',
-      `<p>Un nouveau lead a demande le Kit de Lancement :</p>
-${infoTable([['Prenom', '{{ params.FIRSTNAME }}'], ['Email', '{{ params.EMAIL }}']])}`
+      `<p>Un nouveau lead a demandé le Kit de Lancement :</p>
+${infoTable([['Prénom', '{{ params.FIRSTNAME }}'], ['Email', '{{ params.EMAIL }}']])}`
     ),
   },
   {
     name: 'formation-gratuite-user',
-    subject: 'Votre demande a bien ete recue',
+    subject: 'Votre demande a bien été reçue',
     html: buildTemplate(
-      'Demande bien recue !',
+      'Demande bien reçue !',
       `<p>Bonjour {{ params.FIRSTNAME }},</p>
-<p>Nous avons bien recu votre demande de formation gratuite.</p>
-<p>Notre equipe va traiter votre inscription et vous recevrez vos acces <strong>sous 48h ouvrees</strong>.</p>
-<p>En attendant, n'hesitez pas a nous contacter a <a href="mailto:${CONTACT_EMAIL}" style="color:${PURPLE};text-decoration:none;font-weight:700;">${CONTACT_EMAIL}</a> si vous avez des questions.</p>
-<p>A tres vite,<br><strong>Kevin Attallah</strong></p>`
+<p>Nous avons bien reçu votre demande de formation gratuite.</p>
+<p>Notre équipe va traiter votre inscription et vous recevrez vos accès <strong>sous 48h ouvrées</strong>.</p>
+<p>En attendant, n'hésitez pas à nous contacter à <a href="mailto:${CONTACT_EMAIL}" style="color:${PURPLE};text-decoration:none;font-weight:700;">${CONTACT_EMAIL}</a> si vous avez des questions.</p>
+<p>À très vite,<br><strong>Kevin Attallah</strong></p>`
     ),
   },
   {
@@ -170,12 +170,12 @@ ${infoTable([['Prenom', '{{ params.FIRSTNAME }}'], ['Email', '{{ params.EMAIL }}
     subject: 'Nouveau lead Formation : {{ params.FIRSTNAME }}',
     html: buildTemplate(
       'Nouvelle demande de formation gratuite',
-      `<p>Un nouveau lead a demande une formation gratuite :</p>
+      `<p>Un nouveau lead a demandé une formation gratuite :</p>
 ${infoTable([
-  ['Prenom', '{{ params.FIRSTNAME }}'],
+  ['Prénom', '{{ params.FIRSTNAME }}'],
   ['Nom', '{{ params.LASTNAME }}'],
   ['Email', '{{ params.EMAIL }}'],
-  ['Telephone', '{{ params.PHONE }}'],
+  ['Téléphone', '{{ params.PHONE }}'],
 ])}`
     ),
   },
@@ -185,28 +185,28 @@ ${infoTable([
     html: buildTemplate(
       'Merci pour votre achat !',
       `<p>Bonjour {{ params.NAME }},</p>
-<p>Nous confirmons la reception de votre paiement :</p>
+<p>Nous confirmons la réception de votre paiement :</p>
 ${infoTable([
   ['Formation', '{{ params.FORMATION }}'],
   ['Montant', '{{ params.AMOUNT }}'],
 ])}
-<p>Notre equipe vous contactera prochainement pour vous accompagner dans les prochaines etapes.</p>
-<p>Pour toute question, contactez-nous a <a href="mailto:${CONTACT_EMAIL}" style="color:${PURPLE};text-decoration:none;font-weight:700;">${CONTACT_EMAIL}</a>.</p>
-<p>A tres vite,<br><strong>Kevin Attallah</strong></p>`
+<p>Notre équipe vous contactera prochainement pour vous accompagner dans les prochaines étapes.</p>
+<p>Pour toute question, contactez-nous à <a href="mailto:${CONTACT_EMAIL}" style="color:${PURPLE};text-decoration:none;font-weight:700;">${CONTACT_EMAIL}</a>.</p>
+<p>À très vite,<br><strong>Kevin Attallah</strong></p>`
     ),
   },
   {
     name: 'paiement-admin',
     subject: 'Nouveau paiement : {{ params.FORMATION }}',
     html: buildTemplate(
-      'Nouveau paiement recu',
-      `<p>Un paiement a ete recu :</p>
+      'Nouveau paiement reçu',
+      `<p>Un paiement a été reçu :</p>
 ${infoTable([
   ['Formation', '{{ params.FORMATION }}'],
   ['Montant', '{{ params.AMOUNT }}'],
   ['Nom', '{{ params.NAME }}'],
   ['Email', '{{ params.EMAIL }}'],
-  ['Telephone', '{{ params.PHONE }}'],
+  ['Téléphone', '{{ params.PHONE }}'],
   ['Ville', '{{ params.CITY }}'],
   ['Code postal', '{{ params.POSTCODE }}'],
 ])}`
@@ -216,14 +216,14 @@ ${infoTable([
     name: 'erreur-admin',
     subject: '[ERREUR] {{ params.ERROR_TYPE }}',
     html: buildTemplate(
-      'Erreur detectee',
+      'Erreur détectée',
       `<p style="color:#E53E3E;font-weight:700;font-size:16px;">{{ params.ERROR_TYPE }}</p>
 ${infoTable([
   ['Page', '{{ params.PAGE }}'],
   ['Utilisateur', '{{ params.USER_NAME }}'],
   ['Email', '{{ params.USER_EMAIL }}'],
   ['Formation', '{{ params.FORMATION }}'],
-  ['Message d\'erreur', '{{ params.ERROR_MESSAGE }}'],
+  ["Message d'erreur", '{{ params.ERROR_MESSAGE }}'],
 ])}`,
       true
     ),
