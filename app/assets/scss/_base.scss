@@ -1,0 +1,223 @@
+// ============================================
+// BASE - Reset & Global Styles
+// ============================================
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; // Lenis handles smooth scroll
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $bg-page;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $body;
+  line-height: 1.6;
+  color: $text-body;
+  background: transparent;
+  overflow-x: hidden;
+}
+
+// Headings - Brutalist Scale
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+  line-height: 0.9;
+  color: $text-heading;
+  letter-spacing: -0.05em; 
+  text-transform: uppercase;
+}
+
+h1 { font-size: $h1; font-weight: 700; letter-spacing: -0.06em; }
+h2 { font-size: $h2; letter-spacing: -0.05em; }
+h3 { font-size: $h3; letter-spacing: -0.04em; }
+h4 { font-size: $h4; letter-spacing: -0.03em; }
+
+p {
+  color: $text-body;
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: $purple;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: $font-body;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: $font-body;
+  border: none;
+  outline: none;
+}
+
+// Selection
+::selection {
+  background: rgba($purple, 0.15);
+  color: $text-heading;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: $bg-page;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+
+  &:hover {
+    background: $purple;
+  }
+}
+
+// Section base
+.section {
+  padding: $section-pad 0;
+  position: relative;
+}
+
+// Light section (default body)
+.section--light, .section {
+  padding: $section-pad 0;
+  background: transparent;
+  color: $text-body;
+  position: relative;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $text-heading;
+  }
+
+  p {
+    color: $text-body;
+  }
+
+  .section-label {
+    color: $purple;
+  }
+}
+
+// White section (solid fallback)
+.section--white {
+  padding: $section-pad 0;
+  background: $bg-white;
+  color: $text-body;
+  position: relative;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $text-heading;
+  }
+
+  p {
+    color: $text-body;
+  }
+}
+
+// Dark section (hero, footer, CTA, overlays)
+.section--dark {
+  padding: $section-pad 0;
+  background: $bg-dark-1;
+  color: $text-on-dark;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $text-white;
+  }
+
+  p {
+    color: $text-on-dark-muted;
+  }
+}
+
+// Text utilities
+.gradient-text {
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-center { text-align: center; }
+.text-white { color: $text-white; }
+.text-muted { color: $text-muted; }
+
+// Section label / eyebrow
+.section-label {
+  font-family: $font-mono;
+  font-size: $small;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $bg-page;
+  background: $purple;
+  padding: 8px 16px;
+  display: inline-block;
+  margin-bottom: 24px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px #000;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: $body-lg;
+  max-width: 600px;
+  color: $text-muted;
+  line-height: 1.7;
+}
+
+// Visually hidden
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// Custom cursor: hide native cursor on desktop
+body.has-custom-cursor {
+  cursor: none;
+
+  a, button, input, textarea, select, label, [role="button"] {
+    cursor: none !important;
+  }
+}

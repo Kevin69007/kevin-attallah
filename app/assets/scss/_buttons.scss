@@ -1,0 +1,140 @@
+// ============================================
+// BUTTON SYSTEM
+// ============================================
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: $radius-full;
+  font-weight: 700;
+  font-family: $font-heading;
+  font-size: $body;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s $ease-bounce;
+  white-space: nowrap;
+  text-decoration: none;
+
+  // Icon inside button
+  svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+// Primary - Brutalist Block
+.btn--primary {
+  background: $purple;
+  color: #FFFFFF;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &:hover {
+    background: $orange;
+    color: #000000;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+    
+    svg { transform: translateX(4px); }
+  }
+
+  &:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px #000000;
+  }
+}
+
+// Ghost light - Secondary Brutalist Block
+.btn--ghost-light {
+  background: #FFFFFF;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &:hover {
+    background: #000000;
+    color: #FFFFFF;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px $purple;
+  }
+  
+  &:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px $purple;
+  }
+}
+
+// Small variant
+.btn--sm {
+  padding: 10px 24px;
+  font-size: $small;
+}
+
+// Large variant
+.btn--lg {
+  padding: 20px 48px;
+  font-size: $body-lg;
+}
+
+// Full width
+.btn--block {
+  width: 100%;
+}
+
+// Button group
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    width: 100%;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .btn {
+    white-space: normal;
+
+    &--lg {
+      padding: 16px 28px;
+      font-size: 1rem;
+    }
+  }
+
+  .btn--primary {
+    box-shadow: 2px 2px 0px #000;
+
+    &:hover {
+      box-shadow: 4px 4px 0px #000;
+    }
+  }
+
+  .btn--ghost-light {
+    box-shadow: 2px 2px 0px #000;
+
+    &:hover {
+      box-shadow: 4px 4px 0px #000;
+    }
+  }
+}

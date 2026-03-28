@@ -1,0 +1,107 @@
+// ============================================
+// KEVIN ATTALLAH - Design Tokens
+// ============================================
+
+// === PRIMARY: Purple ===
+$purple: #6C2BD9;
+$purple-light: #8B5CF6;
+$purple-dark: #5521B5;
+$purple-glow: rgba(108, 43, 217, 0.4);
+$purple-bg: rgba(108, 43, 217, 0.06);
+
+// === ACCENT: Gold/Copper (replaces Orange) ===
+$orange: #C67651;
+$orange-light: #D4956F;
+$orange-dark: #B05E41;
+$orange-glow: rgba(198, 118, 81, 0.25);
+$orange-bg: rgba(198, 118, 81, 0.06);
+
+// === DARK BACKGROUNDS (used only for contrast/tunnel) ===
+$bg-dark-1: #0A0514;
+$bg-dark-2: #110B24;
+$bg-dark-3: #1A1033;
+
+// === LIGHT BACKGROUNDS (primary body sections) ===
+$bg-page: #FFFFFF;
+$bg-section-alt: #F8FAFC; // Soft Slate
+$bg-card: #FFFFFF;
+$bg-card-hover: #F1F5F9;
+$bg-subtle: #F1F5F9;
+$bg-light-1: #FFFFFF;
+$bg-light-2: #FAFAFA;
+$bg-white: #FFFFFF;
+
+// === TEXT (light backgrounds) ===
+$text-heading: #111827;
+$text-body: #4B5563;
+$text-muted: #9CA3AF;
+
+// === TEXT (dark backgrounds) ===
+$text-white: #FFFFFF;
+$text-primary: #1A1033;
+$text-on-dark: rgba(255, 255, 255, 0.85);
+$text-on-dark-muted: rgba(255, 255, 255, 0.5);
+
+// === GRADIENTS ===
+$gradient-hero: linear-gradient(135deg, #0A0514 0%, #1A0B3E 50%, #110B24 100%);
+$gradient-primary: linear-gradient(135deg, $orange, $purple);
+$gradient-purple: linear-gradient(135deg, $purple-dark, $purple-light);
+$gradient-glow: radial-gradient(circle, $purple-glow 0%, transparent 70%);
+$gradient-orange-glow: radial-gradient(circle, $orange-glow 0%, transparent 70%);
+$gradient-subtle: linear-gradient(135deg, rgba($purple, 0.03), rgba($orange, 0.02));
+
+// === LIQUID GLASS (Light Mode Focus) ===
+$glass-bg: rgba(255, 255, 255, 0.4);
+$glass-bg-light: rgba(255, 255, 255, 0.7);
+$glass-border: rgba(255, 255, 255, 0.4);
+$glass-border-light: rgba(255, 255, 255, 0.6);
+$glass-blur: 24px;
+$glass-blur-heavy: 40px;
+
+// === CARDS (light sections) ===
+$card-border: rgba(0, 0, 0, 0.06);
+$card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 24px rgba(0, 0, 0, 0.06);
+$card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 40px rgba(0, 0, 0, 0.1);
+$card-shadow-purple: 0 4px 12px rgba(108, 43, 217, 0.08), 0 12px 40px rgba(108, 43, 217, 0.12);
+
+// === NAVIGATION ===
+$nav-bg-scrolled: rgba(255, 255, 255, 0.85);
+$nav-border: rgba(0, 0, 0, 0.06);
+
+// === SHADOWS ===
+$shadow-sm: 0 1px 3px rgba(17, 24, 39, 0.04), 0 1px 2px rgba(17, 24, 39, 0.06);
+$shadow-md: 0 4px 12px rgba(17, 24, 39, 0.04), 0 1px 3px rgba(17, 24, 39, 0.02);
+$shadow-lg: 0 16px 48px rgba(17, 24, 39, 0.06), 0 4px 12px rgba(17, 24, 39, 0.03);
+$shadow-glow-purple: 0 0 40px rgba(108, 43, 217, 0.15);
+$shadow-glow-orange: 0 0 40px rgba(198, 118, 81, 0.15);
+$shadow-glass: 0 12px 40px rgba(17, 24, 39, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+// === RADIUS (Brutalist = Sharp Edges) ===
+$radius-sm: 0px;
+$radius-md: 0px;
+$radius-lg: 0px;
+$radius-xl: 0px;
+$radius-full: 0px;
+
+// === TYPOGRAPHY ===
+$font-heading: 'Space Grotesk', sans-serif;
+$font-body: 'Space Grotesk', sans-serif;
+$font-mono: 'Space Mono', monospace;
+
+$h1: clamp(4rem, 12vw, 10rem);
+$h2: clamp(3rem, 8vw, 6rem);
+$h3: clamp(2rem, 5vw, 4rem);
+$h4: clamp(1.5rem, 3vw, 2.5rem);
+$body-lg: 1.25rem;
+$body: 1.125rem;
+$small: 1rem;
+$xs: 0.875rem;
+
+// === SPACING ===
+$section-pad: clamp(60px, 10vw, 120px);
+$section-pad-sm: clamp(40px, 6vw, 80px);
+
+// === TRANSITIONS ===
+$ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+$transition-base: all 0.4s $ease-smooth;

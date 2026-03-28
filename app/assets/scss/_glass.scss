@@ -1,0 +1,335 @@
+// ============================================
+// LIQUID GLASS - Glassmorphism Components
+// ============================================
+
+// Animated border - smooth breathing glow for Light Mode panels
+@keyframes border-glow-light {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 12px 40px rgba(17, 24, 39, 0.04),
+      0 2px 6px rgba(17, 24, 39, 0.02),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(17, 24, 39, 0.01);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow:
+      0 12px 40px rgba(17, 24, 39, 0.04),
+      0 2px 6px rgba(17, 24, 39, 0.02),
+      0 0 20px rgba(255, 255, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(17, 24, 39, 0.01);
+  }
+}
+
+// Animated border - Tunnel mode (dark)
+@keyframes border-glow-dark {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba($purple-light, 0.2);
+    box-shadow: 0 0 16px rgba($purple, 0.1);
+  }
+}
+
+// Dark glass (on dark backgrounds)
+.glass-dark {
+  background: $glass-bg;
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  border: 1px solid $glass-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-glass;
+}
+
+// Light glass (on light backgrounds - default frosted translucent)
+.glass-light {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+  backdrop-filter: blur(32px) saturate(1.5);
+  -webkit-backdrop-filter: blur(32px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: $radius-lg;
+  box-shadow:
+    0 16px 40px rgba(17, 24, 39, 0.03),
+    inset 0 2px 2px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+// Navigation glass (dark - for hero overlay)
+.glass-nav {
+  background: rgba(10, 5, 20, 0.7);
+  backdrop-filter: blur($glass-blur-heavy);
+  -webkit-backdrop-filter: blur($glass-blur-heavy);
+  border-bottom: 1px solid $glass-border;
+}
+
+// Navigation glass (light - scrolled state)
+.glass-nav-light {
+  background: $nav-bg-scrolled;
+  backdrop-filter: blur($glass-blur-heavy);
+  -webkit-backdrop-filter: blur($glass-blur-heavy);
+  border-bottom: 1px solid $nav-border;
+  box-shadow: $shadow-sm;
+}
+
+// Glass card with hover glow (dark backgrounds)
+.glass-card {
+  background: $glass-bg;
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  border: 1px solid $glass-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-glass;
+  transition: all 0.5s $ease-smooth;
+
+  &:hover {
+    border-color: rgba(108, 43, 217, 0.3);
+    box-shadow: $shadow-glow-purple;
+    transform: translateY(-4px);
+  }
+}
+
+// Card on light backgrounds (Primary - thick frosted glass)
+.glass-card-light {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
+  backdrop-filter: blur(30px) saturate(1.5);
+  -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: $radius-lg;
+  
+  // Advanced multi-layered shadow for thick glass volume
+  box-shadow:
+    0 24px 48px rgba(17, 24, 39, 0.03), // Deep soft ambient shadow
+    0 8px 16px rgba(17, 24, 39, 0.02), // Mid shadow
+    inset 0 2px 3px rgba(255, 255, 255, 0.8), // Thick top inner lip
+    inset 0 -1px 2px rgba(0, 0, 0, 0.02), // Dark bottom inner lip
+    inset 1px 0 2px rgba(255, 255, 255, 0.4); // Side highlight
+    
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+
+  // Specular diagonal highlight
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.4) 0%, transparent 60%);
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow:
+      0 32px 64px rgba(108, 43, 217, 0.05), // Shift shadow to brand purple subtly
+      0 12px 24px rgba(17, 24, 39, 0.02),
+      inset 0 2px 4px rgba(255, 255, 255, 1),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.02);
+    transform: translateY(-4px) scale(1.01);
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// Glass badge (dark backgrounds)
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: $radius-full;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-white;
+}
+
+.glass-badge--orange {
+  background: rgba($orange, 0.15);
+  border-color: rgba($orange, 0.3);
+  color: $orange-light;
+}
+
+.glass-badge--purple {
+  background: rgba($purple, 0.15);
+  border-color: rgba($purple, 0.3);
+  color: $purple-light;
+}
+
+// Badge variants for light backgrounds (Primary - frosted glass)
+.glass-badge-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: $radius-full;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: $text-heading;
+  // Thick edge lighting for badge
+  box-shadow:
+    0 8px 16px rgba(17, 24, 39, 0.03),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+      0 12px 24px rgba($purple, 0.06),
+      inset 0 1.5px 3px rgba(255, 255, 255, 1);
+  }
+}
+
+.glass-badge-light--orange {
+  color: $orange-dark;
+}
+
+.glass-badge-light--purple {
+  color: $purple-dark;
+}
+
+// Glass input (dark backgrounds)
+.glass-input {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $radius-sm;
+  padding: 14px 20px;
+  color: $text-white;
+  font-size: $body;
+  width: 100%;
+  transition: $transition-base;
+
+  &::placeholder {
+    color: $text-on-dark-muted;
+  }
+
+  &:focus {
+    border-color: rgba($purple, 0.5);
+    box-shadow: 0 0 20px rgba($purple, 0.15);
+  }
+}
+
+// Glass divider (dark backgrounds)
+.glass-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent
+  );
+}
+
+// Light divider (light backgrounds)
+.glass-divider-light {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.08) 50%,
+    transparent
+  );
+}
+
+// ============================================
+// GLASS CURSOR
+// ============================================
+
+// Small cursor dot + radial glass ripple that fades out from center
+// Like a water droplet hitting a lake - blur is strongest at center, fades to nothing
+
+// Glass cursor - visible circle + GSAP proximity distortion on content
+.glass-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
+
+  // GPU compositing
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+
+  // Initially hidden
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &--visible {
+    opacity: 1;
+  }
+
+  // Glass circle - no backdrop-filter so text underneath never changes color
+  &__circle {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+
+    // Purple dot at center
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      margin: -4px 0 0 -4px;
+      border-radius: 50%;
+      background: rgba($purple-light, 0.5);
+      box-shadow: 0 0 10px rgba($purple, 0.2);
+      transition: transform 0.3s $ease-smooth, opacity 0.3s ease;
+    }
+  }
+
+  // Interactive hover - subtle purple border, no text color change
+  &--hover {
+    .glass-cursor__circle {
+      border-color: rgba($purple, 0.3);
+      box-shadow:
+        0 2px 12px rgba($purple, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+      &::after {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+  }
+
+  // Mobile safety net
+  @media (hover: none), (pointer: coarse) {
+    display: none !important;
+  }
+}
