@@ -12,6 +12,14 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  const normalizedPhone = normalizePhone(phone)
+  if (!normalizedPhone) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Numéro de téléphone invalide.',
+    })
+  }
+
   try {
     await axios.post(
       'https://api.brevo.com/v3/contacts',
@@ -20,7 +28,7 @@ export default defineEventHandler(async (event) => {
         attributes: {
           FIRSTNAME: firstName,
           LASTNAME: lastName,
-          SMS: phone,
+          PHONE: normalizedPhone,
           LEAD_SOURCE: 'formation_gratuite',
         },
         listIds: [99],
@@ -40,7 +48,7 @@ export default defineEventHandler(async (event) => {
       FIRSTNAME: firstName,
       LASTNAME: lastName,
       EMAIL: email,
-      PHONE: phone,
+      PHONE: normalizedPhone,
     })
 
     return { success: true, message: 'Inscription enregistrée avec succès' }

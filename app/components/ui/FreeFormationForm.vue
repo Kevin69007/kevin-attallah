@@ -26,13 +26,12 @@
         placeholder="jean@example.com"
         required
       />
-      <FormInput
+      <PhoneInput
         id="ffm-phone"
         v-model="form.phone"
         label="Téléphone"
-        type="tel"
-        placeholder="+33 6 12 34 56 78"
         required
+        @update:valid="phoneValid = $event"
       />
       <AppButton variant="primary" block type="submit" :disabled="loading" class="mt-16">
         <Loader2 v-if="loading" :size="18" class="free-form__spin" />
@@ -58,9 +57,11 @@
 <script setup lang="ts">
 import { Loader2, CheckCircle } from 'lucide-vue-next'
 import { freeFormationConfig as config } from '~/data/free-formation'
+import PhoneInput from '~/components/ui/PhoneInput.vue'
 
 const loading = ref(false)
 const submitted = ref(false)
+const phoneValid = ref(false)
 
 const form = reactive({
   firstName: '',
@@ -74,8 +75,13 @@ const { trackGenerateLead } = useGoogleAds()
 const { trackConversion } = useLinkedIn()
 
 async function handleSubmit() {
-  if (!form.firstName || !form.lastName || !form.email || !form.phone) {
+  if (!form.firstName || !form.lastName || !form.email) {
     await showToast('Veuillez remplir tous les champs.', 'error')
+    return
+  }
+
+  if (!phoneValid.value) {
+    await showToast('Numéro de téléphone invalide.', 'error')
     return
   }
 
