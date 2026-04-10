@@ -23,6 +23,14 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  const normalizedPhone = normalizePhone(phone);
+  if (!normalizedPhone) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Numéro de téléphone invalide.',
+    });
+  }
+
   try {
     // Préparer les données à envoyer à Brevo
     const contactData = {
@@ -30,7 +38,7 @@ export default defineEventHandler(async (event) => {
       attributes: {
         EMAIL: email,
         FIRSTNAME: name,
-        PHONE_CABINET: phone,
+        PHONE: normalizedPhone,
         JOB_TITLE: formation,
         NOMBRE_DE_CAS_TOTAL: mount,
         MONTANT_FORMATE: mount ? `${(mount / 100).toFixed(2)} €` : '',

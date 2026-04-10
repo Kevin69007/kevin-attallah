@@ -45,12 +45,11 @@
                     placeholder="jean@example.com"
                     required
                   />
-                  <FormInput
+                  <PhoneInput
                     id="phone"
                     v-model="form.phone"
                     label="Téléphone"
-                    type="tel"
-                    placeholder="+33612345678"
+                    @update:valid="phoneValid = $event"
                   />
                 </div>
                 <div class="checkout__row">
@@ -148,6 +147,7 @@ const orderAmount = ref(0)
 const orderDescription = ref('')
 const buyerCountryCode = ref('FR')
 const isProcessing = ref(false)
+const phoneValid = ref(false)
 
 const form = reactive({
   name: '',
@@ -238,6 +238,10 @@ function getFormData() {
   }
   if (!form.email) {
     showToast('Email est obligatoire.', 'error')
+    return null
+  }
+  if (form.phone && !phoneValid.value) {
+    showToast('Numéro de téléphone invalide.', 'error')
     return null
   }
 

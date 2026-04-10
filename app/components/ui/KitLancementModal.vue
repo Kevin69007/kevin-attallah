@@ -41,13 +41,12 @@
                 placeholder="jean@example.com"
                 required
               />
-              <FormInput
+              <PhoneInput
                 id="kit-phone"
                 v-model="form.phone"
                 label="Téléphone"
-                type="tel"
-                placeholder="06 12 34 56 78"
                 required
+                @update:valid="phoneValid = $event"
               />
               <AppButton variant="primary" block type="submit" :disabled="loading" class="mt-16">
                 <Loader2 v-if="loading" :size="18" class="kit-modal__spin" />
@@ -75,6 +74,7 @@
 
 <script setup lang="ts">
 import { X, Loader2, CheckCircle } from 'lucide-vue-next'
+import PhoneInput from '~/components/ui/PhoneInput.vue'
 
 defineProps<{
   visible: boolean
@@ -84,6 +84,7 @@ defineEmits(['close'])
 
 const loading = ref(false)
 const submitted = ref(false)
+const phoneValid = ref(false)
 
 const form = reactive({
   lastName: '',
@@ -96,9 +97,15 @@ const { trackLead } = useFBPixel()
 const { trackGenerateLead } = useGoogleAds()
 
 async function handleSubmit() {
-  if (!form.lastName || !form.firstName || !form.email || !form.phone) {
+  if (!form.lastName || !form.firstName || !form.email) {
     const { useToast } = await import('vue-toastification')
     useToast().error('Veuillez remplir tous les champs.')
+    return
+  }
+
+  if (!phoneValid.value) {
+    const { useToast } = await import('vue-toastification')
+    useToast().error('Numéro de téléphone invalide.')
     return
   }
 
