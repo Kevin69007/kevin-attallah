@@ -1,14 +1,17 @@
 import axios from 'axios'
 
 const SENDER = { name: 'Kevin Attallah', email: 'formation@kelaj-company.com' }
-const ADMIN_EMAIL = 'kevin.jean1@gmail.com'
+const ADMIN_EMAILS = [
+  { email: 'kevin.jean1@gmail.com', name: 'Kevin' },
+  { email: 'formation@kelaj-company.com', name: 'Kevin' },
+]
 
 export async function notifyAdmin(apiKey: string, templateId: number, params: Record<string, string>) {
   return axios.post(
     'https://api.brevo.com/v3/smtp/email',
     {
       sender: SENDER,
-      to: [{ email: ADMIN_EMAIL, name: 'Kevin' }],
+      to: ADMIN_EMAILS,
       templateId,
       params,
     },
