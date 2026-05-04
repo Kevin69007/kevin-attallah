@@ -107,7 +107,7 @@ const templates: Record<string, { subject: string; html: string }> = {
       `<p>Bonjour {{ params.FIRSTNAME }},</p>
 <p>Merci pour votre intérêt ! Votre Kit de Lancement pour créer votre entreprise est prêt.</p>
 <p>Cliquez sur le bouton ci-dessous pour le télécharger :</p>
-${ctaButton('Télécharger mon Kit', '{{ params.DOWNLOAD_LINK }}')}
+${ctaButton('Télécharger mon Kit', 'https://drive.google.com/drive/folders/1MVKkThPcpj94qbolmkv0c_ybdoM0OUb8?usp=sharing')}
 <p style="font-size:13px;color:#777;">Ce lien est valable pour une durée limitée. Pensez à télécharger votre kit rapidement.</p>
 <p>À très vite,<br><strong>Kevin Attallah</strong></p>`
     ),

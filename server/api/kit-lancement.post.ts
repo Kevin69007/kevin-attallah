@@ -30,7 +30,6 @@ export default defineEventHandler(async (event) => {
           LASTNAME: lastName,
           PHONE: normalizedPhone,
           LEAD_SOURCE: 'kit_lancement',
-          DOWNLOAD_LINK: 'https://www.swisstransfer.com/d/fe0f0fd8-6680-4704-bac7-524bc6370da5',
         },
         listIds: [98],
         updateEnabled: true,
@@ -56,10 +55,7 @@ export default defineEventHandler(async (event) => {
         config.sendinblueApiKey,
         USER_TEMPLATES.KIT_LANCEMENT,
         { email, name: firstName },
-        {
-          FIRSTNAME: firstName,
-          DOWNLOAD_LINK: 'https://www.swisstransfer.com/d/fe0f0fd8-6680-4704-bac7-524bc6370da5',
-        },
+        { FIRSTNAME: firstName },
       ),
     ])
 
