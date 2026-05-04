@@ -44,24 +44,24 @@ export default defineEventHandler(async (event) => {
       },
     )
 
-    // Admin notification (fire-and-forget)
-    notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.KIT_LANCEMENT, {
-      FIRSTNAME: firstName,
-      LASTNAME: lastName,
-      EMAIL: email,
-      PHONE: normalizedPhone,
-    })
-
-    // User confirmation email with download link (fire-and-forget)
-    sendUserEmail(
-      config.sendinblueApiKey,
-      USER_TEMPLATES.KIT_LANCEMENT,
-      { email, name: firstName },
-      {
+    // Send admin and user emails in parallel (await to survive serverless termination)
+    await Promise.all([
+      notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.KIT_LANCEMENT, {
         FIRSTNAME: firstName,
-        DOWNLOAD_LINK: 'https://www.swisstransfer.com/d/fe0f0fd8-6680-4704-bac7-524bc6370da5',
-      },
-    )
+        LASTNAME: lastName,
+        EMAIL: email,
+        PHONE: normalizedPhone,
+      }),
+      sendUserEmail(
+        config.sendinblueApiKey,
+        USER_TEMPLATES.KIT_LANCEMENT,
+        { email, name: firstName },
+        {
+          FIRSTNAME: firstName,
+          DOWNLOAD_LINK: 'https://www.swisstransfer.com/d/fe0f0fd8-6680-4704-bac7-524bc6370da5',
+        },
+      ),
+    ])
 
     return { success: true, message: 'Inscription enregistrée avec succès' }
   } catch (error: any) {
