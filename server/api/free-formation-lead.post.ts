@@ -51,6 +51,14 @@ export default defineEventHandler(async (event) => {
       PHONE: normalizedPhone,
     })
 
+    // User confirmation email (fire-and-forget)
+    sendUserEmail(
+      config.sendinblueApiKey,
+      USER_TEMPLATES.FORMATION_GRATUITE,
+      { email, name: firstName },
+      { FIRSTNAME: firstName },
+    )
+
     return { success: true, message: 'Inscription enregistrée avec succès' }
   } catch (error: any) {
     const brevoError = error?.response?.data || {}
