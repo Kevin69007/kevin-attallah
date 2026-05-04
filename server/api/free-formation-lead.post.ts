@@ -43,21 +43,21 @@ export default defineEventHandler(async (event) => {
       },
     )
 
-    // Admin notification (fire-and-forget)
-    notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.FORMATION_GRATUITE, {
-      FIRSTNAME: firstName,
-      LASTNAME: lastName,
-      EMAIL: email,
-      PHONE: normalizedPhone,
-    })
-
-    // User confirmation email (fire-and-forget)
-    sendUserEmail(
-      config.sendinblueApiKey,
-      USER_TEMPLATES.FORMATION_GRATUITE,
-      { email, name: firstName },
-      { FIRSTNAME: firstName },
-    )
+    // Send admin and user emails in parallel (await to survive serverless termination)
+    await Promise.all([
+      notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.FORMATION_GRATUITE, {
+        FIRSTNAME: firstName,
+        LASTNAME: lastName,
+        EMAIL: email,
+        PHONE: normalizedPhone,
+      }),
+      sendUserEmail(
+        config.sendinblueApiKey,
+        USER_TEMPLATES.FORMATION_GRATUITE,
+        { email, name: firstName },
+        { FIRSTNAME: firstName },
+      ),
+    ])
 
     return { success: true, message: 'Inscription enregistrée avec succès' }
   } catch (error: any) {

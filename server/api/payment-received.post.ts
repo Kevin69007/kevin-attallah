@@ -16,28 +16,28 @@ export default defineEventHandler(async (event) => {
 
   const amount = mount ? `${(mount / 100).toFixed(2)}€` : '0€'
 
-  // Admin notification (fire-and-forget)
-  notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.PAIEMENT, {
-    NAME: name,
-    EMAIL: email,
-    PHONE: phone || 'N/A',
-    FORMATION: formation || 'N/A',
-    AMOUNT: amount,
-    CITY: billingAddress?.city || 'N/A',
-    POSTCODE: billingAddress?.postcode || 'N/A',
-  })
-
-  // User confirmation email (fire-and-forget)
-  sendUserEmail(
-    config.sendinblueApiKey,
-    USER_TEMPLATES.PAIEMENT,
-    { email, name },
-    {
+  // Send admin and user emails in parallel (await to survive serverless termination)
+  await Promise.all([
+    notifyAdmin(config.sendinblueApiKey, ADMIN_TEMPLATES.PAIEMENT, {
       NAME: name,
-      FORMATION: formation || 'Formation',
+      EMAIL: email,
+      PHONE: phone || 'N/A',
+      FORMATION: formation || 'N/A',
       AMOUNT: amount,
-    },
-  )
+      CITY: billingAddress?.city || 'N/A',
+      POSTCODE: billingAddress?.postcode || 'N/A',
+    }),
+    sendUserEmail(
+      config.sendinblueApiKey,
+      USER_TEMPLATES.PAIEMENT,
+      { email, name },
+      {
+        NAME: name,
+        FORMATION: formation || 'Formation',
+        AMOUNT: amount,
+      },
+    ),
+  ])
 
   return { message: 'Notification de paiement envoyée.' }
 })
