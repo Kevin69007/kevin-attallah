@@ -1,5 +1,5 @@
 // server/api/payment-received.post.ts
-// User email handled by Brevo workflow (list 53). Admin notification sent here via SMTP API.
+// Sends both admin notification and user confirmation directly via Brevo SMTP API.
 
 
 export default defineEventHandler(async (event) => {
@@ -26,6 +26,18 @@ export default defineEventHandler(async (event) => {
     CITY: billingAddress?.city || 'N/A',
     POSTCODE: billingAddress?.postcode || 'N/A',
   })
+
+  // User confirmation email (fire-and-forget)
+  sendUserEmail(
+    config.sendinblueApiKey,
+    USER_TEMPLATES.PAIEMENT,
+    { email, name },
+    {
+      NAME: name,
+      FORMATION: formation || 'Formation',
+      AMOUNT: amount,
+    },
+  )
 
   return { message: 'Notification de paiement envoyée.' }
 })
