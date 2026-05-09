@@ -23,12 +23,14 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap' },
       ],
-      script: [
-        {
-          innerHTML: 'function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"586857914d8a621c84c32633cf0e8b21"})});',
-          tagPosition: 'bodyClose',
-        },
-      ],
+      script: process.env.NODE_ENV === 'production'
+        ? [
+            {
+              innerHTML: 'function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"586857914d8a621c84c32633cf0e8b21"})});',
+              tagPosition: 'bodyClose',
+            },
+          ]
+        : [],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
