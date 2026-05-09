@@ -72,7 +72,7 @@ const kitIntent = useExitIntent({
   scrollThreshold: 0.25,
   storagePrefix: 'kit',
   cooldown: 5 * 60 * 1000,
-  excludeRoutes: ['/paiement', '/remerciement', '/formation-gratuite', '/blog/*'],
+  excludeRoutes: ['/paiement', '/remerciement', '/formation-gratuite', '/appel-kevin', '/kit-lancement', '/blog/*'],
   perRoute: true,
 })
 </script>
