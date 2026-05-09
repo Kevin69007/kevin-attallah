@@ -18,6 +18,8 @@
           <NuxtLink to="/evoluer-ia">Faire évoluer avec l'IA</NuxtLink>
           <NuxtLink to="/about">À propos</NuxtLink>
           <NuxtLink to="/blog">Blog</NuxtLink>
+          <NuxtLink to="/appel-kevin">Appel avec Kevin</NuxtLink>
+          <NuxtLink to="/kit-lancement">Kit de lancement</NuxtLink>
           <NuxtLink to="/formation-gratuite" class="footer__free-link">Formation Gratuite</NuxtLink>
         </div>
 
