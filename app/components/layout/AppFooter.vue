@@ -27,7 +27,7 @@
           <h4 class="footer__heading">Légal</h4>
           <NuxtLink to="/mentions-legales">Mentions légales</NuxtLink>
           <NuxtLink to="/cgv">CGV</NuxtLink>
-          <a :href="'mailto:' + externalLinks.contact.email">{{ externalLinks.contact.email }}</a>
+          <NuxtLink to="/appel-kevin">Nous contacter</NuxtLink>
           <a :href="externalLinks.booking.debloqueTonPotentiel" target="_blank" rel="noopener">Prendre rendez-vous</a>
         </div>
       </div>

@@ -14,7 +14,7 @@ if (!API_KEY) {
 const BASE = 'https://api.brevo.com/v3'
 const LOGO_URL = 'https://www.kevin-attallah.com/img/logo-2.png'
 const SITE_URL = 'https://www.kevin-attallah.com'
-const CONTACT_EMAIL = 'contact@kevin-attallah.com'
+const CONTACT_FORM_URL = `${SITE_URL}/appel-kevin`
 
 const PURPLE = '#6C2BD9'
 const ORANGE = '#C67651'
@@ -63,7 +63,7 @@ function buildTemplate(heading: string, bodyHtml: string, isError = false): stri
     ${socialLinks}
   </p>
   <p style="margin:0 0 8px;font-size:12px;color:#888888;font-family:'Space Mono','Courier New',monospace;">
-    <a href="mailto:${CONTACT_EMAIL}" style="color:${ORANGE};text-decoration:none;">${CONTACT_EMAIL}</a>
+    <a href="${CONTACT_FORM_URL}" style="color:${ORANGE};text-decoration:none;">Nous contacter</a>
   </p>
   <p style="margin:0;font-size:11px;color:#999999;font-family:'Space Mono','Courier New',monospace;">
     &copy; ${new Date().getFullYear()} Kevin Attallah. Tous droits réservés.
@@ -127,7 +127,7 @@ ${infoTable([['Prénom', '{{ params.FIRSTNAME }}'], ['Email', '{{ params.EMAIL }
       `<p>Bonjour {{ params.FIRSTNAME }},</p>
 <p>Nous avons bien reçu votre demande de formation gratuite.</p>
 <p>Notre équipe va traiter votre inscription et vous recevrez vos accès <strong>sous 48h ouvrées</strong>.</p>
-<p>En attendant, n'hésitez pas à nous contacter à <a href="mailto:${CONTACT_EMAIL}" style="color:${PURPLE};text-decoration:none;font-weight:700;">${CONTACT_EMAIL}</a> si vous avez des questions.</p>
+<p>En attendant, si vous avez des questions, <a href="${CONTACT_FORM_URL}" style="color:${PURPLE};text-decoration:none;font-weight:700;">remplissez notre formulaire de contact</a>.</p>
 <p>À très vite,<br><strong>Kevin Attallah</strong></p>`
     ),
   },
@@ -155,7 +155,7 @@ ${infoTable([
   ['Montant', '{{ params.AMOUNT }}'],
 ])}
 <p>Notre équipe vous contactera prochainement pour vous accompagner dans les prochaines étapes.</p>
-<p>Pour toute question, contactez-nous à <a href="mailto:${CONTACT_EMAIL}" style="color:${PURPLE};text-decoration:none;font-weight:700;">${CONTACT_EMAIL}</a>.</p>
+<p>Pour toute question, <a href="${CONTACT_FORM_URL}" style="color:${PURPLE};text-decoration:none;font-weight:700;">remplissez notre formulaire de contact</a>.</p>
 <p>À très vite,<br><strong>Kevin Attallah</strong></p>`
     ),
   },

@@ -5,14 +5,6 @@ export const externalLinks = {
     propulseAvecIA: 'https://meet.brevo.com/kevin-a2ta2l/propulse-ton-business-avec-lia',
   },
 
-  // Contact
-  contact: {
-    email: 'contact@kevin-attallah.com',
-    // TODO v1 migration: WhatsApp link (used on social links page)
-    // whatsapp: 'https://wa.me/33756949491',
-    // TODO v1 migration: Google Maps link (used in header)
-    // googleMaps: 'https://www.google.com/maps',
-  },
 
   // Social media
   social: {

@@ -150,28 +150,28 @@ onMounted(() => {
 }
 
 .lp {
-  padding: 140px 0 80px;
+  padding: 110px 0 80px;
   background: transparent;
   min-height: 100vh;
 
   &__title {
     font-family: $font-heading;
-    font-size: $h1;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
     font-weight: 900;
     text-transform: uppercase;
     color: #000;
-    line-height: 1.1;
-    max-width: 800px;
+    line-height: 1.15;
+    max-width: 700px;
     margin: 0 auto;
   }
 
   &__subtitle {
     font-family: $font-mono;
     color: #000;
-    font-size: $body-lg;
-    line-height: 1.7;
-    max-width: 600px;
-    margin: 16px auto 0;
+    font-size: clamp(0.875rem, 1.4vw, 1rem);
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 12px auto 0;
   }
 
   &__features {
