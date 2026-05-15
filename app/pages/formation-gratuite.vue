@@ -137,7 +137,7 @@ onMounted(() => {
 
 .page-formation-gratuite {
   position: relative;
-  background: #FFF;
+  background: transparent;
 }
 
 .brutal-content-stack {
@@ -172,17 +172,17 @@ onMounted(() => {
 
 /* ── Page ── */
 .lp {
-  padding: 140px 0 80px;
-  background: #fff;
+  padding: 160px 0 80px;
+  background: transparent;
   min-height: 100vh;
 
   &__title {
     font-family: $font-heading;
-    font-size: $h1;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
     font-weight: 900;
     text-transform: uppercase;
     color: #000;
-    line-height: 1.1;
+    line-height: 1.15;
     max-width: 700px;
     margin: 0 auto;
   }
@@ -190,10 +190,10 @@ onMounted(() => {
   &__subtitle {
     font-family: $font-mono;
     color: #000;
-    font-size: $body-lg;
-    line-height: 1.7;
-    max-width: 600px;
-    margin: 16px auto 0;
+    font-size: clamp(0.875rem, 1.4vw, 1rem);
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 12px auto 0;
   }
 
   &__features {
@@ -310,7 +310,7 @@ onMounted(() => {
 
 @media (max-width: 640px) {
   .lp {
-    padding: 120px 0 40px;
+    padding: 140px 0 40px;
   }
 
   .lp__feature {

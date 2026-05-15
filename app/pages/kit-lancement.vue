@@ -150,7 +150,7 @@ onMounted(() => {
 }
 
 .lp {
-  padding: 110px 0 80px;
+  padding: 160px 0 80px;
   background: transparent;
   min-height: 100vh;
 
@@ -266,7 +266,7 @@ onMounted(() => {
 
 @media (max-width: 640px) {
   .lp {
-    padding: 120px 0 40px;
+    padding: 140px 0 40px;
   }
 
   .lp__feature {
