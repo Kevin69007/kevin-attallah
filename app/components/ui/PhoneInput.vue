@@ -116,8 +116,11 @@ function flagEmoji(code: string): string {
     .join('')
 }
 
+const EXCLUDED_COUNTRIES: CountryCode[] = ['EH']
+
 const allCountries = computed(() => {
   return getCountries()
+    .filter((code) => !EXCLUDED_COUNTRIES.includes(code))
     .map((code) => ({
       code,
       name: countryName(code),
